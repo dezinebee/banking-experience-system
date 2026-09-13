@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 — Typography · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html" class="on">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Foundations</div>
+<h1>02 — Typography</h1>
+<p><strong>Banking Experience System (BES)</strong> · Foundations · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack">
+  <div style="font-size:var(--bes-type-h1-size);line-height:var(--bes-type-h1-line);font-weight:var(--bes-type-h1-weight)">Send money abroad</div>
+  <div style="font-size:var(--bes-type-body-size);line-height:var(--bes-type-body-line);max-width:60ch">Your transfer usually arrives within one hour. We'll notify you at every step.</div>
+  <bdi class="bes-amount bes-amount--hero"><span class="cur">AED</span> 25,000<span class="dec">.00</span></bdi>
+  <div class="demo-row">
+    <bdi class="bes-amount bes-amount--sm">−AED 1,250.50</bdi>
+    <bdi class="bes-amount bes-amount--sm bes-amount--credit">+AED 12,500.00</bdi>
+    <bdi class="bes-amount bes-amount--meta">≈ ₹250,800.00 · estimated</bdi>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot;&gt;
+  &lt;div style=&quot;font-size:var(--bes-type-h1-size);line-height:var(--bes-type-h1-line);font-weight:var(--bes-type-h1-weight)&quot;&gt;Send money abroad&lt;/div&gt;
+  &lt;div style=&quot;font-size:var(--bes-type-body-size);line-height:var(--bes-type-body-line);max-width:60ch&quot;&gt;Your transfer usually arrives within one hour. We&#x27;ll notify you at every step.&lt;/div&gt;
+  &lt;bdi class=&quot;bes-amount bes-amount--hero&quot;&gt;&lt;span class=&quot;cur&quot;&gt;AED&lt;/span&gt; 25,000&lt;span class=&quot;dec&quot;&gt;.00&lt;/span&gt;&lt;/bdi&gt;
+  &lt;div class=&quot;demo-row&quot;&gt;
+    &lt;bdi class=&quot;bes-amount bes-amount--sm&quot;&gt;−AED 1,250.50&lt;/bdi&gt;
+    &lt;bdi class=&quot;bes-amount bes-amount--sm bes-amount--credit&quot;&gt;+AED 12,500.00&lt;/bdi&gt;
+    &lt;bdi class=&quot;bes-amount bes-amount--meta&quot;&gt;≈ ₹250,800.00 · estimated&lt;/bdi&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Typography must carry English, Arabic and mixed bidirectional content; large financial numbers; dense tables; and accessibility scaling — with equal quality in both languages. Arabic is designed, not translated.</p>
+<hr />
+<h2>1. Type stacks</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Default value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>font.latin</code></td>
+<td><code>"Inter", -apple-system, "Segoe UI", Roboto, sans-serif</code></td>
+<td>UI + content, variable weight</td>
+</tr>
+<tr>
+<td><code>font.arabic</code></td>
+<td><code>"Noto Sans Arabic", "Segoe UI Arabic", "Geeza Pro", sans-serif</code></td>
+<td>Matched x-height/weight range to Latin stack</td>
+</tr>
+<tr>
+<td><code>font.numeric</code></td>
+<td>inherits, with <code>font-feature-settings: "tnum" 1</code></td>
+<td>Tabular numerals for all financial figures</td>
+</tr>
+<tr>
+<td><code>font.display</code></td>
+<td>brand-themeable (falls back to <code>font.latin</code>/<code>font.arabic</code>)</td>
+<td>Marketing/display only, never for amounts or forms</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rules: brands may substitute stacks from a <strong>tested pair list</strong> (Latin + Arabic verified together for x-height harmony, weight matching and numeral quality). A brand may never set an Arabic fallback chain that ends in a Latin-only face.</p>
+<h2>2. Arabic type metrics (mandatory adjustments)</h2>
+<p>Arabic script has no capitals, denser letterforms, and cursive joining. When <code>lang="ar"</code>:</p>
+<ul>
+<li><strong>Optical size:</strong> +1px at body sizes, +2px at caption sizes (<code>caption</code> 12 → 13/14; <code>body</code> 16 → 17). Implemented via the size token resolving per-language, not via manual overrides.</li>
+<li><strong>Line-height:</strong> +0.125 rem step at every level (Arabic ascenders/descenders and diacritics need air).</li>
+<li><strong>Letter-spacing: 0. Always.</strong> Tracking breaks cursive joining. The <code>letterSpacing</code> axis is inert in Arabic contexts.</li>
+<li><strong>No uppercase emphasis.</strong> <code>text-transform: uppercase</code> has no meaning; emphasis uses weight (600/700) or size instead. Any component style that uses caps in Latin (e.g. overline labels) defines its Arabic equivalent as semibold sentence case.</li>
+<li><strong>Underlines</strong> sit lower (<code>text-underline-offset</code> increased) to clear descender loops.</li>
+<li>Truncation ellipsis follows text direction; never truncate mid-amount.</li>
+</ul>
+<h2>3. Scale</h2>
+<p>Rem-based (1rem = 16px), user scalable to 200% without loss of function. <code>lh</code> = line-height.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Size/lh (Latin)</th>
+<th>Size/lh (Arabic)</th>
+<th>Weight</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type.display</code></td>
+<td>40/48</td>
+<td>41/50</td>
+<td>700</td>
+<td>Marketing, hero balances on dashboards</td>
+</tr>
+<tr>
+<td><code>type.h1</code></td>
+<td>32/40</td>
+<td>33/42</td>
+<td>700</td>
+<td>Screen titles</td>
+</tr>
+<tr>
+<td><code>type.h2</code></td>
+<td>24/32</td>
+<td>25/34</td>
+<td>600</td>
+<td>Section titles</td>
+</tr>
+<tr>
+<td><code>type.h3</code></td>
+<td>20/28</td>
+<td>21/30</td>
+<td>600</td>
+<td>Card titles, group headers</td>
+</tr>
+<tr>
+<td><code>type.bodyLg</code></td>
+<td>18/28</td>
+<td>19/30</td>
+<td>400</td>
+<td>Lead paragraphs, review screens</td>
+</tr>
+<tr>
+<td><code>type.body</code></td>
+<td>16/24</td>
+<td>17/26</td>
+<td>400</td>
+<td>Default</td>
+</tr>
+<tr>
+<td><code>type.bodySm</code></td>
+<td>14/20</td>
+<td>15/22</td>
+<td>400</td>
+<td>Secondary text, table cells (compact)</td>
+</tr>
+<tr>
+<td><code>type.label</code></td>
+<td>14/20</td>
+<td>15/22</td>
+<td>500</td>
+<td>Form labels, buttons</td>
+</tr>
+<tr>
+<td><code>type.caption</code></td>
+<td>12/16</td>
+<td>13/18</td>
+<td>400</td>
+<td>Metadata, timestamps — never for amounts or legal text</td>
+</tr>
+</tbody>
+</table></div>
+<h2>4. Financial type styles</h2>
+<p>Money gets its own styles; a raw text style on an amount is a defect.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Spec</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type.amount.hero</code></td>
+<td>40/48, 700, tnum</td>
+<td>Dashboard balance</td>
+</tr>
+<tr>
+<td><code>type.amount.lg</code></td>
+<td>28/36, 700, tnum</td>
+<td>Transfer review total, account balance</td>
+</tr>
+<tr>
+<td><code>type.amount.md</code></td>
+<td>20/28, 600, tnum</td>
+<td>Transaction detail, card rows</td>
+</tr>
+<tr>
+<td><code>type.amount.sm</code></td>
+<td>16/24, 600, tnum</td>
+<td>Transaction list rows</td>
+</tr>
+<tr>
+<td><code>type.amount.meta</code></td>
+<td>13/16, 500, tnum</td>
+<td>Converted values, secondary currency</td>
+</tr>
+<tr>
+<td><code>type.financial.meta</code></td>
+<td>13/18, 400</td>
+<td>Rate stamps, fee labels, IBAN display (with <code>dir="ltr"</code> embedding)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rules:
+- <strong>Tabular numerals everywhere money or columns of numbers appear</strong> — amounts must align vertically in lists and tables.
+- Currency code renders at 0.75× the amount size, weight 500 (e.g., <strong>AED 25,000.00</strong> with "AED" smaller): hierarchy belongs to the number.
+- Decimals in hero/large amounts may render at 0.6× size, aligned to the cap height (25,000<sup>.00</sup>) — precision preserved, hierarchy improved. Never drop decimals to save space (see doc 07 for abbreviation rules).
+- Sign (<code>+</code>/<code>−</code>) uses the true minus (U+2212), same size as the integer part, never separated from the number by wrapping.</p>
+<h2>5. Bidirectional (bidi) behavior</h2>
+<ul>
+<li>Numbers are always Western-digit LTR runs by default (Eastern Arabic numerals available as an explicit locale preference — never mixed in one screen; see doc 29).</li>
+<li>Embedded LTR strings inside Arabic text — IBANs, card numbers, URLs, emails, reference codes — are wrapped in direction isolation (<code>&lt;bdi&gt;</code>/<code>unicode-bidi: isolate</code>) so punctuation doesn't scramble.</li>
+<li>Amounts in RTL context: the amount block (currency + number + sign) is a single isolated LTR run, positioned by the layout's logical alignment. <code>AED 5,000−</code> never happens; the sign stays attached: <code>−AED 5,000</code>, placed correctly in the RTL sentence.</li>
+<li>Mixed-language names (e.g., "شركة Al Noor Trading LLC") render with isolation per run; truncation tested in both directions.</li>
+</ul>
+<h2>6. Alignment</h2>
+<ul>
+<li>Latin text: start-aligned (left in LTR). Arabic: start-aligned (right in RTL).</li>
+<li><strong>Numeric table columns: end-aligned in both directions</strong> so magnitudes compare visually.</li>
+<li>Labels above inputs in both directions (never left-of-field, which breaks in RTL and at 200% zoom).</li>
+<li>No justified text (rivers harm dyslexic readers; Arabic justification via kashida is display-only and off by default).</li>
+</ul>
+<h2>7. Accessibility</h2>
+<ul>
+<li>Text scales to 200% via OS/browser settings without truncating amounts, losing controls, or horizontal scrolling; critical flows tested at 200% in both languages.</li>
+<li>Minimum body text 16px (17 Arabic); minimum any text 12px (13 Arabic); disabled text never below 14px.</li>
+<li>Line length target 45–75 characters Latin, 35–60 Arabic.</li>
+<li>Weight is never the sole differentiator of meaning (pairs with size/position/label).</li>
+<li>Legal and disclosure text (KFS, terms) never renders below <code>type.bodySm</code>; "small print" is a banned pattern — disclosure uses standard body sizes with clear headings.</li>
+</ul>
+<div class="pgnav"><a href="color.html"><span class="lbl">Previous</span>Color</a><a class="next" href="spacing-layout.html"><span class="lbl">Next</span>Spacing &amp; layout</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

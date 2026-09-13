@@ -1,0 +1,59 @@
+name: BES gates
+on:
+  push: { branches: [main] }
+  pull_request:
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - name: Install test tooling
+        # the shipped library is dependency-free; jsdom is test-time only
+        run: npm ci
+
+      - name: Token build (must validate)
+        run: python3 tokens/build-tokens.py
+      - name: Brand theme build (must validate)
+        run: python3 tokens/build-theme.py
+      - name: Docs build
+        run: python3 tools/build-docs.py
+
+      - name: JS syntax
+        run: node --check assets/bes.js && node --check assets/gallery.js
+      - name: Money/text unit tests
+        run: node tools/test-js.mjs
+      - name: Component DOM tests (also writes docs/audits/dom-snapshots/)
+        # must run BEFORE the contrast audit: it captures the runtime-only surfaces
+        # (toast, open combobox, date grid, chart tables) that the audit then scores
+        run: node tools/test-dom.mjs
+      - name: Same tests in a UTC+ timezone (calendar dates must not shift)
+        run: TZ=Asia/Dubai node tools/test-js.mjs && TZ=Asia/Dubai node tools/test-dom.mjs
+
+      - name: Contrast audit (declared contract + derived pairings, scored per brand)
+        run: python3 tools/audit-contrast.py
+      - name: Static accessibility audit
+        run: python3 tools/audit-a11y.py
+      - name: Consistency audit (tokens/CSS/demo drift, theme guard, px ratchet)
+        run: python3 tools/audit-consistency.py
+      - name: Brand theme contract (doc 30 — token values only)
+        run: python3 tools/audit-theme.py
+      - name: Transaction state contract (doc 06 §6 — the state names are the API)
+        run: python3 tools/audit-states.py
+
+      - name: Generated files committed (no drift)
+        # covers tokens.css, pages/, the audit reports and the DOM snapshots — a
+        # regenerated artefact that differs from the commit means the PR is stale
+        run: git diff --exit-code -- assets/tokens.css assets/themes/ pages/ docs/audits/
+
+      - name: Size budget (raw ≤ 200KB for tokens.css + bes.css + bes.js)
+        run: |
+          python3 - << 'PY'
+          import os, sys
+          total = sum(os.path.getsize(f"assets/{f}") for f in ("tokens.css","bes.css","bes.js"))
+          print(f"asset payload: {total/1024:.1f} KB")
+          sys.exit(1 if total > 200*1024 else 0)
+          PY

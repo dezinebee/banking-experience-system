@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05 — Regulatory Considerations · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html" class="on">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Strategy</div>
+<h1>05 — Regulatory Considerations</h1>
+<p><strong>Banking Experience System</strong> · Phase 01 · v2.0.0-draft · August 2026</p>
+<blockquote>
+<p><strong>Not legal advice.</strong> This document translates UAE regulatory frameworks into UX design mandates for the system. Every adopting institution must verify against the CBUAE Rulebook (rulebook.centralbank.ae) and its own counsel before shipping compliance-critical flows or copy.</p>
+</blockquote>
+<p>Format per area: regulation intent → what it requires → <strong>BES mandates</strong> (the patterns/components the system must therefore ship). The pattern-to-regulation traceability map in Phase 02 will reference the IDs used here (REG-01…).</p>
+<hr />
+<h2>REG-01 · CBUAE Consumer Protection Regulation (Circular 8/2020) &amp; Standards (2021)</h2>
+<p><strong>Intent:</strong> fair treatment, transparency, informed consent across all Licensed Financial Institutions.</p>
+<p><strong>Requirements found:</strong> Key Facts Statement (KFS) per product with rate-type prominence (fixed/variable/hybrid) and all-fees-inclusive APR labelled "Annual Percentage Rate"; bilingual Arabic/English disclosures and advertising with warning statements; <strong>5-business-day cooling-off</strong> after signing (waivable only via explicit written warning, refunds net of direct costs); <strong>60 calendar days' notice</strong> of fee/T&amp;C changes with plain-language summary; complaints published + acknowledged in writing within 2 business days, ~15 calendar days to respond before escalation.</p>
+<p><strong>BES mandates:</strong>
+- <strong>KFS component</strong> — standardized, printable/downloadable pre-contract summary: product name, rate-type badge, APR (labelled, all-in), fees table, warnings block, cooling-off notice. Identical rendering AR (RTL) and EN. Reused across loans, financing, cards, savings, investments (brief §19).
+- <strong>Warning-statement component</strong> — tiered visual treatment; non-dismissible inside contract flows; usable in ads/product pages.
+- <strong>Cooling-off pattern</strong> — post-signing confirmation stating the right; friction-full waiver (never pre-ticked); visible cancellation entry point for 5 days.
+- <strong>Change-notice pattern</strong> — "what's changing" plain-language summary + revised-terms presentation, timed 60 days ahead; includes disagree-path explanation.
+- <strong>Complaint pattern</strong> — first-class navigation entry; channels, timelines, status tracking (acknowledged → responded → escalate), with <strong>Sanadak</strong> escalation disclosure (REG-10).
+- <strong>Fee-transparency doctrine</strong> — principle 02's enforcement: totals before review, "why am I being charged?" pattern.</p>
+<h2>REG-02 · Open Finance Regulation (2024) — Al Tareq / Nebras</h2>
+<p><strong>Intent:</strong> licensed Open Finance ecosystem under the FIT programme; banks and insurers as mandated data holders; central API hub (Nebras), consumer-facing trust framework (Al Tareq); first OFP licenses issued 2026.</p>
+<p><strong>Requirements found:</strong> explicit, purpose-specific consent by affirmative action; <strong>standardized consent journey and information format</strong> regardless of TPP/bank; redirect model (TPP → bank Consent &amp; Authentication App/Page with MFA → back), with app-not-installed fallbacks preserving consent state.</p>
+<p><strong>BES mandates:</strong>
+- <strong>Consent screens conform to the Al Tareq standard format</strong> (data clusters, purpose, duration/expiry, TPP identity, revocation info) — the system provides compliant rendering, not invented layouts.
+- <strong>Consent dashboard pattern</strong> — active consents list, per-consent detail, one-tap revoke, sharing history.
+- <strong>Redirect handoff pattern</strong> — trust-preserving interstitials ("You're being taken to…"), state preservation, graceful fallbacks.
+- <strong>TPP trust signals</strong> — verified-participant badge sourced from the Nebras directory; unverified never presented as trusted.
+- <strong>Expiring-permission primitives</strong> — expiry countdowns, renewal prompts; consent tokens in the financial semantic model (consent.required/pending/granted/expired/revoked).</p>
+<h2>REG-03 · UAE PASS</h2>
+<p><strong>Intent:</strong> national digital identity/SSO/signature with legal equivalence to handwritten signatures; accepted KYC across 15+ banks.</p>
+<p><strong>BES mandates:</strong> official "Continue with UAE PASS" component; app-switch handoff with timeout handling and "why you're being redirected" messaging; signing ceremony (document review → UAE PASS handoff → signed receipt with legal-equivalence note); verified read-only prefilled fields with source indicator; SOP-level distinction and "upgrade your UAE PASS" interstitial; non-registered-user fallback paths.</p>
+<h2>REG-04 · KYC / AML (Federal Decree-Law 20/2018; CBUAE AML Rulebook)</h2>
+<p><strong>Requirements found:</strong> Emirates ID validation via ICP gateway / UAE PASS; individuals: EID/passport + address proof; corporates: trade license, incorporation, UBO; records ≥5 years; risk-based EDD; continuous monitoring (2026 guidance).</p>
+<p><strong>BES mandates:</strong>
+- <strong>Onboarding stepper</strong> with document-capture components (EID front/back, NFC/OCR states, liveness selfie, uploads) — each with error/retry states and "why we ask" microcopy.
+- <strong>Verification status system</strong> — pending / verified / needs-attention surfaced in-account; <strong>re-KYC pattern</strong> for EID expiry (reminder → deadline → restriction warning); tiered-KYC limit indicators and upgrade paths.
+- <strong>EDD interstitials</strong> — "we need more information" flows (source-of-funds questionnaires, uploads) in a neutral, non-accusatory tone.
+- <strong>Payment-under-review states</strong> — held/queried payments with expected timeframes and secure document requests; <strong>copy stays generic to avoid tipping-off</strong> ("additional checks required" — never the specific trigger).</p>
+<h2>REG-05 · Fraud &amp; Security — CBUAE Notice 2025/3057 (May 2025)</h2>
+<p><strong>Requirements found:</strong> SMS/email OTPs and static passwords <strong>phased out by 31 March 2026</strong> (app-based/biometric/passkey replaces them; 3DS-SMS fraud refundable from July 2025); <strong>Confirmation of Payee mandatory for instant payments</strong> (display payee name, account, bank, account type before confirm); apps must <strong>suspend sessions</strong> on screen-share/malware/remote-access detection <strong>or when the consumer is on an active phone call</strong>; mule/dormant monitoring; anti-impersonation programs; consumer education expected.</p>
+<p><strong>BES mandates:</strong>
+- <strong>Auth pattern set post-OTP:</strong> device biometrics, in-app approval push, passkeys, UAE PASS — with accessible non-SMS fallbacks. SMS-OTP components exist only as deprecated/legacy with sunset guidance.
+- <strong>Confirmation-of-Payee screen</strong> — match / close match / no match states; payee details block; proceed-at-own-risk friction on mismatch.
+- <strong>Scam-interruption patterns</strong> — full-screen "we paused this session" (active call, screen share) with calm copy and safe-resume; "is someone guiding you?" checkpoint on high-risk payments.
+- <strong>Tiered fraud-warning library</strong> (info → caution → hard stop) triggered by new payee, first payment, high value, risky categories.
+- <strong>Verified-channel education surfaces</strong> — "we will never ask for your OTP/password" cards/banners fed by campaign content.</p>
+<h2>REG-06 · Data Protection — PDPL (45/2021), DIFC, ADGM</h2>
+<p><strong>Requirements found:</strong> consent-default legal basis, clear/specific/revocable; sensitive data needs explicit consent; rights: access, correction, erasure, portability, objection to automated processing. Banking/credit data also sits under CBUAE confidentiality rules; DIFC (GDPR-like) and ADGM have their own regimes.</p>
+<p><strong>BES mandates:</strong> granular unbundled consent (never pre-ticked; marketing separate from service); withdrawal path mirrors grant path; <strong>privacy center pattern</strong> (rights-exercise flows + request tracking); layered just-in-time privacy notices, bilingual; cross-border transfer disclosure line; <strong>build to the strictest regime (DIFC/GDPR-like)</strong> so one component set serves all three jurisdictions.</p>
+<h2>REG-07 · Accessibility — National Policy for Digital Accessibility (2024)</h2>
+<p><strong>Requirements found:</strong> WCAG 2.1 AA benchmark for government digital services; TDRA platforms and UAE Design System 2.0 built to <strong>WCAG 2.2 AA</strong>; People of Determination and senior citizens explicitly targeted; financial services import the expectation via UAE PASS/Aani adjacency and CBUAE fair-access posture.</p>
+<p><strong>BES mandates:</strong> WCAG 2.2 AA floor system-wide; Arabic screen-reader and bidi-text test coverage (amounts, IBANs, names in mixed strings); elderly/low-literacy patterns (large-type mode, simplified flows, human escape hatches); accessibility statement pattern; benchmark conventions against UAE Design System 2.0; Web/Mobile/<strong>PDF</strong> requirement checklists (statements and KFS are documents).</p>
+<h2>REG-08 · Islamic Banking — Higher Shari'ah Authority; CPS Islamic disclosures</h2>
+<p><strong>Requirements found:</strong> HSA rules binding; Internal Shari'ah Supervision Committees; CPS requires explaining the applicable Shari'ah concept per product and disclosing profit-sharing ratio, weightages, distribution method and frequency (deposits) and structure + takaful requirements (financing); Article 11 CPR: services marketed as Islamic must be Shari'ah-compliant.</p>
+<p><strong>BES mandates:</strong> terminology layer (interest→profit rate, loan→financing, insurance→takaful…), ideally content-linted; <strong>Shari'ah concept explainer component</strong> (disclosure, not decoration); <strong>profit-rate display</strong> (ratio, weightages table, frequency) distinct from APR display — while KFS still carries all-in cost; Shari'ah-certification trust mark (ISSC/HSA); conventional-vs-Islamic differentiation system for dual-product banks.</p>
+<h2>REG-09 · Aani &amp; Jaywan (Al Etihad Payments)</h2>
+<p>See doc 04 §2. Regulatory intersection: CoP (REG-05) rides on Aani; AED 50,000 limit surfaced inline; federal-government adoption makes these rails' conventions familiar defaults.</p>
+<h2>REG-10 · Sanadak (Ombudsman, 2024)</h2>
+<p><strong>Requirements found:</strong> complain to FI first (≤15 calendar days) → escalate to Sanadak (free; ~15 working days resolution; 3-year/2-year time limits).
+<strong>BES mandate:</strong> complaint pattern includes the standard escalation disclosure with link.</p>
+<h2>REG-11 · Licensing landscape (context)</h2>
+<p>Full digital banks, incumbent digital brands, payments licenses (SVF), DIFC/ADGM entities, Oct 2025 digital-asset licensing integration. <strong>BES mandate:</strong> compliance-variant architecture — per-jurisdiction/per-license content and component variants, never hard-coded copy.</p>
+<hr />
+<h2>The regulation-as-pattern thesis</h2>
+<p>GOV.UK's core move — turning policy into named, researched patterns — is directly transferable: CBUAE prescriptions (KFS, cooling-off, CoP, consent format, session suspension) are <em>experience specifications</em>. BES ships them as versioned patterns with a traceability table (pattern ID ↔ REG ID ↔ source article), so a compliance team can audit the experience by auditing the pattern inventory.</p>
+<h3>Key sources</h3>
+<p>rulebook.centralbank.ae (Consumer Protection Regulation &amp; Standards; Open Finance Regulation; AML rulebook; Shari'ah governance) · Pinsent Masons &amp; Clifford Chance Open Finance briefings · openfinanceuae.atlassian.net (Al Tareq consent guides) · sardine.ai / descope.com / onespan.com analyses of Notice 2025/3057 · securiti.ai &amp; Gowling WLG on PDPL · TDRA national digital accessibility policy · centralbank.ae Islamic finance/HSA pages · sanadak.gov.ae · aep.ae.</p>
+<div class="pgnav"><a href="strategy-uae.html"><span class="lbl">Previous</span>UAE context</a><a class="next" href="strategy-references.html"><span class="lbl">Next</span>Reference analysis</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

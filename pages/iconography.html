@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 — Iconography · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html" class="on">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Foundations</div>
+<h1>04 — Iconography</h1>
+<p><strong>Banking Experience System (BES)</strong> · Foundations · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:560px">
+  <div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:10px">Mirrors in RTL (directional semantics) — try the toggle</div>
+    <div class="demo-row" style="font-size:0;gap:16px" id="icon-mirror-row">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color:var(--bes-text-primary)"><path d="M15 5l-6 7 6 7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><title>back</title></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color:var(--bes-text-primary)"><path d="M4 12h14M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><title>send / next</title></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color:var(--bes-text-primary)"><path d="M4 8h12M12 4l4 4-4 4M20 16H8m4 4l-4-4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><title>transfer</title></svg>
+    </div>
+    <div style="font-size:13px;font-weight:600;margin:16px 0 10px">Never mirrors (universal semantics)</div>
+    <div class="demo-row" style="gap:16px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color:var(--bes-text-primary)"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><title>clock</title></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color:var(--bes-status-success)"><path d="M5 12.5L10 17.5 19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><title>check</title></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color:var(--bes-text-primary)"><path d="M12 3l7.5 3.4v4.2c0 4.2-2.9 7.2-7.5 8.9-4.6-1.7-7.5-4.7-7.5-8.9V6.4L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><title>shield</title></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color:var(--bes-text-primary)"><rect x="4" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="13.5" y="4" width="3" height="3" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="13.5" width="3" height="3" stroke="currentColor" stroke-width="1.5"/><path d="M14 13.5h6M14 17h3m3 0h.01M14 20.5h6" stroke="currentColor" stroke-width="1.5"/><title>QR</title></svg>
+    </div>
+  </div>
+  <button class="bes-btn bes-btn--secondary bes-btn--sm" style="align-self:flex-start"
+    onclick="var d=this.closest('.demo');var r=d.getAttribute('dir')==='rtl'?'ltr':'rtl';d.setAttribute('dir',r);document.getElementById('icon-mirror-row').style.transform=r==='rtl'?'scaleX(-1)':'none'">
+    Toggle direction on this demo</button>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:560px&quot;&gt;
+  &lt;div&gt;
+    &lt;div style=&quot;font-size:13px;font-weight:600;margin-bottom:10px&quot;&gt;Mirrors in RTL (directional semantics) — try the toggle&lt;/div&gt;
+    &lt;div class=&quot;demo-row&quot; style=&quot;font-size:0;gap:16px&quot; id=&quot;icon-mirror-row&quot;&gt;
+      &lt;svg width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; style=&quot;color:var(--bes-text-primary)&quot;&gt;&lt;path d=&quot;M15 5l-6 7 6 7&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.75&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;title&gt;back&lt;/title&gt;&lt;/svg&gt;
+      &lt;svg width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; style=&quot;color:var(--bes-text-primary)&quot;&gt;&lt;path d=&quot;M4 12h14M14 6l6 6-6 6&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.75&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;title&gt;send / next&lt;/title&gt;&lt;/svg&gt;
+      &lt;svg width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; style=&quot;color:var(--bes-text-primary)&quot;&gt;&lt;path d=&quot;M4 8h12M12 4l4 4-4 4M20 16H8m4 4l-4-4 4-4&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;title&gt;transfer&lt;/title&gt;&lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size:13px;font-weight:600;margin:16px 0 10px&quot;&gt;Never mirrors (universal semantics)&lt;/div&gt;
+    &lt;div class=&quot;demo-row&quot; style=&quot;gap:16px&quot;&gt;
+      &lt;svg width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; style=&quot;color:var(--bes-text-primary)&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;8.5&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.6&quot;/&gt;&lt;path d=&quot;M12 7.5V12l3 2.4&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.6&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;title&gt;clock&lt;/title&gt;&lt;/svg&gt;
+      &lt;svg width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; style=&quot;color:var(--bes-status-success)&quot;&gt;&lt;path d=&quot;M5 12.5L10 17.5 19 7&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;title&gt;check&lt;/title&gt;&lt;/svg&gt;
+      &lt;svg width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; style=&quot;color:var(--bes-text-primary)&quot;&gt;&lt;path d=&quot;M12 3l7.5 3.4v4.2c0 4.2-2.9 7.2-7.5 8.9-4.6-1.7-7.5-4.7-7.5-8.9V6.4L12 3z&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.6&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;title&gt;shield&lt;/title&gt;&lt;/svg&gt;
+      &lt;svg width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; style=&quot;color:var(--bes-text-primary)&quot;&gt;&lt;rect x=&quot;4&quot; y=&quot;4&quot; width=&quot;7&quot; height=&quot;7&quot; rx=&quot;1&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;rect x=&quot;13.5&quot; y=&quot;4&quot; width=&quot;3&quot; height=&quot;3&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;rect x=&quot;4&quot; y=&quot;13.5&quot; width=&quot;3&quot; height=&quot;3&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M14 13.5h6M14 17h3m3 0h.01M14 20.5h6&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;title&gt;QR&lt;/title&gt;&lt;/svg&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot; style=&quot;align-self:flex-start&quot;
+    onclick=&quot;var d=this.closest(&#x27;.demo&#x27;);var r=d.getAttribute(&#x27;dir&#x27;)===&#x27;rtl&#x27;?&#x27;ltr&#x27;:&#x27;rtl&#x27;;d.setAttribute(&#x27;dir&#x27;,r);document.getElementById(&#x27;icon-mirror-row&#x27;).style.transform=r===&#x27;rtl&#x27;?&#x27;scaleX(-1)&#x27;:&#x27;none&#x27;&quot;&gt;
+    Toggle direction on this demo&lt;/button&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Icons in BES are functional signage: simple, recognizable, consistent, and safe in both reading directions. Decorative illustration is a brand-layer concern; this foundation governs the functional icon set.</p>
+<blockquote>
+<p><strong>Status: Specified — no icon assets ship yet.</strong> This document defines the construction grid, the required financial glyph vocabulary, the RTL mirroring policy and the accessibility rules. It does <strong>not</strong> come with drawn icons: the repository contains no SVG icon assets, and components that need a glyph either inline their own or expect the consumer to supply one. Treat §2's glyph list as the specification a set must satisfy, not as an inventory of what you get. See <code>STATUS.md</code>.</p>
+</blockquote>
+<hr />
+<h2>1. Construction</h2>
+<ul>
+<li><strong>Grid:</strong> 24×24 with 2px padding safe area; key shapes on a 20×20 live area. Secondary size 20×20 (dense tables), large 32×32 (empty states, feature intros).</li>
+<li><strong>Stroke:</strong> 1.75px, rounded caps and joins; filled variants exist for <em>selected/active</em> states only — outline is default.</li>
+<li><strong>Corner language</strong> follows the shape preset direction (sharp brands get squarer joins) within legibility limits.</li>
+<li><strong>Color:</strong> icons inherit text color tokens (<code>text.primary</code>, <code>text.secondary</code>, status colors). Multicolor icons are banned in the functional set.</li>
+<li>Every icon ships with a required accessible name; decorative uses must be explicitly marked hidden from assistive tech.</li>
+</ul>
+<h2>2. Core functional vocabulary (baseline set, ~120)</h2>
+<p>Categories: navigation (home, back, forward, close, menu, search, filter, sort) · accounts &amp; money (bank, wallet, coins, transfer arrows, exchange, receipt, statement, safe) · cards (card, freeze/snowflake, lock, PIN pad, contactless) · status (check-circle, warning-triangle, error-octagon, info-circle, clock/pending, hold/lock, reversed) · security (shield, fingerprint, face-ID, key/passkey, device, eye/eye-off) · identity &amp; consent (ID card, passport, document-scan, signature, consent-check, link/unlink institution) · people (person, people, beneficiary-add) · communication (bell, mail, chat, phone, headset) · documents (download, upload, share, print, PDF) · charts (trend-up, trend-down, pie, bars) · misc (calendar, location, globe/language, settings, help).</p>
+<p>Financial-specific glyphs that must exist and be unambiguous: <strong>transfer</strong> (two horizontal arrows), <strong>remittance/international</strong> (globe + arrow), <strong>exchange/FX</strong> (circular double arrow), <strong>fee</strong> (price tag), <strong>hold/reserved</strong> (dashed circle + lock), <strong>refund</strong> (arrow returning), <strong>reversal</strong> (arrow undo), <strong>split bill</strong> (divide), <strong>request money</strong> (hand + arrow in), <strong>QR pay</strong>, <strong>instant</strong> (bolt — used only for genuinely instant rails).</p>
+<h2>3. RTL mirroring policy</h2>
+<p><strong>Never mirror everything.</strong> Each icon carries a <code>mirror</code> flag in its metadata; the build flips flagged icons automatically under <code>dir="rtl"</code>.</p>
+<h3>Mirror (directional semantics follow reading order)</h3>
+<ul>
+<li>Back / forward chevrons and arrows</li>
+<li>Progress/continuation arrows ("next step")</li>
+<li>List indent/outdent, breadcrumb separators</li>
+<li>Send arrow (points in reading direction of "away")</li>
+<li>Undo/redo pair (swap)</li>
+<li>Speech/chat bubble tails</li>
+</ul>
+<h3>Never mirror</h3>
+<ul>
+<li><strong>Numbers, currency symbols, and the dirham symbol</strong> — numerals are LTR in Arabic</li>
+<li>Clock, watch, hourglass (time reads clockwise universally)</li>
+<li>Media controls (play points right by convention)</li>
+<li>Checkmarks, warning, error, info glyphs</li>
+<li>Brand and scheme marks (card networks, national rails logos, bank logos)</li>
+<li>Fingerprint, face, shield, lock, eye</li>
+<li>Charts/trends (trend-up rises to the end of the reading direction? <strong>No</strong> — trend direction is data semantics, axis mirrors but the up/down meaning holds; chart icons stay unmirrored)</li>
+<li>QR, barcode</li>
+<li>Globe, documents, download/upload (vertical semantics)</li>
+</ul>
+<h3>Case-by-case (documented per icon)</h3>
+<ul>
+<li>Transfer between two accounts: mirrors (A→B order follows reading direction)</li>
+<li>Refund/reversal arrows: mirror with their flow context</li>
+<li>Phone/headset: unmirrored by default</li>
+</ul>
+<h2>4. Usage rules</h2>
+<ul>
+<li>Icon + label is the default; icon-only requires an accessible name and is reserved for universally learned glyphs (search, close, settings) or space-critical toolbars with tooltips.</li>
+<li>Status icons are mandatory companions to status colors (doc 01 §2) — shape carries the meaning for color-blind users: circle=info/success context, triangle=warning, octagon=error.</li>
+<li>One metaphor per concept system-wide: "freeze card" is always the snowflake; never alternate metaphors between surfaces.</li>
+<li>Icons never substitute for amount signs — <code>+</code>/<code>−</code> on amounts are typographic, not iconographic.</li>
+<li>Minimum tap target around interactive icons: 44×44 regardless of visual size.</li>
+</ul>
+<div class="pgnav"><a href="spacing-layout.html"><span class="lbl">Previous</span>Spacing &amp; layout</a><a class="next" href="motion.html"><span class="lbl">Next</span>Motion</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11 — Core Components: Containers &amp; Surfaces · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html" class="on">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Core components</div>
+<h1>11 — Core Components: Containers &amp; Surfaces</h1>
+<p><strong>Banking Experience System (BES)</strong> · Core Components · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-row" style="align-items:flex-start">
+  <div class="bes-card" style="max-width:300px">
+    <div style="font-weight:600;margin-bottom:4px">Card container</div>
+    <div style="font-size:13.5px;color:var(--bes-text-secondary)">One concept per card. Dense surfaces prefer flat sections with dividers.</div>
+  </div>
+  <button class="bes-btn bes-btn--secondary" data-bes-open="doc-modal">Open confirm dialog</button>
+</div>
+<div class="bes-scrim" id="doc-modal" role="dialog" aria-modal="true" aria-labelledby="doc-m-t">
+  <div class="bes-modal">
+    <h3 id="doc-m-t">Remove beneficiary Rajesh Kumar?</h3>
+    <p>You'll need to add them again to send money — and new payees may have a 24-hour holding period.</p>
+    <div class="actions">
+      <button class="bes-btn bes-btn--secondary" data-bes-close="doc-modal">Keep beneficiary</button>
+      <button class="bes-btn bes-btn--destructive-solid" data-bes-close="doc-modal">Remove beneficiary</button>
+    </div>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot; style=&quot;align-items:flex-start&quot;&gt;
+  &lt;div class=&quot;bes-card&quot; style=&quot;max-width:300px&quot;&gt;
+    &lt;div style=&quot;font-weight:600;margin-bottom:4px&quot;&gt;Card container&lt;/div&gt;
+    &lt;div style=&quot;font-size:13.5px;color:var(--bes-text-secondary)&quot;&gt;One concept per card. Dense surfaces prefer flat sections with dividers.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class=&quot;bes-btn bes-btn--secondary&quot; data-bes-open=&quot;doc-modal&quot;&gt;Open confirm dialog&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bes-scrim&quot; id=&quot;doc-modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;doc-m-t&quot;&gt;
+  &lt;div class=&quot;bes-modal&quot;&gt;
+    &lt;h3 id=&quot;doc-m-t&quot;&gt;Remove beneficiary Rajesh Kumar?&lt;/h3&gt;
+    &lt;p&gt;You&#x27;ll need to add them again to send money — and new payees may have a 24-hour holding period.&lt;/p&gt;
+    &lt;div class=&quot;actions&quot;&gt;
+      &lt;button class=&quot;bes-btn bes-btn--secondary&quot; data-bes-close=&quot;doc-modal&quot;&gt;Keep beneficiary&lt;/button&gt;
+      &lt;button class=&quot;bes-btn bes-btn--destructive-solid&quot; data-bes-close=&quot;doc-modal&quot;&gt;Remove beneficiary&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Components: Card · List &amp; List Item · Table · Accordion · Modal Dialog · Drawer · Bottom Sheet · Popover · Tooltip · Divider.</p>
+<hr />
+<h2>Card</h2>
+<p><strong>Anatomy:</strong> container (<code>surface.primary</code>, <code>elevation.1</code>, <code>radius.md</code>) · optional header (title + action) · body · optional footer.</p>
+<p><strong>Variants:</strong> static (grouping) · interactive (whole card tappable — one action only; internal buttons preclude whole-card tap) · summary (dashboard modules).</p>
+<p><strong>States:</strong> default · hover (interactive only) · focus · pressed · loading (skeleton body) · error (inline retry) · empty.</p>
+<p><strong>Usage:</strong> cards group one concept. <strong>Anti-decoration rule:</strong> no card-inside-card beyond two levels; if everything is a card, nothing is — dense data surfaces (tables, corporate) prefer flat sections with dividers.</p>
+<p><strong>Financial:</strong> money summary cards state their freshness when not real-time ("As of 14:32"); a card containing a balance respects the masked-balance setting.</p>
+<p><strong>A11y:</strong> interactive card is a single named control ("Current account, AED 25,000.00 available, view details"); internal structure headed properly.</p>
+<p><strong>RTL:</strong> header action at inline-end; content mirrors via logical properties.</p>
+<hr />
+<h2>List &amp; List Item</h2>
+<p><strong>Anatomy (item):</strong> leading slot (icon/avatar/logo) · primary text · secondary text · trailing slot (amount/chevron/status/control) · optional third line (metadata).</p>
+<p><strong>Variants:</strong> navigation item · selection item (radio/checkbox embedded) · display item · <strong>transaction item</strong> (specialized, doc 15).</p>
+<p><strong>States:</strong> default · hover · focus · pressed · selected · disabled · swipe-actions (mobile: max 2 per side, destructive requires confirm — swipe never <em>completes</em> a destructive act alone).</p>
+<p><strong>Usage:</strong> height per density (64/56/44); dividers <code>border.default</code> inset from leading slot; grouped lists with sticky section headers (dates in transaction lists).</p>
+<p><strong>A11y:</strong> whole row is the target for navigation items; embedded controls get discrete focus stops; three-line max for readability.</p>
+<p><strong>RTL:</strong> leading/trailing swap visually; amounts in trailing slot remain LTR runs, end-aligned.</p>
+<hr />
+<h2>Table</h2>
+<p><strong>Anatomy:</strong> caption/title · column headers (sortable: label + direction arrow) · rows · numeric columns end-aligned tnum · optional row selection checkboxes · sticky header · footer (totals) · toolbar (search, filters, density toggle, export).</p>
+<p><strong>Variants:</strong> simple · data table (sort/filter/select/bulk) · comparison table (products; first column sticky).</p>
+<p><strong>States:</strong> default · loading (skeleton rows preserving column widths) · empty (with cause + action) · error (retry) · row hover/selected · sorted column · filtered (active-filter chips above, clearable).</p>
+<p><strong>Usage:</strong> desktop/SME/corporate density workhorse. On mobile, tables <strong>transform</strong> — defined per table: transaction tables become Lists; comparison tables become swipeable cards; approval tables become stacked cards with inline actions. A horizontally scrolling raw table on mobile is a last resort and must keep the identifying column sticky.</p>
+<p><strong>Financial:</strong> amount columns end-aligned with sign and color rules (doc 07); totals row uses <code>type.amount.md</code>; bulk selection surfaces a summary bar ("12 payments selected — total AED 84,300.00") before bulk actions; sort default is newest-first for time data.</p>
+<p><strong>A11y:</strong> real table semantics (th/scope); sort state announced; row actions reachable by keyboard; selection count live-announced.</p>
+<p><strong>RTL:</strong> column order mirrors; numeric columns stay end-aligned (visual left in Arabic); sort arrows unmirrored (vertical semantics).</p>
+<hr />
+<h2>Accordion</h2>
+<p><strong>Anatomy:</strong> header (label + optional metadata + chevron) · panel.</p>
+<p><strong>Usage:</strong> progressive disclosure of secondary detail (fee breakdowns, FAQ, transaction metadata). <strong>Disclosure rule:</strong> anything the user must see to decide (total fees, key risks) is <em>outside</em> accordions on review screens — accordions elaborate, they never hide obligations.</p>
+<p><strong>States:</strong> collapsed · expanded · focus · disabled.</p>
+<p><strong>A11y:</strong> button header with expanded state; panel labeled by header; multiple-open allowed (no auto-collapse on data surfaces).</p>
+<p><strong>RTL:</strong> chevron mirrors (points inline-start when open per convention chosen: chevron-down rotates — unmirrored vertical rotation, documented).</p>
+<hr />
+<h2>Modal Dialog</h2>
+<p><strong>Anatomy:</strong> scrim · surface (<code>elevation.3</code>) · title · body · action row (primary at inline-end, cancel at inline-start) · close (only when closing is safe).</p>
+<p><strong>Variants:</strong> confirmation (decision) · alert (acknowledge) · task (short embedded form) — anything longer is a screen, not a modal.</p>
+<p><strong>States:</strong> open · closing-guard (unsaved input → confirm discard).</p>
+<p><strong>Usage:</strong> modals interrupt; reserve for decisions that must block ("Remove beneficiary Rajesh Kumar? You'll need to add them again to send money."). Money-moving confirmation happens on <strong>screens</strong>, not modals — a modal confirm for AED 250,000 is too light. Destructive confirms name the object and consequence; buttons echo outcomes ("Remove beneficiary" / "Keep beneficiary").</p>
+<p><strong>A11y:</strong> focus trapped, initial focus on the least-destructive action, Esc closes (unless closing-guard), focus returns to trigger; title is the accessible name.</p>
+<p><strong>RTL:</strong> action order mirrors with logical placement; close at inline-end.</p>
+<hr />
+<h2>Drawer (desktop side panel)</h2>
+<p><strong>Anatomy:</strong> surface sliding from inline-end · header (title + close) · body · optional footer actions.</p>
+<p><strong>Usage:</strong> contextual detail beside data (transaction detail next to the table, approval detail in corporate queues) — preserves list context. Width 400–560px; push or overlay per surface density.</p>
+<p><strong>States:</strong> open · closed · stacked (max 2; breadcrumb within).</p>
+<p><strong>A11y:</strong> focus management as dialog when overlay, as region when push; close returns focus to the row.</p>
+<p><strong>RTL:</strong> slides from inline-end (visual left in Arabic).</p>
+<hr />
+<h2>Bottom Sheet (mobile)</h2>
+<p><strong>Anatomy:</strong> grabber · title · content · detents (medium/full) · scrim.</p>
+<p><strong>Usage:</strong> contextual actions, pickers, short confirmations, in-context explanations ("Why this fee?"). Full flows use screens. Critical warnings (fraud) never use sheets (dismissable-by-swipe is too weak).</p>
+<p><strong>States:</strong> medium · full · dragging · closing-guard for inputs.</p>
+<p><strong>A11y:</strong> dialog semantics; swipe-to-close paired with a visible close button; grabber not the only affordance.</p>
+<hr />
+<h2>Popover</h2>
+<p><strong>Anatomy:</strong> anchored surface (<code>elevation.2</code>) with arrow · content (rich: text, links, small forms) · close on outside-tap/Esc.</p>
+<p><strong>Usage:</strong> desktop contextual detail (rate breakdown hover-to-detail, calendar legends). On touch, popovers become bottom sheets automatically.</p>
+<p><strong>A11y:</strong> triggered by click/Enter (never hover-only for content that matters); focusable content reachable.</p>
+<p><strong>RTL:</strong> anchors and arrows flip logically.</p>
+<hr />
+<h2>Tooltip</h2>
+<p><strong>Anatomy:</strong> short text label on hover/focus.</p>
+<p><strong>Usage:</strong> names icon-only controls; ≤ 8 words; never contains information unavailable elsewhere; never on mobile as the sole explanation (use help text or an info popover→sheet).</p>
+<p><strong>A11y:</strong> appears on focus as well as hover; not the accessible-name mechanism itself (that's aria-label) but supplementary.</p>
+<hr />
+<h2>Divider</h2>
+<p><code>border.default</code>, 1px; section dividers full-bleed, item dividers inset from leading content; vertical dividers only in toolbars/dense headers. Semantic (hr) only when it separates true sections for assistive tech; otherwise decorative and hidden.</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">List & data table</h2><div class="demo bes">
+<div class="demo-stack">
+  <div class="bes-list" style="max-width:460px">
+    <button class="bes-item" type="button">
+      <span class="main"><span class="t">Statements</span><br><span class="s">Monthly PDF and CSV</span></span>
+      <span class="trail" style="color:var(--bes-text-disabled)">›</span>
+    </button>
+    <button class="bes-item" type="button">
+      <span class="main"><span class="t">Limits</span><br><span class="s">Daily transfer AED 50,000</span></span>
+      <span class="trail" style="color:var(--bes-text-disabled)">›</span>
+    </button>
+  </div>
+  <div class="bes-table-wrap">
+    <table class="bes-table" data-bes-sortable>
+      <thead><tr><th data-sort="text">Payee</th><th class="num" data-sort="num">Amount (AED)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Gulf Star Trading LLC</td><td class="num">250,000.00</td><td><span class="bes-badge bes-badge--warning">Awaiting approval</span></td></tr>
+        <tr><td>DEWA</td><td class="num">843.50</td><td><span class="bes-badge bes-badge--success">Completed</span></td></tr>
+        <tr><td>Etisalat</td><td class="num">399.00</td><td><span class="bes-badge bes-badge--success">Completed</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot;&gt;
+  &lt;div class=&quot;bes-list&quot; style=&quot;max-width:460px&quot;&gt;
+    &lt;button class=&quot;bes-item&quot; type=&quot;button&quot;&gt;
+      &lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Statements&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Monthly PDF and CSV&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&quot;trail&quot; style=&quot;color:var(--bes-text-disabled)&quot;&gt;›&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class=&quot;bes-item&quot; type=&quot;button&quot;&gt;
+      &lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Limits&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Daily transfer AED 50,000&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&quot;trail&quot; style=&quot;color:var(--bes-text-disabled)&quot;&gt;›&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-table-wrap&quot;&gt;
+    &lt;table class=&quot;bes-table&quot; data-bes-sortable&gt;
+      &lt;thead&gt;&lt;tr&gt;&lt;th data-sort=&quot;text&quot;&gt;Payee&lt;/th&gt;&lt;th class=&quot;num&quot; data-sort=&quot;num&quot;&gt;Amount (AED)&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;Gulf Star Trading LLC&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;250,000.00&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;bes-badge bes-badge--warning&quot;&gt;Awaiting approval&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;DEWA&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;843.50&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Completed&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Etisalat&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;399.00&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Completed&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Accordion — elaborates, never hides obligations</h2><div class="demo bes">
+<div class="bes-accordion" style="max-width:460px">
+  <details><summary>Why this fee?</summary><div class="body">The transfer fee covers processing through the international payment network. Full <a href="#">schedule of charges (PDF)</a>.</div></details>
+  <details><summary>When does the money arrive?</summary><div class="body">Transfers to India usually arrive within 1 hour. Same-day cut-off is 22:00 UAE time.</div></details>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-accordion&quot; style=&quot;max-width:460px&quot;&gt;
+  &lt;details&gt;&lt;summary&gt;Why this fee?&lt;/summary&gt;&lt;div class=&quot;body&quot;&gt;The transfer fee covers processing through the international payment network. Full &lt;a href=&quot;#&quot;&gt;schedule of charges (PDF)&lt;/a&gt;.&lt;/div&gt;&lt;/details&gt;
+  &lt;details&gt;&lt;summary&gt;When does the money arrive?&lt;/summary&gt;&lt;div class=&quot;body&quot;&gt;Transfers to India usually arrive within 1 hour. Same-day cut-off is 22:00 UAE time.&lt;/div&gt;&lt;/details&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Drawer</h2><div class="demo bes">
+<button class="bes-btn bes-btn--secondary" data-bes-drawer-open="dc-drawer">Open transaction drawer</button>
+<div class="bes-drawer-scrim" id="dc-drawer-scrim"></div>
+<aside class="bes-drawer" id="dc-drawer" role="dialog" aria-labelledby="dc-dr-t">
+  <div class="head"><h3 id="dc-dr-t">Carrefour · <bdi class="bes-amount">−AED 89.50</bdi></h3>
+  <button class="bes-iconbtn" data-bes-drawer-close="dc-drawer" aria-label="Close">✕</button></div>
+  <div class="body">
+    <div class="bes-rows">
+      <div class="bes-row"><span class="k">Status</span><span class="v"><span class="bes-badge bes-badge--success">Completed</span></span></div>
+      <div class="bes-row"><span class="k">Card</span><span class="v"><bdi class="bes-amount">••8834</bdi> · Contactless</span></div>
+      <div class="bes-row"><span class="k">Reference</span><span class="v"><bdi class="bes-amount">TXN-88213-AE</bdi></span></div>
+    </div>
+  </div>
+</aside>
+</div><details><summary>Code</summary><pre><code>&lt;button class=&quot;bes-btn bes-btn--secondary&quot; data-bes-drawer-open=&quot;dc-drawer&quot;&gt;Open transaction drawer&lt;/button&gt;
+&lt;div class=&quot;bes-drawer-scrim&quot; id=&quot;dc-drawer-scrim&quot;&gt;&lt;/div&gt;
+&lt;aside class=&quot;bes-drawer&quot; id=&quot;dc-drawer&quot; role=&quot;dialog&quot; aria-labelledby=&quot;dc-dr-t&quot;&gt;
+  &lt;div class=&quot;head&quot;&gt;&lt;h3 id=&quot;dc-dr-t&quot;&gt;Carrefour · &lt;bdi class=&quot;bes-amount&quot;&gt;−AED 89.50&lt;/bdi&gt;&lt;/h3&gt;
+  &lt;button class=&quot;bes-iconbtn&quot; data-bes-drawer-close=&quot;dc-drawer&quot; aria-label=&quot;Close&quot;&gt;✕&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;body&quot;&gt;
+    &lt;div class=&quot;bes-rows&quot;&gt;
+      &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Status&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Completed&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Card&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;••8834&lt;/bdi&gt; · Contactless&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Reference&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;TXN-88213-AE&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Tooltip & popover</h2><div class="demo bes">
+<div class="demo-row">
+  <span class="bes-pop">
+    <button class="bes-iconbtn bes-iconbtn--bordered" aria-label="Copy IBAN">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="6" y="6" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 6V4.5A1.5 1.5 0 0 0 10.5 3H4.5A1.5 1.5 0 0 0 3 4.5v6A1.5 1.5 0 0 0 4.5 12H6" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <span class="tip" role="tooltip">Copy IBAN</span>
+  </span>
+  <span style="font-size:13px;color:var(--bes-text-secondary)">Hover or focus the button — tooltips name icon-only controls, never carry unique information.</span>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot;&gt;
+  &lt;span class=&quot;bes-pop&quot;&gt;
+    &lt;button class=&quot;bes-iconbtn bes-iconbtn--bordered&quot; aria-label=&quot;Copy IBAN&quot;&gt;
+      &lt;svg width=&quot;18&quot; height=&quot;18&quot; viewBox=&quot;0 0 18 18&quot; fill=&quot;none&quot;&gt;&lt;rect x=&quot;6&quot; y=&quot;6&quot; width=&quot;9&quot; height=&quot;9&quot; rx=&quot;1.5&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M12 6V4.5A1.5 1.5 0 0 0 10.5 3H4.5A1.5 1.5 0 0 0 3 4.5v6A1.5 1.5 0 0 0 4.5 12H6&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;span class=&quot;tip&quot; role=&quot;tooltip&quot;&gt;Copy IBAN&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;Hover or focus the button — tooltips name icon-only controls, never carry unique information.&lt;/span&gt;
+&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="navigation.html"><span class="lbl">Previous</span>Navigation</a><a class="next" href="feedback.html"><span class="lbl">Next</span>Feedback &amp; status</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

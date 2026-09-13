@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>07 — Financial Semantic Layer · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html" class="on">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Architecture</div>
+<h1>07 — Financial Semantic Layer</h1>
+<p><strong>Banking Experience System (BES)</strong> · Architecture · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:560px">
+  <div class="demo-row">
+    <span class="bes-badge bes-badge--neutral">Draft</span>
+    <span class="bes-badge bes-badge--info">Processing</span>
+    <span class="bes-badge bes-badge--pending">Pending</span>
+    <span class="bes-badge bes-badge--success">Completed</span>
+    <span class="bes-badge bes-badge--error">Failed</span>
+    <span class="bes-badge bes-badge--info">Checking status</span>
+    <span class="bes-badge bes-badge--warning">Additional checks</span>
+    <span class="bes-badge bes-badge--reversed">Reversed</span>
+  </div>
+  <div class="bes-alert bes-alert--info" role="status">
+    <div><b>We're checking your transfer status.</b> Your money is safe — no amount will be deducted twice. We'll confirm within 30 minutes. <span style="font-weight:600">(UNKNOWN is a designed state — never shown as "failed".)</span></div>
+  </div>
+</div>
+
+<div class="demo-stack" style="max-width:420px">
+  <div class="bes-card bes-result" data-bes-state="unknown">
+    <div class="ic"></div><h3></h3>
+    <p class="money-state"></p>
+    <div class="demo-row" style="justify-content:center;margin-top:14px">
+      <button class="bes-btn bes-btn--secondary bes-btn--sm">Notify me</button>
+      <button class="bes-btn bes-btn--secondary bes-btn--sm">Contact support</button>
+      <button class="bes-btn bes-btn--primary bes-btn--sm" data-bes-retry>Try again</button>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--bes-text-secondary);margin:0;max-width:60ch">
+    The markup above <em>includes</em> a &ldquo;Try again&rdquo; button. It is not rendered:
+    the binder removes any <code>[data-bes-retry]</code> from a state whose registry entry
+    says <code>allowsRetry: false</code>. A rail that has gone quiet may still be holding a
+    successful transfer, so retry is a double-send — and a missing button is the smaller
+    failure. Only a confirmed <code>failed</code> keeps it.
+  </p>
+  <div class="bes-card bes-result" data-bes-state="blocked">
+    <div class="ic"></div><h3></h3>
+    <p class="money-state">Your money is held while we complete the checks.</p>
+  </div>
+  <div class="bes-card bes-result" data-bes-state="refunded">
+    <div class="ic"></div><h3></h3>
+    <p class="money-state">AED 149.00 returned to Current account &bull;&bull;4521 on 29 August.</p>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:560px&quot;&gt;
+  &lt;div class=&quot;demo-row&quot;&gt;
+    &lt;span class=&quot;bes-badge bes-badge--neutral&quot;&gt;Draft&lt;/span&gt;
+    &lt;span class=&quot;bes-badge bes-badge--info&quot;&gt;Processing&lt;/span&gt;
+    &lt;span class=&quot;bes-badge bes-badge--pending&quot;&gt;Pending&lt;/span&gt;
+    &lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Completed&lt;/span&gt;
+    &lt;span class=&quot;bes-badge bes-badge--error&quot;&gt;Failed&lt;/span&gt;
+    &lt;span class=&quot;bes-badge bes-badge--info&quot;&gt;Checking status&lt;/span&gt;
+    &lt;span class=&quot;bes-badge bes-badge--warning&quot;&gt;Additional checks&lt;/span&gt;
+    &lt;span class=&quot;bes-badge bes-badge--reversed&quot;&gt;Reversed&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-alert bes-alert--info&quot; role=&quot;status&quot;&gt;
+    &lt;div&gt;&lt;b&gt;We&#x27;re checking your transfer status.&lt;/b&gt; Your money is safe — no amount will be deducted twice. We&#x27;ll confirm within 30 minutes. &lt;span style=&quot;font-weight:600&quot;&gt;(UNKNOWN is a designed state — never shown as &quot;failed&quot;.)&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;div class=&quot;bes-card bes-result&quot; data-bes-state=&quot;unknown&quot;&gt;
+    &lt;div class=&quot;ic&quot;&gt;&lt;/div&gt;&lt;h3&gt;&lt;/h3&gt;
+    &lt;p class=&quot;money-state&quot;&gt;&lt;/p&gt;
+    &lt;div class=&quot;demo-row&quot; style=&quot;justify-content:center;margin-top:14px&quot;&gt;
+      &lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot;&gt;Notify me&lt;/button&gt;
+      &lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot;&gt;Contact support&lt;/button&gt;
+      &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--sm&quot; data-bes-retry&gt;Try again&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:13px;color:var(--bes-text-secondary);margin:0;max-width:60ch&quot;&gt;
+    The markup above &lt;em&gt;includes&lt;/em&gt; a &amp;ldquo;Try again&amp;rdquo; button. It is not rendered:
+    the binder removes any &lt;code&gt;[data-bes-retry]&lt;/code&gt; from a state whose registry entry
+    says &lt;code&gt;allowsRetry: false&lt;/code&gt;. A rail that has gone quiet may still be holding a
+    successful transfer, so retry is a double-send — and a missing button is the smaller
+    failure. Only a confirmed &lt;code&gt;failed&lt;/code&gt; keeps it.
+  &lt;/p&gt;
+  &lt;div class=&quot;bes-card bes-result&quot; data-bes-state=&quot;blocked&quot;&gt;
+    &lt;div class=&quot;ic&quot;&gt;&lt;/div&gt;&lt;h3&gt;&lt;/h3&gt;
+    &lt;p class=&quot;money-state&quot;&gt;Your money is held while we complete the checks.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-card bes-result&quot; data-bes-state=&quot;refunded&quot;&gt;
+    &lt;div class=&quot;ic&quot;&gt;&lt;/div&gt;&lt;h3&gt;&lt;/h3&gt;
+    &lt;p class=&quot;money-state&quot;&gt;AED 149.00 returned to Current account &amp;bull;&amp;bull;4521 on 29 August.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>The layer that makes BES a financial system: how money is displayed, how balances are modeled, how transactions move through states, and how risk, verification and consent are represented. Everything here is brand-invariant.</p>
+<hr />
+<h2>1. Money display system</h2>
+<h3>1.1 Anatomy of an amount</h3>
+<pre><code>[sign] [currency] [integer].[decimals]   →   −AED 1,250.50
+</code></pre>
+<ul>
+<li>Currency code at 0.75× size, weight 500; the number owns the hierarchy.</li>
+<li>True minus (U+2212); <code>+</code> only on credits in mixed lists.</li>
+<li>Whole block is a single bidi-isolated LTR run (doc 02 §5).</li>
+</ul>
+<h3>1.2 Formatting rules by context</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Context</th>
+<th>Format</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Balance (actionable)</td>
+<td>Full precision, tnum</td>
+<td>AED 25,000.00</td>
+</tr>
+<tr>
+<td>Transaction list</td>
+<td>Full precision, sign per direction</td>
+<td>−AED 89.50 · +AED 12,500.00</td>
+</tr>
+<tr>
+<td>Review/confirm total</td>
+<td>Full precision, <code>type.amount.lg</code></td>
+<td>AED 10,035.00</td>
+</tr>
+<tr>
+<td>Dashboard summary/charts</td>
+<td>Abbreviation allowed</td>
+<td>AED 25K · AED 1.25M</td>
+</tr>
+<tr>
+<td>Approximate/converted</td>
+<td>Tilde prefix + "approx." label</td>
+<td>≈ ₹250,800</td>
+</tr>
+<tr>
+<td>Masked</td>
+<td>Currency + bullets, toggleable</td>
+<td>AED •••••</td>
+</tr>
+<tr>
+<td>Zero</td>
+<td>"AED 0.00" — never blank, never "--"</td>
+<td></td>
+</tr>
+<tr>
+<td>FX rate</td>
+<td>4 significant decimals + timestamp</td>
+<td>1 AED = ₹25.0800 · rate at 14:32</td>
+</tr>
+</tbody>
+</table></div>
+<p>Hard rules:
+- <strong>Abbreviation never appears on anything the user is about to authorize.</strong> Review screens, confirmations and receipts always show full precision.
+- Rounding is display-only and half-even; underlying values never mutate. Where a displayed sum could look inconsistent due to rounding, the display adds a footnote line ("Totals may differ by AED 0.01 due to rounding") — but prefer showing exact figures.
+- <strong>Estimated vs final is a labeled state</strong>, not a typographic nuance: <code>≈</code> + "estimated" label + explanation of when it becomes final.
+- Precision follows the currency: AED/INR/USD 2 decimals; JPY 0; KWD/BHD 3. <code>currency.precision</code> resolves per ISO code — never hardcode 2.
+- Masked-by-default is a user setting honored everywhere balances render (glanceable privacy); reveal is per-tap or per-session, configurable.</p>
+<h3>1.3 Multi-currency</h3>
+<p>Primary amount in transaction currency; account currency as <code>type.amount.meta</code> beneath: "<strong>USD 500.00</strong> ≈ AED 1,836.50". The currency the user is <em>charged in</em> is always the primary. Supported display set at v1: AED, USD, EUR, GBP, INR, PKR, PHP, EGP, SAR, BDT, LKR, NPR + ISO-complete formatting fallback.</p>
+<h2>2. FX &amp; conversion display</h2>
+<p>The FX block is one reusable component family used in remittance, card FX, and multi-currency transfers:</p>
+<pre><code>You send                      AED 10,000.00
+Exchange rate                 1 AED = ₹25.0800   (guaranteed for 14:59 ⏱)
+Transfer fee                  AED 15.00
+FX margin                     AED 20.00          (i) why this fee?
+─────────────────────────────────────────────
+Total you pay                 AED 10,035.00
+Recipient gets                ₹250,800.00        Delivery: within 1 hour
+</code></pre>
+<p>Rules:
+- <strong>Rate status is explicit:</strong> <code>estimated</code> (≈, "rate may change") vs <code>guaranteed</code> (with lock icon + expiry countdown). Expired lock → re-quote step, never silent re-pricing.
+- <strong>Fee and FX margin are separate lines.</strong> "Zero-fee" claims with margin priced into the rate are misrepresentation; the system's FX block structurally prevents it by always deriving and showing the margin against the mid-market reference where available, or labeling the rate "our rate" otherwise.
+- Recipient amount states its own certainty (exact vs estimated) and delivery time honestly (range, not best case).
+- Corridor context (payout method: bank / wallet / cash pickup) alters fees — the block re-renders on method change with a change highlight.</p>
+<h2>3. Balance model</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Meaning</th>
+<th>Display rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>balance.current</code></td>
+<td>Ledger balance</td>
+<td>Secondary</td>
+</tr>
+<tr>
+<td><code>balance.available</code></td>
+<td>What the user can spend <strong>now</strong></td>
+<td>Primary, <code>type.amount.lg</code>+; the default "balance" everywhere</td>
+</tr>
+<tr>
+<td><code>balance.pending</code></td>
+<td>Incoming/outgoing not settled</td>
+<td>With clock icon + explainer</td>
+</tr>
+<tr>
+<td><code>balance.reserved</code></td>
+<td>Holds, pre-auth, blocked amounts</td>
+<td><code>financial.reserved</code> + "view holds" affordance</td>
+</tr>
+<tr>
+<td><code>balance.overdrawn</code></td>
+<td>Negative available</td>
+<td><code>financial.negative</code>, with recovery guidance</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rule: when current ≠ available, the UI must make the difference discoverable in one tap ("Why is my available balance different?"). Never show only <code>current</code> where spending decisions happen.</p>
+<h2>4. Transaction state machine (normative)</h2>
+<pre><code>DRAFT → REVIEW → AUTHENTICATION → PROCESSING → COMPLETED | PENDING | FAILED | UNKNOWN
+COMPLETED → REFUNDED | REVERSED | DISPUTED
+PENDING → COMPLETED | FAILED | UNKNOWN
+UNKNOWN → COMPLETED | FAILED          (must resolve; never silently terminal)
+DRAFT|REVIEW → CANCELLED
+any pre-terminal → BLOCKED            (compliance/fraud hold)
+</code></pre>
+<p>Per-state contract (every state defines all five):</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>UI</th>
+<th>Content core</th>
+<th>Money statement</th>
+<th>User actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>draft</td>
+<td>neutral</td>
+<td>"Not sent yet"</td>
+<td>—</td>
+<td>edit, delete</td>
+</tr>
+<tr>
+<td>review</td>
+<td>neutral emphasis</td>
+<td>full trust block (doc 23)</td>
+<td>"Nothing sent until you confirm"</td>
+<td>change, confirm</td>
+</tr>
+<tr>
+<td>authentication</td>
+<td>secure styling</td>
+<td>method prompt</td>
+<td>—</td>
+<td>authenticate, cancel</td>
+</tr>
+<tr>
+<td>processing</td>
+<td>progress</td>
+<td>"Sending your transfer"</td>
+<td>"Money is on its way"</td>
+<td>none (safe-wait)</td>
+</tr>
+<tr>
+<td>completed</td>
+<td><code>transaction.completed</code> beat</td>
+<td>"Transfer completed"</td>
+<td>amount + destination + time</td>
+<td>receipt, repeat, share</td>
+</tr>
+<tr>
+<td>pending</td>
+<td><code>transaction.pending</code></td>
+<td>"Your transfer is pending" + reason class + ETA</td>
+<td>"Money has left your account" or "will leave when processed" — whichever is true</td>
+<td>track, notify-me</td>
+</tr>
+<tr>
+<td>failed</td>
+<td><code>transaction.failed</code></td>
+<td>what + why + <strong>money state</strong> + next step</td>
+<td>"No money was deducted" / "will be returned by [date]"</td>
+<td>retry, support</td>
+</tr>
+<tr>
+<td><strong>unknown</strong></td>
+<td><code>transaction.unknown</code>, calm</td>
+<td><strong>"We're checking your transfer status."</strong></td>
+<td>"Your money is safe — we'll confirm within [X]"</td>
+<td>notify-me, support</td>
+</tr>
+<tr>
+<td>blocked</td>
+<td><code>transaction.blocked</code></td>
+<td>generic, tipping-off-safe: "Additional checks required"</td>
+<td>held statement</td>
+<td>provide docs (if flow exists), support</td>
+</tr>
+<tr>
+<td>reversed</td>
+<td><code>transaction.reversed</code></td>
+<td>what was reversed + why + where money went</td>
+<td>credited/debited statement</td>
+<td>detail, support</td>
+</tr>
+<tr>
+<td>refunded</td>
+<td><code>transaction.refunded</code></td>
+<td>original ref + refund date</td>
+<td>"AED X returned to [account]"</td>
+<td>detail</td>
+</tr>
+<tr>
+<td>disputed</td>
+<td>neutral + badge</td>
+<td>dispute status timeline</td>
+<td>provisional credit state if any</td>
+<td>evidence, track</td>
+</tr>
+<tr>
+<td>cancelled</td>
+<td>neutral</td>
+<td>who cancelled, when</td>
+<td>"No money moved"</td>
+<td>re-create</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>One name per state.</strong> These 13 names are the stable API — the same string in the UI, the tokens, the event stream and the copy deck. The terminal success state is <strong><code>completed</code></strong>, not <code>success</code>: that is what the token emits, what the badge class reads, and what the customer is shown ("Transfer completed"). Colour comes from <code>transaction.*</code> and from nowhere else; <code>status.*</code> is for generic UI status (form validation, banners) and <code>financial.*</code> is for what an amount <em>means</em>, not what stage it is at. <code>tools/audit-states.py</code> fails the build if any artefact disagrees.</p>
+</blockquote>
+<p><strong>Prime directive: FAILED is only shown on confirmed failure.</strong> Timeouts, opaque rail responses and lost callbacks map to UNKNOWN with its safe copy. Showing "failed" for an eventually-successful transfer is the most trust-destroying defect a banking UI can ship; the system makes it structurally hard by giving UNKNOWN first-class components.</p>
+<h2>5. Risk, verification, consent vocabularies</h2>
+<h3>Risk (<code>risk.*</code>) — drives fraud/warning tiers (doc 25)</h3>
+<p>low → inline info · medium → caution interstitial · high → friction + re-auth · critical → hard stop + support path. Severity mapping is a pattern decision, never ad-hoc per screen.</p>
+<h3>Verification (<code>verification.*</code>)</h3>
+<p>unverified · pending · verified · failed · expired — applied to identity, documents, payees and devices. Verified states always show <em>what</em> was verified and <em>when</em>; expired states always pair with the renewal path (re-KYC pattern).</p>
+<h3>Consent (<code>consent.*</code>)</h3>
+<p>required · pending · granted (with expiry) · expired · revoked. Consents are always: purpose-bound, time-bound, listed in the consent dashboard, revocable in ≤ 2 taps from that dashboard. A permission without visible expiry is a design defect.</p>
+<h2>6. Amount input semantics</h2>
+<p>Currency input (component detail in doc 09/13): locale-aware grouping while typing; forgiving paste (strips currency symbols, spaces, commas); precision clamp per currency; min/max validated against <code>balance.available</code> with inline remainder preview ("Leaves AED 1,250.00"); Arabic-locale entry accepts Eastern or Western digits, normalizes to canonical value, displays per locale preference.</p>
+<div class="pgnav"><a href="tokens.html"><span class="lbl">Previous</span>Token architecture</a><a class="next" href="actions.html"><span class="lbl">Next</span>Actions</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

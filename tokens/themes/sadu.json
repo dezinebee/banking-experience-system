@@ -1,0 +1,218 @@
+{
+  "$meta": {
+    "name": "Sadu",
+    "id": "sadu",
+    "version": "1.0.0",
+    "note": "A FICTIONAL demonstration brand — an Islamic-finance neobank, invented for this repository. It is not a real institution and must not be presented as one. Named after Al Sadu, the Emirati weaving tradition.",
+    "brief": "Where BES core is a blue, rounded, sans-serif retail bank, Sadu is a deep-green, sharp-cornered, serif-display Islamic finance brand at comfortable density. The point is maximum distance from core on every axis a brand is allowed to move — if the contract holds here, it holds.",
+    "extends": "bes-core"
+  },
+  "$contract": "A theme is token VALUES ONLY. It may override any primitive, semantic, density, type or component token. It may not add a selector, a property or a rule — if a brand needs one, the gap is in the system, not the theme. tools/audit-theme.py enforces this.",
+  "primitive": {
+    "blue": {
+      "50": "#EEF5F1",
+      "100": "#D6E8DE",
+      "200": "#AACFBC",
+      "300": "#77B195",
+      "350": "#4E9A78",
+      "400": "#3A8A67",
+      "500": "#1F7350",
+      "600": "#125C3E",
+      "700": "#0D4630",
+      "800": "#093222",
+      "900": "#061F15"
+    },
+    "gray": {
+      "0": "#FFFFFF",
+      "50": "#F8F7F4",
+      "100": "#EFEDE7",
+      "200": "#E0DDD3",
+      "300": "#C6C1B2",
+      "400": "#94907F",
+      "500": "#6E6A5B",
+      "600": "#524E42",
+      "700": "#3B382F",
+      "800": "#2A2822",
+      "900": "#171612"
+    },
+    "gold": {
+      "100": "#F4E9D2",
+      "300": "#D9B26A",
+      "500": "#A87E2E",
+      "700": "#6F5119"
+    },
+    "dark": {
+      "surface1": "#0E1310",
+      "surface2": "#151C18",
+      "surface3": "#1E2721",
+      "raised": "#243029",
+      "line": "#2E3A32",
+      "line2": "#425046",
+      "text1": "#F2F5F2",
+      "text2": "#AEBCB2",
+      "text3": "#7C8C82"
+    },
+    "radius": {
+      "sm": "2px",
+      "md": "3px",
+      "lg": "4px",
+      "full": "3px"
+    },
+    "font": {
+      "latin": "\"Newsreader\",\"Iowan Old Style\",Georgia,serif",
+      "arabic": "\"Noto Naskh Arabic\",\"Al Bayan\",\"Geeza Pro\",serif",
+      "stack": "\"Newsreader\",\"Noto Naskh Arabic\",Georgia,serif"
+    },
+    "motion": {
+      "fast": "180ms",
+      "standard": "280ms",
+      "spin": "900ms",
+      "pulse": "1800ms"
+    }
+  },
+  "type": {
+    "$note": "Sadu sets text one step larger and looser than core — a wealth/advisory posture, not a dense retail one. The component CSS does not change; it reads this scale.",
+    "body": {
+      "size": "17px",
+      "line": "27px"
+    },
+    "bodyMd": {
+      "size": "16px",
+      "line": "25px"
+    },
+    "bodySm": {
+      "size": "15px",
+      "line": "23px"
+    },
+    "bodyXs": {
+      "size": "14px",
+      "line": "21px"
+    },
+    "caption": {
+      "size": "13px",
+      "line": "18px"
+    },
+    "micro": {
+      "size": "12px",
+      "line": "16px"
+    },
+    "h3": {
+      "size": "22px",
+      "line": "30px"
+    },
+    "amountHero": {
+      "size": "44px",
+      "line": "52px",
+      "weight": "600"
+    },
+    "amountLg": {
+      "size": "30px",
+      "line": "38px",
+      "weight": "600"
+    }
+  },
+  "density": {
+    "$note": "Sadu ships comfortable as its standard — fewer, larger rows.",
+    "rowHeight": {
+      "standard": "64px"
+    },
+    "cellPad": {
+      "standard": "20px"
+    },
+    "cardPad": {
+      "standard": "24px"
+    },
+    "fieldGap": {
+      "standard": "28px"
+    },
+    "controlH": {
+      "standard": "52px"
+    },
+    "ctlPadY": {
+      "standard": "14px"
+    },
+    "ctlPadX": {
+      "standard": "24px"
+    },
+    "listPadX": {
+      "standard": "20px"
+    }
+  },
+  "component": {
+    "$note": "Where Sadu differs from core beyond the scales: a squared silhouette, a heavier button, a gold-on-green card face with no letter-spacing.",
+    "button": {
+      "radius": "{radius.sm}",
+      "weight": "700"
+    },
+    "control": {
+      "radius": "{radius.sm}"
+    },
+    "card": {
+      "radius": "{radius.md}"
+    },
+    "modal": {
+      "radius": "{radius.md}"
+    },
+    "badge": {
+      "radius": "{radius.sm}"
+    },
+    "chip": {
+      "radius": "{radius.sm}"
+    },
+    "seg": {
+      "radius": "2px"
+    },
+    "dot": {
+      "radius": "2px"
+    },
+    "chart": {
+      "swatchRadius": "0px"
+    },
+    "risk": {
+      "barRadius": "0px"
+    },
+    "cardArt": {
+      "radius": "3px",
+      "from": "{blue.800}",
+      "to": "{blue.600}",
+      "ink": "{gold.300}",
+      "badgeBg": "rgba(217,178,106,.20)",
+      "frozenBg": "rgba(217,178,106,.22)",
+      "track": ".08em",
+      "trackWide": ".04em"
+    }
+  },
+  "semantic": {
+    "$note": "Only where the brand's meaning differs from core. Everything else inherits — and inherits the contrast the core audit already proved.",
+    "text": {
+      "link": {
+        "light": "{blue.600}",
+        "dark": "{blue.300}"
+      }
+    },
+    "action": {
+      "primary": {
+        "light": "{blue.600}",
+        "dark": "{blue.300}"
+      },
+      "primaryHover": {
+        "light": "{blue.700}",
+        "dark": "{blue.200}"
+      },
+      "primaryPressed": {
+        "light": "{blue.800}",
+        "dark": "{blue.100}"
+      }
+    },
+    "chart": {
+      "cat1": {
+        "light": "{blue.600}",
+        "dark": "{blue.300}"
+      },
+      "cat2": {
+        "light": "{gold.700}",
+        "dark": "{gold.300}"
+      }
+    }
+  }
+}

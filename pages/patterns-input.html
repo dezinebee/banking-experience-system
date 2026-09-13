@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>22 — Patterns: Asking Users For… · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html" class="on">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Patterns</div>
+<h1>22 — Patterns: Asking Users For…</h1>
+<p><strong>Banking Experience System (BES)</strong> · Patterns · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:440px">
+  <div class="bes-field">
+    <label class="bes-label" for="pd-phone">Mobile number</label>
+    <div style="display:flex;gap:8px">
+      <div class="bes-select" style="inline-size:110px"><select aria-label="Country code"><option>+971</option><option>+91</option><option>+92</option><option>+63</option></select></div>
+      <input class="bes-input bes-input--ltr" id="pd-phone" inputmode="tel" placeholder="50 123 4567" style="flex:1">
+    </div>
+    <div class="bes-help">UAE mobile numbers have 9 digits after +971 — spaces and dashes are fine.</div>
+  </div>
+  <div class="bes-field" style="margin-bottom:0">
+    <label class="bes-label" for="pd-pob">Purpose of transfer</label>
+    <div class="bes-select"><select id="pd-pob"><option>Family support</option><option>Savings</option><option>Rent</option><option>Education fees</option><option>Medical</option></select></div>
+    <div class="bes-help">Required for international transfers — plain-language options, codes stay internal.</div>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:440px&quot;&gt;
+  &lt;div class=&quot;bes-field&quot;&gt;
+    &lt;label class=&quot;bes-label&quot; for=&quot;pd-phone&quot;&gt;Mobile number&lt;/label&gt;
+    &lt;div style=&quot;display:flex;gap:8px&quot;&gt;
+      &lt;div class=&quot;bes-select&quot; style=&quot;inline-size:110px&quot;&gt;&lt;select aria-label=&quot;Country code&quot;&gt;&lt;option&gt;+971&lt;/option&gt;&lt;option&gt;+91&lt;/option&gt;&lt;option&gt;+92&lt;/option&gt;&lt;option&gt;+63&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+      &lt;input class=&quot;bes-input bes-input--ltr&quot; id=&quot;pd-phone&quot; inputmode=&quot;tel&quot; placeholder=&quot;50 123 4567&quot; style=&quot;flex:1&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bes-help&quot;&gt;UAE mobile numbers have 9 digits after +971 — spaces and dashes are fine.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-field&quot; style=&quot;margin-bottom:0&quot;&gt;
+    &lt;label class=&quot;bes-label&quot; for=&quot;pd-pob&quot;&gt;Purpose of transfer&lt;/label&gt;
+    &lt;div class=&quot;bes-select&quot;&gt;&lt;select id=&quot;pd-pob&quot;&gt;&lt;option&gt;Family support&lt;/option&gt;&lt;option&gt;Savings&lt;/option&gt;&lt;option&gt;Rent&lt;/option&gt;&lt;option&gt;Education fees&lt;/option&gt;&lt;option&gt;Medical&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-help&quot;&gt;Required for international transfers — plain-language options, codes stay internal.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Task-based patterns for collecting information. Each pattern composes components (docs 08–21) and carries: when to use · structure · error prevention · specified error copy · accessibility · Arabic/RTL notes. Patterns with regulatory grounding carry their REG-ID (Phase 01 doc 05).</p>
+<p>Global form doctrine applies (doc 09): prevent &gt; validate; on-submit default; preserve input; error summary + focus; route eligibility, never validate it.</p>
+<hr />
+<h2>P-01 · Ask for an amount</h2>
+<p><strong>Use:</strong> any money entry. <strong>Structure:</strong> Currency Input + context line (available balance / limits surfaced <em>here</em>, not at failure) + quick chips where useful.
+<strong>Prevention:</strong> precision clamp; paste forgiveness; limit discovery at entry (Limit Indicator).
+<strong>Errors:</strong> below minimum ("The minimum transfer is AED 10.00") · above limit (names the limit and the alternative) · exceeds balance (names shortfall + top-up path).
+<strong>RTL:</strong> amount LTR isolated; chips mirror.</p>
+<h2>P-02 · Ask for a payee (domestic)</h2>
+<p><strong>Use:</strong> transfers within UAE. <strong>Structure:</strong> choose-existing first (Beneficiary Manager picker with search) → add-new fork; add-new = IBAN input (checksum on blur, bank auto-derived and confirmed) or mobile-proxy for instant rails (contact picker with permission JIT-notice) → registered-name entry → <strong>Payee Verification (name check)</strong> before save/use. REG: payee confirmation mandate.
+<strong>Prevention:</strong> duplicate detection; IBAN format forgiveness (spaces/hyphens stripped).
+<strong>Errors:</strong> checksum fail ("This IBAN doesn't look right — UAE IBANs have 23 characters starting with AE") · proxy-not-registered ("This number isn't registered for instant transfers — send with their IBAN instead").</p>
+<h2>P-03 · Ask for an international recipient</h2>
+<p><strong>Use:</strong> remittance/international transfer. <strong>Structure:</strong> country first (drives everything) → corridor-relevant fields only (IBAN corridors: IBAN+name; account-number corridors: account+bank picker+branch code as required; wallet corridors: wallet ID+provider) → payout-method selection (Radio option cards with fee/speed) → name fields matching corridor requirements (full name as per ID — helper: "Enter their name exactly as on their ID; banks may reject mismatches").
+<strong>Prevention:</strong> per-corridor validation rules; bank pickers searchable by English/Arabic/code; purpose-of-transfer selector where corridors require it (plain-language options).
+<strong>RTL:</strong> recipient names may be non-Arabic/non-Latin — free-script field with isolation.</p>
+<h2>P-04 · Ask for identity documents</h2>
+<p><strong>Use:</strong> onboarding, re-KYC, EDD. <strong>Structure:</strong> stepper with requirements checklist upfront → per-document Document Capture → extracted-data confirmation (Verified Field preview) → Liveness where required → submission with review SLA stated. REG: KYC/AML.
+<strong>Prevention:</strong> format/quality guidance before capture; strategy-change after 3 failures (doc 20).
+<strong>Tone:</strong> "why we ask" on every step ("We're required to verify your address — a DEWA bill from the last 3 months works").</p>
+<h2>P-05 · Ask for an address (international-aware)</h2>
+<p><strong>Use:</strong> onboarding, delivery, beneficiary details. <strong>Structure:</strong> country selector first → country-appropriate fields (UAE: emirate + area + building/villa + optional PO Box — free-text-tolerant; no postal-code requirement where none exists) → maps-assist optional, manual always available.
+<strong>Prevention:</strong> never require fields the country doesn't have; transliteration tolerance (Arabic or Latin entry accepted).</p>
+<h2>P-06 · Ask for a phone number</h2>
+<p><strong>Structure:</strong> country-code selector (default +971, full list) + national-number field (<code>inputmode="tel"</code>, forgiving of spaces/dashes/leading zero).
+<strong>Errors:</strong> length-for-country specific ("UAE mobile numbers have 9 digits after +971").</p>
+<h2>P-07 · Ask for personal details (names, DOB, nationality)</h2>
+<p><strong>Structure:</strong> name fields matching ID documents (single full-name field preferred; "as shown on your Emirates ID") · DOB as segmented DD/MM/YYYY (no calendar) · nationality/dual-nationality per compliance need with JIT why-notice.
+<strong>Prevention:</strong> diacritics/apostrophes/spaces accepted; Arabic and Latin scripts accepted with isolation.</p>
+<h2>P-08 · Ask for employment &amp; income (credit/EDD)</h2>
+<p><strong>Structure:</strong> progressive: employment status → employer (searchable) → salary (Currency Input) → obligations; prefill from consented sources where available (Verified Field styling with source note).
+<strong>Tone:</strong> neutral EDD framing; ranges accepted where exactness is unnecessary.</p>
+<h2>P-09 · Ask for card details (funding/verification)</h2>
+<p><strong>Use:</strong> funding from another bank's card, wallet top-up. <strong>Structure:</strong> PAN input (auto-format 4-4-4-4 or scheme-appropriate grouping, scheme auto-detected + shown, LTR always) · expiry (MM/YY, past-dates impossible) · CVV (masked, info affordance: "3 digits on the back") · no character limits that block typed spaces (stripped silently) · scan-card path.
+<strong>Errors:</strong> scheme-specific copy ("Check the card number — it doesn't match a valid card") · expired card at entry.
+<strong>Security:</strong> PCI-conscious surface (no clipboard broadcast, masked echo); never stored without explicit save-consent checkbox (unchecked).</p>
+<h2>P-10 · Ask for consent (data / marketing / terms)</h2>
+<p><strong>Use:</strong> every consent moment. <strong>Structure:</strong> one checkbox per consent, purpose inline, never pre-ticked, marketing separate from service, terms acceptance names the document version and links it ("I accept the Key Facts Statement (PDF, version 3.2)"). Open Finance consents use the dedicated Consent Request pattern (doc 21). REG: consumer protection + data protection.
+<strong>Errors:</strong> "You need to accept the Key Facts Statement to continue" (specific, at the checkbox and in summary).</p>
+<h2>P-11 · Ask for a purpose/reference</h2>
+<p><strong>Use:</strong> transfer references, purpose-of-payment codes. <strong>Structure:</strong> free-text with rail-safe character stripping + counter, or corridor-mandated purpose selector (plain-language labels mapped to codes internally — codes never shown).</p>
+<h2>P-12 · Ask for a date / schedule</h2>
+<p><strong>Structure:</strong> Date Picker with processing-day awareness (non-processing days blocked with explanation + auto-suggested next day); recurring schedules via Scheduled Setup (doc 16).</p>
+<h2>P-13 · Ask users to create credentials (app PIN / passkey enrollment)</h2>
+<p><strong>Structure:</strong> benefit-first framing → passkey/biometric enrollment as primary → app PIN as fallback creation (weak-PIN rejection with reasons) → confirmation + where-to-manage. Never SMS-based factors. REG: authentication modernization.</p>
+<h2>P-14 · Ask for feedback (post-task, optional)</h2>
+<p><strong>Structure:</strong> single-tap score + optional comment, <em>after</em> the receipt, never blocking the result; fraud/complaint surfaces never carry feedback asks.</p>
+<div class="pgnav"><a href="consent-privacy.html"><span class="lbl">Previous</span>Consent &amp; privacy</a><a class="next" href="patterns-confirmation.html"><span class="lbl">Next</span>Review &amp; confirmation</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

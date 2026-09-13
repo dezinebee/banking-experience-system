@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>27 — Content System, Notifications &amp; Error Taxonomy · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html" class="on">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Cross-cutting systems</div>
+<h1>27 — Content System, Notifications &amp; Error Taxonomy</h1>
+<p><strong>Banking Experience System (BES)</strong> · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:520px">
+  <div class="bes-list">
+    <div class="bes-notif bes-notif--security">
+      <span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l5.5 2v4c0 3.2-2.3 5.6-5.5 7-3.2-1.4-5.5-3.8-5.5-7v-4l5.5-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+      <span style="flex:1"><span class="t">New device signed in — Chrome on Windows, Sharjah</span><br><span class="s">Was this you? Review your devices.</span></span>
+      <span class="when">11:02</span>
+    </div>
+    <div class="bes-notif">
+      <span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0L5 7m3 3l3-3M3 13h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span style="flex:1"><span class="t">Salary received — <bdi class="bes-amount">+AED 18,500.00</bdi></span><br><span class="s">Al Noor Trading LLC · Current account ••4521</span></span>
+      <span class="when">09:00</span>
+    </div>
+  </div>
+  <div class="bes-alert bes-alert--error" role="alert">
+    <div><b>We couldn't complete this transfer.</b> Your bank declined the transaction. No money was deducted from your account.
+    <div class="actions"><a href="#">Try again</a><a href="#">Contact support</a></div></div>
+  </div>
+  <p style="font-size:13px;color:var(--bes-text-secondary);margin:0">Security notifications are visually distinct from transaction notices and never mix with marketing. Every error answers: what · why · what happened to the money · what next.</p>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:520px&quot;&gt;
+  &lt;div class=&quot;bes-list&quot;&gt;
+    &lt;div class=&quot;bes-notif bes-notif--security&quot;&gt;
+      &lt;span class=&quot;ic&quot;&gt;&lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M8 1.5l5.5 2v4c0 3.2-2.3 5.6-5.5 7-3.2-1.4-5.5-3.8-5.5-7v-4l5.5-2z&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.4&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;span style=&quot;flex:1&quot;&gt;&lt;span class=&quot;t&quot;&gt;New device signed in — Chrome on Windows, Sharjah&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Was this you? Review your devices.&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&quot;when&quot;&gt;11:02&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bes-notif&quot;&gt;
+      &lt;span class=&quot;ic&quot;&gt;&lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M8 2v8m0 0L5 7m3 3l3-3M3 13h10&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.4&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;span style=&quot;flex:1&quot;&gt;&lt;span class=&quot;t&quot;&gt;Salary received — &lt;bdi class=&quot;bes-amount&quot;&gt;+AED 18,500.00&lt;/bdi&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Al Noor Trading LLC · Current account ••4521&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&quot;when&quot;&gt;09:00&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-alert bes-alert--error&quot; role=&quot;alert&quot;&gt;
+    &lt;div&gt;&lt;b&gt;We couldn&#x27;t complete this transfer.&lt;/b&gt; Your bank declined the transaction. No money was deducted from your account.
+    &lt;div class=&quot;actions&quot;&gt;&lt;a href=&quot;#&quot;&gt;Try again&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Contact support&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:13px;color:var(--bes-text-secondary);margin:0&quot;&gt;Security notifications are visually distinct from transaction notices and never mix with marketing. Every error answers: what · why · what happened to the money · what next.&lt;/p&gt;
+&lt;/div&gt;</code></pre></details></section>
+<hr />
+<h2>1. Voice</h2>
+<p>Calm · specific · respectful · bilingual by design. The product speaks like a competent banker who explains clearly and never panics: no exclamation marks in financial contexts, no "Oops!", no jargon leakage, no blame. Arabic register: formal-respectful (فصحى معاصرة), consistent across all surfaces — never machine-translated colloquialism.</p>
+<h2>2. Terminology glossary (structure + seed entries)</h2>
+<p>Every term: canonical EN · canonical AR · conventional/Islamic variant flags · avoid-list. One term per concept, everywhere.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Use (EN)</th>
+<th>Use (AR)</th>
+<th>Avoid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completed transfer</td>
+<td>Transfer completed</td>
+<td>تم التحويل</td>
+<td>"Transaction done", "Success!"</td>
+</tr>
+<tr>
+<td>In-flight</td>
+<td>Your transfer is pending</td>
+<td>حوالتك قيد المعالجة</td>
+<td>"Processing error", "Wait"</td>
+</tr>
+<tr>
+<td>Unknown state</td>
+<td>We're checking your transfer status</td>
+<td>نتحقق من حالة حوالتك</td>
+<td>"Failed", "Error occurred"</td>
+</tr>
+<tr>
+<td>Available money</td>
+<td>Available balance</td>
+<td>الرصيد المتاح</td>
+<td>"Balance" (unqualified)</td>
+</tr>
+<tr>
+<td>Money out</td>
+<td>Sent / Paid</td>
+<td>تم الإرسال / تم الدفع</td>
+<td>"Debited" (in consumer UI)</td>
+</tr>
+<tr>
+<td>Money in</td>
+<td>Received</td>
+<td>تم الاستلام</td>
+<td>"Credited"</td>
+</tr>
+<tr>
+<td>Cost of credit (conv.)</td>
+<td>Interest rate / APR</td>
+<td>معدل الفائدة / معدل النسبة السنوي</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cost of credit (Islamic)</td>
+<td>Profit rate</td>
+<td>معدل الربح</td>
+<td>"Interest" (banned in Islamic dimension)</td>
+</tr>
+<tr>
+<td>Credit product (conv.)</td>
+<td>Loan</td>
+<td>قرض</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Credit product (Islamic)</td>
+<td>Financing</td>
+<td>تمويل</td>
+<td>"Loan" (banned in Islamic dimension)</td>
+</tr>
+<tr>
+<td>Insurance (Islamic)</td>
+<td>Takaful</td>
+<td>تكافل</td>
+<td>"Insurance" (in Islamic products)</td>
+</tr>
+<tr>
+<td>Beneficiary</td>
+<td>Payee</td>
+<td>المستفيد</td>
+<td>mixing "beneficiary/payee/recipient" across screens</td>
+</tr>
+<tr>
+<td>Verify identity</td>
+<td>Verify your identity</td>
+<td>التحقق من هويتك</td>
+<td>"KYC", "CDD"</td>
+</tr>
+<tr>
+<td>Security hold</td>
+<td>Additional checks required</td>
+<td>مطلوب تحققات إضافية</td>
+<td>"AML hold", "Compliance block"</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Islamic dimension (doc 06 §3) resolves flagged terms automatically; a conventional string appearing on an Islamic surface is a build-detectable defect.</p>
+<h2>3. Message frameworks</h2>
+<ul>
+<li><strong>Errors (four questions):</strong> WHAT happened · WHY (plain class) · what happened to the MONEY · WHAT to do next.</li>
+<li><strong>Confirmations:</strong> what happened + the key facts (amount, destination, when) + where the record lives.</li>
+<li><strong>Warnings:</strong> the risk pattern (not accusation) + the protective action + the escape ("If unsure, wait — genuine payees will understand").</li>
+<li><strong>Empty states:</strong> explain + enable, never blame.</li>
+<li><strong>Buttons:</strong> verb + consequence; money-moving CTAs carry the amount.</li>
+</ul>
+<h2>4. Error taxonomy (normative)</h2>
+<p>Every error in a BES product maps to exactly one class. Classes define: user message frame · technical state logged · recovery action · CTA · severity · a11y behavior · analytics event. Internal codes never surface (a short human reference code may, for support).</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Meaning</th>
+<th>Message frame</th>
+<th>Recovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>USER_ERROR</code></td>
+<td>Fixable input/choice</td>
+<td>Specific fix at the field ("Enter the IBAN without spaces")</td>
+<td>Inline correction</td>
+</tr>
+<tr>
+<td><code>LIMIT_ERROR</code></td>
+<td>Policy/limit boundary</td>
+<td>Name the limit + alternatives</td>
+<td>Adjust, schedule, or raise-limit path</td>
+</tr>
+<tr>
+<td><code>FUNDS_ERROR</code></td>
+<td>Insufficient funds</td>
+<td>Shortfall named</td>
+<td>Top-up path, lower amount</td>
+</tr>
+<tr>
+<td><code>SYSTEM_ERROR</code></td>
+<td>Our fault</td>
+<td>Apology + money statement + retry/status</td>
+<td>Retry (idempotent) or status-check</td>
+</tr>
+<tr>
+<td><code>BANK_ERROR</code></td>
+<td>Counterparty institution declined/failed</td>
+<td>"The recipient's bank..." + money statement</td>
+<td>Retry later, alternative rail</td>
+</tr>
+<tr>
+<td><code>COMPLIANCE_ERROR</code></td>
+<td>Regulatory block</td>
+<td>Generic-safe ("Additional checks required")</td>
+<td>Document flow / support (P-73)</td>
+</tr>
+<tr>
+<td><code>FRAUD_BLOCK</code></td>
+<td>Risk engine stop</td>
+<td>Tiered per doc 20 (never "fraud" as accusation of the user)</td>
+<td>Challenge / support</td>
+</tr>
+<tr>
+<td><code>NETWORK_ERROR</code></td>
+<td>Connectivity</td>
+<td>Offline pattern (P-70), cached timestamps</td>
+<td>Auto-retry on reconnect (reads only)</td>
+</tr>
+<tr>
+<td><code>TIMEOUT</code></td>
+<td>No confirmation received</td>
+<td><strong>→ UNKNOWN handling, never "failed"</strong></td>
+<td>Status-check, notify-me</td>
+</tr>
+<tr>
+<td><code>UNKNOWN_TRANSACTION_STATE</code></td>
+<td>Rail ambiguity</td>
+<td>"We're checking..." + money-safety line</td>
+<td>Resolution commitment + notification</td>
+</tr>
+<tr>
+<td><code>SESSION_ERROR</code></td>
+<td>Auth/session lapse</td>
+<td>Neutral sign-out explanation</td>
+<td>Re-auth + draft restore (P-69)</td>
+</tr>
+<tr>
+<td><code>PERMISSION_ERROR</code></td>
+<td>Role lacks rights (SME/corporate)</td>
+<td>"You don't have permission — ask an administrator"</td>
+<td>Request-access path</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Notification system</h2>
+<h3>Categories (semantic + visual separation)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+<th>Urgency ceiling</th>
+<th>Suppressible?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transaction</code></td>
+<td>Sent/received/settled, request-to-pay</td>
+<td>important</td>
+<td>Configurable granularity (e.g., "only above AED 100")</td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td>New device, credential change, detail reveal</td>
+<td>critical</td>
+<td><strong>Never</strong></td>
+</tr>
+<tr>
+<td><code>fraud</code></td>
+<td>Challenges, interventions</td>
+<td>critical</td>
+<td><strong>Never</strong></td>
+</tr>
+<tr>
+<td><code>payment</code></td>
+<td>Due dates, autopay pre-debits, standing-order results</td>
+<td>urgent</td>
+<td>Partially (timing, not existence, for committed payments)</td>
+</tr>
+<tr>
+<td><code>system</code></td>
+<td>Maintenance, degraded service, terms changes</td>
+<td>important</td>
+<td>No (regulatory notices), yes (minor)</td>
+</tr>
+<tr>
+<td><code>product</code></td>
+<td>Application progress, document ready, consent expiry</td>
+<td>important</td>
+<td>Partially</td>
+</tr>
+<tr>
+<td><code>marketing</code></td>
+<td>Offers, features</td>
+<td>informational</td>
+<td><strong>Fully; opt-in</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Urgency levels</h3>
+<p><code>informational</code> (digestible, batchable) · <code>important</code> (timely, individual) · <code>urgent</code> (time-boxed action: pay-by, respond-by) · <code>critical</code> (immediate: fraud/security — full-screen-capable, bypass quiet hours per user's security setting).</p>
+<h3>Rules</h3>
+<ul>
+<li>Security/fraud notifications are visually + semantically distinct (dedicated styling, no brand-marketing dress) and never batched.</li>
+<li>Marketing never masquerades: no "security-style" urgency on offers; no piggybacking offers onto transaction notices.</li>
+<li>Every notification deep-links to its object (transaction detail, consent card, approval).</li>
+<li>Quiet hours honored except <code>critical</code>; digest option for <code>informational</code>.</li>
+<li>Notification center in-app mirrors push history (nothing exists only as an ephemeral push), filterable by category.</li>
+</ul>
+<h2>6. Writing for bilingual parity</h2>
+<p>Source strings are written EN + AR together at design time (content design is bilingual, not translate-later); placeholders are position-independent (<code>{amount}</code> orders differ per language); pluralization uses proper Arabic plural categories (zero/one/two/few/many/other); dates/numbers formatted by locale library, never string-built; text expansion budget: Arabic ±25% and German-length safety for future locales — layouts tested at both extremes.</p>
+<div class="pgnav"><a href="data-viz.html"><span class="lbl">Previous</span>Data visualization</a><a class="next" href="accessibility.html"><span class="lbl">Next</span>Accessibility</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

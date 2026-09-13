@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Money &amp; accounts · BES Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill" href="../pages/overview.html">Docs</a>
+  <a class="pill on" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Site">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html" class="on">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="g-wrap">
+  <div class="g-head"><h1>Money &amp; accounts</h1><p>Spec: <a href="../pages/money.html">Money family</a> · <a href="../pages/accounts.html">Accounts family</a>. Money is never a plain string.</p></div>
+  <div class="g-controls">
+    <span class="grp">Theme <span class="set" id="ctl-theme"><button data-v="light" aria-pressed="false">Light</button><button data-v="system" aria-pressed="true">System</button><button data-v="dark" aria-pressed="false">Dark</button></span></span>
+    <span class="grp">Direction <span class="set" id="ctl-dir"><button data-v="ltr" aria-pressed="true">LTR</button><button data-v="rtl" aria-pressed="false">RTL</button></span></span>
+    <span class="grp">Density <span class="set" id="ctl-density"><button data-v="comfortable" aria-pressed="false">Comfortable</button><button data-v="standard" aria-pressed="true">Standard</button><button data-v="compact" aria-pressed="false">Compact</button></span></span>
+  </div>
+  <nav class="g-subnav" aria-label="Component sections">
+    <a href="index.html">Overview</a><a href="actions.html">Actions &amp; feedback</a><a href="forms.html">Forms &amp; inputs</a><a class="on" href="money.html">Money &amp; accounts</a><a href="transactions.html">Transactions</a><a href="patterns.html">Composed patterns</a><a href="advanced.html">Advanced &amp; charts</a>
+  </nav>
+
+  <div class="ex">
+    <h2>Amount</h2>
+    <p class="note">Tabular numerals; currency code at 0.75×; true minus (−); the whole amount is one LTR bidi-isolated run — flip the demo to RTL and watch it hold position without scrambling.</p>
+    <div class="demo bes">
+      <div class="demo-stack">
+        <bdi class="bes-amount bes-amount--hero"><span class="cur">AED</span> 25,000<span class="dec">.00</span></bdi>
+        <div class="demo-row">
+          <bdi class="bes-amount bes-amount--sm">−AED 89.50</bdi>
+          <bdi class="bes-amount bes-amount--sm bes-amount--credit">+AED 12,500.00</bdi>
+          <bdi class="bes-amount bes-amount--sm bes-amount--negative">−AED 320.00</bdi>
+          <bdi class="bes-amount bes-amount--sm bes-amount--struck">AED 320.00</bdi>
+          <bdi class="bes-amount bes-amount--meta">≈ ₹250,800.00</bdi>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Fee breakdown &amp; total</h2>
+    <p class="note">Fee and FX margin are separate lines — always. The total is labeled by consequence. Rate status is explicit with lock + expiry.</p>
+    <div class="demo bes">
+      <div class="bes-card" style="max-width:420px">
+        <div class="bes-rows">
+          <div class="bes-row"><span class="k">You send</span><span class="v"><bdi class="bes-amount">AED 10,000.00</bdi></span></div>
+          <div class="bes-row bes-row--rate"><span>Exchange rate</span><span><bdi class="bes-amount">1 AED = ₹25.0800</bdi> · <span class="bes-lock">locked 4:59</span></span></div>
+          <div class="sep"></div>
+          <div class="bes-row"><span class="k">Transfer fee</span><span class="v"><bdi class="bes-amount">AED 15.00</bdi></span></div>
+          <div class="bes-row"><span class="k">FX margin <button class="bes-whyfee" type="button">why?</button></span><span class="v"><bdi class="bes-amount">AED 20.00</bdi></span></div>
+          <div class="bes-row"><span class="k">VAT on fees (5%)</span><span class="v"><bdi class="bes-amount">AED 1.75</bdi></span></div>
+        </div>
+        <div class="bes-total"><span class="k">Total you pay</span><span class="v"><bdi class="bes-amount">AED 10,036.75</bdi></span></div>
+        <div class="bes-row" style="padding-top:10px"><span class="k">Recipient gets</span><span class="v" style="color:var(--bes-financial-income)"><bdi class="bes-amount">₹250,800.00</bdi> · exact</span></div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Limit indicator</h2>
+    <p class="note">Limits surface at amount entry, never at the failure step. Approaching state at 80%.</p>
+    <div class="demo bes">
+      <div class="demo-stack">
+        <div class="bes-limit">
+          <div style="font-size:13.5px;font-weight:600;margin-bottom:6px">Daily transfer limit</div>
+          <div class="bes-progress bes-progress--warn"><div class="fill" style="inline-size:82%"></div></div>
+          <div class="figures"><span class="used"><bdi class="bes-amount">AED 41,000.00</bdi> used</span><span>of <bdi class="bes-amount">AED 50,000.00</bdi></span></div>
+          <div class="reset">Resets at midnight · Need more? Raise your limit</div>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Account card</h2>
+    <p class="note">Available balance leads. The eye toggles masking (persisting per preference in product builds). Reserved amounts explained one tap away.</p>
+    <div class="demo bes">
+      <div class="bes-card bes-acct" style="max-width:400px">
+        <div class="row1">
+          <div>
+            <div class="name">Current account</div>
+            <div class="meta"><bdi class="bes-amount">••4521</bdi> · Personal</div>
+          </div>
+          <button class="bes-iconbtn" aria-label="Hide balance" data-bes-mask="acct-bal" aria-pressed="false">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10s3-5.5 8-5.5S18 10 18 10s-3 5.5-8 5.5S2 10 2 10z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+        <bdi class="bes-amount bes-amount--lg bal" id="acct-bal"><span class="cur">AED</span> 25,000.00</bdi>
+        <div class="sub">Available · <bdi class="bes-amount">AED 500.00</bdi> reserved</div>
+        <div class="actions">
+          <button class="bes-btn bes-btn--primary bes-btn--sm">Send</button>
+          <button class="bes-btn bes-btn--secondary bes-btn--sm">Details</button>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Balance set</h2>
+    <p class="note">When current ≠ available, the difference is explained in one tap — never show only the current balance where spending decisions happen.</p>
+    <div class="demo bes">
+      <div class="bes-card" style="max-width:420px">
+        <div class="bes-rows">
+          <div class="bes-row"><span class="k" style="color:var(--bes-text-primary);font-weight:600">Available balance</span><span class="v"><bdi class="bes-amount bes-amount--md">AED 23,750.00</bdi></span></div>
+          <div class="bes-row"><span class="k">Current balance</span><span class="v"><bdi class="bes-amount">AED 25,000.00</bdi></span></div>
+          <div class="bes-row"><span class="k">Pending out</span><span class="v"><bdi class="bes-amount">−AED 750.00</bdi> <span style="color:var(--bes-text-secondary);font-weight:400">(2)</span></span></div>
+          <div class="bes-row"><span class="k">Card holds</span><span class="v" style="color:var(--bes-financial-reserved)"><bdi class="bes-amount">−AED 500.00</bdi></span></div>
+        </div>
+        <a href="#" style="font-size:13.5px;font-weight:500">Why is my available balance different?</a>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <footer class="site"><span>BES v2.0.0 · fictional data only</span><span><a href="../pages/money.html">Money spec</a> · <a href="../pages/accounts.html">Accounts spec</a></span></footer>
+</div>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

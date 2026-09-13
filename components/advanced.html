@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced &amp; charts · BES Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill" href="../pages/overview.html">Docs</a>
+  <a class="pill on" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Site">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html" class="on">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="g-wrap">
+  <div class="g-head"><h1>Advanced components &amp; charts</h1><p>Wave 3–4: pickers, overlays, sortable data, security surfaces, and the accessible SVG chart set (every chart ships its table equivalent).</p></div>
+  <div class="g-controls">
+    <span class="grp">Theme <span class="set" id="ctl-theme"><button data-v="light" aria-pressed="false">Light</button><button data-v="system" aria-pressed="true">System</button><button data-v="dark" aria-pressed="false">Dark</button></span></span>
+    <span class="grp">Direction <span class="set" id="ctl-dir"><button data-v="ltr" aria-pressed="true">LTR</button><button data-v="rtl" aria-pressed="false">RTL</button></span></span>
+    <span class="grp">Density <span class="set" id="ctl-density"><button data-v="comfortable" aria-pressed="false">Comfortable</button><button data-v="standard" aria-pressed="true">Standard</button><button data-v="compact" aria-pressed="false">Compact</button></span></span>
+  </div>
+  <nav class="g-subnav" aria-label="Component sections">
+    <a href="index.html">Overview</a><a href="actions.html">Actions &amp; feedback</a><a href="forms.html">Forms &amp; inputs</a><a href="money.html">Money &amp; accounts</a><a href="transactions.html">Transactions</a><a href="patterns.html">Composed patterns</a><a class="on" href="advanced.html">Advanced &amp; charts</a>
+  </nav>
+
+  <div class="ex">
+    <h2>Combobox</h2>
+    <p class="note">Filterable long lists — bank pickers, beneficiaries. Type to filter (try "emirates" or "icici"); arrows + Enter select.</p>
+    <div class="demo bes">
+      <div class="bes-field" style="max-width:380px">
+        <label class="bes-label" for="cb-bank">Recipient's bank</label>
+        <div class="bes-combo">
+          <input class="bes-input" id="cb-bank" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" placeholder="Search by name or code">
+          <ul class="bes-combo-list" hidden>
+            <li data-value="enbd" data-label="Emirates NBD">Emirates NBD <span class="s">EBILAEAD</span></li>
+            <li data-value="fab" data-label="First Abu Dhabi Bank">First Abu Dhabi Bank <span class="s">NBADAEAA</span></li>
+            <li data-value="adcb" data-label="ADCB">ADCB <span class="s">ADCBAEAA</span></li>
+            <li data-value="icici" data-label="ICICI Bank (India)">ICICI Bank (India) <span class="s">ICICINBB</span></li>
+            <li data-value="hdfc" data-label="HDFC Bank (India)">HDFC Bank (India) <span class="s">HDFCINBB</span></li>
+            <li class="empty" hidden>No bank found — check the SWIFT code</li>
+          </ul>
+          <span class="bes-combo-count" aria-live="polite"></span>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Date picker</h2>
+    <p class="note">Non-processing days blocked with the reason stated — the schedule-transfer rule from the spec. Sundays are disabled in this demo.</p>
+    <div class="demo bes">
+      <div class="bes-datepicker" data-bes-datepicker data-disabled-days="0" data-disabled-note="Transfers don't process on Sundays — we'll send the next business day."></div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Sortable table</h2>
+    <p class="note">Click the Amount or Date headers. Sort state is announced via aria-sort; numeric columns sort numerically.</p>
+    <div class="demo bes">
+      <div class="bes-table-wrap">
+        <table class="bes-table" data-bes-sortable>
+          <thead><tr><th data-sort="text">Date</th><th>Counterparty</th><th class="num" data-sort="num">Amount (AED)</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>30 Aug</td><td>Gulf Star Trading LLC</td><td class="num">250,000.00</td><td><span class="bes-badge bes-badge--warning">Awaiting approval</span></td></tr>
+            <tr><td>29 Aug</td><td>DEWA</td><td class="num">843.50</td><td><span class="bes-badge bes-badge--completed">Completed</span></td></tr>
+            <tr><td>28 Aug</td><td>Falcon Media FZ</td><td class="num">42,000.00</td><td><span class="bes-badge bes-badge--completed">Completed</span></td></tr>
+            <tr><td>27 Aug</td><td>Etisalat</td><td class="num">399.00</td><td><span class="bes-badge bes-badge--completed">Completed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Drawer, accordion &amp; PIN entry</h2>
+    <p class="note">Drawer for contextual detail beside data. Accordion elaborates — never hides obligations. PIN auto-advances; codes allow paste, PINs don't.</p>
+    <div class="demo bes">
+      <div class="demo-stack" style="max-width:520px">
+        <div class="demo-row">
+          <button class="bes-btn bes-btn--secondary" data-bes-drawer-open="demo-drawer">Open transaction drawer</button>
+        </div>
+        <div class="bes-accordion" style="max-width:460px">
+          <details>
+            <summary>Why this fee?</summary>
+            <div class="body">The transfer fee covers processing through the international payment network. See the full <a href="#">schedule of charges (PDF)</a>.</div>
+          </details>
+          <details>
+            <summary>When does the money arrive?</summary>
+            <div class="body">Transfers to India usually arrive within 1 hour. Cut-off for same-day processing is 22:00 UAE time.</div>
+          </details>
+        </div>
+        <div>
+          <p class="bes-label" style="margin-bottom:8px">App PIN</p>
+          <div class="bes-pin">
+            <input aria-label="PIN digit 1" type="password"><input aria-label="PIN digit 2" type="password">
+            <input aria-label="PIN digit 3" type="password"><input aria-label="PIN digit 4" type="password">
+          </div>
+        </div>
+        <div class="bes-field" style="margin-bottom:0">
+          <label class="bes-label" for="ref-in">Payment reference <span class="opt">(optional)</span></label>
+          <input class="bes-input" id="ref-in" maxlength="35" value="Rent September">
+          <div class="bes-charcount" data-bes-charcount="ref-in"></div>
+        </div>
+      </div>
+      <div class="bes-drawer-scrim" id="demo-drawer-scrim"></div>
+      <aside class="bes-drawer" id="demo-drawer" role="dialog" aria-labelledby="dr-t">
+        <div class="head"><h3 id="dr-t">Carrefour · <bdi class="bes-amount">−AED 89.50</bdi></h3>
+        <button class="bes-iconbtn" data-bes-drawer-close="demo-drawer" aria-label="Close">✕</button></div>
+        <div class="body">
+          <div class="bes-rows">
+            <div class="bes-row"><span class="k">Status</span><span class="v"><span class="bes-badge bes-badge--completed">Completed</span></span></div>
+            <div class="bes-row"><span class="k">Card</span><span class="v"><bdi class="bes-amount">••8834</bdi> · Contactless</span></div>
+            <div class="bes-row"><span class="k">Category</span><span class="v">Groceries</span></div>
+            <div class="bes-row"><span class="k">Reference</span><span class="v"><bdi class="bes-amount">TXN-88213-AE</bdi></span></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <button class="bes-btn bes-btn--secondary bes-btn--sm">Download receipt</button>
+            <button class="bes-btn bes-btn--ghost bes-btn--sm">Report a problem</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Rate lock, delta &amp; card art</h2>
+    <p class="note">The countdown warns at 60s and fires an expiry event (the journey uses it for re-quoting). Deltas carry arrow + sign + timeframe. Card art shows co-badged schemes and the frozen state.</p>
+    <div class="demo bes">
+      <div class="demo-stack">
+        <div class="demo-row">
+          <span class="bes-ratelock" data-bes-countdown="90" data-prefix="locked "><span class="t"></span></span>
+          <span class="bes-delta bes-delta--up">▲ +AED 1,200.00 (4.8%) <span class="tf">vs July</span></span>
+          <span class="bes-delta bes-delta--down">▼ −2.1% <span class="tf">1M</span></span>
+        </div>
+        <div class="demo-row" style="align-items:flex-start">
+          <div class="bes-cardart bes-cardart--virtual">
+            <div class="bank">AL NOOR BANK</div>
+            <div class="pan">•••• •••• •••• 8834</div>
+            <div class="row"><span class="holder">S. KUMAR</span><span class="schemes">JAYWAN · INTL</span></div>
+          </div>
+          <div class="bes-cardart bes-cardart--frozen">
+            <div class="bank">AL NOOR BANK</div>
+            <div class="pan">•••• •••• •••• 4521</div>
+            <div class="row"><span class="holder">S. KUMAR</span><span class="schemes">JAYWAN · INTL</span></div>
+          </div>
+        </div>
+        <div class="bes-risk bes-risk--low">
+          <span class="lvl">Risk level 2 of 7 — Low</span>
+          <div class="scale"><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div>
+          <span class="meaning">Value moves a little; sharp falls are unlikely but possible. You could get back less than you invest.</span>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Charts</h2>
+    <p class="note">Accessible SVG, built by <code>BES.chartBar / chartLine / chartDonut</code>. Zero-based axes, labeled series, and a "View as table" equivalent under every chart — data is never color-only.</p>
+    <div class="demo bes">
+      <div class="grid2">
+        <div>
+          <h3 style="font-size:13.5px;font-weight:600;margin-bottom:8px">Spending by category — August</h3>
+          <div class="bes-chart" id="ch-donut"></div>
+        </div>
+        <div>
+          <h3 style="font-size:13.5px;font-weight:600;margin-bottom:8px">Income vs months (AED)</h3>
+          <div class="bes-chart" id="ch-bar"></div>
+        </div>
+      </div>
+      <div style="margin-top:20px">
+        <h3 style="font-size:13.5px;font-weight:600;margin-bottom:8px">Balance trend — 6 months (AED)</h3>
+        <div class="bes-chart" id="ch-line" style="max-width:560px"></div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code>BES.chartDonut(el, [{label:"Groceries", value:2340}, …], {center:"AED 8.9K", centerSub:"August"});
+BES.chartBar(el, [{label:"Apr", value:18500}, …], {label:"Income by month"});
+BES.chartLine(el, [{label:"Mar", value:21000}, …], {label:"Balance trend"});</code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Session pause interruption</h2>
+    <p class="note">The z.critical security surface — no entrance animation, cannot be swiped away, never blames the user. Triggered here by button; in product, by screen-share/active-call detection.</p>
+    <div class="demo bes">
+      <button class="bes-btn bes-btn--secondary" data-bes-interrupt-open="demo-interrupt">Simulate screen-share detection</button>
+      <div class="bes-interrupt" id="demo-interrupt" role="alertdialog" aria-labelledby="int-t" aria-describedby="int-d">
+        <div class="box">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" style="color:var(--bes-status-warning)"><path d="M12 2.5l9 4v5c0 5-3.5 8.6-9 10.5-5.5-1.9-9-5.5-9-10.5v-5l9-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8v5M12 16.5v.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <h2 id="int-t">We've paused your session</h2>
+          <p id="int-d">We detected screen sharing. Banking with your screen visible to others isn't safe. If someone asked you to install an app or share your screen, it may be a scam — hang up.</p>
+          <div class="actions">
+            <button class="bes-btn bes-btn--primary bes-btn--lg" data-bes-interrupt-close="demo-interrupt">I've stopped sharing — continue</button>
+            <button class="bes-btn bes-btn--destructive bes-btn--lg" data-bes-interrupt-close="demo-interrupt">I think I'm being scammed — get help</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Breadcrumb &amp; pagination</h2>
+    <div class="demo bes">
+      <div class="demo-stack">
+        <nav aria-label="Breadcrumb"><ol class="bes-breadcrumb">
+          <li><a href="#">Payments</a></li><li><a href="#">Bulk payments</a></li><li><a href="#">July payroll</a></li><li aria-current="page">Payment 41 of 60</li>
+        </ol></nav>
+        <div class="bes-pagination">
+          <button class="bes-btn bes-btn--secondary bes-btn--sm">Previous</button>
+          <span class="range"><bdi class="bes-amount">41–60</bdi> of <bdi class="bes-amount">214</bdi></span>
+          <button class="bes-btn bes-btn--secondary bes-btn--sm">Next</button>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <footer class="site"><span>BES v1.0 · fictional data only</span><span><a href="../journey-remittance.html">See it all working: the remittance journey</a></span></footer>
+</div>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+<script>
+BES.chartDonut(document.getElementById("ch-donut"),
+  [{label:"Groceries",value:2340},{label:"Dining",value:1240},{label:"Transport",value:860},{label:"Utilities",value:1590},{label:"Other",value:2890}],
+  {center:"AED 8.9K", centerSub:"August", label:"Spending by category, August, total 8,920 dirhams", colLabel:"Category", colValue:"AED"});
+BES.chartBar(document.getElementById("ch-bar"),
+  [{label:"Apr",value:18500},{label:"May",value:18500},{label:"Jun",value:21300},{label:"Jul",value:18500},{label:"Aug",value:18500}],
+  {label:"Income by month in dirhams", colLabel:"Month", colValue:"AED"});
+BES.chartLine(document.getElementById("ch-line"),
+  [{label:"Mar",value:21000},{label:"Apr",value:19400},{label:"May",value:24100},{label:"Jun",value:22800},{label:"Jul",value:26500},{label:"Aug",value:25000}],
+  {label:"Balance trend over six months in dirhams", colLabel:"Month", colValue:"AED"});
+</script>
+</body>
+</html>

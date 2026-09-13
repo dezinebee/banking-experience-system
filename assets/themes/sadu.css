@@ -1,0 +1,153 @@
+/* ============================================================
+   Sadu — brand theme for the Banking Experience System
+   GENERATED from tokens/themes/sadu.json — do not edit by hand.
+
+   A FICTIONAL demonstration brand — an Islamic-finance neobank, invented for this repository. It is not a real institution and must not be presented as one. Named after Al Sadu, the Emirati weaving tradition.
+
+   This file is TOKEN VALUES ONLY: 111 variables, no selectors of its own
+   beyond the brand scope, no properties, no rules. That is doc 30's contract —
+   if a brand needed a rule, the gap would be in the system, not the theme.
+   Apply with <html data-brand="sadu"> for a whole product, or on any element
+   to brand a subtree — the two columns of brand-proof.html are one page.
+   Generated 2026-09-13.
+   ============================================================ */
+
+:root[data-brand="sadu"], [data-brand="sadu"] {
+  /* primitives — the brand palette, type stack, shape and motion */
+  --bes-gray-50: #F8F7F4;
+  --bes-gray-100: #EFEDE7;
+  --bes-gray-200: #E0DDD3;
+  --bes-gray-300: #C6C1B2;
+  --bes-gray-400: #94907F;
+  --bes-gray-500: #6E6A5B;
+  --bes-gray-600: #524E42;
+  --bes-gray-700: #3B382F;
+  --bes-gray-800: #2A2822;
+  --bes-gray-900: #171612;
+  --bes-blue-50: #EEF5F1;
+  --bes-blue-100: #D6E8DE;
+  --bes-blue-200: #AACFBC;
+  --bes-blue-300: #77B195;
+  --bes-blue-400: #3A8A67;
+  --bes-blue-350: #4E9A78;
+  --bes-blue-500: #1F7350;
+  --bes-blue-600: #125C3E;
+  --bes-blue-700: #0D4630;
+  --bes-blue-800: #093222;
+  --bes-blue-900: #061F15;
+  --bes-gold-100: #F4E9D2;
+  --bes-gold-300: #D9B26A;
+  --bes-gold-500: #A87E2E;
+  --bes-gold-700: #6F5119;
+  --bes-dark-surface1: #0E1310;
+  --bes-dark-surface2: #151C18;
+  --bes-dark-surface3: #1E2721;
+  --bes-dark-raised: #243029;
+  --bes-dark-line: #2E3A32;
+  --bes-dark-line2: #425046;
+  --bes-dark-text1: #F2F5F2;
+  --bes-dark-text2: #AEBCB2;
+  --bes-dark-text3: #7C8C82;
+  --bes-radius-sm: 2px;
+  --bes-radius-md: 3px;
+  --bes-radius-lg: 4px;
+  --bes-radius-full: 3px;
+  --bes-font-latin: "Newsreader","Iowan Old Style",Georgia,serif;
+  --bes-font-arabic: "Noto Naskh Arabic","Al Bayan","Geeza Pro",serif;
+  --bes-font-stack: "Newsreader","Noto Naskh Arabic",Georgia,serif;
+  --bes-motion-fast: 180ms;
+  --bes-motion-standard: 280ms;
+  --bes-motion-spin: 900ms;
+  --bes-motion-pulse: 1800ms;
+
+  /* semantic overrides — light */
+  --bes-chart-cat2: var(--bes-gold-700);
+
+  /* type scale */
+  --bes-type-h3-size: 22px;
+  --bes-type-h3-line: 30px;
+  --bes-type-body-size: 17px;
+  --bes-type-body-line: 27px;
+  --bes-type-bodyMd-size: 16px;
+  --bes-type-bodyMd-line: 25px;
+  --bes-type-bodySm-size: 15px;
+  --bes-type-bodySm-line: 23px;
+  --bes-type-bodyXs-size: 14px;
+  --bes-type-bodyXs-line: 21px;
+  --bes-type-caption-size: 13px;
+  --bes-type-caption-line: 18px;
+  --bes-type-micro-size: 12px;
+  --bes-type-micro-line: 16px;
+  --bes-type-amountHero-size: 44px;
+  --bes-type-amountHero-line: 52px;
+  --bes-type-amountHero-weight: 600;
+  --bes-type-amountLg-size: 30px;
+  --bes-type-amountLg-line: 38px;
+  --bes-type-amountLg-weight: 600;
+
+  /* density — standard */
+  --bes-density-rowHeight: 64px;
+  --bes-density-cellPad: 20px;
+  --bes-density-cardPad: 24px;
+  --bes-density-fieldGap: 28px;
+  --bes-density-controlH: 52px;
+  --bes-density-ctlPadY: 14px;
+  --bes-density-ctlPadX: 24px;
+  --bes-density-listPadX: 20px;
+
+  /* component tier */
+  --bes-button-radius: var(--bes-radius-sm);
+  --bes-button-weight: 700;
+  --bes-card-radius: var(--bes-radius-md);
+  --bes-modal-radius: var(--bes-radius-md);
+  --bes-badge-radius: var(--bes-radius-sm);
+  --bes-chip-radius: var(--bes-radius-sm);
+  --bes-seg-radius: 2px;
+  --bes-dot-radius: 2px;
+  --bes-chart-swatchRadius: 0px;
+  --bes-risk-barRadius: 0px;
+  --bes-cardArt-radius: 3px;
+  --bes-cardArt-from: var(--bes-blue-800);
+  --bes-cardArt-to: var(--bes-blue-600);
+  --bes-cardArt-ink: var(--bes-gold-300);
+  --bes-cardArt-badgeBg: rgba(217,178,106,.20);
+  --bes-cardArt-track: .08em;
+  --bes-cardArt-trackWide: .04em;
+  --bes-cardArt-frozenBg: rgba(217,178,106,.22);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-brand="sadu"]:not([data-theme="light"]), :root:not([data-theme="light"]) [data-brand="sadu"] {
+    --bes-text-link: var(--bes-blue-300);
+    --bes-action-primary: var(--bes-blue-300);
+    --bes-action-primaryHover: var(--bes-blue-200);
+    --bes-action-primaryPressed: var(--bes-blue-100);
+    --bes-chart-cat2: var(--bes-gold-300);
+  }
+}
+
+:root[data-brand="sadu"][data-theme="dark"], :root[data-theme="dark"] [data-brand="sadu"] {
+  --bes-text-link: var(--bes-blue-300);
+  --bes-action-primary: var(--bes-blue-300);
+  --bes-action-primaryHover: var(--bes-blue-200);
+  --bes-action-primaryPressed: var(--bes-blue-100);
+  --bes-chart-cat2: var(--bes-gold-300);
+}
+
+/* Arabic optical metrics for the brand's own scale */
+[data-brand="sadu"]:lang(ar), [data-brand="sadu"] :lang(ar) {
+  --bes-type-h3-size: 23px;
+  --bes-type-h3-line: 32px;
+  --bes-type-body-size: 18px;
+  --bes-type-body-line: 29px;
+  --bes-type-bodyMd-size: 17px;
+  --bes-type-bodyMd-line: 27px;
+  --bes-type-bodySm-size: 16px;
+  --bes-type-bodySm-line: 25px;
+  --bes-type-bodyXs-size: 15px;
+  --bes-type-bodyXs-line: 23px;
+  --bes-type-caption-size: 14px;
+  --bes-type-caption-line: 20px;
+  --bes-type-micro-size: 13px;
+  --bes-type-micro-line: 18px;
+}

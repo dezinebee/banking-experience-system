@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01 — Design System Vision · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html" class="on">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Strategy</div>
+<h1>01 — Design System Vision</h1>
+<p><strong>Banking Experience System</strong> · Phase 01 · v2.0.0-draft · August 2026</p>
+<hr />
+<h2>1. Proposition</h2>
+<blockquote>
+<p>A scalable design language for building clear, trustworthy, accessible and intelligent financial experiences for the UAE market.</p>
+</blockquote>
+<p>The Banking Experience System (BES) is not a UI kit. It is a <strong>domain-specific financial experience system</strong>: a set of foundations, tokens, components, patterns and journey blueprints that encode <em>financial behavior</em> — money movement, transaction states, disclosure, consent, fraud response, bilingual RTL/LTR — so that any UAE bank, neobank, fintech or payment provider can assemble the majority of its experience from tested, compliant, accessible parts.</p>
+<h2>2. Why this system needs to exist</h2>
+<p>Research (see doc 06) shows a specific whitespace:</p>
+<ol>
+<li><strong>No public design system is Arabic/RTL-first.</strong> Visa, GOV.UK, Carbon, Spectrum and SLDS 2 collectively solve tokens, error prevention, financial patterns and theming — but none ships Arabic type metrics, mirroring specs, dual numeral policy, or bilingual disclosure components. Only Finastra publishes partial RTL guidance.</li>
+<li><strong>No system treats money as a first-class primitive.</strong> None defines an Amount component, a transaction lifecycle vocabulary, fee-disclosure patterns, or Islamic finance semantics.</li>
+<li><strong>No UAE bank publishes a design system.</strong> Each mirrors RTL ad hoc, invents its own profit-rate display, and rebuilds consent, KYC and remittance flows from scratch. Digital quality varies wildly (ENBD X ~4.7★ vs DIB Trustpilot 1.6).</li>
+<li><strong>Regulation is converging on standardizable UX.</strong> CBUAE's Consumer Protection Standards (KFS, cooling-off, warnings), Open Finance / Al Tareq (standardized consent journeys), Fraud Notice 2025/3057 (Confirmation of Payee, OTP deprecation), and the national accessibility policy all <em>prescribe</em> experience behavior — a design system is the natural delivery vehicle.</li>
+</ol>
+<p><strong>The synthesis is the product:</strong> architect like Carbon/SLDS 2, document like GOV.UK, pattern like Visa, internationalize beyond Spectrum — for UAE banking specifically.</p>
+<h2>3. Design philosophy</h2>
+<ul>
+<li><strong>Trust by design.</strong> Every high-impact interaction answers: who, what, how much, from where, to where, at what cost, when, with what consequence, and what recovery exists.</li>
+<li><strong>Clarity by default.</strong> Financial information is immediately understandable; transparency is never traded for conversion.</li>
+<li><strong>Confidence at every financial decision.</strong> Review → correct → confirm before anything irreversible.</li>
+<li><strong>Accessibility as a foundation.</strong> WCAG 2.2 AA is the floor, encoded in tokens and components, not audited at the end.</li>
+<li><strong>Consistency without removing product personality.</strong> Core owns behavior; brands own expression.</li>
+</ul>
+<p>Banking is not generic SaaS. The user may be moving money, borrowing, investing, verifying identity, responding to fraud, or reviewing a legally significant agreement. The system accounts for <strong>financial consequence</strong>, not just visual consistency.</p>
+<h2>4. What the system standardizes</h2>
+<p>Visual language · interaction behavior · financial UX · money movement · trust &amp; transparency · security · fraud communication · accessibility · Arabic/English localization · RTL/LTR behavior · financial data visualization · regulatory-aware communication · Open Finance consent · multi-brand theming · retail, SME and corporate experiences.</p>
+<h2>5. Objectives and success criteria</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Objective</th>
+<th>Success criterion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reusable financial experience logic</td>
+<td>A new UAE digital bank could build ~80% of its retail experience from BES journeys, patterns and components</td>
+</tr>
+<tr>
+<td>Bilingual parity</td>
+<td>Every component ships with documented Arabic/RTL behavior; no "translation pass" exists as a phase</td>
+</tr>
+<tr>
+<td>Regulatory readiness</td>
+<td>KFS, cooling-off, consent, CoP, warning and complaint patterns exist as named, versioned patterns mapped to their regulatory source</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>Components pass WCAG 2.2 AA by construction; contrast encoded in token definitions; Web/Mobile/PDF requirement checklists exist</td>
+</tr>
+<tr>
+<td>Multi-brand</td>
+<td>A conventional brand, an Islamic brand and a youth/neobank brand can be themed from the same core without touching behavior</td>
+</tr>
+<tr>
+<td>Safe state handling</td>
+<td>Every financial state — including UNKNOWN — has defined UI, content and recovery; no false failure messaging is possible using stock components</td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. Non-goals</h2>
+<ul>
+<li>Not a generic cross-industry UI kit; financial semantics are load-bearing.</li>
+<li>Not a copy of Visa/Material/Stripe/GOV.UK — principles extracted, styling original.</li>
+<li>Not a component-count contest. The objective is the most reusable financial experience logic, prioritized by frequency × financial risk × reusability × complexity.</li>
+<li>Not legal advice. Regulatory patterns encode UX interpretations that each adopting institution must verify.</li>
+</ul>
+<h2>7. Audience for the system</h2>
+<ul>
+<li><strong>Product designers</strong> at banks/fintechs assembling journeys.</li>
+<li><strong>Engineers</strong> consuming tokens and coded components (web first; token contract designed to extend to native mobile).</li>
+<li><strong>Content designers</strong> using the bilingual terminology layer and message frameworks.</li>
+<li><strong>Compliance &amp; risk teams</strong> verifying that experience patterns map to regulatory requirements.</li>
+<li><strong>Brand teams</strong> theming within guard-railed presets.</li>
+</ul>
+<h2>8. Naming</h2>
+<p>"Banking Experience System" is the working name. Naming criteria for the final identity: pronounceable in Arabic and English, no unintended meaning in Hindi/Urdu/Tagalog (major UAE languages), available as a namespace/token prefix (e.g. <code>bes-</code>), and distinct from existing UAE rails brands (Aani, Jaywan, Al Tareq, Sanadak). Candidate exploration is scheduled for end of Phase 02.</p>
+<div class="pgnav"><a href="strategy-overview.html"><span class="lbl">Previous</span>Phase 01 overview</a><a class="next" href="strategy-principles.html"><span class="lbl">Next</span>Design principles</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

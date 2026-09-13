@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 — Target Users · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html" class="on">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Strategy</div>
+<h1>03 — Target Users</h1>
+<p><strong>Banking Experience System</strong> · Phase 01 · v2.0.0-draft · August 2026</p>
+<p>Two audiences: <strong>end customers</strong> of products built with the system, and <strong>internal users</strong> who build with it. Segment data from live research (Aug 2026); sources in doc 04/06.</p>
+<hr />
+<h2>1. The UAE population shape (why segmentation is extreme)</h2>
+<ul>
+<li>~10M residents; expatriates ≈ <strong>88–89%</strong> of population. Emiratis ~11.6%; South Asians ~60% (Indians ~38%); Egyptians ~10%; Filipinos ~6%.</li>
+<li>Blue-collar workers ≈ half the population; ~32% of the working population historically unbanked (~1.7M), gated out by minimum-salary thresholds.</li>
+<li>Smartphone penetration ~99%; &gt;85% mobile banking penetration; 72% treat the app as their primary channel; ~half hold an account with a digital bank.</li>
+<li>World's #2–3 remittance sender (~$43B/yr): India ~28%, Pakistan ~13%, Philippines, Bangladesh, Egypt, Nepal, Sri Lanka.</li>
+</ul>
+<p>Design consequence: the system must serve <strong>one of the widest capability/language/wealth ranges of any banking market</strong> — private-banking clients and first-time smartphone banking users are on the same rails.</p>
+<h2>2. End-customer segments</h2>
+<h3>R1 — Emirati nationals</h3>
+<p>Arabic-first (interface often Arabic, documents bilingual). High government-digital fluency (UAE PASS, government apps set expectations). Islamic products significant. Extended-family financial patterns; government-linked salary anchoring.
+<strong>System demands:</strong> Arabic-first quality parity, Islamic terminology layer, UAE PASS-centric auth, familiarity with UAE Design System 2.0 conventions.</p>
+<h3>R2 — Professional expatriates (Western, Arab, Asian)</h3>
+<p>English-dominant, high expectations set by home-market fintechs (Revolut, Monzo, Wise, Paytm, GCash). Transient: arrive, open account in minutes, leave in 2–8 years. Multi-currency needs, international investing, remittance to home country.
+<strong>System demands:</strong> onboarding speed (UAE PASS 5-minute bar set by Wio/Hayyak/ruya), multi-currency Money display, transparent FX (mid-market comparison is unmet market need), account-closure journeys that work (notorious FAB failure), remittance corridor UX.</p>
+<h3>R3 — Blue-collar / low-income workers</h3>
+<p>Hindi/Urdu/Tagalog/Malayalam/Bengali speakers beyond Arabic/English; variable literacy and digital literacy; WPS salary cards; exchange-house habits (cash, counters, trust in physical presence). Remittance is the primary financial job. Extremely low fault tolerance — an eKYC loop failure (Mbank pattern) leaves them with no fallback.
+<strong>System demands:</strong> low-literacy patterns (icon+number redundancy, voice-friendly flows, simple mode), vernacular-extensible content architecture, cash-adjacent hybrid patterns, reliability as an inclusion issue, fee clarity in absolute AED (not percentages).</p>
+<h3>R4 — Affluent / private banking</h3>
+<p>Hybrid behavior: ~70% prefer digital for routine tasks but want human advisory for high-value decisions. Data density tolerance high; portfolio, FX and wealth visualization needs.
+<strong>System demands:</strong> compact density mode, financial data-viz system, human-escalation patterns embedded in digital journeys, document (PDF) accessibility for statements/agreements.</p>
+<h3>R5 — SME owners and finance staff</h3>
+<p>Long underserved by incumbents; Wio Business set the bar (fast setup, virtual cards, VAT/rent earmarking spaces, invoicing). Mixed personal/business behavior; corporate tax + VAT deadlines drive calendar-based needs.
+<strong>System demands:</strong> role/permission patterns, payroll (WPS) flows, invoice/receivables components, approval chains, business KYC (trade license, UBO) document journeys.</p>
+<h3>R6 — Corporate treasury and finance teams</h3>
+<p>Multi-user, role-based access, maker-checker approval workflows, bulk payments, audit trails, delegation. Information density closer to enterprise software than consumer banking.
+<strong>System demands:</strong> enterprise approval pattern (create → require approval → approve/reject with audit), data tables at compact density, bulk-operation states, exception queues.</p>
+<h3>Cross-cutting: vulnerable and situational users</h3>
+<p>Elderly customers, People of Determination (explicit national policy focus), newly bereaved (inheritance/account transition), fraud victims mid-incident, users under coercion (scam-coaching — CBUAE mandates active-call session suspension). Each flagship journey names its vulnerable-user variant.</p>
+<h2>3. Internal users (who builds with the system)</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>User</th>
+<th>Needs from the system</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product designer</td>
+<td>Figma library with variants/modes matching token dimensions (direction, density, brand, dark); journey blueprints; realistic AED sample data</td>
+</tr>
+<tr>
+<td>Engineer</td>
+<td>Token package (CSS custom properties contract), coded components, financial utilities (IBAN validation, amount formatting), state-machine references</td>
+</tr>
+<tr>
+<td>Content designer</td>
+<td>Bilingual terminology glossary, message frameworks, error-copy dictionary, Islamic/conventional vocabulary switch</td>
+</tr>
+<tr>
+<td>Compliance/risk</td>
+<td>Pattern-to-regulation traceability map (which pattern satisfies which CPR/Notice article), disclosure component inventory</td>
+</tr>
+<tr>
+<td>Brand/marketing</td>
+<td>Theme contract: what they may change (tokens, imagery, illustration, voice inflection) and what they may not (behavior, disclosure, a11y)</td>
+</tr>
+<tr>
+<td>QA / accessibility</td>
+<td>Per-platform checklists (Web/Mobile/PDF), bidi test fixtures, state matrices per component</td>
+</tr>
+</tbody>
+</table></div>
+<h2>4. Priority persona set (for journey design in Phase 04)</h2>
+<ol>
+<li><strong>Amina</strong> — 29, Emirati government employee, Abu Dhabi. Arabic-first interface. Salary account + Islamic auto financing + savings goal. Uses UAE PASS for everything.</li>
+<li><strong>Rajesh</strong> — 41, Indian project manager, Dubai, 11 years in UAE. Sends AED 8,000/month to Kochi. Tracks INR rate; uses rate alerts. Two banks + one exchange app.</li>
+<li><strong>Maricel</strong> — 34, Filipina retail supervisor, Sharjah. WPS salary card → wants full account. Sends to GCash weekly. English + Tagalog; moderate digital literacy; high fee sensitivity.</li>
+<li><strong>Khalid</strong> — 52, Emirati business owner (trading company, 30 staff). SME account, payroll, VAT payments, approves payments his accountant creates. Conventional + Islamic product mix.</li>
+<li><strong>Sarah</strong> — 38, British marketing director, Dubai. Multi-currency, invests globally, expects Monzo-grade UX, will leave UAE in ~3 years and needs clean account closure.</li>
+<li><strong>Fatima</strong> — 67, Emirati retiree. Larger type, Arabic, phone-first support expectations, fraud-target risk profile.</li>
+</ol>
+<p>Each persona exercises different system stress points: Amina (Arabic parity + Islamic), Rajesh (remittance + FX), Maricel (inclusion + vernacular), Khalid (SME approvals), Sarah (multi-currency + lifecycle), Fatima (accessibility + fraud protection).</p>
+<h2>5. Jobs-to-be-done register (top-level)</h2>
+<p>Money in (salary, incoming transfer) · Money out (P2P Aani, bills, cards, remittance) · Money safe (fraud response, card controls, limits) · Money growing (savings, deposits, investments) · Money borrowed (personal financing, cards, mortgage, BNPL context) · Money shared (family, SME roles, corporate approvals) · Money proven (statements, certificates, tax) · Identity &amp; consent (KYC, UAE PASS, Open Finance permissions) · Lifecycle (open, upgrade, complain → Sanadak, close).</p>
+<p>These ten jobs are the parent categories for the journey taxonomy (doc 08).</p>
+<div class="pgnav"><a href="strategy-principles.html"><span class="lbl">Previous</span>Design principles</a><a class="next" href="strategy-uae.html"><span class="lbl">Next</span>UAE context</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

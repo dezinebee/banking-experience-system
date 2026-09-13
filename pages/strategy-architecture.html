@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>07 — Experience Architecture · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html" class="on">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Strategy</div>
+<h1>07 — Experience Architecture</h1>
+<p><strong>Banking Experience System</strong> · Phase 01 · v2.0.0-draft · August 2026</p>
+<p>The structural model everything else hangs on: layers, cross-cutting concerns, the money-movement framework, the transaction state machine, the trust layer, and the core/brand split. Phase 02 details each; this document fixes the shape.</p>
+<hr />
+<h2>1. Layer model</h2>
+<pre><code>FOUNDATIONS          color · type (AR+EN) · spacing · grid · iconography · motion · elevation
+      ↓
+DESIGN TOKENS        primitive → semantic → component → pattern → product
+      ↓
+CORE COMPONENTS      buttons · inputs · selects · tables · modals · navigation · feedback …
+      ↓
+FINANCIAL COMPONENTS money · account · transaction · payment · transfer · card · loan · investment · consent
+      ↓
+PATTERNS             disclosure · review-confirm · CoP · fraud response · KYC · consent · errors …
+      ↓
+FINANCIAL JOURNEYS   onboarding · transfer · remittance · card mgmt · financing · Open Finance · fraud · SME approval
+      ↓
+PRODUCT EXPERIENCES  retail app · SME portal · corporate treasury · wealth · kiosk
+</code></pre>
+<p><strong>Cross-cutting every layer</strong> (not stages, but dimensions of every artifact): accessibility · Arabic/English · RTL/LTR · security · privacy · financial semantics · content · localization · responsive behavior.</p>
+<p>Rule: <strong>no artifact ships at layer N without its cross-cutting documentation.</strong> A component without an RTL section, an a11y checklist and content guidance is incomplete, not "pending polish."</p>
+<h2>2. Token architecture (shape; detail in Phase 02)</h2>
+<ul>
+<li>Five tiers: <code>blue.600</code> (primitive) → <code>action.primary</code> (semantic) → <code>button.primary.background</code> (component) → <code>transaction.primaryAction</code> (pattern) → Send Money CTA (product).</li>
+<li>Delivered as <strong>CSS custom properties</strong> (SLDS 2 mechanism) with the Carbon/Atlassian role-naming grammar; contrast ratios documented in the token contract.</li>
+<li><strong>Token dimensions</strong> (Spectrum model): color theme (brand presets, light/dark), direction (LTR/RTL), density (comfortable/standard/compact), scale (platform), contrast (standard/high), terminology (conventional/Islamic — a content dimension resolved through the same configuration system).</li>
+<li>Financial semantic namespace reserved: <code>financial.*</code>, <code>balance.*</code>, <code>transaction.*</code>, <code>risk.*</code>, <code>verification.*</code>, <code>consent.*</code> — plus an <strong><code>ai.*</code> namespace reserved now</strong> (Carbon precedent) for AI-generated content/agent-action surfaces.</li>
+<li>Color is never the only carrier of financial status (icon + label always accompany).</li>
+</ul>
+<h2>3. Money movement framework</h2>
+<p>One reusable spine for every transaction type (bank transfer, international remittance, bill payment, card payment, loan repayment, investment):</p>
+<pre><code>INTENT → SOURCE → DESTINATION → AMOUNT → FEES → FX → REVIEW → AUTHENTICATION → PROCESSING → RESULT → RECEIPT
+</code></pre>
+<p>Stages are <strong>slots, not screens</strong> — a domestic Aani P2P collapses FEES/FX and merges stages onto one screen; a first-time AED→INR remittance expands every stage. The framework guarantees that wherever a stage renders, it renders with the standard component and the nine questions answered:</p>
+<p><strong>WHO</strong> (payee, CoP-verified) · <strong>WHAT</strong> (transaction type) · <strong>HOW MUCH</strong> (Money component, sender + recipient amounts) · <strong>FROM WHERE</strong> (source account with available balance) · <strong>TO WHERE</strong> (destination, corridor, payout method) · <strong>WHY</strong> (purpose/reference where required) · <strong>WHEN</strong> (delivery time, honestly stated) · <strong>WHAT FEES</strong> (fee vs FX markup vs total — before review) · <strong>WHAT NEXT</strong> (consequence + recovery path).</p>
+<p>UAE-specific bindings: CoP is mandatory at DESTINATION for instant payments (REG-05); AED 50,000 Aani limit surfaces at AMOUNT; estimated-vs-guaranteed rate with timestamp/expiry at FX; AUTHENTICATION uses post-OTP methods; RECEIPT is shareable (remittance proof is a real user job) and PDF-accessible.</p>
+<h2>4. Transaction state machine</h2>
+<pre><code>DRAFT → REVIEW → AUTHENTICATION → PROCESSING → { SUCCESS | PENDING | FAILED | UNKNOWN }
+SUCCESS → REFUNDED | REVERSED
+PENDING → SUCCESS | FAILED | UNKNOWN
+UNKNOWN → SUCCESS | FAILED   (resolution required; never terminal silently)
++ CANCELLED (from DRAFT/REVIEW), BLOCKED (compliance/fraud hold, from any pre-terminal state)
+</code></pre>
+<p>Every state defines: UI treatment (token-backed status style, icon + label — never color alone) · content (what happened, why, <strong>what happened to the money</strong>, what to do next) · allowed user actions · notification behavior · recovery path.</p>
+<p>Hard rules:
+- <strong>Never report FAILED when the state is UNKNOWN.</strong> Stock copy: "We're checking your transfer status." with explicit money-state ("No money has left your account" / "Your money is safe while we confirm").
+- BLOCKED uses tipping-off-safe generic copy (REG-04).
+- Instant rails: PROCESSING may be seconds — design the 2s/30s/5min/next-session sequence for when it isn't.
+- Error taxonomy (USER_ERROR, SYSTEM_ERROR, BANK_ERROR, COMPLIANCE_ERROR, FRAUD_BLOCK, NETWORK_ERROR, TIMEOUT, UNKNOWN_TRANSACTION_STATE) maps each failure to message, recovery action, CTA, severity, a11y behavior and analytics event. Internal codes never surface unless genuinely useful.</p>
+<h2>5. Trust &amp; transparency layer</h2>
+<p>Every high-impact interaction answers the eight trust questions: <strong>Identity</strong> (who am I dealing with — bank, TPP badge, verified payee) · <strong>Intent</strong> (what am I doing) · <strong>Amount</strong> · <strong>Destination</strong> · <strong>Cost</strong> · <strong>Timing</strong> · <strong>Consequence</strong> (what happens after confirm; reversibility stated) · <strong>Recovery</strong> (what if something goes wrong).</p>
+<p>Delivery mechanisms: the review screen (GOV.UK check-answers spine: summary list → change links → consequence statement → verb-labeled submit), the KFS component (products), the consent card (Open Finance), CoP result states, and the receipt. The trust layer is a <strong>review checklist applied to every journey</strong>, not a component family alone.</p>
+<h2>6. Security architecture (experience level)</h2>
+<ul>
+<li><strong>Auth ladder:</strong> UAE PASS · passkeys · device biometrics · in-app push approval · PIN (device-local) — SMS OTP deprecated (REG-05 sunset 31 Mar 2026). Step-up model: risk-based escalation at high-value/high-risk moments, with accessible fallbacks that are not SMS.</li>
+<li><strong>Security states:</strong> trusted device / new device / suspicious activity / session expired / account locked / verification required / auth failed — each with reassuring, actionable treatment.</li>
+<li><strong>Fraud UX:</strong> tiered interruption library (info banner → caution interstitial → hard stop), scam-coaching defenses (active-call pause, "is someone guiding you?"), suspicious-transaction challenge ("Did you make this transfer?" [Yes, it was me] / [No, secure my account]) with defined severity, escalation and recovery per scenario.</li>
+</ul>
+<h2>7. Multi-brand architecture</h2>
+<pre><code>BANKING CORE  — behavior · accessibility · financial semantics · components · patterns · interaction · state machines
+   ├── Bank A theme (conventional)
+   ├── Bank B theme (Islamic — terminology dimension: Islamic)
+   ├── Bank C theme (youth/neobank)
+   └── FinTech theme (white-label)
+</code></pre>
+<p>Brand owns: color values (within contrast contract), type stack (from tested AR+EN pairs), logo, illustration, imagery, radius/shape preset, motion personality (within reduced-motion rules), voice inflection.
+Core owns everything else. Themes are <strong>pretested presets</strong> (Visa model) validated for contrast in both light/dark and both directions before release. Terminology (conventional/Islamic) is a configuration axis independent of visual brand, so an Islamic window of a conventional bank is one switch, not a fork.</p>
+<h2>8. Responsive &amp; density model</h2>
+<p>Breakpoint classes: mobile (primary) · tablet · desktop · large desktop · kiosk/ATM-like. Not scaled-down desktop: each pattern declares what stays visible, what collapses, what becomes progressive disclosure, what moves to drawer/bottom sheet. Density modes comfortable/standard/compact map loosely to consumer/SME/treasury surfaces and are user-adjustable where appropriate. PDF is a first-class output surface (statements, KFS, receipts) with its own a11y checklist.</p>
+<h2>9. Journey inventory (Phase 04 flagship set)</h2>
+<ol>
+<li>Personal banking dashboard · 2. Money transfer (domestic/Aani) · 3. International remittance (AED→INR flagship corridor) · 4. Card management (incl. Jaywan co-badge) · 5. Loan/financing application (conventional + Islamic variants from one spine) · 6. Open Finance consent (Al Tareq) · 7. Fraud/security response · 8. SME payment approval (maker-checker).</li>
+</ol>
+<p>Supporting journeys named now, designed later: onboarding (UAE PASS), re-KYC, complaint → Sanadak, account closure, statement/proof generation.</p>
+<div class="pgnav"><a href="strategy-references.html"><span class="lbl">Previous</span>Reference analysis</a><a class="next" href="strategy-taxonomy.html"><span class="lbl">Next</span>System taxonomy</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

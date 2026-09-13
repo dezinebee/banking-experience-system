@@ -1,2 +1,44 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Normalise line endings.
+#
+# This is load-bearing, not cosmetic: CI's drift gate runs
+# `git diff --exit-code` over assets/tokens.css, assets/themes/, pages/ and
+# docs/audits/. A contributor on Windows with core.autocrlf=true would
+# otherwise fail that gate on line endings alone, with a diff showing every
+# line of every generated file changed.
+* text=auto eol=lf
+
+# Explicit for the file types the build regenerates.
+*.css   text eol=lf
+*.js    text eol=lf
+*.mjs   text eol=lf
+*.json  text eol=lf
+*.html  text eol=lf
+*.md    text eol=lf
+*.py    text eol=lf
+*.yml   text eol=lf
+
+# Binary — never normalise, never diff as text.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.pdf   binary
+
+# Generated artefacts: keep them out of PR diffs by default and out of
+# GitHub's language statistics. They are still committed and still gated —
+# `linguist-generated` collapses the diff view, it does not ignore the file.
+assets/tokens.css        linguist-generated=true
+assets/themes/**         linguist-generated=true
+pages/**                 linguist-generated=true
+docs/audits/dom-snapshots/** linguist-generated=true
+
+# Keep documentation out of the language bar; this is a design system, not a
+# markdown project.
+docs/**       linguist-documentation=true
+*.md          linguist-documentation=true

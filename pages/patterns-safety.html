@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>25 — Patterns: Fraud, Errors, Recovery &amp; System Pages · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html" class="on">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Patterns</div>
+<h1>25 — Patterns: Fraud, Errors, Recovery &amp; System Pages</h1>
+<p><strong>Banking Experience System (BES)</strong> · Patterns · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="bes-card" style="max-width:460px">
+  <div style="font-size:17px;font-weight:600;margin-bottom:6px">We noticed unusual activity</div>
+  <bdi class="bes-amount bes-amount--md">AED 18,500.00</bdi>
+  <div style="font-size:13.5px;color:var(--bes-text-secondary);margin:2px 0 14px">International transfer · Dubai → India · today 15:47</div>
+  <div style="font-size:14.5px;font-weight:500;margin-bottom:12px">Did you make this transfer?</div>
+  <div class="demo-row">
+    <button class="bes-btn bes-btn--secondary" style="flex:1">Yes, it was me</button>
+    <button class="bes-btn bes-btn--primary" style="flex:1">No, secure my account</button>
+  </div>
+  <p style="font-size:12.5px;color:var(--bes-text-secondary);margin:12px 0 0">We'll hold this transfer for up to 2 hours awaiting your reply, then cancel it for safety.</p>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:460px&quot;&gt;
+  &lt;div style=&quot;font-size:17px;font-weight:600;margin-bottom:6px&quot;&gt;We noticed unusual activity&lt;/div&gt;
+  &lt;bdi class=&quot;bes-amount bes-amount--md&quot;&gt;AED 18,500.00&lt;/bdi&gt;
+  &lt;div style=&quot;font-size:13.5px;color:var(--bes-text-secondary);margin:2px 0 14px&quot;&gt;International transfer · Dubai → India · today 15:47&lt;/div&gt;
+  &lt;div style=&quot;font-size:14.5px;font-weight:500;margin-bottom:12px&quot;&gt;Did you make this transfer?&lt;/div&gt;
+  &lt;div class=&quot;demo-row&quot;&gt;
+    &lt;button class=&quot;bes-btn bes-btn--secondary&quot; style=&quot;flex:1&quot;&gt;Yes, it was me&lt;/button&gt;
+    &lt;button class=&quot;bes-btn bes-btn--primary&quot; style=&quot;flex:1&quot;&gt;No, secure my account&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:12.5px;color:var(--bes-text-secondary);margin:12px 0 0&quot;&gt;We&#x27;ll hold this transfer for up to 2 hours awaiting your reply, then cancel it for safety.&lt;/p&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>The patterns for when things are risky, wrong, or broken — where trust is won or lost.</p>
+<hr />
+<h2>P-60 · Suspicious transaction challenge</h2>
+<p><strong>Use:</strong> risk engine flags an in-flight or recent transaction.
+<strong>Structure:</strong> dedicated screen/notification (security category, <code>z.critical</code> when in-session):</p>
+<pre><code>We noticed unusual activity
+
+AED 18,500.00 · International transfer
+Dubai → India · today 15:47
+
+Did you make this transfer?
+[Yes, it was me]        [No, secure my account]
+</code></pre>
+<ul>
+<li><strong>Yes:</strong> release + thanks + "we check unusual patterns to protect you" (system credibility line) · false-positive friction tracked.</li>
+<li><strong>No:</strong> immediate containment (card/credential freeze as applicable) → guided secure-account flow (P-63) → case creation with reference + what-happens-next.
+<strong>Rules:</strong> the two buttons are outcome-explicit and equal weight; the challenge never reveals <em>why</em> the engine flagged (pattern secrecy) beyond the transaction facts; response deadline honesty ("We'll hold this transfer for up to 2 hours awaiting your reply, then it's cancelled for safety").</li>
+</ul>
+<h2>P-61 · Suspicious login / new device event</h2>
+<p><strong>Structure:</strong> Security Event Notice (doc 20) to all trusted devices: what/when/where + "Was this you?" fork → No: session-kill of the new device + credential rotation + review-recent-actions checklist.</p>
+<h2>P-62 · Scam intervention (authorized-push-payment defense)</h2>
+<p><strong>Use:</strong> high-risk payment signals (new payee + urgency + coached behavior; active call detected).
+<strong>Structure:</strong> Warning Tier set (doc 20) escalation: caution interstitial → high-tier friction (re-auth + <strong>the delay option</strong>: "Wait 24 hours — genuine payees will understand. Scammers pressure you to act now.") → critical hard-stop (payment refused in-channel + education + support).
+<strong>Session pause variant:</strong> active-call/screen-share detection → Session Pause Interruption (doc 20).
+<strong>Copy discipline:</strong> describe the scam <em>pattern</em>, never accuse the named recipient; offer the human path ("Talk to us first — 800 XXXX, we're available now").</p>
+<h2>P-63 · Account takeover response ("Secure my account")</h2>
+<p><strong>Use:</strong> user-initiated ("No, that wasn't me") or bank-initiated.
+<strong>Structure (guided, one screen per step, no dead ends):</strong>
+1. Contain — freeze cards + block credentials + kill sessions (automatic, confirmed: "Done. No one can move money right now.")
+2. Re-secure — identity re-verification (national identity where possible) → new credentials/passkeys
+3. Review — recent transactions/payees/devices/consents checklist with dispute entry per item
+4. Restore — unfreeze choices, restored access confirmation
+5. Record — case reference, report copy (PDF), escalation path (police-report guidance where relevant, ombudsman disclosure)
+<strong>Tone:</strong> calm competence; progress visible; the user is a victim, not a suspect.</p>
+<h2>P-64 · Card fraud response</h2>
+<p>Dispute Entry fraud fork (doc 17): don't-recognize → immediate freeze offer → liability &amp; provisional-credit honesty per policy → replacement flow → merchant-list review for compromised card.</p>
+<h2>P-65 · Beneficiary fraud / impersonation warning</h2>
+<p><strong>Use:</strong> payee-context risk (mule-flagged destination, impersonation patterns: "bank staff asked me to transfer").
+<strong>Structure:</strong> critical-tier stop for known-bad; high-tier for patterns ("Banks never ask you to move money to a 'safe account'. This request is a known scam pattern.") · report-payee path feeding the ecosystem signal.</p>
+<h2>P-66 · Phishing &amp; impersonation education</h2>
+<p><strong>Structure:</strong> verified-channel surfaces ("We'll never ask for your password, OTP or card PIN — anyone who does isn't us") · in-message authenticity markers for genuine bank messages (personalized salt the user set at onboarding, where deployed) · report-phishing entry (forward/upload → confirmation + takedown honesty).</p>
+<h2>P-67 · Error recovery (universal)</h2>
+<p><strong>Structure (the four questions, always):</strong> WHAT happened · WHY (plain class) · <strong>what happened to the MONEY</strong> (when money was in flight) · WHAT to do next (retry / alternative / support). Mapped from the error taxonomy (doc 27 §4): every error class has a defined message frame, recovery action, CTA and severity — screens compose, never invent.
+<strong>Retry safety:</strong> retry buttons render only where idempotency is guaranteed; otherwise status-check paths ("See if it went through") replace retry.</p>
+<h2>P-68 · Complaint &amp; escalation</h2>
+<p><strong>Use:</strong> "Report a problem" beyond disputes.
+<strong>Structure:</strong> complaint entry (category + free text + attachments) → acknowledgment with reference + response-time commitment (written ack within 2 business days) → status tracking (received → investigating → resolved with outcome) → <strong>escalation disclosure</strong>: "Not resolved within 15 days, or unhappy with the outcome? You can escalate to Sanadak, the independent financial ombudsman — free of charge" + link. REG-anchored.
+<strong>Rule:</strong> the complaint path is findable from every support surface and the app-level menu — never buried.</p>
+<h2>P-69 · Session expiry &amp; timeout</h2>
+<p><strong>Structure:</strong> Session Bar warning at T-60s ("You'll be signed out in 0:59 — [Stay signed in]") → expired page: neutral ("You were signed out to protect your account") → re-auth → <strong>draft restoration</strong> with explicit confirm ("Continue your transfer to Priya Kumar? Amount: AED 10,000.00 [Continue] [Discard]"). Drafts of sensitive flows persist encrypted, payment-unauthorized, max 24h.</p>
+<h2>P-70 · Offline &amp; connectivity loss</h2>
+<p><strong>Structure:</strong> offline banner + cached-data timestamps ("Showing balances from 14:32") · read surfaces stay useful · write actions queue <em>only</em> where safe (notes, categorization) — money movement never queues silently ("You're offline — we didn't send this. Try again when connected.") · reconnection re-sync quiet.</p>
+<h2>P-71 · "There's a problem with the service" (full-page)</h2>
+<p><strong>Use:</strong> unrecoverable screen-level failure. <strong>Structure:</strong> plain title · impact scope ("Your money and data are safe — we can't show this page right now") · reference code (short, for support) · retry + status-page link + support path · never a stack trace, never blame.</p>
+<h2>P-72 · Service unavailable / maintenance page</h2>
+<p>P-52's blocking form: what's down, until when, what still works, alternatives (ATM/branch/phone for critical needs).</p>
+<h2>P-73 · Account restriction &amp; funds-hold communication</h2>
+<p><strong>Use:</strong> compliance-driven restrictions. <strong>Structure:</strong> restriction surfaced at the point of blocked action + account-level status (doc 14): generic-safe reason class ("Additional checks required — we may need documents from you") · document-request flow where applicable (secure upload, checklist, SLA) · balance always visible · support path always present · resolution notification.
+<strong>Copy law:</strong> no tipping-off; no fake specificity; no dead ends.</p>
+<h2>P-74 · Deceased-customer &amp; vulnerable-situation handling</h2>
+<p><strong>Use:</strong> bereavement reporting, guardianship, power-of-attorney.
+<strong>Structure:</strong> dedicated humane entry ("Report a bereavement") outside the complaint taxonomy · what-happens explanation (freezes, required documents, timelines) in plain, gentle language · document checklist + secure upload · named-contact continuity (one case, not repeated re-explanation) · marketing suppression immediate.</p>
+<h2>P-75 · Account closure</h2>
+<p><strong>Use:</strong> customer-initiated exit. <strong>Structure:</strong> closure is a <em>first-class journey</em>, not a support ticket: prerequisites checklist auto-checked (balance to zero — with transfer-out helper; no pending transactions; products to settle listed with paths) → consequence review (statements access post-closure, document downloads offered <em>before</em> closure) → typed confirmation → processing with SLA → written confirmation.
+<strong>Rules:</strong> no retention dark patterns (one save-offer maximum, then respect); post-closure statement access guaranteed and stated ("Download your last 7 years of statements now — or request them later via support").</p>
+<div class="pgnav"><a href="patterns-status.html"><span class="lbl">Previous</span>Status &amp; disclosure</a><a class="next" href="data-viz.html"><span class="lbl">Next</span>Data visualization</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

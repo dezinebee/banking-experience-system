@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 — Token Architecture · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html" class="on">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Architecture</div>
+<h1>06 — Token Architecture</h1>
+<p><strong>Banking Experience System (BES)</strong> · Architecture · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:560px">
+  <div style="font-size:13px;font-weight:600;margin-bottom:2px">Semantic tokens resolving live (they change with this page's theme)</div>
+  <div class="demo-row">
+    <span class="chip" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bes-border-default);border-radius:999px;padding:6px 12px;font-size:13px"><span style="inline-size:12px;block-size:12px;border-radius:3px;background:var(--bes-action-primary)"></span><code>--bes-action-primary</code></span>
+    <span class="chip" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bes-border-default);border-radius:999px;padding:6px 12px;font-size:13px"><span style="inline-size:12px;block-size:12px;border-radius:3px;background:var(--bes-financial-income)"></span><code>--bes-financial-income</code></span>
+    <span class="chip" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bes-border-default);border-radius:999px;padding:6px 12px;font-size:13px"><span style="inline-size:12px;block-size:12px;border-radius:3px;background:var(--bes-transaction-pending)"></span><code>--bes-transaction-pending</code></span>
+    <span class="chip" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bes-border-default);border-radius:999px;padding:6px 12px;font-size:13px"><span style="inline-size:12px;block-size:12px;border-radius:3px;background:var(--bes-surface-tertiary);border:1px solid var(--bes-border-strong)"></span><code>--bes-surface-tertiary</code></span>
+  </div>
+  <div style="font-size:13px;font-weight:600;margin:8px 0 2px">One component, two brands — same behavior, token values swapped</div>
+  <div class="demo-row">
+    <button class="bes-btn bes-btn--primary">Send <bdi class="bes-amount">AED 5,000.00</bdi></button>
+    <span style="--bes-action-primary:#0F6974;--bes-action-primaryHover:#0B525B"><button class="bes-btn bes-btn--primary">Send <bdi class="bes-amount">AED 5,000.00</bdi></button></span>
+    <span style="--bes-action-primary:#5A3DA0;--bes-action-primaryHover:#46307C"><button class="bes-btn bes-btn--primary">Send <bdi class="bes-amount">AED 5,000.00</bdi></button></span>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:560px&quot;&gt;
+  &lt;div style=&quot;font-size:13px;font-weight:600;margin-bottom:2px&quot;&gt;Semantic tokens resolving live (they change with this page&#x27;s theme)&lt;/div&gt;
+  &lt;div class=&quot;demo-row&quot;&gt;
+    &lt;span class=&quot;chip&quot; style=&quot;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bes-border-default);border-radius:999px;padding:6px 12px;font-size:13px&quot;&gt;&lt;span style=&quot;inline-size:12px;block-size:12px;border-radius:3px;background:var(--bes-action-primary)&quot;&gt;&lt;/span&gt;&lt;code&gt;--bes-action-primary&lt;/code&gt;&lt;/span&gt;
+    &lt;span class=&quot;chip&quot; style=&quot;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bes-border-default);border-radius:999px;padding:6px 12px;font-size:13px&quot;&gt;&lt;span style=&quot;inline-size:12px;block-size:12px;border-radius:3px;background:var(--bes-financial-income)&quot;&gt;&lt;/span&gt;&lt;code&gt;--bes-financial-income&lt;/code&gt;&lt;/span&gt;
+    &lt;span class=&quot;chip&quot; style=&quot;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bes-border-default);border-radius:999px;padding:6px 12px;font-size:13px&quot;&gt;&lt;span style=&quot;inline-size:12px;block-size:12px;border-radius:3px;background:var(--bes-transaction-pending)&quot;&gt;&lt;/span&gt;&lt;code&gt;--bes-transaction-pending&lt;/code&gt;&lt;/span&gt;
+    &lt;span class=&quot;chip&quot; style=&quot;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bes-border-default);border-radius:999px;padding:6px 12px;font-size:13px&quot;&gt;&lt;span style=&quot;inline-size:12px;block-size:12px;border-radius:3px;background:var(--bes-surface-tertiary);border:1px solid var(--bes-border-strong)&quot;&gt;&lt;/span&gt;&lt;code&gt;--bes-surface-tertiary&lt;/code&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;font-size:13px;font-weight:600;margin:8px 0 2px&quot;&gt;One component, two brands — same behavior, token values swapped&lt;/div&gt;
+  &lt;div class=&quot;demo-row&quot;&gt;
+    &lt;button class=&quot;bes-btn bes-btn--primary&quot;&gt;Send &lt;bdi class=&quot;bes-amount&quot;&gt;AED 5,000.00&lt;/bdi&gt;&lt;/button&gt;
+    &lt;span style=&quot;--bes-action-primary:#0F6974;--bes-action-primaryHover:#0B525B&quot;&gt;&lt;button class=&quot;bes-btn bes-btn--primary&quot;&gt;Send &lt;bdi class=&quot;bes-amount&quot;&gt;AED 5,000.00&lt;/bdi&gt;&lt;/button&gt;&lt;/span&gt;
+    &lt;span style=&quot;--bes-action-primary:#5A3DA0;--bes-action-primaryHover:#46307C&quot;&gt;&lt;button class=&quot;bes-btn bes-btn--primary&quot;&gt;Send &lt;bdi class=&quot;bes-amount&quot;&gt;AED 5,000.00&lt;/bdi&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Tokens are the system's contract: behavior stays in components; every visual decision that may legitimately vary lives in a token. Brands theme by changing token values — never component internals.</p>
+<hr />
+<h2>1. Tiers</h2>
+<pre><code>PRIMITIVE      blue.600, space.16, radius.md          — raw values, named by value
+   ↓
+SEMANTIC       action.primary, surface.secondary,      — named by role; the working vocabulary
+               financial.income, status.pending
+   ↓
+COMPONENT      button.primary.background,              — scoped to one component;
+               input.border.error, table.row.height      NEVER consumed outside it
+   ↓
+PATTERN        transaction.primaryAction,              — binds semantics to financial patterns
+               review.total.emphasis, cop.mismatch.surface
+   ↓
+PRODUCT        sendMoney.cta, dashboard.heroBalance    — product-level aliases, optional tier
+</code></pre>
+<p>Resolution flows downward only. A component token may alias a semantic token; a semantic token may alias a primitive. Nothing references upward or sideways across component boundaries.</p>
+<blockquote>
+<p><strong>Implementation status:</strong> PRIMITIVE, SEMANTIC and <strong>COMPONENT</strong> are shipped and build-validated (<code>tokens/tokens.json</code> → <code>tokens.css</code>, with each tier emitted as <code>var()</code> chains into the tier above, so a brand override at any level cascades). PATTERN and PRODUCT remain <strong>reserved</strong> — named here so consumers don't invent conflicting conventions, not yet emitted.</p>
+</blockquote>
+<h3>What belongs in the component tier — and what does not</h3>
+<p>The component tier is small on purpose: <strong>30 tokens</strong>, not one per declaration. A token per declaration would be a rename with extra steps — it multiplies the surface a brand has to understand without giving it a decision it could not already make.</p>
+<p>The rule is: <strong>a component token exists where a brand needs to retune one component without moving a shared scale.</strong> A button's silhouette, a card's corner, the card face's ink — those are decisions about that component. Everything else reads the shared scales directly:</p>
+<pre><code class="language-css">.bes-alert  { font-size: var(--bes-type-bodySm-size); }   /* shared scale — moves with the brand's type */
+.bes-btn    { border-radius: var(--bes-button-radius); }  /* component tier — this button's silhouette */
+</code></pre>
+<p>The test for adding one: <em>could a brand want this different from everything else that currently matches it?</em> If not, it belongs on a scale. <code>--bes-alert-fontSize</code> fails that test; <code>--bes-button-radius</code> passes it.</p>
+<p><strong>Component CSS carries no literals for any tokenised property.</strong> <code>font-size</code> and <code>border-radius</code> literals in <code>bes.css</code> are held at <strong>zero</strong> by the consistency audit (C8): all 93 font sizes now read the type scale or a component token, and all raw colour is gone from the component layer. Spacing is the exception and is ratcheted rather than zeroed — see §5.</p>
+<h2>2. Naming grammar</h2>
+<p><code>[namespace.]category.role[.variant][.state]</code> — lowercase, dot-delimited, camelCase for multiword roles.</p>
+<ul>
+<li>Categories: <code>surface</code> · <code>text</code> · <code>border</code> · <code>action</code> · <code>status</code> · <code>financial</code> · <code>balance</code> · <code>transaction</code> · <code>risk</code> · <code>verification</code> · <code>consent</code> · <code>space</code> · <code>type</code> · <code>radius</code> · <code>elevation</code> · <code>motion</code> · <code>z</code> · <code>chart</code> · <code>ai</code> (reserved)</li>
+<li>States: <code>.hover</code> <code>.pressed</code> <code>.disabled</code> <code>.focus</code> <code>.selected</code> <code>.error</code></li>
+<li>Code delivery prefix: <code>--bes-</code> (CSS custom properties), e.g. <code>--bes-action-primary</code>, <code>--bes-financial-income</code>.</li>
+</ul>
+<p>Prohibited: value-based names outside the primitive tier (<code>darkBlue</code>), physical-direction names anywhere (<code>marginLeft</code> → <code>marginInlineStart</code>), and component tokens leaking into other components.</p>
+<h2>3. Token dimensions (modes)</h2>
+<p>A resolved theme is the intersection of six dimensions. Components are written once; dimensions change values, not structure.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Values</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Brand</strong></td>
+<td>default / bank-A / bank-B / white-label…</td>
+<td>Theme package overriding semantic + primitive maps</td>
+</tr>
+<tr>
+<td><strong>Scheme</strong></td>
+<td>light / dark</td>
+<td><code>data-theme</code> attribute; respects OS preference; user override wins</td>
+</tr>
+<tr>
+<td><strong>Direction</strong></td>
+<td>ltr / rtl</td>
+<td><code>dir</code> attribute; logical properties + icon mirror flags; type metrics resolve per language</td>
+</tr>
+<tr>
+<td><strong>Density</strong></td>
+<td>comfortable / standard / compact</td>
+<td>Spacing semantics remap; touch minima preserved</td>
+</tr>
+<tr>
+<td><strong>Contrast</strong></td>
+<td>standard / high <em>(planned)</em></td>
+<td>Text ≥7:1, thicker borders via <code>focus.width</code> token override; not yet emitted</td>
+</tr>
+<tr>
+<td><strong>Terminology</strong></td>
+<td>conventional / islamic <em>(specified; resolver planned)</em></td>
+<td>Content dimension: vocabulary keys (doc 27), profit-rate vs APR components</td>
+</tr>
+</tbody>
+</table></div>
+<p>Any dimension combination must be valid: an Islamic, dark, RTL, compact, high-contrast theme is a legitimate resolved state and part of the release test matrix (a sampled matrix, with the full matrix run on the money/transaction component families).</p>
+<h2>4. Theming contract</h2>
+<p>Brands receive a <strong>theme manifest</strong> listing exactly what they may set:</p>
+<ul>
+<li>Primitive palette substitutions (validated against the contrast contract, doc 01 §6, in light <em>and</em> dark, LTR <em>and</em> RTL)</li>
+<li>Type stacks (from the tested Latin+Arabic pair list) and <code>font.display</code></li>
+<li>Shape preset (sharp/standard/soft), motion personality (calm/expressive — expressive still obeys doc 05 rules)</li>
+<li>Illustration/imagery slots, logo slots, voice inflection (content layer)</li>
+</ul>
+<p>Locked (core-owned): all behavior; financial semantic colors' <em>meanings</em> and pairing rules; status shapes; focus visibility; spacing minima; touch targets; disclosure components' structure; state machines; error taxonomy.</p>
+<p>Validation is automated: a theme that fails contrast, focus visibility, or touch minima is rejected at build, not review.</p>
+<h2>5. Delivery</h2>
+<ul>
+<li><strong>Design:</strong> variables organized by the same tiers and dimensions as code; modes for scheme/direction/density; library components consume variables only — no detached values.</li>
+<li><strong>Code:</strong> a single token source of truth (JSON) compiles to CSS custom properties (web). Platform maps (iOS/Android) from the same source are on the roadmap. Semantic tokens are the public API; primitives are internal; component tokens are per-component files.</li>
+<li><strong>Versioning:</strong> token changes classed as value-change (patch — theme-safe), addition (minor), rename/removal (major; deprecation aliases emitted for one major cycle — codemod tooling on the roadmap).</li>
+<li>Every token documents: role description, allowed surfaces/pairings, contrast contract, and which dimensions affect it.</li>
+</ul>
+<h2>6. Financial namespaces (summary — full definitions in doc 07)</h2>
+<pre><code>currency.*        code · symbol · amount · precision · decimal · locale
+balance.*         current · available · pending · reserved · overdrawn
+transaction.*     draft · review · authentication · processing · pending ·
+                  completed · failed · unknown · blocked · reversed · refunded ·
+                  disputed · cancelled          (13 — doc 07 §4 is normative)
+risk.*            low · medium · high · critical
+verification.*    unverified · pending · verified · failed · expired
+consent.*         required · pending · granted · expired · revoked
+ai.*              (reserved) surface · badge · explanation — for AI-generated content marking
+</code></pre>
+<p>Status of each namespace in v1.0.1: <code>transaction.*</code>, <code>verification.*</code> and <code>consent.*</code> are <strong>emitted as color tokens</strong> (state → semantic color, both schemes). <code>risk.*</code> and <code>financial.*</code> are emitted. <code>currency.*</code> and <code>balance.*</code> are <strong>data-model vocabularies</strong>, not color tokens — they name concepts the components implement (precision maps, balance roles), and are not emitted as CSS. <code>ai.*</code> is reserved. The state <em>names</em> are the stable API: a "pending" transaction is the same concept in the UI, the event stream and the copy deck.</p>
+<p><strong>This is now enforced, not asserted.</strong> <code>tools/audit-states.py</code> takes doc 07 §4's contract table as the single source of the state list and fails the build unless every state has a <code>transaction.*</code> colour and tint, a <code>.bes-badge--&lt;state&gt;</code> variant reading those tokens, a registry entry in <code>BES.TRANSACTION_STATES</code> with a glyph and both EN and AR labels — and unless no transaction state colour lives in another namespace. It also enforces doc 07's prime directive as a property of the data: UNKNOWN may not offer retry, and only a confirmed failure may. Before that gate existed, three artefacts disagreed about what the states were (13 / 12 / 10) and no component read the state tokens at all.</p>
+<div class="pgnav"><a href="motion.html"><span class="lbl">Previous</span>Motion</a><a class="next" href="financial-semantics.html"><span class="lbl">Next</span>Financial semantics</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

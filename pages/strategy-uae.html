@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 — UAE Context · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html" class="on">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Strategy</div>
+<h1>04 — UAE Context</h1>
+<p><strong>Banking Experience System</strong> · Phase 01 · v2.0.0-draft · August 2026</p>
+<p>What is genuinely UAE-specific — the context that makes a generic global banking kit insufficient. Sources: live research Aug 2026 (key URLs at end).</p>
+<hr />
+<h2>1. Market shape</h2>
+<ul>
+<li>Banking assets ~AED 5.3T, growing ~17% YoY. Top banks: FAB, Emirates NBD (9.8M+ customers), ADCB, DIB (largest Islamic bank), Mashreq, ADIB.</li>
+<li>250+ active fintechs; ~half of customers hold a digital-bank account; licensed digital banks: Wio (profitable 2024, AED 50B+ deposits), Zand (corporate/digital assets), ruya (Islamic community), Mbank, Reem — plus incumbent digital brands Liv (ENBD) and Mashreq Neo.</li>
+<li>Smartphone ~99%; app is the primary channel for 72%.</li>
+</ul>
+<h2>2. National rails — the system must treat these as platform primitives</h2>
+<h3>UAE PASS (identity)</h3>
+<p>National digital identity + SSO + legally equivalent digital signature. The de-facto onboarding standard: 5-minute account opening at Mbank, ruya, DIB, ADCB Hayyak (58% of ADCB's new acquisition). Tourist Identity extends it to visitors.
+<strong>BES primitives:</strong> "Continue with UAE PASS" component (official branding, primary path), app-switch handoff pattern with state preservation, verified read-only prefilled fields, signing ceremony pattern, SOP-level (basic vs verified) upgrade interstitial.</p>
+<h3>Aani (instant payments — Al Etihad Payments)</h3>
+<p>Real-time transfers up to AED 50,000 via mobile number, email or QR; ~12.5M users, 74 FIs; request-to-pay, split payments; adopted for federal government fees. Confirmation of Payee rides on it (see doc 05).
+<strong>BES primitives:</strong> proxy payee entry (contact picker), proxy registration management, QR generate/scan (P2P + merchant variants), instant-payment state model (success in seconds; distinct timeout/unknown handling), inline AED 50,000 limit surfacing.</p>
+<h3>Jaywan (domestic card scheme)</h3>
+<p>Co-badged cards (Jaywan domestic + international scheme abroad) rolling out from H2 2025.
+<strong>BES primitives:</strong> dual-scheme card art representation in card management/wallets, scheme-selection moments, Jaywan brand asset slots.</p>
+<h3>Al Tareq / Nebras (Open Finance)</h3>
+<p>Centralized consent + authentication with standardized journeys (see doc 05 §2). Consent screens are substantially prescribed, not invented.</p>
+<h3>Sanadak (ombudsman)</h3>
+<p>Complaint escalation disclosure ("unresolved after 15 days → Sanadak") is now standard consumer-rights content.</p>
+<h2>3. Remittance is core banking, not an add-on</h2>
+<p>~$43B/yr outbound; corridors India (~28%), Pakistan (~13%), Philippines, Bangladesh, Egypt, Nepal, Sri Lanka. Digital share 14% → 37% (2020→2025). Local inventions: 60-second DirectRemit (ENBD), Send-Now-Pay-Later remittance credit (Payit, Botim), corridor-specific payouts (bank / wallet — GCash, Vodafone Cash / cash pickup), chat-embedded remittance (Botim), rate alerts (Al Ansari). "Zero-fee" corridors recoup margin in FX spread — a transparency gap BES addresses head-on (estimated vs guaranteed rate, fee vs markup, always).
+<strong>BES consequence:</strong> the FX/remittance pattern family (doc 07 §3) is a flagship, not an appendix; corridor-aware recipient components; payout-method selection; delivery-time honesty.</p>
+<h2>4. Language and direction</h2>
+<ul>
+<li>Arabic + English bilingual is a launch requirement (also a regulatory one for disclosures/advertising). Arabic-first branding is a national identity signal (Aani, Jaywan, Mbank, ruya).</li>
+<li>Market failure mode: <strong>translated-not-designed Arabic</strong> — mirrored text but unmirrored icons/progress bars, bidi breakage in mixed Arabic + Latin IBANs/amounts, cramped adjacent tap targets.</li>
+<li>Arabic typography facts the system encodes: no capital letters (emphasis patterns must not rely on caps), cursive script (never letter-space), needs +1–2px optical size and taller line-height, Arabic comma (،), day-of-week abbreviations fail (identical first letters), truncation follows direction, embedded LTR strings (URLs, IBANs) stay LTR, numbers read LTR and right-align in RTL context.</li>
+<li><strong>Numeral policy:</strong> Western Arabic numerals (0–9) as default for financial figures, Eastern (٠١٢٣) available as a locale preference — never mixed in one context.</li>
+<li>Beyond Ar/En: Hindi, Urdu, Tagalog, Malayalam, Bengali matter for inclusion. BES v1 ships Ar/En with a content architecture (message catalog, no hardcoded strings, direction-agnostic layouts) that makes vernacular expansion a content project, not a re-engineering project.</li>
+<li>Calendars: Gregorian primary; Hijri dual-display slot for relevant contexts (Islamic products, cultural moments).</li>
+</ul>
+<h2>5. Islamic finance is mainstream</h2>
+<ul>
+<li>DIB is the world's largest Islamic bank; ruya and Emirates Islamic ("World's best Islamic digital bank 2025") prove Islamic + modern UX coexist; ADCB Hayyak offers a conventional/Sharia toggle at onboarding; Tamara markets Sharia-compliant BNPL.</li>
+<li>Higher Shari'ah Authority governs; Consumer Protection Standards contain Islamic-specific disclosure duties (explain the Shari'ah concept; disclose profit-sharing ratio, weightages, distribution method/frequency).</li>
+<li><strong>BES consequence:</strong> a terminology layer (interest→profit rate, loan→financing, insurance→takaful, penalty→charity donation where applicable), Shari'ah concept explainer component (a disclosure requirement), profit-rate display distinct from APR display, Shari'ah-certification trust mark, dual conventional/Islamic differentiation system to prevent mis-selling. Terminology switches by product configuration without breaking underlying components.</li>
+</ul>
+<h2>6. Salary anchoring and WPS</h2>
+<p>Salary transfer is the switching moment: minimum-salary gates historically excluded ~1.7M workers; Wio's 6% salary-linked savings and Neo's salary cashback weaponize it. WPS (Wage Protection System) payroll shapes SME needs.
+<strong>BES consequence:</strong> salary-account journey primitives, payroll patterns in SME suite, limit/eligibility communication patterns that route (never shame) users below thresholds.</p>
+<h2>7. Digital experience quality — market lessons</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Lesson</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Onboarding speed is a competitive stat</td>
+<td>Hayyak = 58% of ADCB acquisition; 5-min bar everywhere</td>
+</tr>
+<tr>
+<td>The support cliff destroys trust post-onboarding</td>
+<td>FAB 1.1★ complaints, Mbank eKYC loops, Wio's thin human support</td>
+</tr>
+<tr>
+<td>Redesigns must include wayfinding</td>
+<td>ENBD X 2023 backlash despite eventual ~4.7★</td>
+</tr>
+<tr>
+<td>Fee opacity erodes trust measurably</td>
+<td>surprise dormancy fees, FX-spread "zero fee" claims</td>
+</tr>
+<tr>
+<td>Heritage brand ≠ digital trust</td>
+<td>DIB Trustpilot 1.6 vs ruya's praised app</td>
+</tr>
+<tr>
+<td>Lifestyle features ≠ banking depth</td>
+<td>Liv's plateau vs Wio's profitable rise</td>
+</tr>
+<tr>
+<td>Embedded finance gravity is real</td>
+<td>Careem Pay, Botim, e&amp; money meet users in daily-life apps</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>BES consequence:</strong> journeys include the unglamorous lifecycle (support escalation, complaint → Sanadak, account closure, re-KYC) as first-class patterns; degraded/maintenance states are designed; "what changed" wayfinding pattern for releases.</p>
+<h2>8. Environment range</h2>
+<p>Mobile-first (majority), desktop dashboards (SME/corporate/wealth), tablet, kiosk/ATM-adjacent surfaces, and PDF (statements, KFS, contracts — with accessibility requirements). Density modes (comfortable/standard/compact) map to consumer → SME → treasury surfaces.</p>
+<hr />
+<h3>Key sources</h3>
+<p>Alvarez &amp; Marsal UAE Banking Pulse Q3 2025 · CBUAE FSR 2025 (Aani) · aep.ae (Aani/Jaywan) · PaymentsCMI UAE remittance data · Khaleej Times/ADL mobile-banking survey · The Asian Banker (ADCB Hayyak) · UXDA ENBD case study · masarif.ae &amp; Trustpilot review corpora · Finastra RTL foundations (design.fusionfabric.cloud/foundations/rtl) · OMA UAE population statistics 2025 · NOW Money / UNCDF financial-inclusion studies · ruyabank.ae · Mambu Wio case study.</p>
+<div class="pgnav"><a href="strategy-users.html"><span class="lbl">Previous</span>Target users</a><a class="next" href="strategy-regulatory.html"><span class="lbl">Next</span>Regulatory considerations</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

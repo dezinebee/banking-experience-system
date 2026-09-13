@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01 — Color · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html" class="on">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Foundations</div>
+<h1>01 — Color</h1>
+<p><strong>Banking Experience System (BES)</strong> · Foundations · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-row">
+  <span class="bes-badge" data-bes-state="completed"></span>
+  <span class="bes-badge" data-bes-state="pending"></span>
+  <span class="bes-badge" data-bes-state="failed"></span>
+  <span class="bes-badge" data-bes-state="blocked"></span>
+  <span class="bes-badge" data-bes-state="reversed"></span>
+  <span class="bes-badge bes-badge--neutral">Neutral (generic UI status)</span>
+</div>
+<div class="demo-row" style="margin-top:16px">
+  <bdi class="bes-amount bes-amount--sm">−AED 89.50</bdi>
+  <bdi class="bes-amount bes-amount--sm bes-amount--credit">+AED 12,500.00</bdi>
+  <bdi class="bes-amount bes-amount--sm bes-amount--negative">−AED 320.00 overdrawn</bdi>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot;&gt;
+  &lt;span class=&quot;bes-badge&quot; data-bes-state=&quot;completed&quot;&gt;&lt;/span&gt;
+  &lt;span class=&quot;bes-badge&quot; data-bes-state=&quot;pending&quot;&gt;&lt;/span&gt;
+  &lt;span class=&quot;bes-badge&quot; data-bes-state=&quot;failed&quot;&gt;&lt;/span&gt;
+  &lt;span class=&quot;bes-badge&quot; data-bes-state=&quot;blocked&quot;&gt;&lt;/span&gt;
+  &lt;span class=&quot;bes-badge&quot; data-bes-state=&quot;reversed&quot;&gt;&lt;/span&gt;
+  &lt;span class=&quot;bes-badge bes-badge--neutral&quot;&gt;Neutral (generic UI status)&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;demo-row&quot; style=&quot;margin-top:16px&quot;&gt;
+  &lt;bdi class=&quot;bes-amount bes-amount--sm&quot;&gt;−AED 89.50&lt;/bdi&gt;
+  &lt;bdi class=&quot;bes-amount bes-amount--sm bes-amount--credit&quot;&gt;+AED 12,500.00&lt;/bdi&gt;
+  &lt;bdi class=&quot;bes-amount bes-amount--sm bes-amount--negative&quot;&gt;−AED 320.00 overdrawn&lt;/bdi&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Color in BES is functional first: it communicates state, hierarchy and financial meaning. It is never the <em>only</em> carrier of meaning — every status color is paired with an icon and a label. The palette is deliberately restrained: a calm neutral range, one action color, and a fixed set of status and financial colors that stay constant across all brand themes.</p>
+<hr />
+<h2>1. Primitive palette</h2>
+<p>Primitives are raw values. <strong>Products never use primitives directly</strong> — they exist only to be mapped into semantic tokens. Scales run 50 (lightest) → 900 (darkest). All 600-level colors pass 4.5:1 on white; all 200-level colors pass 4.5:1 against <code>gray.900</code>.</p>
+<h3>Neutral (slightly cool, calm)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Value</th>
+<th>Typical role (via semantic layer)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gray.0</code></td>
+<td><code>#FFFFFF</code></td>
+<td>Base surface (light)</td>
+</tr>
+<tr>
+<td><code>gray.50</code></td>
+<td><code>#F7F8FA</code></td>
+<td>Secondary surface</td>
+</tr>
+<tr>
+<td><code>gray.100</code></td>
+<td><code>#EEF0F4</code></td>
+<td>Tertiary surface, hover fills</td>
+</tr>
+<tr>
+<td><code>gray.200</code></td>
+<td><code>#DDE1E8</code></td>
+<td>Default borders</td>
+</tr>
+<tr>
+<td><code>gray.300</code></td>
+<td><code>#C2C9D4</code></td>
+<td>Strong borders, disabled fills</td>
+</tr>
+<tr>
+<td><code>gray.400</code></td>
+<td><code>#9AA4B4</code></td>
+<td>Disabled text (large only), placeholder</td>
+</tr>
+<tr>
+<td><code>gray.500</code></td>
+<td><code>#717E92</code></td>
+<td>Secondary icons</td>
+</tr>
+<tr>
+<td><code>gray.600</code></td>
+<td><code>#55617A</code></td>
+<td>Secondary text</td>
+</tr>
+<tr>
+<td><code>gray.700</code></td>
+<td><code>#3D4763</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>gray.800</code></td>
+<td><code>#2A324B</code></td>
+<td>Primary text (soft contexts)</td>
+</tr>
+<tr>
+<td><code>gray.900</code></td>
+<td><code>#161C2E</code></td>
+<td>Primary text, inverse surfaces</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Blue (action)</h3>
+<p><code>blue.50 #EFF4FF</code> · <code>blue.100 #DCE7FE</code> · <code>blue.200 #B9CFFD</code> · <code>blue.300 #8AAEF9</code> · <code>blue.400 #5A8AF2</code> · <code>blue.500 #3168E8</code> · <strong><code>blue.600 #1F52C4</code></strong> · <code>blue.700 #17408F</code> · <code>blue.800 #12305F</code> · <code>blue.900 #0C2140</code></p>
+<h3>Green (positive / income / success)</h3>
+<p><code>green.50 #EDFAF3</code> · <code>green.100 #D3F2E0</code> · <code>green.200 #A5E4C2</code> · <code>green.300 #6CCD9C</code> · <code>green.400 #35B274</code> · <code>green.500 #149355</code> · <strong><code>green.600 #0B7A45</code></strong> · <code>green.700 #085F37</code> · <code>green.800 #06492B</code> · <code>green.900 #04331E</code></p>
+<h3>Red (negative / expense / error)</h3>
+<p><code>red.50 #FDF0EE</code> · <code>red.100 #FADAD5</code> · <code>red.200 #F4B4AA</code> · <code>red.300 #EA8172</code> · <code>red.400 #DC5341</code> · <code>red.500 #C43A28</code> · <strong><code>red.600 #A82E1F</code></strong> · <code>red.700 #832317</code> · <code>red.800 #611A11</code> · <code>red.900 #43120C</code></p>
+<h3>Amber (warning / attention)</h3>
+<p><code>amber.50 #FDF6EC</code> · <code>amber.100 #FAE8CC</code> · <code>amber.200 #F3D093</code> · <code>amber.300 #E8B054</code> · <code>amber.400 #D18F1F</code> · <code>amber.500 #B27612</code> · <strong><code>amber.600 #8F5F0E</code></strong> · <code>amber.700 #6F4A0B</code> · <code>amber.800 #523708</code> · <code>amber.900 #392605</code></p>
+<h3>Teal (informational / pending-neutral)</h3>
+<p><code>teal.50 #EBF7F8</code> · <code>teal.100 #CFEDEF</code> · <code>teal.200 #9FDADF</code> · <code>teal.300 #63BFC8</code> · <code>teal.400 #2FA1AD</code> · <code>teal.500 #17838F</code> · <strong><code>teal.600 #0F6974</code></strong> · <code>teal.700 #0B525B</code> · <code>teal.800 #083E45</code> · <code>teal.900 #052B30</code></p>
+<h3>Purple (reserved / hold / scheduled)</h3>
+<p><code>purple.50 #F4F1FC</code> · <code>purple.100 #E5DFF8</code> · <code>purple.200 #CBBFF0</code> · <code>purple.300 #AA95E3</code> · <code>purple.400 #8A6ED3</code> · <code>purple.500 #6F4FBF</code> · <strong><code>purple.600 #5A3DA0</code></strong> · <code>purple.700 #46307C</code> · <code>purple.800 #34245C</code> · <code>purple.900 #241940</code></p>
+<h3>Gold (premium / wealth accents — decorative tier only)</h3>
+<p><code>gold.100 #F6EBD4</code> · <code>gold.300 #DDBE7F</code> · <code>gold.500 #B8933F</code> · <code>gold.700 #8A6B25</code></p>
+<h2>2. Semantic tokens (light theme defaults)</h2>
+<p>Semantic tokens are the working vocabulary. Themes remap values; roles never change.</p>
+<h3>Surfaces</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Light value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>surface.primary</code></td>
+<td><code>gray.0</code></td>
+<td>Page/card base</td>
+</tr>
+<tr>
+<td><code>surface.secondary</code></td>
+<td><code>gray.50</code></td>
+<td>Grouped background</td>
+</tr>
+<tr>
+<td><code>surface.tertiary</code></td>
+<td><code>gray.100</code></td>
+<td>Nested fills, table stripes</td>
+</tr>
+<tr>
+<td><code>surface.inverse</code></td>
+<td><code>gray.900</code></td>
+<td>Inverse blocks, tooltips</td>
+</tr>
+<tr>
+<td><code>surface.raised</code></td>
+<td><code>gray.0</code> + elevation.2</td>
+<td>Sheets, menus</td>
+</tr>
+<tr>
+<td><code>surface.overlay</code></td>
+<td><code>gray.900</code> @ 48%</td>
+<td>Scrims</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Text</h3>
+<p><code>text.primary</code> = <code>gray.900</code> · <code>text.secondary</code> = <code>gray.600</code> · <code>text.disabled</code> = <code>gray.400</code> (min 14px, never for amounts) · <code>text.inverse</code> = <code>gray.0</code> · <code>text.link</code> = <code>blue.600</code> · <code>text.onAction</code> = <code>gray.0</code></p>
+<h3>Borders</h3>
+<p><code>border.default</code> = <code>gray.200</code> · <code>border.strong</code> = <code>gray.300</code> · <code>border.focus</code> = <code>blue.500</code>, 2px, always paired with 2px offset ring · <code>border.error</code> = <code>red.600</code></p>
+<h3>Actions</h3>
+<p><code>action.primary</code> = <code>blue.600</code> (hover <code>blue.700</code>, pressed <code>blue.800</code>, disabled <code>gray.300</code>) · <code>action.secondary</code> = transparent + <code>border.strong</code> + <code>text.primary</code> · <code>action.destructive</code> = <code>red.600</code> · <code>action.ghost</code> = transparent, <code>text.link</code></p>
+<h3>Status (always icon + label + color)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Color</th>
+<th>Icon shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>status.success</code></td>
+<td><code>green.600</code></td>
+<td>check circle</td>
+</tr>
+<tr>
+<td><code>status.warning</code></td>
+<td><code>amber.600</code></td>
+<td>triangle</td>
+</tr>
+<tr>
+<td><code>status.error</code></td>
+<td><code>red.600</code></td>
+<td>octagon</td>
+</tr>
+<tr>
+<td><code>status.info</code></td>
+<td><code>teal.600</code></td>
+<td>circle-i</td>
+</tr>
+<tr>
+<td><code>status.pending</code></td>
+<td><code>teal.600</code> on <code>teal.50</code></td>
+<td>clock</td>
+</tr>
+<tr>
+<td><code>status.neutral</code></td>
+<td><code>gray.600</code></td>
+<td>dash circle</td>
+</tr>
+</tbody>
+</table></div>
+<h2>3. Financial semantic colors</h2>
+<p>Fixed across all brands — a customer moving between two BES-based banks reads money the same way.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Value (light)</th>
+<th>Pairing rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>financial.income</code></td>
+<td><code>green.600</code></td>
+<td>Always with <code>+</code> sign and label</td>
+</tr>
+<tr>
+<td><code>financial.expense</code></td>
+<td><code>text.primary</code> (NOT red)</td>
+<td>Default spend is neutral; red is reserved for problems</td>
+</tr>
+<tr>
+<td><code>financial.negative</code></td>
+<td><code>red.600</code></td>
+<td>Overdrawn, failed, shortfall</td>
+</tr>
+<tr>
+<td><code>financial.pending</code></td>
+<td><code>teal.600</code></td>
+<td>With clock icon</td>
+</tr>
+<tr>
+<td><code>financial.completed</code></td>
+<td><code>green.600</code></td>
+<td>Confirmation moments only; settled items relax to neutral</td>
+</tr>
+<tr>
+<td><code>financial.failed</code></td>
+<td><code>red.600</code></td>
+<td>With octagon icon</td>
+</tr>
+<tr>
+<td><code>financial.refunded</code></td>
+<td><code>green.600</code> on <code>green.50</code></td>
+<td>With return icon</td>
+</tr>
+<tr>
+<td><code>financial.reversed</code></td>
+<td><code>purple.600</code></td>
+<td>With reverse icon</td>
+</tr>
+<tr>
+<td><code>financial.blocked</code></td>
+<td><code>amber.600</code></td>
+<td>With lock icon; tipping-off-safe copy</td>
+</tr>
+<tr>
+<td><code>financial.available</code></td>
+<td><code>text.primary</code></td>
+<td>The number users act on — highest weight</td>
+</tr>
+<tr>
+<td><code>financial.reserved</code></td>
+<td><code>purple.600</code></td>
+<td>Holds, pre-auth</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Design rationale — expense is not red.</strong> In transaction lists, most rows are expenses; painting them red makes the list read as a wall of alarm and blunts red's error meaning. Debits render in neutral primary text with a <code>−</code> sign; red is kept for genuinely negative states.</p>
+<h2>4. Risk severity ramp</h2>
+<p><code>risk.low</code> = <code>green.600</code> · <code>risk.medium</code> = <code>amber.600</code> · <code>risk.high</code> = <code>red.600</code> · <code>risk.critical</code> = <code>red.700</code> on <code>red.50</code>, paired with hard-stop pattern. A graduated caution pair <code>caution.minor</code> (<code>amber.500</code>) / <code>caution.major</code> (<code>amber.700</code>) supports fraud-warning tiering.</p>
+<h2>5. Dark theme</h2>
+<p>Dark theme is a first-class theme, not an inversion filter. Surfaces step <em>up</em> in lightness as elevation rises: <code>surface.primary</code> = <code>#10141F</code> · <code>secondary</code> = <code>#181D2B</code> · <code>tertiary</code> = <code>#212739</code> · raised = <code>#262D42</code>. Text: <code>text.primary</code> = <code>#F2F4F8</code>, <code>secondary</code> = <code>#A8B1C2</code>. Status/financial colors shift to their 300–400 primitives to hold 4.5:1 on dark surfaces (e.g. <code>financial.income</code> → <code>green.300</code>). Amounts and status pairs are re-verified for contrast in dark independently — never assume symmetry.</p>
+<h2>6. Contrast contract</h2>
+<p>Every semantic token documents its minimum contrast against its permitted surfaces: text tokens ≥ 4.5:1 (≥ 3:1 for ≥ 24px/700), interactive and status icons ≥ 3:1, focus indicator ≥ 3:1 against adjacent colors. Theme submissions (multi-brand) are validated against this contract automatically before acceptance — a brand cannot ship a palette that breaks it.</p>
+<h2>7. Usage rules</h2>
+<ul>
+<li>Never use color alone to distinguish income/expense, gain/loss, or any status — sign, icon and label are mandatory companions.</li>
+<li>One primary action color per screen region; destructive and primary never adjacent without spacing ≥ <code>space.16</code>.</li>
+<li>Gold accents are decorative-tier only (wealth surfaces); never used for status or action.</li>
+<li>Charts draw from the dedicated categorical chart palette (doc 26), not from status colors, so a chart never accidentally says "error".</li>
+<li>High-contrast mode: an alternate token set raises text tokens to ≥ 7:1 and thickens borders; delivered as a token dimension, not a separate stylesheet.</li>
+</ul>
+<div class="pgnav"><a href="overview.html"><span class="lbl">Previous</span>System overview</a><a class="next" href="typography.html"><span class="lbl">Next</span>Typography</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

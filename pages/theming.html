@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>30 — Multi-Brand &amp; Theming Architecture · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html" class="on">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Cross-cutting systems</div>
+<h1>30 — Multi-Brand &amp; Theming Architecture</h1>
+<p><strong>Banking Experience System (BES)</strong> · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:560px">
+  <div style="font-size:13px;font-weight:600">One core, three brands — only token values change; behavior, disclosure and states are locked</div>
+  <div class="demo-row" style="align-items:stretch">
+    <div class="bes-card" style="flex:1;min-inline-size:150px">
+      <div style="font-size:12px;color:var(--bes-text-secondary);margin-bottom:8px">Default</div>
+      <button class="bes-btn bes-btn--primary bes-btn--sm" style="inline-size:100%">Send money</button>
+      <div style="margin-top:8px"><span class="bes-badge bes-badge--pending">Pending</span></div>
+    </div>
+    <div class="bes-card" style="flex:1;min-inline-size:150px;--bes-action-primary:#0F6974;--bes-action-primaryHover:#0B525B;--bes-radius-md:4px">
+      <div style="font-size:12px;color:var(--bes-text-secondary);margin-bottom:8px">Islamic window · sharp preset</div>
+      <button class="bes-btn bes-btn--primary bes-btn--sm" style="inline-size:100%">Send money</button>
+      <div style="margin-top:8px"><span class="bes-badge bes-badge--pending">Pending</span></div>
+    </div>
+    <div class="bes-card" style="flex:1;min-inline-size:150px;--bes-action-primary:#5A3DA0;--bes-action-primaryHover:#46307C;--bes-radius-md:14px">
+      <div style="font-size:12px;color:var(--bes-text-secondary);margin-bottom:8px">Youth brand · soft preset</div>
+      <button class="bes-btn bes-btn--primary bes-btn--sm" style="inline-size:100%">Send money</button>
+      <div style="margin-top:8px"><span class="bes-badge bes-badge--pending">Pending</span></div>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--bes-text-secondary);margin:0">Note what did NOT change: the pending badge (financial semantics are brand-invariant), the label, the states. Themes are validated against the contrast contract before acceptance.</p>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:560px&quot;&gt;
+  &lt;div style=&quot;font-size:13px;font-weight:600&quot;&gt;One core, three brands — only token values change; behavior, disclosure and states are locked&lt;/div&gt;
+  &lt;div class=&quot;demo-row&quot; style=&quot;align-items:stretch&quot;&gt;
+    &lt;div class=&quot;bes-card&quot; style=&quot;flex:1;min-inline-size:150px&quot;&gt;
+      &lt;div style=&quot;font-size:12px;color:var(--bes-text-secondary);margin-bottom:8px&quot;&gt;Default&lt;/div&gt;
+      &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--sm&quot; style=&quot;inline-size:100%&quot;&gt;Send money&lt;/button&gt;
+      &lt;div style=&quot;margin-top:8px&quot;&gt;&lt;span class=&quot;bes-badge bes-badge--pending&quot;&gt;Pending&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bes-card&quot; style=&quot;flex:1;min-inline-size:150px;--bes-action-primary:#0F6974;--bes-action-primaryHover:#0B525B;--bes-radius-md:4px&quot;&gt;
+      &lt;div style=&quot;font-size:12px;color:var(--bes-text-secondary);margin-bottom:8px&quot;&gt;Islamic window · sharp preset&lt;/div&gt;
+      &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--sm&quot; style=&quot;inline-size:100%&quot;&gt;Send money&lt;/button&gt;
+      &lt;div style=&quot;margin-top:8px&quot;&gt;&lt;span class=&quot;bes-badge bes-badge--pending&quot;&gt;Pending&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bes-card&quot; style=&quot;flex:1;min-inline-size:150px;--bes-action-primary:#5A3DA0;--bes-action-primaryHover:#46307C;--bes-radius-md:14px&quot;&gt;
+      &lt;div style=&quot;font-size:12px;color:var(--bes-text-secondary);margin-bottom:8px&quot;&gt;Youth brand · soft preset&lt;/div&gt;
+      &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--sm&quot; style=&quot;inline-size:100%&quot;&gt;Send money&lt;/button&gt;
+      &lt;div style=&quot;margin-top:8px&quot;&gt;&lt;span class=&quot;bes-badge bes-badge--pending&quot;&gt;Pending&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:13px;color:var(--bes-text-secondary);margin:0&quot;&gt;Note what did NOT change: the pending badge (financial semantics are brand-invariant), the label, the states. Themes are validated against the contrast contract before acceptance.&lt;/p&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>One behavioral core, many brand expressions. A conventional bank, its Islamic window, a youth sub-brand and a white-label fintech run the same components, patterns, state machines and accessibility — differing only in themeable expression.</p>
+<hr />
+<h2>0. Status: tested, with one stated limit</h2>
+<p>This document used to describe a contract nothing had exercised. It now has a worked second brand.</p>
+<p><strong>Sadu</strong> (<code>tokens/themes/sadu.json</code> → <code>assets/themes/sadu.css</code>) is a fictional Islamic-finance neobank built to sit as far from BES core as the contract allows: deep green rather than blue, squared rather than rounded, a serif Latin stack and a Naskh Arabic stack, comfortable density as its standard, slower motion, and a gold-on-green card face. Side by side with core at <code>brand-proof.html</code> — same markup, same <code>bes.css</code>, byte for byte.</p>
+<p><strong>The cost in component CSS was zero lines.</strong> The brand is <strong>111 token values and no rules at all</strong>, 5.2 KB.</p>
+<p>Three gates keep it honest, each verified by reintroducing the failure it exists to catch:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Enforces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/audit-theme.py</code></td>
+<td>A theme is token values only (T1–T6): no CSS properties, no selector outside the brand scope, no <code>@font-face</code>, no token core doesn't define, and the generated CSS must still match its JSON source.</td>
+</tr>
+<tr>
+<td><code>tools/audit-contrast.py</code></td>
+<td>The full derived audit runs <strong>once per brand</strong> — 1,502 element colourings each. A brand that breaks AA fails the build. Sadu was caught doing exactly that in development: a lighter, friendlier green dropped the pressed icon button to 2.11:1.</td>
+</tr>
+<tr>
+<td><code>tools/audit-consistency.py</code> C8</td>
+<td><code>font-size</code> and <code>border-radius</code> literals in <code>bes.css</code> stay at zero. A literal is a hole in the theming contract, not a style choice.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The limit, stated plainly:</strong> spacing is not tokenised. 135 padding, margin and gap literals remain in <code>bes.css</code>, because the space scale is a 4px grid while the component CSS uses 6/10/14/18px throughout. Closing that is a decision about the grid — widen the scale to 2px steps, or restyle onto 4px — not a mechanical substitution, and it would move every component's rhythm. <strong>A brand can currently change colour, type, shape, density and motion. It cannot change spacing rhythm.</strong> The consistency audit holds that number visible and lets it fall, never rise.</p>
+<hr />
+<h2>1. The split</h2>
+<pre><code>BANKING CORE (locked)                      BRAND THEME (per institution)
+──────────────────────                     ────────────────────────────
+Behavior &amp; interaction                     Color values (within contrast contract)
+Financial semantics &amp; state machines       Type stacks (from tested AR+EN pairs)
+Component anatomy &amp; states                 Shape preset (sharp / standard / soft)
+Patterns &amp; journey blueprints              Motion personality (calm / expressive)
+Accessibility guarantees                   Logo, illustration, imagery slots
+Disclosure structures (KFS, consent, CoP)  Iconography accent style (within grid)
+Error taxonomy &amp; content frames            Voice inflection (within content rules)
+Status meanings &amp; pairings                 Dashboard module arrangement (within IA rules)
+</code></pre>
+<p>The test: <strong>a brand change is describable entirely as token values + content-vocabulary configuration + asset slots.</strong> If a brand request requires touching component internals, it's either a core contribution (goes through system governance) or it's rejected.</p>
+<h2>2. Theme anatomy</h2>
+<p>A theme package contains:
+1. <strong>Primitive overrides</strong> — brand palette mapped into the primitive scale slots
+2. <strong>Semantic map</strong> — which primitives feed <code>action.primary</code>, surfaces, etc.
+3. <strong>Type pairing</strong> — Latin + Arabic stacks from the certified pair list + <code>font.display</code>
+4. <strong>Preset selections</strong> — shape, motion personality, density defaults per surface class
+5. <strong>Asset slots</strong> — logo variants (light/dark/monochrome), card art faces, illustration set, empty-state art
+6. <strong>Content configuration</strong> — terminology dimension (conventional/Islamic/dual), voice inflection parameters, institution names/legal footers, support channels
+7. <strong>Compliance variants</strong> — jurisdiction/license-driven content sets (disclosures, regulatory footers)</p>
+<h2>3. Guard rails (what makes theming safe)</h2>
+<ul>
+<li><strong>Contrast contract validation</strong> (doc 01 §6): every themed pairing checked light+dark, LTR+RTL, standard+high-contrast — build-time rejection, not review-time debate.</li>
+<li><strong>Fixed financial semantics:</strong> <code>financial.*</code> and <code>status.*</code> <em>meanings</em> and pairing rules are invariant; a brand may tune the exact hue within the semantic family's perceptual range (e.g., its green), never reassign meaning (no brand-purple "success").</li>
+<li><strong>Focus visibility, touch minima, type minima:</strong> non-overridable floors.</li>
+<li><strong>Disclosure integrity:</strong> KFS, consent screens, CoP, warnings render structurally identically across brands — brand affects their skin, never their content order or prominence rules.</li>
+<li><strong>Pretested presets over free values:</strong> shape/motion/density are chosen from validated sets; arbitrary per-component overrides don't exist in the theme API.</li>
+</ul>
+<h2>4. Multi-brand scenarios supported</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bank + Islamic window</td>
+<td>One theme, terminology dimension = dual; Islamic surfaces switch vocabulary + rate components; optional visual sub-cue (accent) within contract</td>
+</tr>
+<tr>
+<td>Banking group, multiple brands</td>
+<td>Theme per brand over one core; shared component updates propagate to all</td>
+</tr>
+<tr>
+<td>Youth/neobank sub-brand</td>
+<td>Distinct palette/type/motion personality; identical financial behavior</td>
+</tr>
+<tr>
+<td>White-label fintech</td>
+<td>Full theme package + compliance variant per license type</td>
+</tr>
+<tr>
+<td>Co-branded products</td>
+<td>Card art + partner logo slots; partner never enters the trust surfaces (payee verification, consent) except as disclosed data</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Dark scheme per brand</h2>
+<p>Every theme ships light + dark (dark is not optional and not auto-derived — derivation drafts it, designers verify it); financial/status colors re-verified on dark surfaces; brand marks swap to dark-appropriate variants via asset slots.</p>
+<h2>6. Governance</h2>
+<ul>
+<li>Theme submissions run the automated gate (contrast, focus, minima, RTL render) + a design review against the quality bar (calm, precise, trustworthy — no gradient-noise, no decorative dashboards).</li>
+<li>Core changes version semantically; themes declare core-version compatibility; breaking core releases ship migration notes + codemods.</li>
+<li>Brand teams get the <strong>theme sandbox</strong>: the full component gallery rendered in their draft theme, both directions, both schemes, with the validation report inline — self-service iteration before submission.</li>
+</ul>
+<h2>7. The quality bar (restated as acceptance criteria)</h2>
+<p>Precise · calm · trustworthy · modern · accessible · information-rich · systematic. Rejected on sight: gradient-heavy surfaces competing with data, glassmorphism over financial figures, decorative dashboards, arbitrary accent colors on status meanings, animation that delays money tasks, illustration crowding decision screens. The system should feel like a serious financial institution that respects the user's attention — in every brand.</p>
+<div class="pgnav"><a href="localization-rtl.html"><span class="lbl">Previous</span>Localization &amp; RTL</a><a class="next" href="strategy-overview.html"><span class="lbl">Next</span>Phase 01 overview</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

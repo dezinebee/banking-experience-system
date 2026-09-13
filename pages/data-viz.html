@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>26 — Financial Data Visualization System · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html" class="on">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Cross-cutting systems</div>
+<h1>26 — Financial Data Visualization System</h1>
+<p><strong>Banking Experience System (BES)</strong> · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack">
+  <div class="grid2" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:6px">Spending breakdown — August</div>
+      <div class="bes-chart" data-bes-chart='{"type":"donut","data":[{"label":"Groceries","value":2340},{"label":"Dining","value":1240},{"label":"Transport","value":860},{"label":"Utilities","value":1590},{"label":"Other","value":2890}],"opts":{"center":"AED 8.9K","centerSub":"August","label":"Spending by category, August","colLabel":"Category","colValue":"AED"}}'></div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:6px">Balance trend — 6 months</div>
+      <div class="bes-chart" data-bes-chart='{"type":"line","data":[{"label":"Mar","value":21000},{"label":"Apr","value":19400},{"label":"May","value":24100},{"label":"Jun","value":22800},{"label":"Jul","value":26500},{"label":"Aug","value":25000}],"opts":{"label":"Balance trend over six months","colLabel":"Month","colValue":"AED"}}'></div>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--bes-text-secondary);margin:4px 0 0">Every chart ships a "View as table" equivalent (expand under each) — data is never conveyed by color alone.</p>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot;&gt;
+  &lt;div class=&quot;grid2&quot; style=&quot;display:grid;grid-template-columns:1fr 1fr;gap:20px&quot;&gt;
+    &lt;div&gt;
+      &lt;div style=&quot;font-size:13px;font-weight:600;margin-bottom:6px&quot;&gt;Spending breakdown — August&lt;/div&gt;
+      &lt;div class=&quot;bes-chart&quot; data-bes-chart=&#x27;{&quot;type&quot;:&quot;donut&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;Groceries&quot;,&quot;value&quot;:2340},{&quot;label&quot;:&quot;Dining&quot;,&quot;value&quot;:1240},{&quot;label&quot;:&quot;Transport&quot;,&quot;value&quot;:860},{&quot;label&quot;:&quot;Utilities&quot;,&quot;value&quot;:1590},{&quot;label&quot;:&quot;Other&quot;,&quot;value&quot;:2890}],&quot;opts&quot;:{&quot;center&quot;:&quot;AED 8.9K&quot;,&quot;centerSub&quot;:&quot;August&quot;,&quot;label&quot;:&quot;Spending by category, August&quot;,&quot;colLabel&quot;:&quot;Category&quot;,&quot;colValue&quot;:&quot;AED&quot;}}&#x27;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div style=&quot;font-size:13px;font-weight:600;margin-bottom:6px&quot;&gt;Balance trend — 6 months&lt;/div&gt;
+      &lt;div class=&quot;bes-chart&quot; data-bes-chart=&#x27;{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;Mar&quot;,&quot;value&quot;:21000},{&quot;label&quot;:&quot;Apr&quot;,&quot;value&quot;:19400},{&quot;label&quot;:&quot;May&quot;,&quot;value&quot;:24100},{&quot;label&quot;:&quot;Jun&quot;,&quot;value&quot;:22800},{&quot;label&quot;:&quot;Jul&quot;,&quot;value&quot;:26500},{&quot;label&quot;:&quot;Aug&quot;,&quot;value&quot;:25000}],&quot;opts&quot;:{&quot;label&quot;:&quot;Balance trend over six months&quot;,&quot;colLabel&quot;:&quot;Month&quot;,&quot;colValue&quot;:&quot;AED&quot;}}&#x27;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:13px;color:var(--bes-text-secondary);margin:4px 0 0&quot;&gt;Every chart ships a &quot;View as table&quot; equivalent (expand under each) — data is never conveyed by color alone.&lt;/p&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Charts in BES answer financial questions; they are information, not decoration. Every chart must remain understandable without color, and every chart has a text/table equivalent.</p>
+<hr />
+<h2>1. Chart components</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Question it answers</th>
+<th>Form</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Balance Chart</td>
+<td>"How has my balance moved?"</td>
+<td>Line/area, time axis</td>
+</tr>
+<tr>
+<td>Cash-flow Chart</td>
+<td>"What came in vs went out?"</td>
+<td>Paired columns (in/out) per period + net line</td>
+</tr>
+<tr>
+<td>Spending Breakdown</td>
+<td>"Where did it go?"</td>
+<td>Donut (≤6 slices + Other) or horizontal bars (preferred ≥5 categories)</td>
+</tr>
+<tr>
+<td>Category Trend</td>
+<td>"Is dining growing?"</td>
+<td>Small-multiple lines or bars per category</td>
+</tr>
+<tr>
+<td>Budget Progress</td>
+<td>"How much is left?"</td>
+<td>Progress bar + remaining figure</td>
+</tr>
+<tr>
+<td>Goal Progress</td>
+<td>"How close am I?"</td>
+<td>Progress + projection marker (est.)</td>
+</tr>
+<tr>
+<td>Income vs Expenses</td>
+<td>"Am I ahead?"</td>
+<td>Grouped columns + net annotation</td>
+</tr>
+<tr>
+<td>Portfolio Chart</td>
+<td>"How is my portfolio doing?"</td>
+<td>Line with period selector, basis toggle</td>
+</tr>
+<tr>
+<td>Asset Allocation</td>
+<td>"What am I holding?"</td>
+<td>Donut/stacked bar + table legend</td>
+</tr>
+<tr>
+<td>Loan Repayment</td>
+<td>"How does my balance amortize?"</td>
+<td>Stacked area (principal/profit split) + schedule table</td>
+</tr>
+<tr>
+<td>Interest/Profit Breakdown</td>
+<td>"What does this cost over time?"</td>
+<td>Stacked columns per period</td>
+</tr>
+<tr>
+<td>Credit Score Display</td>
+<td>"Where do I stand?"</td>
+<td>Sourced gauge + band label + factors list (real bureau data only)</td>
+</tr>
+<tr>
+<td>Financial Health</td>
+<td>"Am I okay?"</td>
+<td>Composite indicators with plain-language basis (P-49)</td>
+</tr>
+<tr>
+<td>Transaction Heatmap</td>
+<td>"When do I spend?"</td>
+<td>Calendar heat grid (with value labels on focus)</td>
+</tr>
+<tr>
+<td>FX Rate History</td>
+<td>"Is this a good rate?"</td>
+<td>Line + current-rate marker + period high/low</td>
+</tr>
+</tbody>
+</table></div>
+<h2>2. Chart selection rules</h2>
+<ul>
+<li>Time → line/area. Composition → donut (≤6) or bars. Comparison → bars (never pie). Flow → paired columns. Single value vs target → progress.</li>
+<li>Sparklines (in cards/rows) show <em>shape only</em> — no axis implied precision; always paired with the actual current figure.</li>
+<li>3D, gauges-as-decoration, dual-y-axes (except FX pair contexts with explicit labeling) are banned.</li>
+</ul>
+<h2>3. Color &amp; accessibility</h2>
+<ul>
+<li><strong>Categorical palette</strong> (dedicated, ordered for adjacent distinguishability): <code>chart.cat1 #1F52C4</code> · <code>cat2 #0F6974</code> · <code>cat3 #8F5F0E</code> · <code>cat4 #5A3DA0</code> · <code>cat5 #0B7A45</code> · <code>cat6 #A82E1F</code> · <code>cat7 #55617A</code> — plus pattern fills (dots/hatch) engaged automatically in high-contrast mode and print.</li>
+<li>Status colors (success/error) are <strong>not</strong> chart categories; performance charts may use <code>financial.income</code>/<code>financial.negative</code> for gain/loss areas only.</li>
+<li>Every series distinguishable by ≥2 channels (color + marker shape/pattern/direct label). Direct labeling preferred over legends where space allows.</li>
+<li><strong>Text equivalent mandatory:</strong> "View as table" on every chart; screen readers get a summary sentence ("Spending by category, August: Groceries AED 2,340 highest, seven categories, total AED 8,920") + the table.</li>
+<li>Interactive points keyboard-reachable; tooltips on focus; touch targets ≥44px via invisible hit areas.</li>
+</ul>
+<h2>4. Financial data rules</h2>
+<ul>
+<li><strong>Axes honesty:</strong> y-axis starts at zero for amounts; non-zero baselines (rate charts) show a break indicator + baseline label.</li>
+<li>Negative values plotted below a marked zero line, labeled with true minus; never clipped.</li>
+<li>Zero values render (a zero-spend month is data); missing data renders as a labeled gap ("No data") — never interpolated silently.</li>
+<li>Rounding: chart labels may abbreviate (AED 2.3K) but tooltips/tables carry full precision.</li>
+<li>Time periods labeled unambiguously ("Aug 2026", not "08/26"); comparison periods explicit ("vs Jul 2026").</li>
+<li>Projections/estimates: dashed + "estimated" label; never same treatment as actuals.</li>
+<li>Currency: single-currency per chart; multi-currency data converted with the conversion note ("All values in AED, converted at today's rate").</li>
+</ul>
+<h2>5. RTL behavior</h2>
+<ul>
+<li><strong>Time axes stay LTR</strong> (chronology reads left→right universally in charts; flipping time confuses more than it localizes) — documented as the deliberate exception; axis labels localize.</li>
+<li>Bar/column category axes mirror (first category at inline-start); donut rotation order mirrors; legends and labels mirror; numerals per locale policy.</li>
+<li>Heatmap weekday order follows locale week start.</li>
+</ul>
+<h2>6. Empty, loading, error</h2>
+<p>Loading: skeleton chart shape (no fake data motion). Empty: explanation + enablement ("Your spending breakdown appears after your first month of transactions"). Error: inline retry, cached-with-timestamp where available. Insufficient data (&lt;3 points for a trend): show the table instead of a misleading line — the component downgrades itself.</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Bar chart & budget progress</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:520px">
+  <div class="bes-chart" data-bes-chart='{"type":"bar","data":[{"label":"Apr","value":18500},{"label":"May","value":18500},{"label":"Jun","value":21300},{"label":"Jul","value":18500},{"label":"Aug","value":18500}],"opts":{"label":"Income by month in dirhams","colLabel":"Month","colValue":"AED"}}'></div>
+  <div class="bes-limit">
+    <div style="font-size:13.5px;font-weight:600;margin-bottom:6px">Dining budget — August</div>
+    <div class="bes-progress bes-progress--warn"><div class="fill" style="inline-size:84%"></div></div>
+    <div class="figures"><span class="used"><bdi class="bes-amount">AED 1,240.00</bdi> spent</span><span><bdi class="bes-amount">AED 240.00</bdi> left</span></div>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:520px&quot;&gt;
+  &lt;div class=&quot;bes-chart&quot; data-bes-chart=&#x27;{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;Apr&quot;,&quot;value&quot;:18500},{&quot;label&quot;:&quot;May&quot;,&quot;value&quot;:18500},{&quot;label&quot;:&quot;Jun&quot;,&quot;value&quot;:21300},{&quot;label&quot;:&quot;Jul&quot;,&quot;value&quot;:18500},{&quot;label&quot;:&quot;Aug&quot;,&quot;value&quot;:18500}],&quot;opts&quot;:{&quot;label&quot;:&quot;Income by month in dirhams&quot;,&quot;colLabel&quot;:&quot;Month&quot;,&quot;colValue&quot;:&quot;AED&quot;}}&#x27;&gt;&lt;/div&gt;
+  &lt;div class=&quot;bes-limit&quot;&gt;
+    &lt;div style=&quot;font-size:13.5px;font-weight:600;margin-bottom:6px&quot;&gt;Dining budget — August&lt;/div&gt;
+    &lt;div class=&quot;bes-progress bes-progress--warn&quot;&gt;&lt;div class=&quot;fill&quot; style=&quot;inline-size:84%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;figures&quot;&gt;&lt;span class=&quot;used&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 1,240.00&lt;/bdi&gt; spent&lt;/span&gt;&lt;span&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 240.00&lt;/bdi&gt; left&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="patterns-safety.html"><span class="lbl">Previous</span>Fraud, errors &amp; recovery</a><a class="next" href="content-errors.html"><span class="lbl">Next</span>Content &amp; errors</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

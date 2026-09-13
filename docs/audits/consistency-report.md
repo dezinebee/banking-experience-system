@@ -1,0 +1,6 @@
+# Consistency Audit
+
+**Result:** ✅ PASS · 2 informational notes
+
+- ℹ️ C2 98 tokens defined but unreferenced (ok if reserved): --bes-amber-100, --bes-amber-200, --bes-amber-400, --bes-amber-500, --bes-amber-700, --bes-amber-800, --bes-amber-900, --bes-blue-100, --bes-blue-400, --bes-consent-expired, --bes-consent-granted, --bes-consent-pending …
+- ℹ️ C6 22 classes defined but not used in site/demos (ok if library-only): .bes-badge--authentication, .bes-badge--blocked, .bes-badge--cancelled, .bes-badge--disputed, .bes-badge--draft, .bes-badge--failed, .bes-badge--processing, .bes-badge--review, .bes-badge--unknown, .bes-chart-legend, .bes-journey, .bes-notif--fraud, .bes-print-receipt, .bes-progress--full, .bes-result--blocked …

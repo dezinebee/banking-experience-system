@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>23 — Patterns: Review, Confirmation &amp; Trust · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html" class="on">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Patterns</div>
+<h1>23 — Patterns: Review, Confirmation &amp; Trust</h1>
+<p><strong>Banking Experience System (BES)</strong> · Patterns · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="bes-card" style="max-width:440px">
+  <h3 style="margin:0 0 14px;font-size:18px;font-weight:600">Check and confirm</h3>
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">To</span><span class="v">Priya Kumar · <bdi class="bes-amount">ICICI ••4102</bdi> <a href="#" style="font-size:13px">Change</a></span></div>
+    <div class="bes-row"><span class="k">You send</span><span class="v"><bdi class="bes-amount">AED 10,000.00</bdi></span></div>
+    <div class="sep"></div>
+    <div class="bes-row"><span class="k">All fees + VAT</span><span class="v"><bdi class="bes-amount">AED 36.75</bdi></span></div>
+  </div>
+  <div class="bes-total"><span class="k">Total you pay</span><span class="v"><bdi class="bes-amount">AED 10,036.75</bdi></span></div>
+  <p class="bes-consequence">We'll send AED 10,036.75 from your current account now. International transfers can't be cancelled once sent.</p>
+  <button class="bes-btn bes-btn--primary bes-btn--lg">Send <bdi class="bes-amount">AED 10,036.75</bdi></button>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:440px&quot;&gt;
+  &lt;h3 style=&quot;margin:0 0 14px;font-size:18px;font-weight:600&quot;&gt;Check and confirm&lt;/h3&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;To&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;Priya Kumar · &lt;bdi class=&quot;bes-amount&quot;&gt;ICICI ••4102&lt;/bdi&gt; &lt;a href=&quot;#&quot; style=&quot;font-size:13px&quot;&gt;Change&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;You send&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 10,000.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;sep&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;All fees + VAT&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 36.75&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-total&quot;&gt;&lt;span class=&quot;k&quot;&gt;Total you pay&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 10,036.75&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;p class=&quot;bes-consequence&quot;&gt;We&#x27;ll send AED 10,036.75 from your current account now. International transfers can&#x27;t be cancelled once sent.&lt;/p&gt;
+  &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--lg&quot;&gt;Send &lt;bdi class=&quot;bes-amount&quot;&gt;AED 10,036.75&lt;/bdi&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>The patterns that implement "review → correct → confirm" before anything irreversible, and the trust contract (identity · intent · amount · destination · cost · timing · consequence · recovery) at every high-impact moment.</p>
+<hr />
+<h2>P-20 · Check answers (universal review)</h2>
+<p><strong>Use:</strong> before any submission with consequence — applications, profile changes, payments (specialized as P-21).
+<strong>Structure:</strong> summary list of everything entered (label · value · Change link per row, returning to that step with state preserved) → consequence statement → verb-labeled submit ("Submit application", "Save changes").
+<strong>Rules:</strong> optional skipped items show "Not provided" (still changeable); nothing the user entered is hidden from review; returning users see prior answers prefilled.
+<strong>A11y:</strong> definition list; Change links carry hidden context ("Change monthly salary"); focus lands on the heading.</p>
+<h2>P-21 · Confirm a payment (the money review)</h2>
+<p><strong>Use:</strong> every money movement. <strong>Structure:</strong> Transfer Review contract (doc 16): Payment Summary + Change links → Fee Breakdown (expanded first view) + Total Row → FX block with rate status → warning slot (risk-tiered) → consequence statement (reversibility honesty: "Instant transfers can't be cancelled once sent") → <strong>amount-bearing verb CTA</strong> ("Send AED 10,036.75").
+<strong>Never:</strong> fees introduced here for the first time (they appeared at the fee stage); a bare "Confirm" button; modal-based confirmation for significant amounts.
+REG: fee disclosure; payee confirmation.</p>
+<h2>P-22 · Verify a payee (name check moment)</h2>
+<p><strong>Use:</strong> instant-rail transfers, new payees, edited payees. <strong>Structure:</strong> Payee Verification component (doc 16) with the four result states; no-match proceed escalates P-21's warning tier and is logged to the risk context.
+REG: confirmation-of-payee mandate.</p>
+<h2>P-23 · Step-up authentication</h2>
+<p><strong>Use:</strong> risk-proportionate identity confirmation: money movement above thresholds, payee/limit/control changes, credential and detail reveals, consent grants, signing.
+<strong>Structure:</strong> Auth Prompt set (doc 20) with <strong>context always displayed</strong> (what is being authorized, amount+payee for payments) · fallback ladder · lockout-with-recovery.
+<strong>Rules:</strong> step-up protects <em>increases</em> of risk; safety actions (freeze, revoke, sign-out-device) never require it.</p>
+<h2>P-24 · Signing ceremony (contracts)</h2>
+<p><strong>Use:</strong> legally significant agreements. <strong>Structure:</strong> doc 20 Signing Ceremony: full in-place document → key-terms recap → national-identity signature handoff → signed receipt + document delivery → <strong>cooling-off notice with live cancellation entry (5 business days)</strong>.
+REG: consumer protection cooling-off; digital-signature equivalence.</p>
+<h2>P-25 · Cooling-off &amp; cancellation window</h2>
+<p><strong>Use:</strong> post-contract for applicable products. <strong>Structure:</strong> post-signing confirmation states the right; the product surface shows a "You can still cancel until 5 Sep" entry for the window; cancellation flow = consequence-honest confirm (refund treatment stated) → confirmation.
+<strong>Waiver variant:</strong> explicit, friction-full, never pre-selected; warning of immediate commitment. REG-anchored.</p>
+<h2>P-26 · Explain fees ("Why am I being charged?")</h2>
+<p><strong>Use:</strong> every fee line's info affordance; fee-schedule surfaces. <strong>Structure:</strong> popover/sheet: this fee in plain language ("The transfer fee covers processing through the international payment network") · how it was calculated where formulaic · link to the full schedule of charges (accessible PDF) · dispute path for believed-wrong charges.</p>
+<h2>P-27 · Explain an Islamic product</h2>
+<p><strong>Use:</strong> every Islamic product surface. <strong>Structure:</strong> Shari'ah Structure Explainer (doc 18) + terminology-dimension enforcement + certification mark; comparison surfaces (conventional vs Islamic variants of a product) present both fairly with structure-appropriate rate components — never one framed as the "normal" one.</p>
+<h2>P-28 · Present a Key Facts summary</h2>
+<p><strong>Use:</strong> every product application entry (financing, cards, deposits, investments-adjacent). <strong>Structure:</strong> Product Summary component (doc 18) before application start; re-presented at offer; embedded in the signing recap. REG: KFS mandate.</p>
+<h2>P-29 · Notify changes to terms</h2>
+<p><strong>Use:</strong> fee/T&amp;C changes. <strong>Structure:</strong> 60-day advance notice (notification + banner + document): plain-language "what's changing" summary (old → new comparison rows for fees) · effective date · what-you-can-do (including exit rights) · full revised terms link. Notice persists until acknowledged; acknowledgment ≠ consent (it records awareness). REG-anchored.</p>
+<h2>P-30 · Handoff to an external service</h2>
+<p><strong>Use:</strong> identity verification, third-party consent journeys, wallet provisioning, any redirect. <strong>Structure:</strong> Identity Handoff pattern (doc 20): why-interstitial → external ceremony → return handling (success/decline/timeout, state preserved) → confirmation in-context.
+<strong>Trust rule:</strong> the user always sees who they're being sent to (named + logo) and what comes back.</p>
+<h2>P-31 · Receipt &amp; proof</h2>
+<p><strong>Use:</strong> after every completed money movement; on demand from history. <strong>Structure:</strong> Receipt component (doc 15): immutable snapshot, accessible PDF, share-sheet summary, verification reference.
+<strong>Rule:</strong> proof is a first-class user job — the receipt path is never more than one tap from a completed transaction.</p>
+<h2>P-32 · Approval workflow (maker–checker)</h2>
+<p><strong>Use:</strong> SME/corporate payment authorization; dual-control retail scenarios (joint accounts opt-in).
+<strong>Structure:</strong>
+- <strong>Maker side:</strong> create → standard review (P-21) → "Submit for approval" (not "Send") → pending-approval object with audit trail.
+- <strong>Checker side:</strong> approval queue (Table/cards: payment summary + maker + created time + policy flags) → approval detail = <strong>the same Payment Summary + Fee Breakdown the maker saw</strong> (no information asymmetry) → risk flags (new payee, over-threshold, duplicate-suspect) → [Approve] (step-up auth) / [Reject with reason] (structured + free text, returned to maker) · batch approval only for same-class low-risk items with per-item visibility, never blind bulk.
+- <strong>States:</strong> awaiting approval · approved-processing · rejected (reason to maker) · expired (approval SLA passed) · escalated (threshold chains: "Requires Finance Director above AED 100,000").
+- <strong>Audit:</strong> every action timestamped + attributed; the trail is visible to both roles.</p>
+<p><strong>Example:</strong></p>
+<pre><code>Payment for approval
+AED 250,000.00 to Gulf Star Trading LLC
+Created by Ahmed Al Mansoori · today 11:20
+Requires: Finance Director approval (amounts above AED 100,000)
+⚠ New beneficiary — added 2 days ago
+[Review details]   [Approve]   [Reject]
+</code></pre>
+<h2>P-33 · Confirm a destructive action</h2>
+<p><strong>Use:</strong> deletions, closures, revocations. <strong>Structure:</strong> confirm dialog naming object + consequence; buttons echo outcomes ("Remove beneficiary" / "Keep beneficiary"); typed-confirmation reserved for catastrophic irreversibles (account closure: type the account nickname) — used sparingly so it retains force.
+<strong>Safety-action exception:</strong> freeze/revoke/sign-out execute immediately (one tap), offering undo where reversible instead of pre-confirmation.</p>
+<div class="pgnav"><a href="patterns-input.html"><span class="lbl">Previous</span>Asking users for…</a><a class="next" href="patterns-status.html"><span class="lbl">Next</span>Status &amp; disclosure</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

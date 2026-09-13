@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 — Design Principles · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html" class="on">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Strategy</div>
+<h1>02 — Design Principles</h1>
+<p><strong>Banking Experience System</strong> · Phase 01 · v2.0.0-draft · August 2026</p>
+<p>Ten principles, each with a decision test and the system mechanism that enforces it. Principles that cannot be enforced by the system itself (tokens, components, content rules, review checklists) are aspirations, not principles — so every principle names its enforcement.</p>
+<hr />
+<h2>01 — Clarity over cleverness</h2>
+<p>Financial information should be immediately understandable. Amounts, states and consequences are stated in plain language, in the user's language.</p>
+<ul>
+<li><strong>Test:</strong> Can a first-time user, in Arabic or English, state what will happen after tapping the primary action?</li>
+<li><strong>Enforced by:</strong> Content design system (doc 08 §6); verb-labeled confirmation buttons ("Send AED 5,000", not "Confirm"); readability standards; Shari'ah concept explainers on Islamic products.</li>
+</ul>
+<h2>02 — Transparency before conversion</h2>
+<p>Never optimize conversion at the expense of financial clarity. All fees, FX markups and totals appear before the review step — never revealed at the final screen. This is also a regulatory posture: CBUAE Consumer Protection Standards require all-fees-inclusive APR and prominent disclosure.</p>
+<ul>
+<li><strong>Test:</strong> Could the user reconstruct the total cost of the product/transaction from screens seen <em>before</em> the confirm step?</li>
+<li><strong>Enforced by:</strong> Fee-disclosure pattern is a required slot in the money-movement framework; KFS component; FX pattern distinguishes estimated vs guaranteed rate, fee vs markup.</li>
+</ul>
+<h2>03 — Prevent mistakes before explaining them</h2>
+<p>Good banking UX prevents errors rather than displaying error messages. Adopted from GOV.UK doctrine: accept all reasonable input formats, strip stray characters (spaces in IBANs, hyphens in phone numbers), preserve input on error, validate eligibility by routing — never by field validation.</p>
+<ul>
+<li><strong>Test:</strong> For each error message in a flow, could the design have made the error impossible or irrelevant instead?</li>
+<li><strong>Enforced by:</strong> Input components with format-forgiveness built in; Confirmation of Payee pattern (mandated by CBUAE Notice 2025/3057); check-answers pattern before submission; error summary + focus management as stock behavior.</li>
+</ul>
+<h2>04 — Money deserves hierarchy</h2>
+<p>Amounts, fees, balances and consequences get clear visual priority. The Money component family (tabular numerals, consistent decimal/sign/currency placement, size scale) is the most-used primitive in the system and is never approximated with a plain text style.</p>
+<ul>
+<li><strong>Test:</strong> Is the most consequential number on the screen the most visually prominent, and is its status (estimated/final/pending) explicit?</li>
+<li><strong>Enforced by:</strong> <code>financial.amount</code> type styles; Money component required wherever currency renders; lint rule against raw currency strings.</li>
+</ul>
+<h2>05 — Security should build confidence</h2>
+<p>Security UX reassures while communicating genuine risk. Calm, specific, actionable — never vague dread. Fraud interruptions explain what was noticed and give a safe next step; scam warnings are tiered (info → caution → hard stop) so the critical tier retains force.</p>
+<ul>
+<li><strong>Test:</strong> After a security interruption, does the user know (a) what happened, (b) whether their money is safe, (c) exactly what to do next?</li>
+<li><strong>Enforced by:</strong> Fraud pattern library with defined severity, messaging, CTA, escalation and recovery per scenario; content rules banning alarmist copy; "we will never ask for your password" verified-channel messaging.</li>
+</ul>
+<h2>06 — Accessibility is financial inclusion</h2>
+<p>Not an add-on. In the UAE this is literal inclusion: People of Determination policy, elderly users, ~1.7M under-banked blue-collar workers, and low-digital-literacy users. WCAG 2.2 AA is the floor; contrast ratios live inside token definitions; Arabic screen-reader behavior and bidi text (amounts, IBANs inside Arabic sentences) are first-class test cases.</p>
+<ul>
+<li><strong>Test:</strong> Does the component pass its Web/Mobile/PDF accessibility checklist in <em>both</em> directions, and does the flow survive 200% text scaling?</li>
+<li><strong>Enforced by:</strong> Per-platform requirement checklists (VGAR model); tokens carrying contrast contracts (Carbon model); accessible-authentication patterns (biometric/passkey with non-SMS fallbacks); reduced-motion alternatives mandatory.</li>
+</ul>
+<h2>07 — Localization is architecture</h2>
+<p>Arabic and RTL are designed from the beginning, not translated at the end. Direction is a token dimension; layouts use logical properties (start/end, never left/right); Arabic gets its own type metrics (+1–2px optical size, taller line-height, no letter-spacing, no caps-based emphasis); Eastern vs Western Arabic numerals is a declared policy, never mixed; every component documents its own RTL behavior (Spectrum model).</p>
+<ul>
+<li><strong>Test:</strong> Was the Arabic layout reviewed as a design, not a translation? Do mixed-direction strings (Latin IBAN in Arabic sentence) render correctly?</li>
+<li><strong>Enforced by:</strong> RTL section required in every component doc; bilingual terminology glossary; bidi test fixtures in the component library.</li>
+</ul>
+<h2>08 — Components encode behavior</h2>
+<p>A component is not a visual object; it carries interaction, states, accessibility, content rules and financial semantics. A Currency Input knows about precision and locale; a Transaction Item knows the full state vocabulary; a Consent Card knows expiry and revocation.</p>
+<ul>
+<li><strong>Test:</strong> If the component were re-skinned beyond recognition, would its financial behavior survive intact?</li>
+<li><strong>Enforced by:</strong> Core-vs-brand separation (doc 07 §5); behavior lives in core and cannot be overridden by themes; component tokens never leak outside their component.</li>
+</ul>
+<h2>09 — Design for uncertainty</h2>
+<p>Financial systems have pending, delayed, and unknown states. The UNKNOWN state is a designed state: never tell a user a transaction failed when the system doesn't know. "We're checking your transfer status" with a defined resolution path is stock behavior, not an edge case. Instant rails (Aani) make success feel instant — which makes honest handling of the exceptions matter more, not less.</p>
+<ul>
+<li><strong>Test:</strong> For every async operation: what does the user see at 2 seconds, 30 seconds, 5 minutes, and next session? Is money-state ("no money has left your account" / "your money is safe, we're confirming") always stated?</li>
+<li><strong>Enforced by:</strong> Transaction state machine (doc 07 §4) with mandatory UI/content per state; error taxonomy including UNKNOWN_TRANSACTION_STATE; payment-under-review patterns with tipping-off-safe copy.</li>
+</ul>
+<h2>10 — Consistency without rigidity</h2>
+<p>Banks express identity without breaking usability. Theming is guard-railed presets (Visa model): pretested color themes, shape scale, density modes, type stacks — not free overrides. A conventional brand, an Islamic brand and a youth brand share every behavior.</p>
+<ul>
+<li><strong>Test:</strong> Can the brand change be described entirely in token values and content-vocabulary choices, with zero component forks?</li>
+<li><strong>Enforced by:</strong> Layered token model (primitive → semantic → component); theme contract with contrast validation; terminology layer for conventional/Islamic vocabulary switching.</li>
+</ul>
+<hr />
+<h2>Using the principles</h2>
+<ul>
+<li>In critique: name the principle a design upholds or violates; the decision tests are the critique questions.</li>
+<li>In prioritization: principles 02, 03, 06, 07 and 09 are non-negotiable (regulatory or inclusion grounding); 01, 04, 05, 08, 10 are quality bars where trade-offs are argued explicitly.</li>
+<li>In contribution review: a new component/pattern PR must state how it satisfies principles 06, 07 and 08 before review begins.</li>
+</ul>
+<div class="pgnav"><a href="strategy-vision.html"><span class="lbl">Previous</span>Vision</a><a class="next" href="strategy-users.html"><span class="lbl">Next</span>Target users</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

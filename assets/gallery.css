@@ -1,0 +1,25 @@
+/* BES component gallery chrome (extends site.css) */
+.g-wrap{max-width:1060px;margin:0 auto;padding:0 24px 96px}
+.g-head{padding:40px 0 8px}
+.g-head h1{font-size:30px;font-weight:700;letter-spacing:-.3px;margin-bottom:6px}
+.g-head p{color:var(--ink2);max-width:68ch}
+.g-controls{position:sticky;top:56px;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:18px;flex-wrap:wrap;align-items:center;padding:12px 0;margin-bottom:8px}
+.g-controls .grp{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink3);font-weight:600}
+.g-controls .set{display:inline-flex;background:var(--paper3);border-radius:9px;padding:2px;gap:2px}
+.g-controls .set button{font:inherit;font-size:12.5px;font-weight:600;border:none;background:transparent;color:var(--ink2);border-radius:7px;padding:5px 11px;cursor:pointer}
+.g-controls .set button[aria-pressed="true"]{background:var(--paper);color:var(--ink);box-shadow:0 1px 2px rgba(22,28,46,.1)}
+.g-subnav{display:flex;gap:4px;flex-wrap:wrap;padding:14px 0;border-bottom:1px solid var(--line)}
+.g-subnav a{font-size:13.5px;font-weight:500;color:var(--ink2);padding:6px 12px;border-radius:999px;text-decoration:none}
+.g-subnav a:hover{background:var(--paper2);color:var(--ink)}
+.g-subnav a.on{background:var(--paper3);color:var(--ink);font-weight:600}
+.ex{margin-top:44px}
+.ex>h2{font-size:19px;font-weight:600;letter-spacing:-.2px;margin-bottom:4px}
+.ex>.note{font-size:14px;color:var(--ink2);max-width:68ch;margin-bottom:14px}
+.ex .demo{background:var(--paper2);border:1px solid var(--line);border-radius:12px 12px 0 0;padding:28px;overflow-x:auto}
+.ex details{border:1px solid var(--line);border-top:none;border-radius:0 0 12px 12px}
+.ex summary{font-size:12.5px;font-weight:600;color:var(--ink2);padding:9px 16px;cursor:pointer;user-select:none;letter-spacing:.06em;text-transform:uppercase}
+.ex summary:hover{color:var(--ink)}
+.ex pre{margin:0;background:var(--code-bg);padding:16px 18px;overflow-x:auto;font-size:12.5px;line-height:1.55;border-top:1px solid var(--line)}
+.ex pre code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;background:none;padding:0}
+.demo-stack{display:flex;flex-direction:column;gap:16px;max-width:480px}
+.demo-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}

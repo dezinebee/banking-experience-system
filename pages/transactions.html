@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>15 — Financial Components: Transactions Family · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html" class="on">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Financial components</div>
+<h1>15 — Financial Components: Transactions Family</h1>
+<p><strong>Banking Experience System (BES)</strong> · Financial Components · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="bes-list" style="max-width:560px">
+  <div class="bes-list-head">Pending</div>
+  <div class="bes-item">
+    <span class="main"><span class="t">Priya Kumar</span><br><span class="s">Transfer · AED → INR</span></span>
+    <span class="trail"><bdi class="bes-amount bes-amount--sm">−AED 10,036.75</bdi><span class="bes-badge bes-badge--pending">Pending</span></span>
+  </div>
+  <div class="bes-list-head">Today</div>
+  <div class="bes-item">
+    <span class="main"><span class="t">Carrefour</span><br><span class="s">Groceries · Card ••8834 · 19:42</span></span>
+    <span class="trail"><bdi class="bes-amount bes-amount--sm">−AED 89.50</bdi></span>
+  </div>
+  <div class="bes-item">
+    <span class="main"><span class="t">Salary — Al Noor Trading LLC</span><br><span class="s">Incoming transfer · 09:00</span></span>
+    <span class="trail"><bdi class="bes-amount bes-amount--sm bes-amount--credit">+AED 18,500.00</bdi></span>
+  </div>
+  <div class="bes-item">
+    <span class="main"><span class="t">Noon.com</span><br><span class="s"><bdi class="bes-amount bes-amount--struck">AED 320.00</bdi> · Declined — over daily limit</span></span>
+    <span class="trail"><span class="bes-badge bes-badge--error">Declined</span></span>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-list&quot; style=&quot;max-width:560px&quot;&gt;
+  &lt;div class=&quot;bes-list-head&quot;&gt;Pending&lt;/div&gt;
+  &lt;div class=&quot;bes-item&quot;&gt;
+    &lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Priya Kumar&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Transfer · AED → INR&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;trail&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--sm&quot;&gt;−AED 10,036.75&lt;/bdi&gt;&lt;span class=&quot;bes-badge bes-badge--pending&quot;&gt;Pending&lt;/span&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-list-head&quot;&gt;Today&lt;/div&gt;
+  &lt;div class=&quot;bes-item&quot;&gt;
+    &lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Carrefour&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Groceries · Card ••8834 · 19:42&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;trail&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--sm&quot;&gt;−AED 89.50&lt;/bdi&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-item&quot;&gt;
+    &lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Salary — Al Noor Trading LLC&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Incoming transfer · 09:00&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;trail&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--sm bes-amount--credit&quot;&gt;+AED 18,500.00&lt;/bdi&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-item&quot;&gt;
+    &lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Noon.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--struck&quot;&gt;AED 320.00&lt;/bdi&gt; · Declined — over daily limit&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;trail&quot;&gt;&lt;span class=&quot;bes-badge bes-badge--error&quot;&gt;Declined&lt;/span&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Components: Transaction Item · Transaction List · Transaction Table · Transaction Detail · Transaction Status · Transaction Timeline · Receipt · Search &amp; Filters · Statement Row.</p>
+<p>State vocabulary and money-statements are normative from doc 07 §4.</p>
+<hr />
+<h2>Transaction Item</h2>
+<p><strong>Purpose:</strong> one transaction in a list — the most-rendered financial component in any banking product.</p>
+<p><strong>Anatomy:</strong> leading: merchant/counterparty logo or category icon (fallback: initial avatar) · primary: counterparty/merchant display name (cleaned, not raw acquirer strings — "Carrefour MOE", not "CARREFOUR4901 DXB AE") · secondary: category + time (or account context in multi-account lists) · trailing: Amount (<code>sm</code>, signed) + Status Badge when non-settled · optional third line: note/reference.</p>
+<p><strong>Variants:</strong> card transaction (shows card ••suffix) · transfer (shows direction + counterparty bank) · remittance (corridor flag + delivery status) · recurring marker (↻) · split/shared marker · declined (struck amount + reason class).</p>
+<p><strong>States (rendering the machine):</strong> settled (neutral, no badge — settled is the default and stays quiet) · pending (badge + clock) · processing · failed/declined (struck amount, <code>status.error</code> label, <strong>money statement on the detail</strong>) · blocked/under-review (generic-safe label "Checking this payment") · refunded (link chip to original) · reversed · disputed (badge + dispute stage).</p>
+<p><strong>Usage:</strong> grouped by day with sticky date headers ("Today", "Yesterday", "28 August"); running daily totals optional per surface. Tap → Transaction Detail. Swipe actions (mobile): receipt, note — never dispute/report via swipe alone.</p>
+<p><strong>A11y:</strong> one summary name per row: "Carrefour, groceries, yesterday 19:42, minus 89 dirhams 50 fils, settled"; badges included; logo decorative.</p>
+<p><strong>RTL:</strong> leading/trailing swap; amount stays LTR end-aligned; cleaned merchant names may be bilingual — display per UI language with the counterparty's registered name on detail.</p>
+<hr />
+<h2>Transaction List</h2>
+<p><strong>Purpose:</strong> the scrollable history surface (mobile default).</p>
+<p><strong>Anatomy:</strong> search trigger · filter chips row (Date · Type · Amount range · Card/Account · Status) · grouped Transaction Items · "Load more" (explicit, no infinite auto-scroll) · export action.</p>
+<p><strong>States:</strong> loading (skeleton rows) · incremental loading · filtered (active chips + result count + clear-all) · empty variants (first-use / filtered-empty / period-empty: "No transactions in July") · offline (cached + timestamp banner) · partial (some rails degraded: "Card transactions may be delayed").</p>
+<p><strong>Financial:</strong> pending transactions float in a distinct "Pending" section above settled history (they re-sort into date order on settlement); search matches amount, merchant, note, reference, in Arabic and Latin.</p>
+<hr />
+<h2>Transaction Table (desktop / SME / corporate)</h2>
+<p><strong>Purpose:</strong> dense operational view.</p>
+<p><strong>Anatomy:</strong> Data Table specialization — columns: date+time · counterparty · reference · category/type · debit · credit · balance-after (optional, statement mode) · status · row menu. Numeric columns end-aligned tnum; debit/credit split <em>or</em> signed single column (per surface convention, never mixed).</p>
+<p><strong>States:</strong> table states (doc 11) + bulk selection with money-aware summary bar ("14 transactions — total −AED 23,410.00") · reconciliation mode (SME: matched/unmatched markers).</p>
+<p><strong>Financial:</strong> default sort newest-first; export respects filters and states the scope; column set configurable and persistent per user.</p>
+<hr />
+<h2>Transaction Detail</h2>
+<p><strong>Purpose:</strong> the full record — the screen users screenshot for proof, check when worried, and start disputes from.</p>
+<p><strong>Anatomy (ordered):</strong>
+1. Header: counterparty (logo + name) · Amount (<code>lg</code>, signed) · Status Badge
+2. <strong>Money statement line</strong> for any non-settled state ("No money has left your account")
+3. Timeline (see below) for multi-stage transactions
+4. Facts block (label/value rows): date &amp; time · account/card used · category (editable) · reference number (copyable) · FX facts where applicable (original amount, rate, fees — full Fee Breakdown reproduced, exactly as at authorization) · counterparty details (IBAN masked middle)
+5. Note field (user memo)
+6. Actions: Download receipt (PDF) · Share · Repeat/Send again · Report a problem → dispute flow · Refund status link where applicable</p>
+<p><strong>States:</strong> per machine — the detail is the canonical surface where every state explains itself fully.</p>
+<p><strong>A11y:</strong> facts as definition list; headline is a proper heading; actions in a labeled group.</p>
+<p><strong>RTL:</strong> label/value rows mirror (labels inline-start); values that are codes/IBANs/amounts stay LTR runs.</p>
+<hr />
+<h2>Transaction Status</h2>
+<p><strong>Purpose:</strong> the state, rendered consistently (badge + optional line).</p>
+<p>Uses the canonical vocabulary only: Draft · In review · Awaiting authentication · Processing · Pending · Completed · Failed · Checking status (UNKNOWN) · Additional checks (BLOCKED) · Reversed · Refunded · Disputed · Cancelled. Each maps to <code>financial.*</code> colors + shape-coded icons. Localized pairs are fixed in the glossary (doc 27) — one Arabic term per state, everywhere.</p>
+<hr />
+<h2>Transaction Timeline</h2>
+<p><strong>Purpose:</strong> multi-stage progress for transfers/remittances/disputes.</p>
+<p><strong>Anatomy:</strong> vertical steps: done (check + timestamp) · current (pulse + expected time: "Processing — usually within 1 hour") · upcoming (grey) · terminal. Failure/hold renders the stage where it happened with its explanation and recovery inline.</p>
+<p><strong>Example (remittance):</strong></p>
+<pre><code>✓ Sent from your account          14:32
+✓ Converted AED → INR             14:32
+● With recipient bank             expected by 15:30
+○ Delivered to Priya Kumar
+</code></pre>
+<p><strong>States:</strong> advancing · stalled (current stage exceeds expectation → honest note + notify-me) · unknown (dedicated stage copy: "We're confirming this stage with the partner bank — your money is safe") · complete.</p>
+<p><strong>A11y:</strong> ordered list semantics; current stage announced with expectation.</p>
+<p><strong>RTL:</strong> timeline rail at inline-start; checkmarks unmirrored.</p>
+<hr />
+<h2>Receipt</h2>
+<p><strong>Purpose:</strong> shareable, durable proof — a first-class artifact (remittance proof is a real household job).</p>
+<p><strong>Anatomy:</strong> issuer identity (bank name + logo slot) · "Payment receipt" title · status (completed only — pending payments export a "payment instruction" doc, clearly different) · amount block (full precision) · parties (sender/recipient with masked identifiers) · facts (date, reference, rate &amp; fees for FX) · verification element (reference + QR against issuer verification endpoint) · regulatory footer slot.</p>
+<p><strong>Formats:</strong> in-app view · PDF (accessible: tagged, selectable text, logical reading order — a screenshot is not a receipt) · share-sheet text summary.</p>
+<p><strong>Rules:</strong> receipts are immutable snapshots — they render the fees <em>as charged</em>, not the current schedule; bilingual layout (AR/EN dual-column or per-preference single language, institution-configurable).</p>
+<hr />
+<h2>Search &amp; Filters (transactions)</h2>
+<p><strong>Anatomy:</strong> Search (doc 09) + filter sheet/panel: date presets + custom range · type checkboxes · amount range (Currency Inputs) · account/card scope · status. Applied filters render as removable chips with a stated result count.</p>
+<p><strong>Rule:</strong> filters are additive-transparent — the user can always see <em>why</em> the list looks the way it does.</p>
+<hr />
+<h2>Statement Row / Statement Access</h2>
+<p><strong>Anatomy:</strong> period label ("July 2026") · format actions (PDF · CSV/Excel) · generated-on-demand states (generating → ready → download) · older-statement request path where archives require retrieval.</p>
+<p><strong>Financial:</strong> statements are the audit-grade export: balance-after per line, official formatting, accessible PDF. The e-statement consent state (paper vs digital) surfaces here with its own toggle + confirmation.</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Transaction table — sortable, treasury density</h2><div class="demo bes">
+<div class="bes-table-wrap">
+  <table class="bes-table" data-bes-sortable>
+    <thead><tr><th data-sort="text">Date</th><th>Counterparty</th><th>Reference</th><th class="num" data-sort="num">Debit</th><th class="num" data-sort="num">Credit</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>30 Aug</td><td>Gulf Star Trading LLC</td><td><bdi class="bes-amount">INV-2026-0841</bdi></td><td class="num">250,000.00</td><td class="num">—</td><td><span class="bes-badge bes-badge--warning">Awaiting approval</span></td></tr>
+      <tr><td>29 Aug</td><td>DEWA</td><td><bdi class="bes-amount">CON-99231</bdi></td><td class="num">843.50</td><td class="num">—</td><td><span class="bes-badge bes-badge--success">Completed</span></td></tr>
+      <tr><td>28 Aug</td><td>Falcon Media FZ</td><td><bdi class="bes-amount">RCP-1187</bdi></td><td class="num">—</td><td class="num">42,000.00</td><td><span class="bes-badge bes-badge--success">Completed</span></td></tr>
+    </tbody>
+  </table>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-table-wrap&quot;&gt;
+  &lt;table class=&quot;bes-table&quot; data-bes-sortable&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th data-sort=&quot;text&quot;&gt;Date&lt;/th&gt;&lt;th&gt;Counterparty&lt;/th&gt;&lt;th&gt;Reference&lt;/th&gt;&lt;th class=&quot;num&quot; data-sort=&quot;num&quot;&gt;Debit&lt;/th&gt;&lt;th class=&quot;num&quot; data-sort=&quot;num&quot;&gt;Credit&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;30 Aug&lt;/td&gt;&lt;td&gt;Gulf Star Trading LLC&lt;/td&gt;&lt;td&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;INV-2026-0841&lt;/bdi&gt;&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;250,000.00&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;—&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;bes-badge bes-badge--warning&quot;&gt;Awaiting approval&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;29 Aug&lt;/td&gt;&lt;td&gt;DEWA&lt;/td&gt;&lt;td&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;CON-99231&lt;/bdi&gt;&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;843.50&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;—&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Completed&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;28 Aug&lt;/td&gt;&lt;td&gt;Falcon Media FZ&lt;/td&gt;&lt;td&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;RCP-1187&lt;/bdi&gt;&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;—&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;42,000.00&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Completed&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Transaction timeline</h2><div class="demo bes">
+<div class="bes-card" style="max-width:420px">
+  <ul class="bes-timeline">
+    <li class="done"><span class="dot">✓</span><span><span class="t">Sent from your account</span><br><span class="s">Today 14:32</span></span></li>
+    <li class="done"><span class="dot">✓</span><span><span class="t">Converted AED → INR</span><br><span class="s">rate ₹25.0800 locked</span></span></li>
+    <li class="current"><span class="dot">●</span><span><span class="t">With recipient bank</span><br><span class="s">Usually within 1 hour · expected by 15:30</span></span></li>
+    <li><span class="dot">○</span><span><span class="t">Delivered to Priya Kumar</span><br><span class="s">We'll notify you</span></span></li>
+  </ul>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;ul class=&quot;bes-timeline&quot;&gt;
+    &lt;li class=&quot;done&quot;&gt;&lt;span class=&quot;dot&quot;&gt;✓&lt;/span&gt;&lt;span&gt;&lt;span class=&quot;t&quot;&gt;Sent from your account&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Today 14:32&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li class=&quot;done&quot;&gt;&lt;span class=&quot;dot&quot;&gt;✓&lt;/span&gt;&lt;span&gt;&lt;span class=&quot;t&quot;&gt;Converted AED → INR&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;rate ₹25.0800 locked&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li class=&quot;current&quot;&gt;&lt;span class=&quot;dot&quot;&gt;●&lt;/span&gt;&lt;span&gt;&lt;span class=&quot;t&quot;&gt;With recipient bank&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Usually within 1 hour · expected by 15:30&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span class=&quot;dot&quot;&gt;○&lt;/span&gt;&lt;span&gt;&lt;span class=&quot;t&quot;&gt;Delivered to Priya Kumar&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;We&#x27;ll notify you&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Receipt — immutable, printable proof</h2><div class="demo bes">
+<div class="bes-receipt" style="max-width:420px">
+  <div class="head"><span class="title">Payment receipt</span><span class="bes-badge bes-badge--success">Completed</span></div>
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">Reference</span><span class="v"><bdi class="bes-amount">BES-K8P2QX</bdi></span></div>
+    <div class="bes-row"><span class="k">Recipient</span><span class="v">Priya Kumar · ICICI <bdi class="bes-amount">••4102</bdi></span></div>
+    <div class="bes-row"><span class="k">Amount sent</span><span class="v"><bdi class="bes-amount">AED 10,000.00</bdi></span></div>
+    <div class="bes-row"><span class="k">Fees + VAT</span><span class="v"><bdi class="bes-amount">AED 36.75</bdi></span></div>
+  </div>
+  <div class="bes-total"><span class="k">Total paid</span><span class="v"><bdi class="bes-amount">AED 10,036.75</bdi></span></div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-receipt&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;div class=&quot;head&quot;&gt;&lt;span class=&quot;title&quot;&gt;Payment receipt&lt;/span&gt;&lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Completed&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Reference&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;BES-K8P2QX&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Recipient&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;Priya Kumar · ICICI &lt;bdi class=&quot;bes-amount&quot;&gt;••4102&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Amount sent&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 10,000.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Fees + VAT&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 36.75&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-total&quot;&gt;&lt;span class=&quot;k&quot;&gt;Total paid&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 10,036.75&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Filter chips</h2><div class="demo bes">
+<div class="demo-row">
+  <button class="bes-chip" aria-pressed="true">Last 90 days ✕</button>
+  <button class="bes-chip" aria-pressed="true">Card ••8834 ✕</button>
+  <button class="bes-chip" aria-pressed="false">+ Amount range</button>
+  <span style="font-size:13px;color:var(--bes-text-secondary)">214 → 38 transactions · <a href="#">Clear all</a></span>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot;&gt;
+  &lt;button class=&quot;bes-chip&quot; aria-pressed=&quot;true&quot;&gt;Last 90 days ✕&lt;/button&gt;
+  &lt;button class=&quot;bes-chip&quot; aria-pressed=&quot;true&quot;&gt;Card ••8834 ✕&lt;/button&gt;
+  &lt;button class=&quot;bes-chip&quot; aria-pressed=&quot;false&quot;&gt;+ Amount range&lt;/button&gt;
+  &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;214 → 38 transactions · &lt;a href=&quot;#&quot;&gt;Clear all&lt;/a&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="accounts.html"><span class="lbl">Previous</span>Accounts</a><a class="next" href="payments-transfers.html"><span class="lbl">Next</span>Payments &amp; transfers</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

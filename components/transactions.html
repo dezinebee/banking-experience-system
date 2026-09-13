@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transactions · BES Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill" href="../pages/overview.html">Docs</a>
+  <a class="pill on" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Site">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html" class="on">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="g-wrap">
+  <div class="g-head"><h1>Transactions</h1><p>Spec: <a href="../pages/transactions.html">Transactions family</a>. Every state designed — including unknown. Settled stays quiet; problems get color.</p></div>
+  <div class="g-controls">
+    <span class="grp">Theme <span class="set" id="ctl-theme"><button data-v="light" aria-pressed="false">Light</button><button data-v="system" aria-pressed="true">System</button><button data-v="dark" aria-pressed="false">Dark</button></span></span>
+    <span class="grp">Direction <span class="set" id="ctl-dir"><button data-v="ltr" aria-pressed="true">LTR</button><button data-v="rtl" aria-pressed="false">RTL</button></span></span>
+    <span class="grp">Density <span class="set" id="ctl-density"><button data-v="comfortable" aria-pressed="false">Comfortable</button><button data-v="standard" aria-pressed="true">Standard</button><button data-v="compact" aria-pressed="false">Compact</button></span></span>
+  </div>
+  <nav class="g-subnav" aria-label="Component sections">
+    <a href="index.html">Overview</a><a href="actions.html">Actions &amp; feedback</a><a href="forms.html">Forms &amp; inputs</a><a href="money.html">Money &amp; accounts</a><a class="on" href="transactions.html">Transactions</a><a href="patterns.html">Composed patterns</a><a href="advanced.html">Advanced &amp; charts</a>
+  </nav>
+
+  <div class="ex">
+    <h2>Transaction list</h2>
+    <p class="note">Grouped by day; pending floats above settled; expenses neutral, credits green, declines struck-through with the reason class. Density control re-densifies rows live.</p>
+    <div class="demo bes">
+      <div class="bes-list" style="max-width:560px">
+        <div class="bes-list-head">Pending</div>
+        <div class="bes-item">
+          <span class="lead" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 6h12M3 6l2.5-2.5M15 12H3m12 0l-2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="main"><span class="t">Priya Kumar</span><br><span class="s">Transfer · AED → INR</span></span>
+          <span class="trail"><bdi class="bes-amount bes-amount--sm">−AED 10,036.75</bdi><span class="bes-badge bes-badge--pending">Pending</span></span>
+        </div>
+        <div class="bes-list-head">Today</div>
+        <button class="bes-item" type="button">
+          <span class="lead" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 7h12v7a1 1 0 01-1 1H4a1 1 0 01-1-1V7zM3 7l1.5-3h9L15 7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+          <span class="main"><span class="t">Carrefour</span><br><span class="s">Groceries · Card ••8834 · 19:42</span></span>
+          <span class="trail"><bdi class="bes-amount bes-amount--sm">−AED 89.50</bdi></span>
+        </button>
+        <button class="bes-item" type="button">
+          <span class="lead" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v10m0 0l-3.5-3.5M9 12l3.5-3.5M3 15h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="main"><span class="t">Salary — Al Noor Trading LLC</span><br><span class="s">Incoming transfer · 09:00</span></span>
+          <span class="trail"><bdi class="bes-amount bes-amount--sm bes-amount--credit">+AED 18,500.00</bdi></span>
+        </button>
+        <button class="bes-item" type="button">
+          <span class="lead" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2.5" y="4.5" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 8h13" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="main"><span class="t">Noon.com</span><br><span class="s"><bdi class="bes-amount bes-amount--struck">AED 320.00</bdi> · Declined — over daily limit</span></span>
+          <span class="trail"><span class="bes-badge bes-badge--error">Declined</span></span>
+        </button>
+        <div class="bes-list-head">Yesterday</div>
+        <button class="bes-item" type="button">
+          <span class="lead" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9.5 5H4M6 3L4 5l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 13H14M12 15l2-2-2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="main"><span class="t">Refund — Amazon.ae</span><br><span class="s">Original payment 24 Aug</span></span>
+          <span class="trail"><bdi class="bes-amount bes-amount--sm bes-amount--credit">+AED 149.00</bdi><span class="bes-badge bes-badge--refunded">Refunded</span></span>
+        </button>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Transaction timeline</h2>
+    <p class="note">Per-stage expectations, honest stalls, and the unknown stage keeps the money-safety statement front and center.</p>
+    <div class="demo bes">
+      <div class="bes-card" style="max-width:420px">
+        <ul class="bes-timeline">
+          <li class="done"><span class="dot">✓</span><span><span class="t">Sent from your account</span><br><span class="s">Today 14:32</span></span></li>
+          <li class="done"><span class="dot">✓</span><span><span class="t">Converted AED → INR</span><br><span class="s">Today 14:32 · rate ₹25.0800 locked</span></span></li>
+          <li class="current"><span class="dot">●</span><span><span class="t">With recipient bank</span><br><span class="s">Usually within 1 hour · expected by 15:30</span></span></li>
+          <li><span class="dot">○</span><span><span class="t">Delivered to Priya Kumar</span><br><span class="s">We'll notify you</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Data table</h2>
+    <p class="note">Numeric columns end-aligned with tabular figures in both directions. Switch density to compact for the treasury view.</p>
+    <div class="demo bes">
+      <div class="bes-table-wrap">
+        <table class="bes-table">
+          <thead><tr><th>Date</th><th>Counterparty</th><th>Reference</th><th class="num">Debit</th><th class="num">Credit</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>30 Aug</td><td>Gulf Star Trading LLC</td><td><bdi class="bes-amount">INV-2026-0841</bdi></td><td class="num">250,000.00</td><td class="num">—</td><td><span class="bes-badge bes-badge--warning">Awaiting approval</span></td></tr>
+            <tr><td>29 Aug</td><td>DEWA</td><td><bdi class="bes-amount">CON-99231</bdi></td><td class="num">843.50</td><td class="num">—</td><td><span class="bes-badge bes-badge--completed">Completed</span></td></tr>
+            <tr><td>29 Aug</td><td>Etisalat</td><td><bdi class="bes-amount">ACC-55102</bdi></td><td class="num">399.00</td><td class="num">—</td><td><span class="bes-badge bes-badge--completed">Completed</span></td></tr>
+            <tr><td>28 Aug</td><td>Client — Falcon Media FZ</td><td><bdi class="bes-amount">RCP-1187</bdi></td><td class="num">—</td><td class="num">42,000.00</td><td><span class="bes-badge bes-badge--completed">Completed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Skeleton &amp; empty state</h2>
+    <p class="note">Skeletons mirror real structure — never placeholder digits (no 0.00 flash). Empty states explain and enable, never blame.</p>
+    <div class="demo bes">
+      <div class="demo-row" style="align-items:stretch">
+        <div class="bes-card" style="width:260px">
+          <div class="bes-skel" style="inline-size:40%;block-size:14px;margin-block-end:10px"></div>
+          <div class="bes-skel" style="inline-size:70%;block-size:28px;margin-block-end:8px"></div>
+          <div class="bes-skel" style="inline-size:55%;block-size:12px"></div>
+        </div>
+        <div class="bes-card bes-empty" style="width:300px">
+          <div class="t">No beneficiaries yet</div>
+          <div class="s">Add someone to send money to — it takes a minute.</div>
+          <button class="bes-btn bes-btn--primary bes-btn--sm">Add beneficiary</button>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <footer class="site"><span>BES v2.0.0 · fictional data only</span><span><a href="../pages/transactions.html">Transactions spec</a></span></footer>
+</div>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

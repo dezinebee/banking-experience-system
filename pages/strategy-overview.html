@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banking Experience System — Phase 01: System Strategy · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html" class="on">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Strategy</div>
+<h1>Banking Experience System — Phase 01: System Strategy</h1>
+<p><strong>Project:</strong> UAE FinTech &amp; Banking Design System (working name: Banking Experience System)
+<strong>Phase:</strong> 01 of 05 — System Strategy
+<strong>Status:</strong> v2.0.0-draft — 30 August 2026
+<strong>Author:</strong> Saravanakumar (UX) with Claude research support</p>
+<hr />
+<h2>Contents</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Document</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td><a href="strategy-vision.html">Design System Vision</a></td>
+<td>Proposition, philosophy, objectives, success criteria</td>
+</tr>
+<tr>
+<td>02</td>
+<td><a href="strategy-principles.html">Design Principles</a></td>
+<td>The 10 core principles, expanded with decision tests</td>
+</tr>
+<tr>
+<td>03</td>
+<td><a href="strategy-users.html">Target Users</a></td>
+<td>Customer segments, internal users, personas, jobs</td>
+</tr>
+<tr>
+<td>04</td>
+<td><a href="strategy-uae.html">UAE Context</a></td>
+<td>Market, rails (Aani/Jaywan/UAE PASS), remittance, language, Islamic finance</td>
+</tr>
+<tr>
+<td>05</td>
+<td><a href="strategy-regulatory.html">Regulatory Considerations</a></td>
+<td>CBUAE, Open Finance, fraud notice 3057, PDPL, accessibility — translated to UX mandates</td>
+</tr>
+<tr>
+<td>06</td>
+<td><a href="strategy-references.html">Reference &amp; Competitive Analysis</a></td>
+<td>Design systems studied + UAE banking landscape audit</td>
+</tr>
+<tr>
+<td>07</td>
+<td><a href="strategy-architecture.html">Experience Architecture</a></td>
+<td>System layers, cross-cutting concerns, money movement framework, state machine</td>
+</tr>
+<tr>
+<td>08</td>
+<td><a href="strategy-taxonomy.html">System Taxonomy</a></td>
+<td>Naming, categories, layer definitions, documentation template</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>How this phase was produced</h2>
+<ul>
+<li>Live web research (August 2026) into: Visa Product Design System, GOV.UK Design System, Salesforce Lightning (SLDS 2), Adobe Spectrum, IBM Carbon, USWDS, Atlassian, Finastra (RTL); UAE banking landscape (ENBD X, FAB/Payit, ADCB Hayyak, Mashreq Neo, DIB, Emirates Islamic, Wio, Liv X, Zand, Mbank, ruya, Careem Pay, Botim, e&amp; money, exchange houses, BNPL); UAE regulation (CBUAE Consumer Protection Regulation &amp; Standards, Open Finance / Al Tareq / Nebras, UAE PASS, KYC/AML, Fraud Notice 2025/3057, PDPL, National Policy for Digital Accessibility, Higher Shari'ah Authority disclosure standards, Aani, Jaywan, Sanadak).</li>
+<li>Source URLs are cited inside each document.</li>
+<li>Regulatory content is UX translation, <strong>not legal advice</strong>. Verify against the CBUAE Rulebook before committing compliance-critical copy or flows.</li>
+</ul>
+<h2>What Phase 02 builds on this</h2>
+<p>Token architecture, financial semantic model, component/pattern/journey taxonomies (detailed), accessibility architecture, localization architecture, multi-brand architecture — all constrained by the decisions recorded in this phase.</p>
+<div class="pgnav"><a href="theming.html"><span class="lbl">Previous</span>Multi-brand &amp; theming</a><a class="next" href="strategy-vision.html"><span class="lbl">Next</span>Vision</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>14 — Financial Components: Accounts Family · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html" class="on">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Financial components</div>
+<h1>14 — Financial Components: Accounts Family</h1>
+<p><strong>Banking Experience System (BES)</strong> · Financial Components · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="bes-card bes-acct" style="max-width:400px">
+  <div class="row1">
+    <div>
+      <div class="name">Current account</div>
+      <div class="meta"><bdi class="bes-amount">••4521</bdi> · Personal</div>
+    </div>
+    <button class="bes-iconbtn" aria-label="Hide balance" data-bes-mask="doc-bal" aria-pressed="false">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10s3-5.5 8-5.5S18 10 18 10s-3 5.5-8 5.5S2 10 2 10z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+  </div>
+  <bdi class="bes-amount bes-amount--lg" id="doc-bal"><span class="cur">AED</span> 25,000.00</bdi>
+  <div class="sub">Available · <bdi class="bes-amount">AED 500.00</bdi> reserved</div>
+  <div class="actions">
+    <button class="bes-btn bes-btn--primary bes-btn--sm">Send</button>
+    <button class="bes-btn bes-btn--secondary bes-btn--sm">Details</button>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card bes-acct&quot; style=&quot;max-width:400px&quot;&gt;
+  &lt;div class=&quot;row1&quot;&gt;
+    &lt;div&gt;
+      &lt;div class=&quot;name&quot;&gt;Current account&lt;/div&gt;
+      &lt;div class=&quot;meta&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;••4521&lt;/bdi&gt; · Personal&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;bes-iconbtn&quot; aria-label=&quot;Hide balance&quot; data-bes-mask=&quot;doc-bal&quot; aria-pressed=&quot;false&quot;&gt;
+      &lt;svg width=&quot;20&quot; height=&quot;20&quot; viewBox=&quot;0 0 20 20&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M2 10s3-5.5 8-5.5S18 10 18 10s-3 5.5-8 5.5S2 10 2 10z&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;2.4&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;bdi class=&quot;bes-amount bes-amount--lg&quot; id=&quot;doc-bal&quot;&gt;&lt;span class=&quot;cur&quot;&gt;AED&lt;/span&gt; 25,000.00&lt;/bdi&gt;
+  &lt;div class=&quot;sub&quot;&gt;Available · &lt;bdi class=&quot;bes-amount&quot;&gt;AED 500.00&lt;/bdi&gt; reserved&lt;/div&gt;
+  &lt;div class=&quot;actions&quot;&gt;
+    &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--sm&quot;&gt;Send&lt;/button&gt;
+    &lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot;&gt;Details&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Components: Account Card · Account Selector · Balance Display · Balance Set · Account Details · IBAN Display · Account Status · Product Header · Spaces/Goal Card.</p>
+<hr />
+<h2>Account Card</h2>
+<p><strong>Purpose:</strong> one account at a glance — the dashboard workhorse.</p>
+<p><strong>Anatomy:</strong> account name (user-renamable: "Rent account") · product type label ("Current account" / "حساب جاري") · masked number (••4521) · available balance (Amount <code>lg</code>, maskable) · optional pending indicator ("AED 500.00 pending") · optional status badge · primary quick actions (≤2: Send, Details).</p>
+<p><strong>Variants:</strong> full (dashboard) · compact (lists, pickers) · multi-currency (currency tabs or stacked balances per currency) · joint (co-holder indicator) · ✦ Islamic (product label carries structure: "Mudarabah savings"; profit-rate metadata instead of interest).</p>
+<p><strong>States:</strong> default · loading (skeleton — no zero flash) · stale (timestamp) · masked · restricted (<code>financial.blocked</code> treatment + "Why?" path) · dormant (reactivation path) · closed (read-only history access).</p>
+<p><strong>Usage:</strong> available balance is the headline number always (doc 07 §3); current balance relegated to Details. One tap → account home. Cards never show promotional content inside the account object.</p>
+<p><strong>A11y:</strong> single named control: "Current account ending 4521, AED 25,000.00 available"; quick actions as discrete stops.</p>
+<p><strong>RTL:</strong> name/labels mirror; number and balance LTR runs; actions at inline-end.</p>
+<hr />
+<h2>Account Selector</h2>
+<p><strong>Purpose:</strong> choose source/destination account in flows.</p>
+<p><strong>Anatomy:</strong> Select/Combobox specialization — trigger shows selected account (name + ••number + available balance); options show the same triple; groups: "Your accounts / Joint / Business".</p>
+<p><strong>States:</strong> default · open · insufficient (option visible but flagged: "AED 120.00 available — not enough for this transfer"; selectable only where partial funding is a real flow, otherwise disabled with reason) · single-account (renders as static confirmation line, not a dropdown).</p>
+<p><strong>Financial:</strong> in transfer flows, selecting a source re-validates amount + limits instantly; balance shown is <em>available</em>; hidden accounts (user preference) still listed under "More accounts".</p>
+<p><strong>A11y:</strong> option announced with full triple; insufficient state part of the announcement.</p>
+<hr />
+<h2>Balance Display</h2>
+<p><strong>Purpose:</strong> a single balance figure with its label and freshness.</p>
+<p><strong>Anatomy:</strong> label ("Available balance") · Amount · freshness/timestamp when not real-time · optional info affordance explaining the balance type.</p>
+<p><strong>Rule:</strong> never a bare number — the <em>type</em> of balance is always labeled, because "balance" is ambiguous by definition (doc 07 §3).</p>
+<hr />
+<h2>Balance Set</h2>
+<p><strong>Purpose:</strong> the full picture — available / current / pending / reserved in one structure.</p>
+<p><strong>Anatomy:</strong> primary row (available, <code>amount.lg</code>) · secondary rows (current, pending in/out, reserved) · "Why is my available balance different?" explainer link when current ≠ available · holds drill-down (list of reservations with merchant, amount, release date).</p>
+<p><strong>Example:</strong></p>
+<pre><code>Available balance         AED 23,750.00
+Current balance           AED 25,000.00
+Pending out               −AED 750.00   (2 transactions)
+Reserved (card holds)     −AED 500.00   → View holds
+</code></pre>
+<p><strong>A11y:</strong> rendered as a definition list; explainer reachable by keyboard.</p>
+<hr />
+<h2>Account Details</h2>
+<p><strong>Purpose:</strong> the reference sheet — everything needed to <em>receive</em> money or verify the account.</p>
+<p><strong>Anatomy:</strong> rows for: holder name (legal, as registered) · IBAN Display · account number · branch/bank identifiers (SWIFT/BIC) · currency · product name &amp; terms link · opened date. Each row: label + value + copy button. "Share details" action exports a clean payload (text/PDF) <em>excluding</em> anything not needed for receiving money.</p>
+<p><strong>States:</strong> default · restricted-view (joint/delegated users see per-permission subsets).</p>
+<p><strong>Security:</strong> details screens require an authenticated session but not step-up; screenshots allowed (users legitimately share IBANs) — but the share action is the promoted path.</p>
+<hr />
+<h2>IBAN Display</h2>
+<p><strong>Purpose:</strong> render the 23-character UAE IBAN (and foreign IBANs) reliably.</p>
+<p><strong>Anatomy:</strong> grouped display <code>AE07 0331 2345 6789 0123 456</code> · copy button (copies <em>unspaced</em> canonical form; toast confirms "IBAN copied") · always <code>dir="ltr"</code> in an isolated run.</p>
+<p><strong>States:</strong> default · verifying (payee-side lookups) · invalid (entry-side pairing with the IBAN input, doc 09).</p>
+<p><strong>A11y:</strong> announced in groups of four, not as one 23-character blur; copy announces success.</p>
+<hr />
+<h2>Account Status</h2>
+<p><strong>Purpose:</strong> account-level states surfaced honestly.</p>
+<p><strong>Vocabulary:</strong> active · restricted (with reason class: verification-needed / compliance-hold — tipping-off-safe copy) · dormant (with reactivation steps) · frozen (with support path) · pending-closure · closed.</p>
+<p><strong>Anatomy:</strong> Status Badge + explanation block + the recovery path (every non-active status names its exit).</p>
+<p><strong>Rule:</strong> a restricted account's <em>balance remains visible</em> — restriction of action never becomes concealment of the user's own money.</p>
+<hr />
+<h2>Product Header</h2>
+<p><strong>Purpose:</strong> top-of-screen identity for any financial product page (account, card, loan, deposit).</p>
+<p><strong>Anatomy:</strong> product name · identifying suffix (••4521) · status badge · headline figure (available balance / outstanding amount / card limit) · tab bar into sections (Transactions / Details / Statements).</p>
+<p><strong>RTL:</strong> headline figure LTR run; tabs mirror.</p>
+<hr />
+<h2>Spaces / Goal Card</h2>
+<p><strong>Purpose:</strong> sub-account earmarking (savings goals, VAT set-aside, rent).</p>
+<p><strong>Anatomy:</strong> goal name + icon/emoji slot · saved amount / target ("AED 6,500 of AED 20,000") · Progress bar · optional auto-rule summary ("Saves AED 500.00 every payday") · quick add/withdraw.</p>
+<p><strong>States:</strong> on-track · paused · reached (celebration allowed — savings context is the sanctioned celebratory surface, doc 05 §2) · behind (neutral framing: "AED 500 to stay on track" — never shame).</p>
+<p><strong>Financial:</strong> money in spaces is part of <code>balance.current</code> but excluded from spendable <code>balance.available</code> presentation — the set explains this ("AED 6,500.00 set aside in Spaces").</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Balance set — the full truth</h2><div class="demo bes">
+<div class="bes-card" style="max-width:420px">
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k" style="color:var(--bes-text-primary);font-weight:600">Available balance</span><span class="v"><bdi class="bes-amount bes-amount--md">AED 23,750.00</bdi></span></div>
+    <div class="bes-row"><span class="k">Current balance</span><span class="v"><bdi class="bes-amount">AED 25,000.00</bdi></span></div>
+    <div class="bes-row"><span class="k">Pending out</span><span class="v"><bdi class="bes-amount">−AED 750.00</bdi> <span style="color:var(--bes-text-secondary);font-weight:400">(2)</span></span></div>
+    <div class="bes-row"><span class="k">Card holds</span><span class="v" style="color:var(--bes-financial-reserved)"><bdi class="bes-amount">−AED 500.00</bdi></span></div>
+  </div>
+  <a href="#" style="font-size:13.5px;font-weight:500">Why is my available balance different?</a>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot; style=&quot;color:var(--bes-text-primary);font-weight:600&quot;&gt;Available balance&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--md&quot;&gt;AED 23,750.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Current balance&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 25,000.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Pending out&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;−AED 750.00&lt;/bdi&gt; &lt;span style=&quot;color:var(--bes-text-secondary);font-weight:400&quot;&gt;(2)&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Card holds&lt;/span&gt;&lt;span class=&quot;v&quot; style=&quot;color:var(--bes-financial-reserved)&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;−AED 500.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;a href=&quot;#&quot; style=&quot;font-size:13.5px;font-weight:500&quot;&gt;Why is my available balance different?&lt;/a&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Account selector</h2><div class="demo bes">
+<div class="bes-field" style="max-width:380px;margin-bottom:0">
+  <label class="bes-label" for="da-src">From account</label>
+  <div class="bes-select"><select id="da-src">
+    <option>Current account ••4521 — AED 23,750.00 available</option>
+    <option>Savings ••8102 — AED 46,200.00 available</option>
+    <option disabled>Joint account ••3377 — AED 120.00 (not enough for this transfer)</option>
+  </select></div>
+  <div class="bes-help">Options always show name, masked number and available balance.</div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-field&quot; style=&quot;max-width:380px;margin-bottom:0&quot;&gt;
+  &lt;label class=&quot;bes-label&quot; for=&quot;da-src&quot;&gt;From account&lt;/label&gt;
+  &lt;div class=&quot;bes-select&quot;&gt;&lt;select id=&quot;da-src&quot;&gt;
+    &lt;option&gt;Current account ••4521 — AED 23,750.00 available&lt;/option&gt;
+    &lt;option&gt;Savings ••8102 — AED 46,200.00 available&lt;/option&gt;
+    &lt;option disabled&gt;Joint account ••3377 — AED 120.00 (not enough for this transfer)&lt;/option&gt;
+  &lt;/select&gt;&lt;/div&gt;
+  &lt;div class=&quot;bes-help&quot;&gt;Options always show name, masked number and available balance.&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">IBAN display with copy</h2><div class="demo bes">
+<div class="demo-row">
+  <bdi class="bes-amount" style="font-size:15px;font-weight:600;letter-spacing:.04em">AE07 0331 2345 6789 0123 456</bdi>
+  <button class="bes-iconbtn" aria-label="Copy IBAN" data-bes-copy="AE070331234567890123456" data-bes-copied="IBAN copied">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="6" y="6" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 6V4.5A1.5 1.5 0 0 0 10.5 3H4.5A1.5 1.5 0 0 0 3 4.5v6A1.5 1.5 0 0 0 4.5 12H6" stroke="currentColor" stroke-width="1.5"/></svg>
+  </button>
+  <span style="font-size:13px;color:var(--bes-text-secondary)">Displays grouped; copies unspaced; always an LTR run — flip a doc-demo direction and it holds.</span>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot;&gt;
+  &lt;bdi class=&quot;bes-amount&quot; style=&quot;font-size:15px;font-weight:600;letter-spacing:.04em&quot;&gt;AE07 0331 2345 6789 0123 456&lt;/bdi&gt;
+  &lt;button class=&quot;bes-iconbtn&quot; aria-label=&quot;Copy IBAN&quot; data-bes-copy=&quot;AE070331234567890123456&quot; data-bes-copied=&quot;IBAN copied&quot;&gt;
+    &lt;svg width=&quot;18&quot; height=&quot;18&quot; viewBox=&quot;0 0 18 18&quot; fill=&quot;none&quot;&gt;&lt;rect x=&quot;6&quot; y=&quot;6&quot; width=&quot;9&quot; height=&quot;9&quot; rx=&quot;1.5&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M12 6V4.5A1.5 1.5 0 0 0 10.5 3H4.5A1.5 1.5 0 0 0 3 4.5v6A1.5 1.5 0 0 0 4.5 12H6&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;Displays grouped; copies unspaced; always an LTR run — flip a doc-demo direction and it holds.&lt;/span&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Spaces / goal card</h2><div class="demo bes">
+<div class="bes-card bes-goal" style="max-width:380px">
+  <div class="head"><span class="name">🏠 Rent — September</span><span class="bes-badge bes-badge--success">On track</span></div>
+  <div class="bes-progress"><div class="fill" style="inline-size:65%"></div></div>
+  <div class="figs"><b><bdi class="bes-amount">AED 6,500.00</bdi></b> of <bdi class="bes-amount">AED 10,000.00</bdi> · saves <bdi class="bes-amount">AED 500.00</bdi> every payday</div>
+  <div class="demo-row" style="margin-top:12px">
+    <button class="bes-btn bes-btn--secondary bes-btn--sm">Add money</button>
+    <button class="bes-btn bes-btn--ghost bes-btn--sm">Withdraw</button>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card bes-goal&quot; style=&quot;max-width:380px&quot;&gt;
+  &lt;div class=&quot;head&quot;&gt;&lt;span class=&quot;name&quot;&gt;🏠 Rent — September&lt;/span&gt;&lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;On track&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;bes-progress&quot;&gt;&lt;div class=&quot;fill&quot; style=&quot;inline-size:65%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;figs&quot;&gt;&lt;b&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 6,500.00&lt;/bdi&gt;&lt;/b&gt; of &lt;bdi class=&quot;bes-amount&quot;&gt;AED 10,000.00&lt;/bdi&gt; · saves &lt;bdi class=&quot;bes-amount&quot;&gt;AED 500.00&lt;/bdi&gt; every payday&lt;/div&gt;
+  &lt;div class=&quot;demo-row&quot; style=&quot;margin-top:12px&quot;&gt;
+    &lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot;&gt;Add money&lt;/button&gt;
+    &lt;button class=&quot;bes-btn bes-btn--ghost bes-btn--sm&quot;&gt;Withdraw&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="money.html"><span class="lbl">Previous</span>Money</a><a class="next" href="transactions.html"><span class="lbl">Next</span>Transactions</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

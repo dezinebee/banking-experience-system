@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forms &amp; inputs · BES Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill" href="../pages/overview.html">Docs</a>
+  <a class="pill on" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Site">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html" class="on">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="g-wrap">
+  <div class="g-head"><h1>Forms &amp; inputs</h1><p>Spec: <a href="../pages/inputs.html">Inputs &amp; forms</a>. Doctrine: prevent before validating; forgiving formats; errors say what to do.</p></div>
+  <div class="g-controls">
+    <span class="grp">Theme <span class="set" id="ctl-theme"><button data-v="light" aria-pressed="false">Light</button><button data-v="system" aria-pressed="true">System</button><button data-v="dark" aria-pressed="false">Dark</button></span></span>
+    <span class="grp">Direction <span class="set" id="ctl-dir"><button data-v="ltr" aria-pressed="true">LTR</button><button data-v="rtl" aria-pressed="false">RTL</button></span></span>
+    <span class="grp">Density <span class="set" id="ctl-density"><button data-v="comfortable" aria-pressed="false">Comfortable</button><button data-v="standard" aria-pressed="true">Standard</button><button data-v="compact" aria-pressed="false">Compact</button></span></span>
+  </div>
+  <nav class="g-subnav" aria-label="Component sections">
+    <a href="index.html">Overview</a><a href="actions.html">Actions &amp; feedback</a><a class="on" href="forms.html">Forms &amp; inputs</a><a href="money.html">Money &amp; accounts</a><a href="transactions.html">Transactions</a><a href="patterns.html">Composed patterns</a><a href="advanced.html">Advanced &amp; charts</a>
+  </nav>
+
+  <div class="ex">
+    <h2>Text field anatomy</h2>
+    <p class="note">Label always visible above the field. Help text explains why we ask. Errors are specific and constructive. Verified fields are read-only with their source named.</p>
+    <div class="demo bes">
+      <div class="demo-stack">
+        <div class="bes-field">
+          <label class="bes-label" for="f-name">Full name <span class="opt">(as on your Emirates ID)</span></label>
+          <input class="bes-input" id="f-name" autocomplete="name" placeholder="e.g. Ahmed Al Mansoori">
+          <div class="bes-help">We're required to match your name to your ID for verification.</div>
+        </div>
+        <div class="bes-field">
+          <label class="bes-label" for="f-iban">Recipient IBAN</label>
+          <input class="bes-input bes-input--ltr" id="f-iban" inputmode="text" spellcheck="false" aria-invalid="true" aria-describedby="f-iban-err" value="AE07 0331 2345">
+          <div class="bes-error-msg" id="f-iban-err">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-top:2px"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M7 4.4v3.2M7 9.8v.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            This IBAN doesn't look right — UAE IBANs have 23 characters starting with AE. Paste it with or without spaces, we'll format it.
+          </div>
+        </div>
+        <div class="bes-field bes-field--verified">
+          <label class="bes-label" for="f-eid">Emirates ID number</label>
+          <input class="bes-input bes-input--ltr" id="f-eid" value="784-1990-1234567-1" readonly>
+          <div class="bes-verified-note">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 6.8L5.7 8.5 9 4.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Verified from UAE PASS · Name changed? Update your Emirates ID first.
+          </div>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Currency input</h2>
+    <p class="note">Live grouping, forgiving paste (currency symbols and Arabic digits accepted), remainder preview against available balance. Try typing above 25,000.</p>
+    <div class="demo bes">
+      <div class="demo-stack">
+        <div class="bes-field">
+          <label class="bes-label" for="f-amt">Amount</label>
+          <div class="bes-currency">
+            <span class="code" aria-hidden="true">AED</span>
+            <input class="bes-input" id="f-amt" inputmode="decimal" value="5,000"
+                   data-bes-currency data-max="25000" data-currency="AED"
+                   data-left-msg="Leaves {x} available" data-over-msg="That's {x} more than your available balance">
+          </div>
+          <div class="bes-context-line">Leaves AED 20,000.00 available</div>
+          <div class="bes-chips">
+            <button class="bes-chip" type="button">AED 100</button>
+            <button class="bes-chip" type="button">AED 500</button>
+            <button class="bes-chip" type="button">AED 1,000</button>
+            <button class="bes-chip" type="button">Max</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Selection controls</h2>
+    <p class="note">One checkbox per consent, never pre-ticked. Switches show their state in words and support an async pending state.</p>
+    <div class="demo bes">
+      <div class="demo-stack">
+        <label class="bes-check">
+          <input type="checkbox">
+          <span>I accept the <a href="#">Key Facts Statement (PDF)</a><span class="desc">Version 3.2 · required to continue</span></span>
+        </label>
+        <label class="bes-check">
+          <input type="checkbox">
+          <span>Send me offers and product news<span class="desc">Optional — you can change this anytime in Settings</span></span>
+        </label>
+        <label class="bes-switch">
+          <input type="checkbox" checked>
+          <span class="track" aria-hidden="true"></span>
+          <span>International payments <span class="state">On</span></span>
+        </label>
+        <label class="bes-switch">
+          <input type="checkbox">
+          <span class="track" aria-hidden="true"></span>
+          <span>Online payments <span class="state">Off</span></span>
+        </label>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <div class="ex">
+    <h2>Tabs, segmented control &amp; stepper</h2>
+    <p class="note">Tabs for peer views; segmented for view toggles; stepper for journey position. Arrow keys work on tabs and respect direction.</p>
+    <div class="demo bes">
+      <div class="demo-stack" style="max-width:560px">
+        <div>
+          <div class="bes-tabs" role="tablist" aria-label="Account sections">
+            <button class="bes-tab" role="tab" aria-selected="true" aria-controls="tp-1" id="tab-1">Transactions</button>
+            <button class="bes-tab" role="tab" aria-selected="false" aria-controls="tp-2" id="tab-2" tabindex="-1">Details</button>
+            <button class="bes-tab" role="tab" aria-selected="false" aria-controls="tp-3" id="tab-3" tabindex="-1">Statements</button>
+          </div>
+          <div id="tp-1" role="tabpanel" aria-labelledby="tab-1" style="padding:14px 2px;font-size:14px;color:var(--bes-text-secondary)">214 transactions this quarter.</div>
+          <div id="tp-2" role="tabpanel" aria-labelledby="tab-2" hidden style="padding:14px 2px;font-size:14px;color:var(--bes-text-secondary)">IBAN, SWIFT and account facts live here.</div>
+          <div id="tp-3" role="tabpanel" aria-labelledby="tab-3" hidden style="padding:14px 2px;font-size:14px;color:var(--bes-text-secondary)">Monthly statements, PDF and CSV.</div>
+        </div>
+        <div class="bes-seg" role="group" aria-label="View as">
+          <button aria-pressed="true">List</button>
+          <button aria-pressed="false">Chart</button>
+        </div>
+        <div class="bes-stepper" aria-label="Progress: step 2 of 4">
+          <span class="bes-step bes-step--done"><span class="n">✓</span> Amount</span>
+          <span class="bes-step-bar"></span>
+          <span class="bes-step bes-step--current"><span class="n">2</span> Recipient</span>
+          <span class="bes-step-bar"></span>
+          <span class="bes-step"><span class="n">3</span> Review</span>
+          <span class="bes-step-bar"></span>
+          <span class="bes-step"><span class="n">4</span> Done</span>
+        </div>
+      </div>
+    </div>
+    <details><summary>Code</summary><pre><code></code></pre></details>
+  </div>
+
+  <footer class="site"><span>BES v2.0.0 · fictional data only</span><span><a href="../pages/inputs.html">Inputs spec</a></span></footer>
+</div>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

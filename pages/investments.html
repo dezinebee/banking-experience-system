@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>19 — Financial Components: Investments &amp; Wealth Family · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html" class="on">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Financial components</div>
+<h1>19 — Financial Components: Investments &amp; Wealth Family</h1>
+<p><strong>Banking Experience System (BES)</strong> · Financial Components · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:560px">
+  <div class="demo-row" style="align-items:flex-start">
+    <div class="bes-risk bes-risk--low" style="flex:1;min-inline-size:240px">
+      <span class="lvl">Risk level 2 of 7 — Low</span>
+      <div class="scale"><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div>
+      <span class="meaning">Value moves a little; you could get back less than you invest.</span>
+    </div>
+    <div>
+      <div style="font-size:13px;color:var(--bes-text-secondary)">Portfolio · 1M</div>
+      <bdi class="bes-amount bes-amount--md">AED 48,320.00</bdi><br>
+      <span class="bes-delta bes-delta--up">▲ +AED 1,120.00 (2.4%) <span class="tf">vs July</span></span>
+    </div>
+  </div>
+  <div class="bes-chart" data-bes-chart='{"type":"donut","data":[{"label":"UAE equities","value":19300},{"label":"Global ETFs","value":14500},{"label":"Sukuk","value":9600},{"label":"Cash","value":4920}],"opts":{"center":"AED 48.3K","centerSub":"Allocation","label":"Asset allocation, total 48,320 dirhams","colLabel":"Class","colValue":"AED"}}'></div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:560px&quot;&gt;
+  &lt;div class=&quot;demo-row&quot; style=&quot;align-items:flex-start&quot;&gt;
+    &lt;div class=&quot;bes-risk bes-risk--low&quot; style=&quot;flex:1;min-inline-size:240px&quot;&gt;
+      &lt;span class=&quot;lvl&quot;&gt;Risk level 2 of 7 — Low&lt;/span&gt;
+      &lt;div class=&quot;scale&quot;&gt;&lt;span class=&quot;on&quot;&gt;&lt;/span&gt;&lt;span class=&quot;on&quot;&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;span class=&quot;meaning&quot;&gt;Value moves a little; you could get back less than you invest.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;Portfolio · 1M&lt;/div&gt;
+      &lt;bdi class=&quot;bes-amount bes-amount--md&quot;&gt;AED 48,320.00&lt;/bdi&gt;&lt;br&gt;
+      &lt;span class=&quot;bes-delta bes-delta--up&quot;&gt;▲ +AED 1,120.00 (2.4%) &lt;span class=&quot;tf&quot;&gt;vs July&lt;/span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-chart&quot; data-bes-chart=&#x27;{&quot;type&quot;:&quot;donut&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;UAE equities&quot;,&quot;value&quot;:19300},{&quot;label&quot;:&quot;Global ETFs&quot;,&quot;value&quot;:14500},{&quot;label&quot;:&quot;Sukuk&quot;,&quot;value&quot;:9600},{&quot;label&quot;:&quot;Cash&quot;,&quot;value&quot;:4920}],&quot;opts&quot;:{&quot;center&quot;:&quot;AED 48.3K&quot;,&quot;centerSub&quot;:&quot;Allocation&quot;,&quot;label&quot;:&quot;Asset allocation, total 48,320 dirhams&quot;,&quot;colLabel&quot;:&quot;Class&quot;,&quot;colValue&quot;:&quot;AED&quot;}}&#x27;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Components: Portfolio Summary · Holding Item · Holdings List · Allocation Display · Performance Display · Risk Indicator · Investment Product Card · Order Ticket · Investment Transaction Item · Deposit/Term Product Card · Watchlist Item · Disclosure Footer.</p>
+<p>Cross-cutting rule: <strong>investment surfaces are the only place gain/loss red-green is fully in force</strong> (doc 13, Amount Delta) — and every performance figure carries its timeframe and basis. Nothing here constitutes advice UI: the system renders information and execution, and its content patterns avoid advisory framing unless the institution's licensed advisory layer supplies it.</p>
+<hr />
+<h2>Portfolio Summary</h2>
+<p><strong>Anatomy:</strong> total value (<code>amount.hero</code>, maskable) · invested vs cash split · Amount Delta (period selector-linked: 1D · 1M · YTD · 1Y · All) · unrealized P&amp;L (labeled "unrealized") · currency note (portfolio base currency; holdings in other currencies marked converted).</p>
+<p><strong>States:</strong> market-open (live-ish, refresh cadence stated) · market-closed ("As of close, 29 Aug") · stale/degraded (timestamped) · loading (skeleton, no zero-flash).</p>
+<p><strong>Rule:</strong> delta defaults to a <em>longer</em> timeframe (1M) rather than 1D — the system does not manufacture daily anxiety; 1D remains one tap away.</p>
+<hr />
+<h2>Holding Item</h2>
+<p><strong>Anatomy:</strong> instrument (symbol + name + logo slot) · quantity + avg cost · current value (Amount) · Amount Delta (period-linked) · weight in portfolio (%).</p>
+<p><strong>Variants:</strong> equity/ETF · fund (NAV-dated: "NAV as of 28 Aug") · sukuk/bond (yield + maturity) · gold/commodity (units + karat where physical) · crypto (where licensed; volatility banner tier applies).</p>
+<p><strong>States:</strong> default · price-stale · suspended (trading halted, explained) · corporate-action pending (badge + notice).</p>
+<p><strong>A11y:</strong> row summary: "Emaar Properties, 200 shares, value 1,840 dirhams, up 2.1 percent this month".</p>
+<p><strong>RTL:</strong> numerics LTR end-aligned; symbol stays Latin; name localized where listed bilingually.</p>
+<hr />
+<h2>Holdings List</h2>
+<p>Grouped by asset class with class subtotals · sort (value/performance/weight) · Table transform on desktop · export.</p>
+<hr />
+<h2>Allocation Display</h2>
+<p><strong>Anatomy:</strong> proportional visualization (donut/stacked bar — chart rules doc 26) · legend with <strong>values and percentages as text</strong> (the chart is never the only representation) · drill per class · target-vs-actual overlay where a plan exists ("Equities 68% — target 60%", drift flagged neutrally).</p>
+<p><strong>A11y:</strong> data table equivalent behind "View as table"; patterns/labels not color-only.</p>
+<hr />
+<h2>Performance Display</h2>
+<p><strong>Anatomy:</strong> line/area chart with period selector · basis toggle where relevant (value vs % · with/without contributions — "time-weighted" labeled in plain language: "Performance excluding your deposits") · benchmark comparison optional (named, dated) · summary stats (best/worst period honest pairing).</p>
+<p><strong>Rules:</strong> y-axis never truncated to exaggerate movement without a zero-baseline indicator; past-performance disclaimer in Disclosure Footer, not fine print.</p>
+<hr />
+<h2>Risk Indicator</h2>
+<p><strong>Anatomy:</strong> scale position (1–7 or Low/Medium/High per product regime) · plain meaning ("Medium risk: value moves noticeably; you could get back less than you invest") · basis link ("How we rate risk").</p>
+<p><strong>Variants:</strong> product-level (on Product Cards, mandatory before order) · portfolio-level (aggregate) · profile-match (product risk vs the user's assessed profile: mismatch triggers the caution tier — "This is riskier than your profile" with the assessment path).</p>
+<p><strong>Rule:</strong> never color-only; the meaning sentence always renders.</p>
+<hr />
+<h2>Investment Product Card</h2>
+<p><strong>Anatomy:</strong> name + type · Risk Indicator · headline figures per type (fund: NAV, TER, 5y performance; sukuk: profit rate, maturity; deposit: rate, term) · minimum investment · fees line ("Total annual cost ~1.2%") · <strong>Shari'ah-compliant badge</strong> where certified (with certifier) · Key Information document link (PDF).</p>
+<p><strong>States:</strong> open · closed-to-new · coming-soon · restricted (eligibility: professional-investor gates explained, not hidden).</p>
+<hr />
+<h2>Order Ticket (buy/sell)</h2>
+<p><strong>Purpose:</strong> money-movement contract applied to investing.</p>
+<p><strong>Anatomy:</strong> instrument + live/indicative price (stamped: "Indicative — final price at execution") · order type (market/limit with plain explanations: "Market: executes now at the best price, which may differ from what you see") · quantity or amount entry (either-driven, other derived) · estimated cost/proceeds + fees (Fee Breakdown: commission, spread note, FX line for foreign instruments) · settlement date · review → consequence statement ("Market orders can't be cancelled once executed") → verb CTA ("Buy ~AED 5,000.00 of Emaar") → step-up auth per policy → Result states (filled / partial-fill explained / pending / rejected with reason).</p>
+<p><strong>States:</strong> market-open · market-closed (queued-order explanation: "Executes when the market opens Sunday 10:00") · price-moved-since-review (re-confirm threshold: reprice + highlight) · insufficient-funds (fund-first path).</p>
+<hr />
+<h2>Investment Transaction Item</h2>
+<p>Transaction Item specialization: adds instrument, quantity @ price, fees, settlement status (executed → settled), corporate-action rows (dividend/profit distribution credited, splits) with plain descriptions.</p>
+<hr />
+<h2>Deposit / Term Product Card (savings side)</h2>
+<p><strong>Anatomy:</strong> rate presentation per structure (conventional APY / Mudarabah expected-profit with ratio + "indicative" honesty) · term + maturity date · early-withdrawal consequence stated upfront ("Withdraw early: you receive the base rate of 0.5% instead") · maturity instruction selector (renew / pay out — default <em>pay out</em>, never silent auto-renewal without notice; renewal notice event at T-7 days).</p>
+<hr />
+<h2>Watchlist Item</h2>
+<p>Instrument + price + delta + add-to-portfolio path; alerts (price above/below — Currency Input) with notification-category routing (product, not marketing).</p>
+<hr />
+<h2>Disclosure Footer</h2>
+<p><strong>Anatomy:</strong> standard block on all investment surfaces: capital-at-risk statement ("Investments can fall as well as rise; you may get back less than you invest") · past-performance line where charts exist · licensing line (institution-configurable) · <strong>not</strong> collapsed on first view, standard body size (no fine print).</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Holding items</h2><div class="demo bes">
+<div class="bes-list" style="max-width:520px">
+  <button class="bes-item" type="button">
+    <span class="main"><span class="t">Emaar Properties · EMAAR</span><br><span class="s">200 shares · avg <bdi class="bes-amount">AED 8.40</bdi></span></span>
+    <span class="trail"><bdi class="bes-amount bes-amount--sm">AED 1,840.00</bdi><span class="bes-delta bes-delta--up" style="font-size:12px">▲ 2.1% 1M</span></span>
+  </button>
+  <button class="bes-item" type="button">
+    <span class="main"><span class="t">Global Sukuk Fund</span><br><span class="s">NAV as of 28 Aug · <span class="bes-badge bes-badge--success" style="padding:2px 8px;font-size:11px">Shari'ah certified</span></span></span>
+    <span class="trail"><bdi class="bes-amount bes-amount--sm">AED 9,600.00</bdi><span class="bes-delta bes-delta--down" style="font-size:12px">▼ 0.4% 1M</span></span>
+  </button>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-list&quot; style=&quot;max-width:520px&quot;&gt;
+  &lt;button class=&quot;bes-item&quot; type=&quot;button&quot;&gt;
+    &lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Emaar Properties · EMAAR&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;200 shares · avg &lt;bdi class=&quot;bes-amount&quot;&gt;AED 8.40&lt;/bdi&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;trail&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--sm&quot;&gt;AED 1,840.00&lt;/bdi&gt;&lt;span class=&quot;bes-delta bes-delta--up&quot; style=&quot;font-size:12px&quot;&gt;▲ 2.1% 1M&lt;/span&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class=&quot;bes-item&quot; type=&quot;button&quot;&gt;
+    &lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Global Sukuk Fund&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;NAV as of 28 Aug · &lt;span class=&quot;bes-badge bes-badge--success&quot; style=&quot;padding:2px 8px;font-size:11px&quot;&gt;Shari&#x27;ah certified&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;trail&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--sm&quot;&gt;AED 9,600.00&lt;/bdi&gt;&lt;span class=&quot;bes-delta bes-delta--down&quot; style=&quot;font-size:12px&quot;&gt;▼ 0.4% 1M&lt;/span&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Order ticket — consequence before execution</h2><div class="demo bes">
+<div class="bes-card" style="max-width:420px">
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">Buy</span><span class="v">Emaar Properties · market order</span></div>
+    <div class="bes-row"><span class="k">Amount</span><span class="v"><bdi class="bes-amount">≈ AED 5,000.00</bdi> <span style="color:var(--bes-text-secondary);font-weight:400">(~595 shares)</span></span></div>
+    <div class="bes-row"><span class="k">Commission</span><span class="v"><bdi class="bes-amount">AED 12.50</bdi></span></div>
+    <div class="bes-row bes-row--rate"><span>Indicative price</span><span><bdi class="bes-amount">AED 8.41</bdi> · final at execution</span></div>
+  </div>
+  <p class="bes-consequence">Market orders execute at the best available price, which may differ from what you see. They can't be cancelled once executed.</p>
+  <button class="bes-btn bes-btn--primary bes-btn--lg">Buy ~<bdi class="bes-amount">AED 5,000.00</bdi> of Emaar</button>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Buy&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;Emaar Properties · market order&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Amount&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;≈ AED 5,000.00&lt;/bdi&gt; &lt;span style=&quot;color:var(--bes-text-secondary);font-weight:400&quot;&gt;(~595 shares)&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Commission&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 12.50&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row bes-row--rate&quot;&gt;&lt;span&gt;Indicative price&lt;/span&gt;&lt;span&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 8.41&lt;/bdi&gt; · final at execution&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p class=&quot;bes-consequence&quot;&gt;Market orders execute at the best available price, which may differ from what you see. They can&#x27;t be cancelled once executed.&lt;/p&gt;
+  &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--lg&quot;&gt;Buy ~&lt;bdi class=&quot;bes-amount&quot;&gt;AED 5,000.00&lt;/bdi&gt; of Emaar&lt;/button&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Term deposit — no silent auto-renewal</h2><div class="demo bes">
+<div class="bes-card" style="max-width:420px">
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">Fixed deposit</span><span class="v"><bdi class="bes-amount">AED 50,000.00</bdi> · 12 months · <bdi class="bes-amount">4.10%</bdi></span></div>
+    <div class="bes-row"><span class="k">Matures</span><span class="v">15 Mar 2027</span></div>
+    <div class="bes-row"><span class="k">Early withdrawal</span><span class="v" style="color:var(--bes-status-warning)">base rate 0.5% applies</span></div>
+    <div class="bes-row"><span class="k">At maturity</span><span class="v">Pay out to ••4521 (default — you choose, we notify at T-7 days)</span></div>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Fixed deposit&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 50,000.00&lt;/bdi&gt; · 12 months · &lt;bdi class=&quot;bes-amount&quot;&gt;4.10%&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Matures&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;15 Mar 2027&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Early withdrawal&lt;/span&gt;&lt;span class=&quot;v&quot; style=&quot;color:var(--bes-status-warning)&quot;&gt;base rate 0.5% applies&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;At maturity&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;Pay out to ••4521 (default — you choose, we notify at T-7 days)&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Performance chart</h2><div class="demo bes">
+<div class="bes-chart" style="max-width:520px" data-bes-chart='{"type":"line","data":[{"label":"Mar","value":44100},{"label":"Apr","value":43200},{"label":"May","value":45900},{"label":"Jun","value":46400},{"label":"Jul","value":47700},{"label":"Aug","value":48320}],"opts":{"label":"Portfolio value over six months","colLabel":"Month","colValue":"AED"}}'></div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-chart&quot; style=&quot;max-width:520px&quot; data-bes-chart=&#x27;{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:[{&quot;label&quot;:&quot;Mar&quot;,&quot;value&quot;:44100},{&quot;label&quot;:&quot;Apr&quot;,&quot;value&quot;:43200},{&quot;label&quot;:&quot;May&quot;,&quot;value&quot;:45900},{&quot;label&quot;:&quot;Jun&quot;,&quot;value&quot;:46400},{&quot;label&quot;:&quot;Jul&quot;,&quot;value&quot;:47700},{&quot;label&quot;:&quot;Aug&quot;,&quot;value&quot;:48320}],&quot;opts&quot;:{&quot;label&quot;:&quot;Portfolio value over six months&quot;,&quot;colLabel&quot;:&quot;Month&quot;,&quot;colValue&quot;:&quot;AED&quot;}}&#x27;&gt;&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="lending.html"><span class="lbl">Previous</span>Lending &amp; financing</a><a class="next" href="identity-security.html"><span class="lbl">Next</span>Identity &amp; security</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

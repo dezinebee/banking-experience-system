@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 — Spacing, Layout &amp; Responsive System · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html" class="on">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Foundations</div>
+<h1>03 — Spacing, Layout &amp; Responsive System</h1>
+<p><strong>Banking Experience System (BES)</strong> · Foundations · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:560px">
+  <div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px">The 4px scale</div>
+    <div style="display:flex;align-items:flex-end;gap:8px">
+      <div style="inline-size:24px;block-size:4px;background:var(--bes-action-primary);border-radius:2px" title="4"></div>
+      <div style="inline-size:24px;block-size:8px;background:var(--bes-action-primary);border-radius:2px" title="8"></div>
+      <div style="inline-size:24px;block-size:16px;background:var(--bes-action-primary);border-radius:2px" title="16"></div>
+      <div style="inline-size:24px;block-size:24px;background:var(--bes-action-primary);border-radius:2px" title="24"></div>
+      <div style="inline-size:24px;block-size:32px;background:var(--bes-action-primary);border-radius:2px" title="32"></div>
+      <div style="inline-size:24px;block-size:48px;background:var(--bes-action-primary);border-radius:2px" title="48"></div>
+      <div style="inline-size:24px;block-size:64px;background:var(--bes-action-primary);border-radius:2px" title="64"></div>
+    </div>
+    <div style="display:flex;gap:8px;font-size:11px;color:var(--bes-text-secondary);margin-top:4px"><span style="inline-size:24px;text-align:center">4</span><span style="inline-size:24px;text-align:center">8</span><span style="inline-size:24px;text-align:center">16</span><span style="inline-size:24px;text-align:center">24</span><span style="inline-size:24px;text-align:center">32</span><span style="inline-size:24px;text-align:center">48</span><span style="inline-size:24px;text-align:center">64</span></div>
+  </div>
+  <div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px">Density modes — same list row, three modes</div>
+    <div class="bes-list">
+      <div class="bes-item" style="min-block-size:64px"><span class="main"><span class="t">Comfortable · 64px rows</span><br><span class="s">Consumer onboarding, elderly contexts</span></span><span class="trail"><bdi class="bes-amount bes-amount--sm">−AED 89.50</bdi></span></div>
+      <div class="bes-item" style="min-block-size:56px"><span class="main"><span class="t">Standard · 56px rows</span><br><span class="s">Retail default</span></span><span class="trail"><bdi class="bes-amount bes-amount--sm">−AED 89.50</bdi></span></div>
+      <div class="bes-item" style="min-block-size:44px;padding-block:6px"><span class="main"><span class="t">Compact · 44px rows</span><br><span class="s">SME &amp; treasury</span></span><span class="trail"><bdi class="bes-amount bes-amount--sm">−AED 89.50</bdi></span></div>
+    </div>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:560px&quot;&gt;
+  &lt;div&gt;
+    &lt;div style=&quot;font-size:13px;font-weight:600;margin-bottom:8px&quot;&gt;The 4px scale&lt;/div&gt;
+    &lt;div style=&quot;display:flex;align-items:flex-end;gap:8px&quot;&gt;
+      &lt;div style=&quot;inline-size:24px;block-size:4px;background:var(--bes-action-primary);border-radius:2px&quot; title=&quot;4&quot;&gt;&lt;/div&gt;
+      &lt;div style=&quot;inline-size:24px;block-size:8px;background:var(--bes-action-primary);border-radius:2px&quot; title=&quot;8&quot;&gt;&lt;/div&gt;
+      &lt;div style=&quot;inline-size:24px;block-size:16px;background:var(--bes-action-primary);border-radius:2px&quot; title=&quot;16&quot;&gt;&lt;/div&gt;
+      &lt;div style=&quot;inline-size:24px;block-size:24px;background:var(--bes-action-primary);border-radius:2px&quot; title=&quot;24&quot;&gt;&lt;/div&gt;
+      &lt;div style=&quot;inline-size:24px;block-size:32px;background:var(--bes-action-primary);border-radius:2px&quot; title=&quot;32&quot;&gt;&lt;/div&gt;
+      &lt;div style=&quot;inline-size:24px;block-size:48px;background:var(--bes-action-primary);border-radius:2px&quot; title=&quot;48&quot;&gt;&lt;/div&gt;
+      &lt;div style=&quot;inline-size:24px;block-size:64px;background:var(--bes-action-primary);border-radius:2px&quot; title=&quot;64&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;display:flex;gap:8px;font-size:11px;color:var(--bes-text-secondary);margin-top:4px&quot;&gt;&lt;span style=&quot;inline-size:24px;text-align:center&quot;&gt;4&lt;/span&gt;&lt;span style=&quot;inline-size:24px;text-align:center&quot;&gt;8&lt;/span&gt;&lt;span style=&quot;inline-size:24px;text-align:center&quot;&gt;16&lt;/span&gt;&lt;span style=&quot;inline-size:24px;text-align:center&quot;&gt;24&lt;/span&gt;&lt;span style=&quot;inline-size:24px;text-align:center&quot;&gt;32&lt;/span&gt;&lt;span style=&quot;inline-size:24px;text-align:center&quot;&gt;48&lt;/span&gt;&lt;span style=&quot;inline-size:24px;text-align:center&quot;&gt;64&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style=&quot;font-size:13px;font-weight:600;margin-bottom:8px&quot;&gt;Density modes — same list row, three modes&lt;/div&gt;
+    &lt;div class=&quot;bes-list&quot;&gt;
+      &lt;div class=&quot;bes-item&quot; style=&quot;min-block-size:64px&quot;&gt;&lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Comfortable · 64px rows&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Consumer onboarding, elderly contexts&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;trail&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--sm&quot;&gt;−AED 89.50&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;bes-item&quot; style=&quot;min-block-size:56px&quot;&gt;&lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Standard · 56px rows&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Retail default&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;trail&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--sm&quot;&gt;−AED 89.50&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;bes-item&quot; style=&quot;min-block-size:44px;padding-block:6px&quot;&gt;&lt;span class=&quot;main&quot;&gt;&lt;span class=&quot;t&quot;&gt;Compact · 44px rows&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;SME &amp;amp; treasury&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;trail&quot;&gt;&lt;bdi class=&quot;bes-amount bes-amount--sm&quot;&gt;−AED 89.50&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<hr />
+<h2>1. Spacing scale</h2>
+<p>4px base unit. Tokens are named by value for primitives, by role for semantics.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Primitive</th>
+<th>px</th>
+<th>Common semantic roles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>space.2</code></td>
+<td>2</td>
+<td>Icon-to-badge nudges</td>
+</tr>
+<tr>
+<td><code>space.4</code></td>
+<td>4</td>
+<td>Inside compound controls</td>
+</tr>
+<tr>
+<td><code>space.8</code></td>
+<td>8</td>
+<td>Icon-to-label, chip padding</td>
+</tr>
+<tr>
+<td><code>space.12</code></td>
+<td>12</td>
+<td>Compact cell padding, stacked metadata</td>
+</tr>
+<tr>
+<td><code>space.16</code></td>
+<td>16</td>
+<td>Default component padding, list row padding</td>
+</tr>
+<tr>
+<td><code>space.20</code></td>
+<td>20</td>
+<td>Card padding (standard density)</td>
+</tr>
+<tr>
+<td><code>space.24</code></td>
+<td>24</td>
+<td>Section separation within a card</td>
+</tr>
+<tr>
+<td><code>space.32</code></td>
+<td>32</td>
+<td>Between cards/sections</td>
+</tr>
+<tr>
+<td><code>space.40</code></td>
+<td>40</td>
+<td>Major section breaks</td>
+</tr>
+<tr>
+<td><code>space.48</code></td>
+<td>48</td>
+<td>Screen-level top spacing (desktop)</td>
+</tr>
+<tr>
+<td><code>space.64</code></td>
+<td>64</td>
+<td>Hero regions</td>
+</tr>
+<tr>
+<td><code>space.80</code></td>
+<td>80</td>
+<td>Marketing/kiosk breathing room</td>
+</tr>
+</tbody>
+</table></div>
+<p>Semantic layer examples: <code>layout.gutter</code>, <code>layout.cardPadding</code>, <code>layout.sectionGap</code>, <code>form.fieldGap</code> (= <code>space.24</code>), <code>form.groupGap</code> (= <code>space.32</code>). Components consume semantics so density modes can remap them globally.</p>
+<h2>2. Density modes</h2>
+<p>A token dimension, not separate components.</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Multiplier</th>
+<th>Row height (list/table)</th>
+<th>Default for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>density.comfortable</code></td>
+<td>1.25× padding</td>
+<td>64 / 56</td>
+<td>Consumer onboarding, elderly/large-type contexts</td>
+</tr>
+<tr>
+<td><code>density.standard</code></td>
+<td>1×</td>
+<td>56 / 48</td>
+<td>Retail banking default</td>
+</tr>
+<tr>
+<td><code>density.compact</code></td>
+<td>0.75× padding</td>
+<td>44 / 36</td>
+<td>SME dashboards, corporate treasury, data tables</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rules: touch target minimum (44×44) is <strong>never</strong> reduced by density on touch surfaces — compact mode on mobile tightens visual padding but preserves hit areas. Density is user-adjustable on data-heavy surfaces (tables remember the choice).</p>
+<h2>3. Grid</h2>
+<ul>
+<li><strong>Mobile:</strong> 4-column, 16px gutters/margins.</li>
+<li><strong>Tablet:</strong> 8-column, 24px gutters.</li>
+<li><strong>Desktop:</strong> 12-column, 24px gutters, max content width 1200px (reading surfaces) / fluid to 1600px (data surfaces).</li>
+<li><strong>Large desktop:</strong> 12-column, content max 1440px; extra width goes to data density or split panes, never to stretched line lengths.</li>
+<li><strong>Kiosk/ATM-like:</strong> 8-column, enlarged type/targets (see §5).</li>
+</ul>
+<p>Layout uses <strong>logical properties exclusively</strong>: <code>margin-inline-start</code>, <code>padding-inline-end</code>, <code>inset-inline</code> — never physical left/right. The grid mirrors automatically under <code>dir="rtl"</code> with zero layout overrides. Any physical property in a component stylesheet is a lint failure.</p>
+<h2>4. Breakpoints</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Range</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bp.mobile</code></td>
+<td>320–599</td>
+<td>Primary design target</td>
+</tr>
+<tr>
+<td><code>bp.tablet</code></td>
+<td>600–899</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bp.desktop</code></td>
+<td>900–1279</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bp.desktopLg</code></td>
+<td>1280–1919</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bp.kiosk</code></td>
+<td>1920+ / device-class flag</td>
+<td>Also set by deployment, not width alone</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Surface classes and adaptation rules</h2>
+<p>Do not scale desktop down. Each pattern declares its adaptation explicitly:</p>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stays visible</td>
+<td>Core answer to the screen's primary question (e.g., available balance, total to pay)</td>
+</tr>
+<tr>
+<td>Collapses</td>
+<td>Secondary metadata into expandable rows/accordions</td>
+</tr>
+<tr>
+<td>Progressive disclosure</td>
+<td>Fee breakdowns, rate details behind an inline expander (content still one tap away, never hidden past review)</td>
+</tr>
+<tr>
+<td>Moves to drawer</td>
+<td>Desktop side-details (transaction detail)</td>
+</tr>
+<tr>
+<td>Becomes bottom sheet</td>
+<td>Mobile contextual actions, pickers, confirmations that don't warrant full screens</td>
+</tr>
+</tbody>
+</table></div>
+<p>Kiosk/ATM-like: minimum text 18px, touch targets 56px, no hover-dependent interactions, session-timeout patterns mandatory, privacy filters assumed (no sensitive data at glanceable size beyond the active user's need).</p>
+<h2>6. Elevation &amp; shape</h2>
+<h3>Elevation</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Use</th>
+<th>Light treatment</th>
+<th>Dark treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>elevation.0</code></td>
+<td>Flat, on-surface</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>elevation.1</code></td>
+<td>Cards</td>
+<td>y1 blur2 @8%</td>
+<td>surface lightness step</td>
+</tr>
+<tr>
+<td><code>elevation.2</code></td>
+<td>Raised (menus, sheets)</td>
+<td>y2 blur8 @10%</td>
+<td>+1 lightness step</td>
+</tr>
+<tr>
+<td><code>elevation.3</code></td>
+<td>Modals, dialogs</td>
+<td>y8 blur24 @14%</td>
+<td>+2 steps + scrim</td>
+</tr>
+</tbody>
+</table></div>
+<p>Dark mode communicates elevation primarily by surface lightness, not shadow.</p>
+<h3>Shape</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Default</th>
+<th>Range brands may choose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>radius.sm</code></td>
+<td>6</td>
+<td>2–8 (inputs, chips)</td>
+</tr>
+<tr>
+<td><code>radius.md</code></td>
+<td>10</td>
+<td>4–14 (cards, buttons)</td>
+</tr>
+<tr>
+<td><code>radius.lg</code></td>
+<td>16</td>
+<td>8–20 (sheets, modals)</td>
+</tr>
+<tr>
+<td><code>radius.full</code></td>
+<td>999</td>
+<td>pills, avatars</td>
+</tr>
+</tbody>
+</table></div>
+<p>Shape is a themeable preset applied as a set (a brand picks "sharp / standard / soft", not per-component values). Financial document surfaces (receipts, KFS) always use <code>radius.sm</code> regardless of brand — they read as records, not marketing.</p>
+<h2>7. Z-index scale</h2>
+<p><code>z.base 0</code> · <code>z.raised 10</code> · <code>z.sticky 100</code> (headers, table headers) · <code>z.drawer 800</code> · <code>z.modal 900</code> · <code>z.toast 950</code> · <code>z.critical 1000</code> (fraud interruptions, session pause — nothing may render above this layer).</p>
+<div class="pgnav"><a href="typography.html"><span class="lbl">Previous</span>Typography</a><a class="next" href="iconography.html"><span class="lbl">Next</span>Iconography</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

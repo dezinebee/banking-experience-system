@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>21 — Financial Components: Consent, Privacy &amp; Open Finance Family · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html" class="on">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Financial components</div>
+<h1>21 — Financial Components: Consent, Privacy &amp; Open Finance Family</h1>
+<p><strong>Banking Experience System (BES)</strong> · Financial Components · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="bes-card" style="max-width:440px">
+  <div style="display:flex;gap:12px;align-items:center;margin-bottom:14px">
+    <span style="inline-size:40px;block-size:40px;border-radius:10px;background:var(--bes-transaction-reversedTint);color:var(--bes-transaction-reversed);display:grid;place-items:center;font-weight:700">AF</span>
+    <div>
+      <div style="font-weight:600">ABC Finance</div>
+      <div style="font-size:12.5px;color:var(--bes-status-success);font-weight:600">✓ Licensed provider · verified today</div>
+    </div>
+  </div>
+  <p style="margin:0 0 8px;font-size:14.5px;font-weight:500">wants to access:</p>
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">✓ Account information</span></div>
+    <div class="bes-row"><span class="k">✓ Balance</span></div>
+    <div class="bes-row"><span class="k">✓ Transaction history (12 months)</span></div>
+  </div>
+  <div style="font-size:13.5px;color:var(--bes-text-secondary);line-height:1.7;border-block-start:1px solid var(--bes-border-default);padding-block-start:10px;margin-top:6px">
+    Purpose: <b style="color:var(--bes-text-primary)">Personal financial management</b><br>
+    Access until: <b style="color:var(--bes-text-primary)">30 September 2026</b><br>
+    Stop this anytime in Settings → Data sharing.
+  </div>
+  <div class="demo-row" style="margin-top:14px">
+    <button class="bes-btn bes-btn--primary" style="flex:1">Allow access</button>
+    <button class="bes-btn bes-btn--secondary" style="flex:1">Cancel</button>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:440px&quot;&gt;
+  &lt;div style=&quot;display:flex;gap:12px;align-items:center;margin-bottom:14px&quot;&gt;
+    &lt;span style=&quot;inline-size:40px;block-size:40px;border-radius:10px;background:var(--bes-transaction-reversedTint);color:var(--bes-transaction-reversed);display:grid;place-items:center;font-weight:700&quot;&gt;AF&lt;/span&gt;
+    &lt;div&gt;
+      &lt;div style=&quot;font-weight:600&quot;&gt;ABC Finance&lt;/div&gt;
+      &lt;div style=&quot;font-size:12.5px;color:var(--bes-status-success);font-weight:600&quot;&gt;✓ Licensed provider · verified today&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;margin:0 0 8px;font-size:14.5px;font-weight:500&quot;&gt;wants to access:&lt;/p&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;✓ Account information&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;✓ Balance&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;✓ Transaction history (12 months)&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;font-size:13.5px;color:var(--bes-text-secondary);line-height:1.7;border-block-start:1px solid var(--bes-border-default);padding-block-start:10px;margin-top:6px&quot;&gt;
+    Purpose: &lt;b style=&quot;color:var(--bes-text-primary)&quot;&gt;Personal financial management&lt;/b&gt;&lt;br&gt;
+    Access until: &lt;b style=&quot;color:var(--bes-text-primary)&quot;&gt;30 September 2026&lt;/b&gt;&lt;br&gt;
+    Stop this anytime in Settings → Data sharing.
+  &lt;/div&gt;
+  &lt;div class=&quot;demo-row&quot; style=&quot;margin-top:14px&quot;&gt;
+    &lt;button class=&quot;bes-btn bes-btn--primary&quot; style=&quot;flex:1&quot;&gt;Allow access&lt;/button&gt;
+    &lt;button class=&quot;bes-btn bes-btn--secondary&quot; style=&quot;flex:1&quot;&gt;Cancel&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Consent doctrine (doc 07 §5): every permission is purpose-bound, time-bound, dashboard-listed, and revocable in ≤2 taps from that dashboard. A permission without a visible expiry is a design defect. Open Finance consent screens follow the centralized national consent format where mandated — the system renders the standard faithfully rather than inventing competing layouts.</p>
+<p>Components: Consent Request · Data Cluster List · TPP Identity Card · Consent Summary · Consent Dashboard · Consent Card · Revocation Flow · Expiry &amp; Renewal · Connected Institution Card · Payment Initiation Consent · Privacy Center · Data Request Tracker · Marketing Preferences · Just-in-Time Notice · Cookie/Tracking Consent.</p>
+<hr />
+<h2>Consent Request (Open Finance / data sharing)</h2>
+<p><strong>Purpose:</strong> the screen where a user grants a third party access to their financial data.</p>
+<p><strong>Anatomy (fixed order):</strong>
+1. <strong>TPP Identity Card</strong> (who is asking — see below)
+2. <strong>Data Cluster List</strong> (what they get)
+3. Purpose statement ("Purpose: personal financial management")
+4. Duration ("Access until: 30 September 2026" — absolute date, not "12 months")
+5. Frequency/scope note where applicable ("They can refresh this data up to 4× per day")
+6. Revocation promise ("Stop this anytime in Settings → Data sharing")
+7. Actions: <strong>[Allow access]</strong> (primary) · <strong>[Cancel]</strong> (equal visual weight — consent screens never bias with a ghosted decline)</p>
+<p><strong>Example:</strong></p>
+<pre><code>ABC Finance wants to access:
+✓ Account information
+✓ Balance
+✓ Transaction history (last 12 months)
+
+Purpose: Personal financial management
+Access until: 30 September 2026
+You can stop this anytime in Settings → Data sharing.
+
+[Allow access]   [Cancel]
+</code></pre>
+<p><strong>States:</strong> requesting · authenticating (step-up always required at grant) · granted (confirmation + where-to-manage) · declined ("Nothing was shared") · errored (nothing-shared assurance).</p>
+<p><strong>Rules:</strong> no pre-expanded bundles beyond the request; no "select all" defaults; partial grant supported where the standard allows (deselect clusters — the TPP sees a partial-grant result honestly).</p>
+<p><strong>A11y:</strong> clusters as a real list; Allow/Cancel equal reachability; the duration is part of the Allow button's described context.</p>
+<p><strong>RTL:</strong> full mirror; dates per locale; TPP names bilingual where registered.</p>
+<hr />
+<h2>Data Cluster List</h2>
+<p><strong>Anatomy:</strong> cluster rows: icon · plain name ("Transaction history") · expandable plain-language detail ("Merchant names, amounts and dates of your transactions — not your card numbers or passwords") · sensitive clusters flagged distinctly.</p>
+<p><strong>Rule:</strong> technical scope names never surface ("ReadAccountsDetail" → "Account information"); the <em>not-included</em> reassurance line is part of the pattern.</p>
+<hr />
+<h2>TPP Identity Card</h2>
+<p><strong>Anatomy:</strong> provider logo + registered name · <strong>verified-participant badge</strong> (sourced from the national directory — "Licensed provider · verified today") · regulator reference · "What is this company?" link (directory profile).</p>
+<p><strong>States:</strong> verified · unverified (<strong>hard stop</strong> — an unverified party's request never renders an Allow button; the screen becomes a warning) · suspended (historic consents flagged: "This provider's license was suspended — access has been paused").</p>
+<hr />
+<h2>Consent Summary (post-grant confirmation)</h2>
+<p>Compact receipt of what was granted: clusters, purpose, expiry, manage-path. Delivered as screen + notification ("You gave ABC Finance access to your account information — manage in Settings").</p>
+<hr />
+<h2>Consent Dashboard</h2>
+<p><strong>Purpose:</strong> the single place a user sees and controls everything they've shared.</p>
+<p><strong>Anatomy:</strong> active consents (Consent Cards, soonest-expiry first) · expired/revoked history (collapsed) · per-card: provider, clusters (summary), granted date, <strong>expiry countdown</strong> ("Expires in 12 days") · empty state ("You're not sharing your data with anyone").</p>
+<p><strong>Location rule:</strong> reachable in ≤2 taps from settings and linked from every consent-related notification.</p>
+<h2>Consent Card</h2>
+<p>Provider + scope summary + expiry + [View details] + <strong>[Stop sharing]</strong> (always visible, never buried in a menu).</p>
+<p><strong>States:</strong> active · expiring-soon (≤14 days: amber + renewal note) · expired · revoked · provider-suspended.</p>
+<hr />
+<h2>Revocation Flow</h2>
+<p><strong>Anatomy:</strong> one tap [Stop sharing] → consequence-honest confirm ("ABC Finance will lose access immediately. Your existing data with them isn't deleted — contact them for deletion.") → revoked confirmation + notification.</p>
+<p><strong>Rules:</strong> no retention friction (no "are you sure" chains, no guilt copy, no exit surveys before the act); revocation works even when the TPP is unreachable; the deletion-vs-access distinction is stated plainly (honesty about what revocation does and doesn't do).</p>
+<hr />
+<h2>Expiry &amp; Renewal</h2>
+<p><strong>Anatomy:</strong> expiry notification at T-14/T-3 ("Your sharing with ABC Finance ends 30 Sep — renew or let it end") · renewal = full fresh Consent Request (never auto-renew, never one-tap re-grant without re-showing scope) · lapsed = quiet end + confirmation notice.</p>
+<hr />
+<h2>Connected Institution Card (aggregation view — user's other banks in this app)</h2>
+<p><strong>Anatomy:</strong> institution logo + name · linked accounts summary · data freshness ("Updated 14:32" / "Delayed — last updated yesterday") · connection health (healthy · needs-reauthentication ("Reconnect to keep seeing this account") · broken) · manage/unlink.</p>
+<p><strong>Rule:</strong> aggregated (external) balances are visually distinguished from the home institution's <em>actionable</em> balances — a stale external number must never read as spendable money; totals that mix home + external state it ("Total across 3 banks — includes external accounts updated today").</p>
+<hr />
+<h2>Payment Initiation Consent</h2>
+<p><strong>Purpose:</strong> a third party initiating a payment <em>from</em> the user's account.</p>
+<p><strong>Anatomy:</strong> TPP Identity Card · payment specifics rendered with the standard Payment Summary (payee, amount full-precision, date) — single vs recurring vs variable-recurring made explicit: variable mandates show <strong>maximum per period</strong> ("Up to AED 500.00 per month") · duration/expiry · then the normal review + step-up authentication contract.</p>
+<p><strong>Rule:</strong> a variable recurring authorization without a stated cap does not render — the cap is structurally required.</p>
+<hr />
+<h2>Privacy Center</h2>
+<p><strong>Anatomy:</strong> sections: what-we-hold (plain-language categories) · <strong>your rights</strong> actions: download my data (Data Request Tracker) · correct my data (routes: verified fields → re-verification; others → edit) · delete (scope honesty: "We must keep transaction records for N years by law — here's what deletion covers") · objection/automated-decisions info · policy documents (layered: summary first, full PDF second) · cross-border note where applicable.</p>
+<p><strong>A11y/RTL:</strong> fully bilingual; legal documents accessible PDFs.</p>
+<hr />
+<h2>Data Request Tracker</h2>
+<p>Request rows (type, date, status: received → preparing → ready (download, expiring link) → completed) with SLA honesty ("Usually within 30 days"). Requests generate confirmations; identity re-verification precedes sensitive exports.</p>
+<hr />
+<h2>Marketing Preferences</h2>
+<p><strong>Anatomy:</strong> channel × category matrix (push/email/SMS × offers/product news/insights) · granular toggles (never one master-only) · master off-switch as well ("Stop all marketing") · service-message note ("You'll always receive security and transaction messages — they keep your account safe and can't be turned off") · effective-immediately confirmation.</p>
+<p><strong>Rules:</strong> marketing consent is opt-in at onboarding (unchecked); the marketing/service boundary is the notification-category taxonomy (doc 27) — fraud, security and transaction messages are never suppressible via this surface and never carry marketing content piggybacked.</p>
+<hr />
+<h2>Just-in-Time Notice</h2>
+<p><strong>Anatomy:</strong> inline one-liner at the point of collection ("We use your location to find nearby ATMs — it isn't stored") + "More" link into the relevant Privacy Center section.</p>
+<p><strong>Rule:</strong> any new data collection point ships with its notice; a permission dialog (OS-level) is always preceded by the in-context why.</p>
+<hr />
+<h2>Cookie / Tracking Consent (web surfaces)</h2>
+<p><strong>Anatomy:</strong> neutral banner: plain statement · [Accept all] · [Reject non-essential] (equal weight) · [Choose] (granular categories with purposes) · settings re-entry point persistent in footer.</p>
+<p><strong>Rules:</strong> no dark patterns (equal buttons, no color-biasing the accept, no repeat-nagging after rejection); essential-only operation is fully functional for banking tasks.</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Consent dashboard card — expiry visible, revoke one tap</h2><div class="demo bes">
+<div class="bes-card" style="max-width:440px;display:flex;justify-content:space-between;gap:12px;align-items:center">
+  <div>
+    <b>ABC Finance</b> <span style="font-size:12px;color:var(--bes-status-success);font-weight:600">✓ verified</span><br>
+    <span style="font-size:13px;color:var(--bes-text-secondary)">Accounts, balance, 12-month history · granted 12 Mar</span><br>
+    <span class="bes-badge bes-badge--warning" style="margin-top:4px">Expires in 12 days</span>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <button class="bes-btn bes-btn--secondary bes-btn--sm">Details</button>
+    <button class="bes-btn bes-btn--destructive bes-btn--sm">Stop sharing</button>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:440px;display:flex;justify-content:space-between;gap:12px;align-items:center&quot;&gt;
+  &lt;div&gt;
+    &lt;b&gt;ABC Finance&lt;/b&gt; &lt;span style=&quot;font-size:12px;color:var(--bes-status-success);font-weight:600&quot;&gt;✓ verified&lt;/span&gt;&lt;br&gt;
+    &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;Accounts, balance, 12-month history · granted 12 Mar&lt;/span&gt;&lt;br&gt;
+    &lt;span class=&quot;bes-badge bes-badge--warning&quot; style=&quot;margin-top:4px&quot;&gt;Expires in 12 days&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;display:flex;flex-direction:column;gap:6px&quot;&gt;
+    &lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot;&gt;Details&lt;/button&gt;
+    &lt;button class=&quot;bes-btn bes-btn--destructive bes-btn--sm&quot;&gt;Stop sharing&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Revocation — honest about what it does and doesn't do</h2><div class="demo bes">
+<div class="bes-card" style="max-width:440px">
+  <b>Stop sharing with ABC Finance?</b>
+  <p style="font-size:14px;color:var(--bes-text-secondary);margin:6px 0 12px">They lose access immediately. Data they already hold isn't deleted — contact them for deletion. No retention questions, no guilt trips.</p>
+  <div class="demo-row">
+    <button class="bes-btn bes-btn--destructive-solid bes-btn--sm">Stop sharing</button>
+    <button class="bes-btn bes-btn--secondary bes-btn--sm">Keep sharing</button>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:440px&quot;&gt;
+  &lt;b&gt;Stop sharing with ABC Finance?&lt;/b&gt;
+  &lt;p style=&quot;font-size:14px;color:var(--bes-text-secondary);margin:6px 0 12px&quot;&gt;They lose access immediately. Data they already hold isn&#x27;t deleted — contact them for deletion. No retention questions, no guilt trips.&lt;/p&gt;
+  &lt;div class=&quot;demo-row&quot;&gt;
+    &lt;button class=&quot;bes-btn bes-btn--destructive-solid bes-btn--sm&quot;&gt;Stop sharing&lt;/button&gt;
+    &lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot;&gt;Keep sharing&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Connected institution — freshness always labeled</h2><div class="demo bes">
+<div class="bes-card" style="max-width:440px;display:flex;justify-content:space-between;gap:12px;align-items:center">
+  <div>
+    <b>Emirates NBD</b> · 2 accounts linked<br>
+    <span style="font-size:13px;color:var(--bes-text-secondary)">Updated today 14:32</span>
+  </div>
+  <span class="bes-badge bes-badge--warning">Reconnect needed</span>
+</div>
+<p style="font-size:13px;color:var(--bes-text-secondary);margin:10px 0 0">External balances render visually distinct from actionable home balances — stale numbers never read as spendable.</p>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:440px;display:flex;justify-content:space-between;gap:12px;align-items:center&quot;&gt;
+  &lt;div&gt;
+    &lt;b&gt;Emirates NBD&lt;/b&gt; · 2 accounts linked&lt;br&gt;
+    &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;Updated today 14:32&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class=&quot;bes-badge bes-badge--warning&quot;&gt;Reconnect needed&lt;/span&gt;
+&lt;/div&gt;
+&lt;p style=&quot;font-size:13px;color:var(--bes-text-secondary);margin:10px 0 0&quot;&gt;External balances render visually distinct from actionable home balances — stale numbers never read as spendable.&lt;/p&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Marketing preferences — service messages can't be silenced</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:420px">
+  <label class="bes-switch"><input type="checkbox"><span class="track" aria-hidden="true"></span><span>Offers &amp; product news <span class="state">Off</span></span></label>
+  <label class="bes-switch"><input type="checkbox" checked><span class="track" aria-hidden="true"></span><span>Monthly insights <span class="state">On</span></span></label>
+  <div class="bes-alert bes-alert--info"><div>You'll always receive security and transaction messages — they keep your account safe and can't be turned off.</div></div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;label class=&quot;bes-switch&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt;&lt;span class=&quot;track&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;span&gt;Offers &amp;amp; product news &lt;span class=&quot;state&quot;&gt;Off&lt;/span&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;label class=&quot;bes-switch&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt;&lt;span class=&quot;track&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;span&gt;Monthly insights &lt;span class=&quot;state&quot;&gt;On&lt;/span&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;div class=&quot;bes-alert bes-alert--info&quot;&gt;&lt;div&gt;You&#x27;ll always receive security and transaction messages — they keep your account safe and can&#x27;t be turned off.&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="identity-security.html"><span class="lbl">Previous</span>Identity &amp; security</a><a class="next" href="patterns-input.html"><span class="lbl">Next</span>Asking users for…</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

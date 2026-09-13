@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Figma library spec · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html" class="on">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Design assets</div>
+<h1>Figma Library Build Specification</h1>
+<p><strong>Banking Experience System (BES)</strong> · Design Assets · v2.0.0-draft
+The executable blueprint: how the BES token architecture (docs 01–07) maps to Figma variables, styles and components. This drives the automated library build once the Figma connector is authorized, and doubles as the source map for the code token package.</p>
+<hr />
+<h2>1. File structure</h2>
+<p>One <strong>BES Foundations</strong> library file + one <strong>BES Components</strong> library file (components subscribe to Foundations). Later: per-brand theme files overriding variable values only.</p>
+<pre><code>BES Foundations (library)
+├─ Page: Cover &amp; usage
+├─ Page: Variables reference (rendered swatch/spec sheets)
+├─ Page: Type &amp; effect styles
+└─ Page: Icons (mirroring flags in component descriptions)
+
+BES Components (library)
+├─ Page: 01 Actions        ├─ Page: 06 Money
+├─ Page: 02 Inputs         ├─ Page: 07 Accounts &amp; transactions
+├─ Page: 03 Navigation     ├─ Page: 08 Payments &amp; review
+├─ Page: 04 Containers     ├─ Page: 09 Disclosure &amp; consent
+├─ Page: 05 Feedback       └─ Page: 10 Templates (mobile frames, RTL duplicates)
+</code></pre>
+<h2>2. Variable collections &amp; modes</h2>
+<p>Figma modes carry our token dimensions. Direction (RTL) is <strong>not</strong> a variable — it's handled by auto-layout mirroring and the icon-flip flags; density and terminology are component-property concerns where variables can't reach.</p>
+<h3>Collection <code>01 Primitives</code> (no modes, hidden from publishing)</h3>
+<p>All raw scales as variables: <code>gray/0…900</code>, <code>blue/50…900</code>, <code>green/…</code>, <code>red/…</code>, <code>amber/…</code>, <code>teal/…</code>, <code>purple/…</code>, <code>gold/…</code> (hex values from doc 01); <code>space/2…80</code>; <code>radius/sm|md|lg|full</code>; <code>size/target-min: 44</code> etc.</p>
+<h3>Collection <code>02 Color semantic</code> — modes: <strong>Light / Dark</strong></h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Light</th>
+<th>Dark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>surface/primary</code></td>
+<td>gray/0</td>
+<td>#10141F</td>
+</tr>
+<tr>
+<td><code>surface/secondary</code></td>
+<td>gray/50</td>
+<td>#181D2B</td>
+</tr>
+<tr>
+<td><code>surface/tertiary</code></td>
+<td>gray/100</td>
+<td>#212739</td>
+</tr>
+<tr>
+<td><code>surface/inverse</code></td>
+<td>gray/900</td>
+<td>#262D42</td>
+</tr>
+<tr>
+<td><code>text/primary</code></td>
+<td>gray/900</td>
+<td>#F2F4F8</td>
+</tr>
+<tr>
+<td><code>text/secondary</code></td>
+<td>gray/600</td>
+<td>#A8B1C2</td>
+</tr>
+<tr>
+<td><code>text/disabled</code></td>
+<td>gray/400</td>
+<td>#71809A</td>
+</tr>
+<tr>
+<td><code>text/onAction</code></td>
+<td>gray/0</td>
+<td>#0C2140</td>
+</tr>
+<tr>
+<td><code>border/default</code></td>
+<td>gray/200</td>
+<td>#2A324B</td>
+</tr>
+<tr>
+<td><code>border/strong</code></td>
+<td>gray/300</td>
+<td>#3D4763</td>
+</tr>
+<tr>
+<td><code>border/focus</code></td>
+<td>blue/500</td>
+<td>blue/300</td>
+</tr>
+<tr>
+<td><code>action/primary</code> + hover/pressed</td>
+<td>blue/600·700·800</td>
+<td>blue/400·300·200</td>
+</tr>
+<tr>
+<td><code>action/destructive</code></td>
+<td>red/600</td>
+<td>red/300</td>
+</tr>
+<tr>
+<td><code>status/success·warning·error·info·pending</code></td>
+<td>green/600, amber/600, red/600, teal/600, teal/600</td>
+<td>300-tier equivalents</td>
+</tr>
+<tr>
+<td><code>status/…-tint</code> (surfaces)</td>
+<td>50-tier</td>
+<td>dark tints (doc 01 §5)</td>
+</tr>
+<tr>
+<td><code>financial/income·expense·negative·pending·reserved·blocked·available</code></td>
+<td>per doc 01 §3</td>
+<td>300-tier equivalents</td>
+</tr>
+<tr>
+<td><code>chart/cat1…cat7</code></td>
+<td>doc 26 §3</td>
+<td>dark-verified equivalents</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Collection <code>03 Dimension</code> — modes: <strong>Comfortable / Standard / Compact</strong></h3>
+<p><code>density/row-height: 64/56/44</code> · <code>density/cell-pad: 20/16/12</code> · <code>density/card-pad: 24/20/16</code> · <code>density/field-gap: 28/24/20</code>. Components bind padding/heights to these so one mode switch re-densifies a screen.</p>
+<h3>Collection <code>04 Component</code> (aliases only, scoped per component set)</h3>
+<p><code>button/primary/bg → action/primary</code>, <code>input/border/error → status/error</code>, <code>badge/pending/bg → status/pending-tint</code>, etc. Never referenced across components.</p>
+<h2>3. Text styles</h2>
+<p>Two parallel sets, per doc 02 (Arabic gets its own metrics — Figma has no per-lang resolution, so styles are explicit):</p>
+<ul>
+<li><code>EN/display 40·48·700</code> … <code>EN/caption 12·16·400</code> (full scale, Inter)</li>
+<li><code>AR/display 41·50·700</code> … <code>AR/caption 13·18·400</code> (Noto Sans Arabic, zero letter-spacing everywhere)</li>
+<li><code>EN/amount/hero·lg·md·sm·meta</code> and <code>AR/amount/…</code> — <strong>numeric styles stay Inter with tabular figures in both sets</strong> (amounts are LTR Latin-digit runs)</li>
+<li><code>EN/label</code>, <code>AR/label</code>; overline styles exist only in EN (Arabic equivalent = semibold sentence case, per doc 02 §2)</li>
+</ul>
+<h2>4. Effect &amp; layout styles</h2>
+<p>Effects: <code>elevation/1·2·3</code> (light values; dark handled by surface variables, shadows off) · <code>focus/ring</code> (2px border/focus + 2px offset, as a style guide component since Figma can't token focus).
+Layout grids: <code>grid/mobile-4col-16</code>, <code>grid/tablet-8col-24</code>, <code>grid/desktop-12col-24-max1200</code>.</p>
+<h2>5. Component build order</h2>
+<p>Priority = frequency × financial risk × reusability ÷ complexity (doc 08 taxonomy). Variant properties listed = the Figma component properties to generate.</p>
+<h3>Wave 1 — primitives everything consumes (build first)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Variants/properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Amount</strong></td>
+<td>size(hero/lg/md/sm/meta) × semantic(neutral/credit/negative/estimated/masked) × currency(text prop)</td>
+</tr>
+<tr>
+<td><strong>Button</strong></td>
+<td>variant(primary/secondary/ghost/destructive) × size(lg/md/sm) × state(default/hover/focus/pressed/disabled/loading) × icon(boolean, start/end)</td>
+</tr>
+<tr>
+<td><strong>Status Badge</strong></td>
+<td>status(completed/pending/checking/failed/blocked/reversed/refunded/draft/disputed) × form(pill/dot/count) — icon+label locked pairs</td>
+</tr>
+<tr>
+<td><strong>Icon Button</strong></td>
+<td>style(subtle/bordered) × state × toggled(boolean)</td>
+</tr>
+<tr>
+<td><strong>Text Input</strong></td>
+<td>state(default/focus/filled/disabled/read-only/error/verified) × slots(prefix/suffix booleans) + Label/Help/Error as nested components</td>
+</tr>
+<tr>
+<td><strong>Currency Input</strong></td>
+<td>state(default/focus/error/exceeded/disabled) × chips(boolean) × context-line(boolean)</td>
+</tr>
+<tr>
+<td><strong>Checkbox / Radio / Switch</strong></td>
+<td>state × checked/selected/on × pending(switch)</td>
+</tr>
+<tr>
+<td><strong>List Item</strong></td>
+<td>leading(icon/avatar/logo/none) × lines(2/3) × trailing(amount/chevron/badge/control)</td>
+</tr>
+<tr>
+<td><strong>Alert</strong></td>
+<td>severity(info/success/warning/error/hold) × dismissible × actions(0/1/2)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Wave 2 — financial molecules</h3>
+<p>Fee Line + Fee Breakdown + Total Row · FX Rate (+ lock timer states) · Balance Display + Balance Set · Account Card (full/compact × states) · Transaction Item (variant × all 8 render states) · Payee Card (+ New/verified marks) · Payee Verification result (match/close/no-match/unavailable) · Limit Indicator (normal/approaching/reached) · Tabs, Segmented, Stepper, App Bar, Bottom Nav · Modal, Bottom Sheet, Toast, Banner, Skeleton, Empty State.</p>
+<h3>Wave 3 — composed organisms</h3>
+<p>Transfer Review (assembled) · Result screens (success/pending/failed/unknown) · KFS Product Summary · Consent Request + Consent Card · Auth Prompt set · Warning tier interstitials · Card Art + Controls panel · Transaction Detail + Timeline · Repayment Schedule row · Data-viz frames (chart styling references).</p>
+<h3>Wave 4 — templates</h3>
+<p>Mobile flow templates (amount → review → auth → result) in EN-LTR and <strong>AR-RTL duplicates</strong> (constraints + mirrored auto-layout verified by eye, per doc 29 rules), dashboard template, SME approval queue template.</p>
+<h2>6. RTL strategy in Figma</h2>
+<ul>
+<li>All components built with auto-layout so direction flips cleanly; icons carrying the mirror flag (doc 04 §3) get an <code>RTL</code> boolean variant that swaps the glyph.</li>
+<li>Amount/IBAN layers marked "do not mirror" in descriptions; numerals always LTR.</li>
+<li>Wave 4 ships side-by-side EN/AR template frames as the visual regression reference.</li>
+</ul>
+<h2>7. Component documentation in Figma</h2>
+<p>Every component's description field carries: one-line purpose · doc link (GitHub Pages URL + page slug) · a11y note (target size, focus, name) · RTL note. The site remains the source of truth; Figma descriptions point to it.</p>
+<h2>8. Definition of done (per component)</h2>
+<p>Bound to variables only (no detached fills) · all listed variants/states present · light+dark verified · AR text style twin exists where text renders · description filled · published without overrides in the demo frame.</p>
+<hr />
+<h2>Execution plan (once Figma is connected)</h2>
+<ol>
+<li>Create <strong>BES Foundations</strong> file → generate collections 01–04 with modes and all values (§2) → type/effect/grid styles (§3–4) → publish.</li>
+<li>Create <strong>BES Components</strong> file, subscribe to Foundations → build Wave 1 (9 component sets) → review checkpoint with you → Waves 2–4 in order.</li>
+<li>Each wave ends with the EN/AR + light/dark verification pass before the next begins.</li>
+</ol>
+<div class="pgnav"></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

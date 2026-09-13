@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08 — System Taxonomy · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html" class="on">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Strategy</div>
+<h1>08 — System Taxonomy</h1>
+<p><strong>Banking Experience System</strong> · Phase 01 · v2.0.0-draft · August 2026</p>
+<p>The shared vocabulary: what things are called, which layer they belong to, how they're categorized, and what documentation each kind requires. Phase 02 expands each taxonomy into full inventories; Phase 03 prioritizes them.</p>
+<hr />
+<h2>1. Artifact types (the nouns of the system)</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Definition</th>
+<th>Example</th>
+<th>Lives in layer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Token</strong></td>
+<td>Named design decision, themeable value</td>
+<td><code>action.primary</code>, <code>financial.expense</code></td>
+<td>Tokens</td>
+</tr>
+<tr>
+<td><strong>Foundation</strong></td>
+<td>Non-token rule set</td>
+<td>Arabic type metrics, icon mirroring rules</td>
+<td>Foundations</td>
+</tr>
+<tr>
+<td><strong>Component</strong></td>
+<td>Reusable UI object encoding behavior + states</td>
+<td>Currency Input, Transaction Item</td>
+<td>Core / Financial</td>
+</tr>
+<tr>
+<td><strong>Utility</strong></td>
+<td>Non-visual logic primitive</td>
+<td>IBAN validator, amount formatter</td>
+<td>Core / Financial</td>
+</tr>
+<tr>
+<td><strong>Pattern</strong></td>
+<td>Named solution to a recurring task, composed of components</td>
+<td>Confirmation of Payee, Check Answers</td>
+<td>Patterns</td>
+</tr>
+<tr>
+<td><strong>Journey</strong></td>
+<td>End-to-end flow blueprint composed of patterns</td>
+<td>International remittance</td>
+<td>Journeys</td>
+</tr>
+<tr>
+<td><strong>Experience</strong></td>
+<td>Product-level assembly</td>
+<td>Retail app, SME portal</td>
+<td>Product</td>
+</tr>
+<tr>
+<td><strong>Content standard</strong></td>
+<td>Terminology, message frameworks, error dictionary</td>
+<td>"Transfer completed" vocabulary</td>
+<td>Cross-cutting</td>
+</tr>
+</tbody>
+</table></div>
+<h2>2. Component taxonomy</h2>
+<h3>Core components (target ~50–70)</h3>
+<p>Categories: <strong>Actions</strong> (button, icon button, link, menu) · <strong>Inputs</strong> (text, currency, search, select, combobox, date/date-range, checkbox, radio, switch, upload, character count) · <strong>Navigation</strong> (nav bar, tabs, segmented control, breadcrumb, pagination, stepper) · <strong>Containers</strong> (card, table, list, accordion, drawer, modal, bottom sheet, popover, tooltip) · <strong>Feedback</strong> (alert, banner, toast, badge, progress, skeleton, empty/loading/error states) · <strong>Media &amp; data</strong> (avatar, icon, chart primitives).</p>
+<h3>Financial components (target ~30–50)</h3>
+<p>Categories: <strong>Money</strong> (amount display, currency input, masked balance, FX rate pair, fee line, total) · <strong>Account</strong> (account card, selector, balance set — current/available/pending/reserved, status) · <strong>Transaction</strong> (item, table, detail, status, timeline, receipt) · <strong>Payment &amp; transfer</strong> (payee/beneficiary, source selector, CoP result, payment summary, method, result states) · <strong>Card</strong> (card art incl. Jaywan co-badge, controls, freeze, limits, PIN, dispute) · <strong>Lending</strong> (KFS, calculator, EMI/payment schedule, application progress, profit-rate display) · <strong>Investment</strong> (holding, portfolio, allocation, performance) · <strong>Identity &amp; consent</strong> (UAE PASS button, document capture, verification status, consent card, consent dashboard entry, TPP badge) · <strong>Security</strong> (auth prompts, device list, warning tiers, session-pause screens).</p>
+<p>Financial components carry extra states beyond core ones: pending · blocked · requires-verification · requires-consent · expired · reversed.</p>
+<h2>3. Pattern taxonomy (GOV.UK task-based model, target ~20–30)</h2>
+<ul>
+<li><strong>Ask users for…</strong> — amount · payee/IBAN · Emirates ID/documents · address (international) · purpose of payment · source of funds (EDD) · consent (data, marketing, Open Finance) · signature (UAE PASS)</li>
+<li><strong>Help users to…</strong> — check answers before confirming · recover from errors · verify a payee (CoP) · understand fees ("why am I being charged?") · understand an Islamic product (Shari'ah explainer) · respond to suspected fraud · pause safely (scam interruption) · complain and escalate (→ Sanadak) · manage consents · re-verify identity (re-KYC) · close an account</li>
+<li><strong>Show users…</strong> — transaction status (full state machine) · KFS/product summary · rate &amp; fee breakdown (estimated vs guaranteed) · balance set · receipts/proof · changes to terms (60-day notice) · cooling-off rights · warnings (tiered)</li>
+<li><strong>System pages</strong> — confirmation · service unavailable/maintenance · session expired · degraded data (partial third-party rails)</li>
+</ul>
+<p>Every pattern that has a regulatory source carries its REG-ID (doc 05) in frontmatter.</p>
+<h2>4. Journey taxonomy</h2>
+<p>Parent jobs (doc 03 §5): money in · money out · money safe · money growing · money borrowed · money shared · money proven · identity &amp; consent · lifecycle. Flagships (Phase 04): dashboard, transfer, remittance, cards, financing, Open Finance consent, fraud response, SME approval. Each journey is documented as: trigger → stages (money-movement slots where applicable) → patterns used → state coverage → vulnerable-user variant → bilingual notes → measurement.</p>
+<h2>5. Naming conventions</h2>
+<ul>
+<li><strong>Tokens:</strong> dot-namespaced roles, lowercase: <code>surface.primary</code>, <code>text.secondary</code>, <code>status.pending</code>, <code>financial.income</code>, <code>transaction.completed</code>, <code>consent.expired</code>. Prefix for code: <code>--bes-*</code> (working prefix until naming lands). Component tokens: <code>button.primary.background</code>. Never name by value (<code>blue.600</code> exists only at primitive tier).</li>
+<li><strong>Components:</strong> singular nouns, plain English: Currency Input, Transaction Item, Consent Card. No brandable names for core parts.</li>
+<li><strong>Patterns:</strong> verb-phrases matching taxonomy category ("Verify a payee", "Check answers").</li>
+<li><strong>States:</strong> the fixed vocabulary of doc 07 §4 — new states require architecture review, not ad-hoc invention.</li>
+<li><strong>Bilingual naming:</strong> every artifact has a canonical English name and a reviewed Arabic name; the Arabic name is a translation <em>decision</em>, recorded in the glossary, not an ad-hoc translation.</li>
+</ul>
+<h2>6. Content design system (structure)</h2>
+<ul>
+<li><strong>Terminology glossary</strong> — EN + AR columns, conventional + Islamic variants, preferred/avoid pairs ("Transfer completed" not "Transaction done"; "Your transfer is pending" not "Processing error").</li>
+<li><strong>Message framework</strong> — every error answers: WHAT happened · WHY · WHAT happened to the money · WHAT to do next. Example: "We couldn't complete this transfer. Your bank declined the transaction. No money was deducted from your account. [Try again] [Contact support]".</li>
+<li><strong>Voice attributes</strong> — calm, specific, respectful; no alarmism in security; no jargon leakage (no internal error codes).</li>
+<li><strong>Severity-matched tone</strong> — informational/important/urgent/critical notification categories with distinct visual + verbal register; fraud/security messages visually and semantically distinct from marketing.</li>
+</ul>
+<h2>7. Documentation template (every component page)</h2>
+<p>Overview · Anatomy · Variants · States · Usage (when / when not) · Do &amp; Don't · Accessibility (per-platform checklist refs) · Content (terminology + examples in AED, realistic, never implying real customer data) · Localization &amp; <strong>RTL</strong> (required section) · Responsive behavior · <strong>Financial considerations</strong> · <strong>Security considerations</strong> · Code guidance · Figma guidance · Research &amp; lifecycle status (Trial → Stable, GOV.UK model) · Regulatory references (REG-IDs) where applicable.</p>
+<p>Component proposal format (from the brief §46): Purpose → Anatomy → Variants → States → Usage → Don't use when → Financial UX → Trust → Security → Accessibility → Arabic/RTL → Responsive → Content → Example (realistic AED).</p>
+<h2>8. Lifecycle &amp; governance vocabulary</h2>
+<ul>
+<li><strong>Statuses:</strong> Proposed → Trial → Stable → Deprecated (with sunset date — e.g., SMS OTP components carry Deprecated + 31 Mar 2026 sunset from day one).</li>
+<li><strong>Change classes:</strong> token-value change (theme-safe) · behavior change (major) · content change (glossary-versioned) · regulatory change (traceability-map update required).</li>
+<li><strong>Contribution:</strong> proposals must state principle compliance (06, 07, 08 minimum), include both-direction designs, and name their pattern/journey consumers.</li>
+</ul>
+<h2>9. Prioritization formula (feeds Phase 03)</h2>
+<p>Score = <strong>Frequency × Financial Risk × Reusability ÷ Complexity</strong> (relative t-shirt scales). Predictably top of list: Money/amount display, Currency Input, Transaction Item + state system, review/check-answers pattern, CoP screen, KFS, consent card, auth prompts, error framework — these are the Phase 03 build-first candidates.</p>
+<div class="pgnav"><a href="strategy-architecture.html"><span class="lbl">Previous</span>Experience architecture</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<title>Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --paper:#FFFFFF; --paper2:#F7F8FA; --paper3:#EEF0F4; --line:#DDE1E8; --line2:#C2C9D4;
+    --ink:#161C2E; --ink2:#55617A; --ink3:#9AA4B4;
+    --act:#1F52C4; --act-h:#17408F; --on-act:#FFFFFF;
+    --pos:#0B7A45; --pos-t:#EDFAF3; --neg:#A82E1F; --neg-t:#FDF0EE;
+    --warn:#8F5F0E; --warn-t:#FDF6EC; --info:#0F6974; --info-t:#EBF7F8;
+    --hold:#5A3DA0; --hold-t:#F4F1FC;
+    --focus:#3168E8;
+    --sh1:0 1px 2px rgba(22,28,46,.08); --sh2:0 2px 8px rgba(22,28,46,.10);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#10141F; --paper2:#181D2B; --paper3:#212739; --line:#2A324B; --line2:#3D4763;
+      --ink:#F2F4F8; --ink2:#A8B1C2; --ink3:#71809A;
+      --act:#5A8AF2; --act-h:#8AAEF9; --on-act:#0C2140;
+      --pos:#6CCD9C; --pos-t:#0B2E1E; --neg:#EA8172; --neg-t:#361410;
+      --warn:#E8B054; --warn-t:#33270A; --info:#63BFC8; --info-t:#0A2A2E;
+      --hold:#AA95E3; --hold-t:#1F1638;
+      --focus:#8AAEF9;
+      --sh1:none; --sh2:none;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#10141F; --paper2:#181D2B; --paper3:#212739; --line:#2A324B; --line2:#3D4763;
+    --ink:#F2F4F8; --ink2:#A8B1C2; --ink3:#71809A;
+    --act:#5A8AF2; --act-h:#8AAEF9; --on-act:#0C2140;
+    --pos:#6CCD9C; --pos-t:#0B2E1E; --neg:#EA8172; --neg-t:#361410;
+    --warn:#E8B054; --warn-t:#33270A; --info:#63BFC8; --info-t:#0A2A2E;
+    --hold:#AA95E3; --hold-t:#1F1638;
+    --focus:#8AAEF9;
+    --sh1:none; --sh2:none;
+  }
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Inter","Noto Sans Arabic",-apple-system,"Segoe UI",sans-serif;
+    font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  [dir="rtl"] body, body[dir="rtl"]{ font-size:17px; }
+  .wrap{max-width:1060px; margin:0 auto; padding:0 24px 96px}
+  a{color:var(--act)}
+  :focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:4px}
+  .num{font-variant-numeric:tabular-nums}
+  bdi.amt{direction:ltr; unicode-bidi:isolate; font-variant-numeric:tabular-nums}
+
+  /* ---------- header ---------- */
+  header.hero{padding:64px 0 40px; border-bottom:1px solid var(--line)}
+  .hero-top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap}
+  .mark{display:flex; align-items:center; gap:12px}
+  .mark-sq{width:40px;height:40px;border-radius:8px;background:var(--act);display:grid;place-items:center;color:var(--on-act);font-weight:700;font-size:14px;letter-spacing:.5px}
+  .mark h1{font-size:28px;line-height:1.2;font-weight:700;letter-spacing:-.3px;text-wrap:balance}
+  .mark .sub{color:var(--ink2);font-size:14px;margin-top:2px}
+  .toggles{display:flex; gap:8px}
+  .tgl{border:1px solid var(--line2); background:var(--paper); color:var(--ink); border-radius:8px; padding:9px 14px; font:inherit; font-size:14px; font-weight:500; cursor:pointer}
+  .tgl:hover{background:var(--paper2)}
+  .lede{margin-top:28px; max-width:62ch; font-size:18px; line-height:1.6; color:var(--ink2)}
+  .lede strong{color:var(--ink); font-weight:600}
+  .hero-meta{margin-top:24px; display:flex; gap:20px; flex-wrap:wrap; font-size:13px; color:var(--ink3)}
+  .hero-meta span b{color:var(--ink2); font-weight:600}
+
+  /* ---------- sections ---------- */
+  section{padding-top:56px}
+  .eyebrow{font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--act); margin-bottom:6px}
+  [dir="rtl"] .eyebrow{letter-spacing:0; text-transform:none; font-size:14px; font-weight:700}
+  h2{font-size:24px; font-weight:600; letter-spacing:-.2px; margin-bottom:6px; text-wrap:balance}
+  .sec-note{color:var(--ink2); max-width:68ch; margin-bottom:24px; font-size:15px}
+
+  /* ---------- color ---------- */
+  .scale{display:flex; border-radius:8px; overflow:hidden; border:1px solid var(--line); margin-bottom:10px}
+  .scale div{flex:1; height:44px; position:relative}
+  .scale span{position:absolute; inset-inline-start:6px; bottom:4px; font-size:10px; font-weight:600; font-variant-numeric:tabular-nums}
+  .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+  .chip{display:flex; align-items:center; gap:8px; border:1px solid var(--line); border-radius:999px; padding:7px 14px 7px 10px; font-size:13.5px; font-weight:500; background:var(--paper)}
+  [dir="rtl"] .chip{padding:7px 10px 7px 14px}
+  .dot{width:10px;height:10px;border-radius:3px}
+  .chip code{color:var(--ink3); font-family:inherit; font-size:12px}
+
+  /* ---------- type ---------- */
+  .spec{border:1px solid var(--line); border-radius:12px; overflow:hidden}
+  .spec-row{display:grid; grid-template-columns:170px 1fr; gap:16px; padding:16px 20px; border-top:1px solid var(--line); align-items:baseline}
+  .spec-row:first-child{border-top:none}
+  .spec-key{font-size:12px; color:var(--ink3); font-weight:500}
+  .spec-key b{display:block; color:var(--ink2); font-weight:600; font-size:12.5px}
+  @media(max-width:640px){ .spec-row{grid-template-columns:1fr; gap:4px} }
+
+  /* ---------- canvas panels ---------- */
+  .canvas{background:var(--paper2); border:1px solid var(--line); border-radius:12px; padding:28px; margin-top:16px}
+  .canvas + .canvas{margin-top:20px}
+  .canvas h3{font-size:13px; font-weight:600; color:var(--ink2); letter-spacing:.08em; text-transform:uppercase; margin-bottom:18px}
+  [dir="rtl"] .canvas h3{letter-spacing:0; text-transform:none; font-size:15px}
+  .row{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+  @media(max-width:840px){ .grid2{grid-template-columns:1fr} }
+
+  /* ---------- buttons ---------- */
+  .btn{font:inherit; font-size:15px; font-weight:600; border-radius:10px; padding:12px 20px; cursor:pointer; border:1px solid transparent}
+  .btn.pri{background:var(--act); color:var(--on-act)}
+  .btn.pri:hover{background:var(--act-h)}
+  .btn.sec{background:var(--paper); color:var(--ink); border-color:var(--line2)}
+  .btn.sec:hover{background:var(--paper3)}
+  .btn.gho{background:transparent; color:var(--act)}
+  .btn.des{background:transparent; color:var(--neg); border-color:var(--neg)}
+  .btn.dis{background:var(--paper3); color:var(--ink3); cursor:not-allowed}
+  .btn.sm{font-size:13.5px; padding:8px 14px}
+
+  /* ---------- badges ---------- */
+  .badge{display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:4px 11px; font-size:12.5px; font-weight:600}
+  .badge svg{flex:none}
+  .b-pos{background:var(--pos-t); color:var(--pos)} .b-neg{background:var(--neg-t); color:var(--neg)}
+  .b-warn{background:var(--warn-t); color:var(--warn)} .b-info{background:var(--info-t); color:var(--info)}
+  .b-hold{background:var(--hold-t); color:var(--hold)} .b-mut{background:var(--paper3); color:var(--ink2)}
+
+  /* ---------- account card ---------- */
+  .acct{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:20px; box-shadow:var(--sh1); max-width:420px}
+  .acct-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:2px}
+  .acct-name{font-weight:600}
+  .acct-meta{font-size:13px; color:var(--ink2)}
+  .acct-bal{font-size:28px; font-weight:700; margin-top:10px; letter-spacing:-.3px}
+  .acct-bal .cur{font-size:.72em; font-weight:500; color:var(--ink2)}
+  .acct-sub{font-size:13px; color:var(--ink2); margin-top:2px}
+  .eye{border:none; background:none; cursor:pointer; color:var(--ink2); padding:8px; border-radius:8px}
+  .eye:hover{background:var(--paper3)}
+  .acct-actions{display:flex; gap:8px; margin-top:16px}
+
+  /* ---------- transactions ---------- */
+  .txns{background:var(--paper); border:1px solid var(--line); border-radius:12px; overflow:hidden; max-width:560px}
+  .txn-day{font-size:12px; font-weight:600; color:var(--ink3); letter-spacing:.06em; text-transform:uppercase; padding:12px 18px 6px; background:var(--paper)}
+  [dir="rtl"] .txn-day{letter-spacing:0; text-transform:none; font-size:13px}
+  .txn{display:flex; align-items:center; gap:14px; padding:12px 18px; border-top:1px solid var(--line)}
+  .txn-ic{width:38px;height:38px;border-radius:10px;background:var(--paper3);display:grid;place-items:center;color:var(--ink2);flex:none}
+  .txn-main{flex:1; min-width:0}
+  .txn-t{font-weight:500; font-size:15px}
+  .txn-s{font-size:13px; color:var(--ink2)}
+  .txn-amt{text-align:end}
+  .txn-amt .a{font-weight:600; font-size:15px}
+  .a.pos{color:var(--pos)}
+  .a.strike{text-decoration:line-through; color:var(--ink3); font-weight:500}
+
+  /* ---------- review screen ---------- */
+  .review{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:24px; max-width:460px; box-shadow:var(--sh1)}
+  .review h4{font-size:18px; font-weight:600; margin-bottom:16px}
+  .rv-row{display:flex; justify-content:space-between; gap:12px; padding:9px 0; font-size:14.5px}
+  .rv-row .k{color:var(--ink2)}
+  .rv-row .v{font-weight:500; text-align:end}
+  .rv-row .chg{font-size:13px; font-weight:500}
+  .rv-fees{border-top:1px solid var(--line); margin-top:8px; padding-top:8px}
+  .rv-total{display:flex; justify-content:space-between; border-top:2px solid var(--line2); margin-top:8px; padding-top:12px; align-items:baseline}
+  .rv-total .k{font-weight:600}
+  .rv-total .v{font-size:22px; font-weight:700}
+  .rv-warn{display:flex; gap:10px; background:var(--warn-t); color:var(--warn); border-radius:10px; padding:12px 14px; font-size:13.5px; font-weight:500; margin-top:14px; align-items:flex-start}
+  .rv-cons{font-size:13px; color:var(--ink2); margin-top:14px; line-height:1.55}
+  .review .btn{width:100%; margin-top:14px}
+  .rate-line{display:flex; justify-content:space-between; font-size:13px; color:var(--ink2); padding:8px 0}
+  .lock{color:var(--pos); font-weight:600}
+
+  /* ---------- CoP ---------- */
+  .cop{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:22px; max-width:460px}
+  .cop-tabs{display:flex; gap:6px; margin-bottom:18px; flex-wrap:wrap}
+  .cop-tab{font:inherit; font-size:13px; font-weight:600; border:1px solid var(--line2); background:var(--paper); color:var(--ink2); border-radius:999px; padding:6px 13px; cursor:pointer}
+  .cop-tab[aria-selected="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  .cop-state{display:none}
+  .cop-state.on{display:block}
+  .cop-head{display:flex; gap:12px; align-items:flex-start; margin-bottom:12px}
+  .cop-ic{width:36px;height:36px;border-radius:999px;display:grid;place-items:center;flex:none}
+  .cop-msg b{display:block; font-size:15px; margin-bottom:2px}
+  .cop-msg p{font-size:13.5px; color:var(--ink2); line-height:1.5}
+  .cop-actions{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+
+  /* ---------- KFS ---------- */
+  .kfs{background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:24px; max-width:460px}
+  .kfs-tag{display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink2); border:1px solid var(--line2); border-radius:4px; padding:3px 8px; margin-bottom:12px}
+  [dir="rtl"] .kfs-tag{letter-spacing:0; text-transform:none; font-size:13px}
+  .kfs h4{font-size:17px; font-weight:600; margin-bottom:14px}
+  .kfs-row{display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-top:1px solid var(--line); font-size:14.5px}
+  .kfs-row .k{color:var(--ink2)} .kfs-row .v{font-weight:600; text-align:end}
+  .kfs-warn{background:var(--warn-t); color:var(--warn); border-radius:8px; padding:11px 13px; font-size:13px; font-weight:500; margin-top:14px; line-height:1.5}
+  .kfs-cool{font-size:13px; color:var(--ink2); margin-top:10px}
+  .kfs a{font-size:14px; font-weight:500}
+
+  /* ---------- consent ---------- */
+  .consent{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:24px; max-width:460px}
+  .tpp{display:flex; gap:12px; align-items:center; margin-bottom:16px}
+  .tpp-logo{width:40px;height:40px;border-radius:10px;background:var(--hold-t);color:var(--hold);display:grid;place-items:center;font-weight:700}
+  .tpp-name{font-weight:600}
+  .tpp-ver{font-size:12.5px; color:var(--pos); font-weight:600; display:flex; align-items:center; gap:4px}
+  .cl{list-style:none; padding:0; margin:0 0 14px}
+  .cl li{display:flex; gap:10px; padding:7px 0; font-size:14.5px; align-items:center}
+  .cl svg{color:var(--pos); flex:none}
+  .cons-meta{font-size:13.5px; color:var(--ink2); line-height:1.7; border-top:1px solid var(--line); padding-top:12px}
+  .cons-meta b{color:var(--ink); font-weight:600}
+  .consent .cop-actions .btn{flex:1}
+
+  /* ---------- footer ---------- */
+  footer{margin-top:72px; border-top:1px solid var(--line); padding-top:24px; font-size:13.5px; color:var(--ink3); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+</style>
+
+<div class="wrap">
+<header class="hero">
+  <div class="hero-top">
+    <div class="mark">
+      <div class="mark-sq" aria-hidden="true">BES</div>
+      <div>
+        <h1 data-k="title">Banking Experience System</h1>
+        <div class="sub" data-k="subtitle">Design language specimen · v1.0 draft</div>
+      </div>
+    </div>
+    <div class="toggles">
+      <button class="tgl" id="langBtn" aria-label="Switch language">العربية</button>
+    </div>
+  </div>
+  <p class="lede" data-k="lede">A design system for banking and fintech in the UAE. <strong>Trust by design, clarity by default</strong> — money display, transaction states, disclosure, consent and fraud response, engineered as reusable components in Arabic and English.</p>
+  <div class="hero-meta">
+    <span data-k="m1"><b>110+</b> components</span>
+    <span data-k="m2"><b>55</b> patterns</span>
+    <span data-k="m3"><b>2</b> languages · RTL + LTR</span>
+    <span data-k="m4"><b>WCAG 2.2 AA</b> floor</span>
+  </div>
+</header>
+
+<section>
+  <div class="eyebrow" data-k="e1">Foundations · 01</div>
+  <h2 data-k="h1">Color</h2>
+  <p class="sec-note" data-k="n1">A restrained functional palette. Financial colors are fixed across every brand — and color never carries meaning alone: every status pairs with an icon and a label.</p>
+  <div class="scale" aria-label="Neutral scale">
+    <div style="background:#F7F8FA"><span style="color:#55617A">50</span></div>
+    <div style="background:#EEF0F4"><span style="color:#55617A">100</span></div>
+    <div style="background:#DDE1E8"><span style="color:#3D4763">200</span></div>
+    <div style="background:#C2C9D4"><span style="color:#2A324B">300</span></div>
+    <div style="background:#9AA4B4"><span style="color:#161C2E">400</span></div>
+    <div style="background:#717E92"><span style="color:#fff">500</span></div>
+    <div style="background:#55617A"><span style="color:#fff">600</span></div>
+    <div style="background:#3D4763"><span style="color:#fff">700</span></div>
+    <div style="background:#2A324B"><span style="color:#fff">800</span></div>
+    <div style="background:#161C2E"><span style="color:#fff">900</span></div>
+  </div>
+  <div class="scale" aria-label="Blue scale">
+    <div style="background:#EFF4FF"><span style="color:#17408F">50</span></div>
+    <div style="background:#DCE7FE"><span style="color:#17408F">100</span></div>
+    <div style="background:#B9CFFD"><span style="color:#12305F">200</span></div>
+    <div style="background:#8AAEF9"><span style="color:#0C2140">300</span></div>
+    <div style="background:#5A8AF2"><span style="color:#fff">400</span></div>
+    <div style="background:#3168E8"><span style="color:#fff">500</span></div>
+    <div style="background:#1F52C4"><span style="color:#fff">600</span></div>
+    <div style="background:#17408F"><span style="color:#fff">700</span></div>
+    <div style="background:#12305F"><span style="color:#fff">800</span></div>
+    <div style="background:#0C2140"><span style="color:#fff">900</span></div>
+  </div>
+  <div class="chips">
+    <span class="chip"><span class="dot" style="background:var(--pos)"></span><span data-k="c1">Income / success</span> <code>financial.income</code></span>
+    <span class="chip"><span class="dot" style="background:var(--ink)"></span><span data-k="c2">Expense — neutral, not red</span> <code>financial.expense</code></span>
+    <span class="chip"><span class="dot" style="background:var(--neg)"></span><span data-k="c3">Failed / negative</span> <code>financial.failed</code></span>
+    <span class="chip"><span class="dot" style="background:var(--info)"></span><span data-k="c4">Pending</span> <code>financial.pending</code></span>
+    <span class="chip"><span class="dot" style="background:var(--hold)"></span><span data-k="c5">Reserved / hold</span> <code>financial.reserved</code></span>
+    <span class="chip"><span class="dot" style="background:var(--warn)"></span><span data-k="c6">Blocked / caution</span> <code>financial.blocked</code></span>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow" data-k="e2">Foundations · 02</div>
+  <h2 data-k="h2">Typography &amp; money</h2>
+  <p class="sec-note" data-k="n2">One certified Latin + Arabic pair. Arabic gets its own metrics — larger optical size, taller line-height, never letter-spaced. Amounts always use tabular numerals and stay left-to-right in both languages.</p>
+  <div class="spec">
+    <div class="spec-row"><div class="spec-key"><b>type.h1</b>32 / 40 · 700</div><div style="font-size:32px;line-height:1.25;font-weight:700" data-k="t1">Send money abroad</div></div>
+    <div class="spec-row"><div class="spec-key"><b>type.body</b>16 / 24 · 400</div><div data-k="t2">Your transfer usually arrives within one hour. We'll notify you at every step.</div></div>
+    <div class="spec-row"><div class="spec-key"><b>amount.hero</b>40 / 48 · 700 · tnum</div><div class="num" style="font-size:40px;line-height:1.2;font-weight:700"><bdi class="amt"><span style="font-size:.6em;font-weight:500;color:var(--ink2)">AED</span> 25,000<span style="font-size:.6em">.00</span></bdi></div></div>
+    <div class="spec-row"><div class="spec-key"><b>amount.sm</b>16 / 24 · 600 · tnum</div><div class="num" style="font-weight:600"><bdi class="amt">−AED 1,250.50</bdi> &nbsp; <bdi class="amt" style="color:var(--pos)">+AED 12,500.00</bdi> &nbsp; <bdi class="amt">≈ ₹250,800</bdi></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow" data-k="e3">Core components</div>
+  <h2 data-k="h3">Actions &amp; status</h2>
+  <div class="canvas">
+    <h3 data-k="cv1">Buttons — the CTA names the consequence</h3>
+    <div class="row">
+      <button class="btn pri" data-k="b1">Send AED 5,000.00</button>
+      <button class="btn sec" data-k="b2">Back</button>
+      <button class="btn gho" data-k="b3">View Key Facts (PDF)</button>
+      <button class="btn des" data-k="b4">Cancel transfer</button>
+      <button class="btn dis" disabled data-k="b5">Sending…</button>
+    </div>
+  </div>
+  <div class="canvas">
+    <h3 data-k="cv2">Status badges — the full state vocabulary, icon + label always</h3>
+    <div class="row">
+      <span class="badge b-pos"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5L5 9l4.5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-k="s1">Completed</span></span>
+      <span class="badge b-info"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M6 3.8V6l1.5 1.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-k="s2">Pending</span></span>
+      <span class="badge b-info"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M6 5.6v2.6M6 3.6v.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span data-k="s3">Checking status</span></span>
+      <span class="badge b-neg"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 1.5h4L11 4v4l-3 2.5H4L1.5 8V4L4 1.5z" stroke="currentColor" stroke-width="1.4"/><path d="M4.2 4.2l3.6 3.6M7.8 4.2L4.2 7.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span data-k="s4">Failed</span></span>
+      <span class="badge b-warn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2.5" y="5" width="7" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M4 5V3.8a2 2 0 014 0V5" stroke="currentColor" stroke-width="1.4"/></svg><span data-k="s5">Additional checks</span></span>
+      <span class="badge b-hold"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M9.5 4H3.6M5.5 2L3.5 4l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 8h5.9M6.5 10l2-2-2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-k="s6">Reversed</span></span>
+      <span class="badge b-mut"><span data-k="s7">Draft</span></span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow" data-k="e4">Financial components</div>
+  <h2 data-k="h4">Accounts &amp; transactions</h2>
+  <div class="grid2">
+    <div class="canvas">
+      <h3 data-k="cv3">Account card — available balance leads, privacy built in</h3>
+      <div class="acct">
+        <div class="acct-top">
+          <div>
+            <div class="acct-name" data-k="a1">Current account</div>
+            <div class="acct-meta"><bdi class="amt">••4521</bdi> · <span data-k="a2">Personal</span></div>
+          </div>
+          <button class="eye" id="maskBtn" aria-label="Hide balance">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10s3-5.5 8-5.5S18 10 18 10s-3 5.5-8 5.5S2 10 2 10z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+        <div class="acct-bal num" id="balVal"><bdi class="amt"><span class="cur">AED</span> 25,000.00</bdi></div>
+        <div class="acct-sub" data-k="a3">Available · AED 500.00 reserved</div>
+        <div class="acct-actions">
+          <button class="btn pri sm" data-k="a4">Send</button>
+          <button class="btn sec sm" data-k="a5">Details</button>
+        </div>
+      </div>
+    </div>
+    <div class="canvas">
+      <h3 data-k="cv4">Transaction items — expenses are neutral; red is for problems</h3>
+      <div class="txns">
+        <div class="txn-day" data-k="d1">Today</div>
+        <div class="txn">
+          <div class="txn-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 6h12M3 6l2.5-2.5M15 12H3m12 0l-2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="txn-main"><div class="txn-t" data-k="tx1">Priya Kumar</div><div class="txn-s"><span data-k="tx1s">Transfer · AED → INR</span></div></div>
+          <div class="txn-amt"><div class="a num"><bdi class="amt">−AED 10,036.75</bdi></div><span class="badge b-info" style="margin-top:2px"><span data-k="tx1b">Pending</span></span></div>
+        </div>
+        <div class="txn">
+          <div class="txn-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 7h12v7a1 1 0 01-1 1H4a1 1 0 01-1-1V7zM3 7l1.5-3h9L15 7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          <div class="txn-main"><div class="txn-t" data-k="tx2">Carrefour</div><div class="txn-s"><span data-k="tx2s">Groceries · Card ••8834</span></div></div>
+          <div class="txn-amt"><div class="a num"><bdi class="amt">−AED 89.50</bdi></div></div>
+        </div>
+        <div class="txn-day" data-k="d2">Yesterday</div>
+        <div class="txn">
+          <div class="txn-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v10m0 0l-3.5-3.5M9 12l3.5-3.5M3 15h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="txn-main"><div class="txn-t" data-k="tx3">Salary — Al Noor Trading LLC</div><div class="txn-s"><span data-k="tx3s">Incoming transfer</span></div></div>
+          <div class="txn-amt"><div class="a pos num"><bdi class="amt">+AED 18,500.00</bdi></div></div>
+        </div>
+        <div class="txn">
+          <div class="txn-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2.5" y="4.5" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 8h13" stroke="currentColor" stroke-width="1.5"/></svg></div>
+          <div class="txn-main"><div class="txn-t" data-k="tx4">Noon.com</div><div class="txn-s"><span class="a strike num"><bdi class="amt">AED 320.00</bdi></span> · <span data-k="tx4s">Declined — over daily limit</span></div></div>
+          <div class="txn-amt"><span class="badge b-neg"><span data-k="tx4b">Declined</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow" data-k="e5">Money movement</div>
+  <h2 data-k="h5">Review before anything irreversible</h2>
+  <p class="sec-note" data-k="n5">Every fee appears before this screen — the review only confirms what the user has already seen. The rate is locked and says so; the consequence is stated; the button carries the amount.</p>
+  <div class="grid2">
+    <div class="canvas">
+      <h3 data-k="cv5">Transfer review — AED → INR remittance</h3>
+      <div class="review">
+        <h4 data-k="r0">Check and confirm</h4>
+        <div class="rv-row"><span class="k" data-k="r1">To</span><span class="v">Priya Kumar · <bdi class="amt">ICICI ••4102</bdi> <a href="#" class="chg" data-k="r1c">Change</a></span></div>
+        <div class="rv-row"><span class="k" data-k="r2">From</span><span class="v"><span data-k="r2v">Current account</span> <bdi class="amt">••4521</bdi></span></div>
+        <div class="rv-row"><span class="k" data-k="r3">You send</span><span class="v num"><bdi class="amt">AED 10,000.00</bdi></span></div>
+        <div class="rate-line"><span data-k="r4">Exchange rate</span><span class="num"><bdi class="amt">1 AED = ₹25.0800</bdi> · <span class="lock" data-k="r4l">locked 4:59</span></span></div>
+        <div class="rv-fees">
+          <div class="rv-row"><span class="k" data-k="r5">Transfer fee</span><span class="v num"><bdi class="amt">AED 15.00</bdi></span></div>
+          <div class="rv-row"><span class="k" data-k="r6">FX margin</span><span class="v num"><bdi class="amt">AED 20.00</bdi></span></div>
+          <div class="rv-row"><span class="k" data-k="r7">VAT on fees (5%)</span><span class="v num"><bdi class="amt">AED 1.75</bdi></span></div>
+        </div>
+        <div class="rv-total"><span class="k" data-k="r8">Total you pay</span><span class="v num"><bdi class="amt">AED 10,036.75</bdi></span></div>
+        <div class="rv-row"><span class="k" data-k="r9">Priya receives</span><span class="v num" style="color:var(--pos)"><bdi class="amt">₹250,800.00</bdi> · <span data-k="r9v">exact</span></span></div>
+        <div class="rv-warn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-top:1px"><path d="M8 1.5L15 14H1L8 1.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 6v3.2M8 11.4v.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span data-k="r10">New payee — added today. Take a moment to check the details.</span>
+        </div>
+        <p class="rv-cons" data-k="r11">We'll send AED 10,036.75 from your current account now. International transfers can't be cancelled once sent.</p>
+        <button class="btn pri" data-k="r12">Send AED 10,036.75</button>
+      </div>
+    </div>
+    <div class="canvas">
+      <h3 data-k="cv6">Payee verification — name check before money moves</h3>
+      <div class="cop">
+        <div class="cop-tabs" role="tablist">
+          <button class="cop-tab" role="tab" aria-selected="true" data-cop="m" data-k="cpt1">Match</button>
+          <button class="cop-tab" role="tab" aria-selected="false" data-cop="c" data-k="cpt2">Close match</button>
+          <button class="cop-tab" role="tab" aria-selected="false" data-cop="n" data-k="cpt3">No match</button>
+        </div>
+        <div class="cop-state on" id="cop-m">
+          <div class="cop-head">
+            <div class="cop-ic" style="background:var(--pos-t);color:var(--pos)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12 13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="cop-msg"><b data-k="cm1">Name matches the account</b><p data-k="cm2">"Priya Kumar" matches the name registered to this IBAN.</p></div>
+          </div>
+          <div class="cop-actions"><button class="btn pri sm" data-k="cm3">Continue</button></div>
+        </div>
+        <div class="cop-state" id="cop-c">
+          <div class="cop-head">
+            <div class="cop-ic" style="background:var(--warn-t);color:var(--warn)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L15 14H1L8 1.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 6v3.2M8 11.4v.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <div class="cop-msg"><b data-k="cc1">Did you mean "Priya Kumar Nair"?</b><p data-k="cc2">The name you entered is close, but not exact. Check with the recipient before sending.</p></div>
+          </div>
+          <div class="cop-actions"><button class="btn pri sm" data-k="cc3">Use this name</button><button class="btn sec sm" data-k="cc4">Check with recipient</button></div>
+        </div>
+        <div class="cop-state" id="cop-n">
+          <div class="cop-head">
+            <div class="cop-ic" style="background:var(--neg-t);color:var(--neg)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="cop-msg"><b data-k="cn1">The name doesn't match this account</b><p data-k="cn2">Money sent to the wrong account can be hard to recover. Go back and check the details with the recipient.</p></div>
+          </div>
+          <div class="cop-actions"><button class="btn pri sm" data-k="cn3">Go back and check</button><button class="btn sec sm" style="color:var(--neg);border-color:var(--neg)" data-k="cn4">I understand the risk — continue</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow" data-k="e6">Disclosure &amp; consent</div>
+  <h2 data-k="h6">Regulation, rendered as components</h2>
+  <div class="grid2">
+    <div class="canvas">
+      <h3 data-k="cv7">Key facts summary — every fee, before the application</h3>
+      <div class="kfs">
+        <span class="kfs-tag" data-k="k0">Personal financing · Fixed rate</span>
+        <h4 data-k="k1">The key facts, upfront</h4>
+        <div class="kfs-row"><span class="k" data-k="k2">Amount</span><span class="v num"><bdi class="amt">AED 100,000.00</bdi></span></div>
+        <div class="kfs-row"><span class="k" data-k="k3">Term</span><span class="v" data-k="k3v">48 months</span></div>
+        <div class="kfs-row"><span class="k" data-k="k4">Rate (reducing)</span><span class="v num"><bdi class="amt">5.99%</bdi></span></div>
+        <div class="kfs-row"><span class="k" data-k="k5">Monthly payment</span><span class="v num"><bdi class="amt">AED 2,348.00</bdi></span></div>
+        <div class="kfs-row"><span class="k" data-k="k6">Total repayment</span><span class="v num"><bdi class="amt">AED 112,704.00</bdi></span></div>
+        <div class="kfs-row"><span class="k" data-k="k7">Processing fee</span><span class="v num"><bdi class="amt">AED 1,050.00</bdi></span></div>
+        <div class="kfs-warn" data-k="k8">⚠ Missing payments can affect your credit record and future borrowing.</div>
+        <p class="kfs-cool" data-k="k9">You can cancel within 5 business days of signing.</p>
+        <p style="margin-top:10px"><a href="#" data-k="k10">Key Facts Statement (PDF)</a></p>
+      </div>
+    </div>
+    <div class="canvas">
+      <h3 data-k="cv8">Data-sharing consent — purpose-bound, time-bound, revocable</h3>
+      <div class="consent">
+        <div class="tpp">
+          <div class="tpp-logo" aria-hidden="true">AF</div>
+          <div>
+            <div class="tpp-name" data-k="p1">ABC Finance</div>
+            <div class="tpp-ver"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.4 1.2 1.8-.2.6 1.7 1.7.6-.2 1.8L12.5 6 11.3 7.4l.2 1.8-1.7.6-.6 1.7-1.8-.2L6 12.5" stroke="none"/><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M3.8 6.2L5.3 7.7l3-3.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-k="p2">Licensed provider · verified today</span></div>
+          </div>
+        </div>
+        <p style="font-size:14.5px;font-weight:500;margin-bottom:10px" data-k="p3">wants to access:</p>
+        <ul class="cl">
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5L5.5 10.5 11.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-k="p4">Account information</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5L5.5 10.5 11.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-k="p5">Balance</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5L5.5 10.5 11.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-k="p6">Transaction history (12 months)</span></li>
+        </ul>
+        <div class="cons-meta">
+          <div><span data-k="p7">Purpose:</span> <b data-k="p7v">Personal financial management</b></div>
+          <div><span data-k="p8">Access until:</span> <b>30 Sep 2026</b></div>
+          <div data-k="p9">Stop this anytime in Settings → Data sharing.</div>
+        </div>
+        <div class="cop-actions" style="margin-top:16px">
+          <button class="btn pri" data-k="p10">Allow access</button>
+          <button class="btn sec" data-k="p11">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span data-k="f1">Banking Experience System · specimen uses fictional data — no real customer information</span>
+  <span data-k="f2">Docs: 30 specifications · foundations → tokens → components → patterns</span>
+</footer>
+</div>
+
+<script>
+(function(){
+  // Balance masking
+  var masked=false, bal=document.getElementById('balVal'), mb=document.getElementById('maskBtn');
+  var full=bal.innerHTML;
+  mb.addEventListener('click',function(){
+    masked=!masked;
+    bal.innerHTML = masked ? '<bdi class="amt"><span class="cur">AED</span> •••••</bdi>' : full;
+    mb.setAttribute('aria-label', masked ? (cur==='ar'?'إظهار الرصيد':'Show balance') : (cur==='ar'?'إخفاء الرصيد':'Hide balance'));
+  });
+
+  // CoP tabs
+  document.querySelectorAll('.cop-tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      document.querySelectorAll('.cop-tab').forEach(function(x){x.setAttribute('aria-selected','false')});
+      t.setAttribute('aria-selected','true');
+      document.querySelectorAll('.cop-state').forEach(function(s){s.classList.remove('on')});
+      document.getElementById('cop-'+t.dataset.cop).classList.add('on');
+    });
+  });
+
+  // Language / direction toggle
+  var AR={
+    title:"نظام التجربة المصرفية", subtitle:"نموذج لغة التصميم · مسودة الإصدار 1.0",
+    lede:"نظام تصميم للخدمات المصرفية والتقنية المالية في الإمارات. <strong>الثقة في التصميم، والوضوح افتراضيًا</strong> — عرض المبالغ، وحالات المعاملات، والإفصاح، والموافقات، والاستجابة للاحتيال، كمكوّنات قابلة لإعادة الاستخدام بالعربية والإنجليزية.",
+    m1:"<b>+110</b> مكوّنًا", m2:"<b>55</b> نمطًا", m3:"لغتان · من اليمين واليسار", m4:"الحد الأدنى <b>WCAG 2.2 AA</b>",
+    e1:"الأساسيات · 01", h1:"الألوان",
+    n1:"لوحة ألوان وظيفية هادئة. الألوان المالية ثابتة عبر كل العلامات — واللون لا يحمل المعنى وحده أبدًا: كل حالة تقترن بأيقونة وتسمية.",
+    c1:"دخل / نجاح", c2:"مصروف — محايد، ليس أحمر", c3:"فشل / سالب", c4:"قيد المعالجة", c5:"محجوز", c6:"محظور / تنبيه",
+    e2:"الأساسيات · 02", h2:"الخط والمبالغ",
+    n2:"زوج خطوط معتمد للعربية واللاتينية. للعربية مقاييسها الخاصة — حجم أكبر وسطر أعلى، ودون تباعد أحرف أبدًا. المبالغ بأرقام جدولية وتبقى من اليسار إلى اليمين في اللغتين.",
+    t1:"أرسل الأموال إلى الخارج", t2:"عادةً ما تصل حوالتك خلال ساعة واحدة. سنُعلمك في كل خطوة.",
+    e3:"المكوّنات الأساسية", h3:"الإجراءات والحالات",
+    cv1:"الأزرار — الزر الرئيسي يذكر النتيجة", b1:"إرسال AED 5,000.00", b2:"رجوع", b3:"بيان الحقائق الأساسية (PDF)", b4:"إلغاء التحويل", b5:"جارٍ الإرسال…",
+    cv2:"شارات الحالة — المفردات الكاملة، أيقونة وتسمية دائمًا",
+    s1:"تم التحويل", s2:"قيد المعالجة", s3:"نتحقق من الحالة", s4:"فشل", s5:"تحققات إضافية", s6:"معكوس", s7:"مسودة",
+    e4:"المكوّنات المالية", h4:"الحسابات والمعاملات",
+    cv3:"بطاقة الحساب — الرصيد المتاح أولًا، والخصوصية مدمجة",
+    a1:"حساب جاري", a2:"شخصي", a3:"المتاح · AED 500.00 محجوز", a4:"إرسال", a5:"التفاصيل",
+    cv4:"عناصر المعاملات — المصروفات محايدة؛ الأحمر للمشكلات",
+    d1:"اليوم", d2:"أمس",
+    tx1:"بريا كومار", tx1s:"تحويل · AED ← INR", tx1b:"قيد المعالجة",
+    tx2:"كارفور", tx2s:"بقالة · بطاقة ••8834",
+    tx3:"الراتب — شركة النور للتجارة ذ.م.م", tx3s:"حوالة واردة",
+    tx4:"نون", tx4s:"مرفوضة — تجاوز الحد اليومي", tx4b:"مرفوضة",
+    e5:"حركة الأموال", h5:"المراجعة قبل أي إجراء نهائي",
+    n5:"كل رسم يظهر قبل هذه الشاشة — المراجعة تؤكد فقط ما رآه المستخدم. سعر الصرف مثبّت ويقول ذلك؛ والنتيجة معلنة؛ والزر يحمل المبلغ.",
+    cv5:"مراجعة التحويل — حوالة AED ← INR",
+    r0:"راجع وأكّد", r1:"إلى", r1c:"تغيير", r2:"من", r2v:"حساب جاري", r3:"ترسل", r4:"سعر الصرف", r4l:"مثبّت 4:59",
+    r5:"رسوم التحويل", r6:"هامش الصرف", r7:"ضريبة القيمة المضافة (5%)", r8:"الإجمالي الذي تدفعه", r9:"تستلم بريا", r9v:"بالضبط",
+    r10:"مستفيد جديد — أُضيف اليوم. خذ لحظة للتحقق من التفاصيل.",
+    r11:"سنرسل AED 10,036.75 من حسابك الجاري الآن. لا يمكن إلغاء الحوالات الدولية بعد إرسالها.",
+    r12:"إرسال AED 10,036.75",
+    cv6:"التحقق من المستفيد — مطابقة الاسم قبل تحويل الأموال",
+    cpt1:"مطابق", cpt2:"مطابقة قريبة", cpt3:"غير مطابق",
+    cm1:"الاسم يطابق الحساب", cm2:"«بريا كومار» يطابق الاسم المسجّل لهذا الآيبان.", cm3:"متابعة",
+    cc1:"هل تقصد «بريا كومار ناير»؟", cc2:"الاسم الذي أدخلته قريب لكنه غير مطابق تمامًا. تحقق من المستلم قبل الإرسال.", cc3:"استخدام هذا الاسم", cc4:"سأتحقق من المستلم",
+    cn1:"الاسم لا يطابق هذا الحساب", cn2:"قد يصعب استرداد الأموال المرسلة إلى حساب خاطئ. ارجع وتحقق من التفاصيل مع المستلم.", cn3:"الرجوع والتحقق", cn4:"أفهم المخاطرة — متابعة",
+    e6:"الإفصاح والموافقة", h6:"التنظيم، مُصمَّمًا كمكوّنات",
+    cv7:"ملخص الحقائق الأساسية — كل الرسوم قبل الطلب",
+    k0:"تمويل شخصي · معدل ثابت", k1:"الحقائق الأساسية أولًا",
+    k2:"المبلغ", k3:"المدة", k3v:"48 شهرًا", k4:"المعدل (متناقص)", k5:"القسط الشهري", k6:"إجمالي السداد", k7:"رسوم المعالجة",
+    k8:"⚠ التأخر في السداد قد يؤثر على سجلك الائتماني وقدرتك على الاقتراض مستقبلًا.",
+    k9:"يمكنك الإلغاء خلال 5 أيام عمل من التوقيع.",
+    k10:"بيان الحقائق الأساسية (PDF)",
+    cv8:"موافقة مشاركة البيانات — محددة الغرض والمدة وقابلة للإلغاء",
+    p1:"إيه بي سي فاينانس", p2:"مزوّد مرخّص · تم التحقق اليوم", p3:"يطلب الوصول إلى:",
+    p4:"معلومات الحساب", p5:"الرصيد", p6:"سجل المعاملات (12 شهرًا)",
+    p7:"الغرض:", p7v:"إدارة مالية شخصية", p8:"الوصول حتى:", p9:"أوقف المشاركة في أي وقت من الإعدادات ← مشاركة البيانات.",
+    p10:"السماح بالوصول", p11:"إلغاء",
+    f1:"نظام التجربة المصرفية · النموذج يستخدم بيانات وهمية — لا معلومات لعملاء حقيقيين",
+    f2:"التوثيق: 30 مواصفة · الأساسيات ← الرموز ← المكوّنات ← الأنماط"
+  };
+  var EN={}; document.querySelectorAll('[data-k]').forEach(function(el){ EN[el.dataset.k]=el.innerHTML; });
+  var cur='en', btn=document.getElementById('langBtn');
+  btn.addEventListener('click',function(){
+    cur = cur==='en' ? 'ar' : 'en';
+    var dict = cur==='ar' ? AR : EN;
+    document.querySelectorAll('[data-k]').forEach(function(el){
+      if(dict[el.dataset.k]!==undefined) el.innerHTML=dict[el.dataset.k];
+    });
+    document.documentElement.setAttribute('dir', cur==='ar'?'rtl':'ltr');
+    document.documentElement.setAttribute('lang', cur==='ar'?'ar':'en');
+    btn.textContent = cur==='ar' ? 'English' : 'العربية';
+    if(!masked){ full=bal.innerHTML; }
+  });
+})();
+</script>

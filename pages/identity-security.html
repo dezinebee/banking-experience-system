@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>20 — Financial Components: Identity &amp; Security Family · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html" class="on">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Financial components</div>
+<h1>20 — Financial Components: Identity &amp; Security Family</h1>
+<p><strong>Banking Experience System (BES)</strong> · Financial Components · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:560px">
+  <div class="bes-alert bes-alert--warning">
+    <div><b>Are you on a call with someone guiding you through this payment?</b>
+    Banks never ask you to move money to a "safe account". If someone is pressuring you, hang up — genuine payees will understand a short wait.
+    <div class="actions"><a href="#">No, continue</a><a href="#">Yes — pause and get help</a></div></div>
+  </div>
+  <div class="bes-card" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+    <div>
+      <div style="font-weight:600;font-size:15px">iPhone 15 Pro · Dubai</div>
+      <div style="font-size:13px;color:var(--bes-text-secondary)">This device · Last active now</div>
+    </div>
+    <span class="bes-badge bes-badge--success">Trusted</span>
+  </div>
+  <div class="bes-card" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+    <div>
+      <div style="font-weight:600;font-size:15px">Chrome on Windows · Sharjah</div>
+      <div style="font-size:13px;color:var(--bes-text-secondary)">First seen today 11:02</div>
+    </div>
+    <div class="demo-row"><span class="bes-badge bes-badge--warning">New</span>
+    <button class="bes-btn bes-btn--destructive bes-btn--sm">Sign out</button></div>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:560px&quot;&gt;
+  &lt;div class=&quot;bes-alert bes-alert--warning&quot;&gt;
+    &lt;div&gt;&lt;b&gt;Are you on a call with someone guiding you through this payment?&lt;/b&gt;
+    Banks never ask you to move money to a &quot;safe account&quot;. If someone is pressuring you, hang up — genuine payees will understand a short wait.
+    &lt;div class=&quot;actions&quot;&gt;&lt;a href=&quot;#&quot;&gt;No, continue&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Yes — pause and get help&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-card&quot; style=&quot;display:flex;justify-content:space-between;align-items:center;gap:12px&quot;&gt;
+    &lt;div&gt;
+      &lt;div style=&quot;font-weight:600;font-size:15px&quot;&gt;iPhone 15 Pro · Dubai&lt;/div&gt;
+      &lt;div style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;This device · Last active now&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Trusted&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-card&quot; style=&quot;display:flex;justify-content:space-between;align-items:center;gap:12px&quot;&gt;
+    &lt;div&gt;
+      &lt;div style=&quot;font-weight:600;font-size:15px&quot;&gt;Chrome on Windows · Sharjah&lt;/div&gt;
+      &lt;div style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;First seen today 11:02&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;demo-row&quot;&gt;&lt;span class=&quot;bes-badge bes-badge--warning&quot;&gt;New&lt;/span&gt;
+    &lt;button class=&quot;bes-btn bes-btn--destructive bes-btn--sm&quot;&gt;Sign out&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Components: National Identity Sign-in · Identity Handoff · Signing Ceremony · Document Capture · Liveness Check · Verified Field · Verification Status · Re-verification Prompt · Auth Prompt set (Biometric / Passkey / Push Approval / PIN) · Device List &amp; Device Card · Trusted Device States · Session Pause Interruption · Security Checkup · Security Event Notice · Warning Tier set.</p>
+<p>Security posture: reassure while communicating genuine risk; <strong>safety actions are one tap, risk-increasing actions require proof</strong> (doc 17 rule, generalized). SMS OTP is not an authentication method in this system (deprecated; regulatory sunset) — the auth set below is the canonical ladder.</p>
+<hr />
+<h2>National Identity Sign-in ("Continue with UAE PASS")</h2>
+<p><strong>Anatomy:</strong> official-branded button (brand rules of the national scheme respected verbatim; never restyled) · benefit line for first-timers ("Verifies your identity in minutes — no branch visit") · alternative path link ("Don't have UAE PASS?") · account-level note where the scheme account tier matters ("Requires a verified UAE PASS account" + upgrade interstitial when the user's tier is insufficient).</p>
+<p><strong>States:</strong> default · redirecting · returned-success (auto-continue) · returned-declined (respectful: "You didn't complete verification — nothing was shared" + retry/alternative) · timeout (safe return, state preserved) · identity-mismatch (the returned identity ≠ the applying identity: hard stop + support path — never silent merge).</p>
+<hr />
+<h2>Identity Handoff (app-switch pattern)</h2>
+<p><strong>Anatomy:</strong> pre-handoff interstitial ("You're being taken to UAE PASS to approve. We'll bring you back here.") · state preservation token · return handler (success/decline/timeout routes) · app-not-installed fallback (store link + web path + preserved state).</p>
+<p><strong>Rule:</strong> every external handoff — identity, third-party consent, wallet provisioning — uses this one pattern; the user always knows <em>why they're leaving</em> and <em>what returns them</em>.</p>
+<hr />
+<h2>Signing Ceremony</h2>
+<p><strong>Purpose:</strong> legally significant signatures (contracts, mandates).</p>
+<p><strong>Anatomy:</strong> document review surface (full document, accessible PDF, in-place — not a link the user can skip) · scroll-acknowledgment (bottom-reached before sign enables; time-based skip prevention off — reading isn't enforced, opportunity is) · key-terms recap card above the sign action (amount, term, rate, cooling-off) · sign action → Identity Handoff (digital signature) · signed confirmation (timestamped receipt + document copy delivered to the user's documents + email) · cooling-off notice with live cancellation entry.</p>
+<p><strong>A11y:</strong> document is real text (screen-reader readable); recap card is a summary landmark.</p>
+<hr />
+<h2>Document Capture</h2>
+<p><strong>Anatomy:</strong> document-type framing guide (EID front/back, passport MRZ) · live edge-detection frame · capture → review ("Readable? Glare?") → retake path · auto-extract preview (OCR fields shown for confirmation, editable where wrong: "Check your name matches your Emirates ID") · upload progress.</p>
+<p><strong>States:</strong> capturing · reviewing · extracting · confirmed · rejected-quality (specific: "Glare over the ID number — try tilting away from light") · rejected-mismatch (data conflicts with existing profile: routed to support, not a loop).</p>
+<p><strong>Failure-loop guard:</strong> after 3 quality rejections the component <em>changes strategy</em> (offers upload-from-files, alternative document, or human review) — repeated identical retries are a design defect (a known market failure this system explicitly designs against).</p>
+<hr />
+<h2>Liveness Check</h2>
+<p><strong>Anatomy:</strong> camera prompt with purpose ("A quick selfie confirms it's really you") · action instructions (accessible alternatives to motion gestures where available; audio guidance) · progress · result.</p>
+<p><strong>States:</strong> instructing · checking · passed · failed (specific, respectful: "We couldn't confirm — remove sunglasses and try brighter light") · escalated (after retries → alternative verification path).</p>
+<p><strong>A11y:</strong> never the <em>only</em> possible verification (accessible-authentication requirement); instructions not color/motion-only; extra time honored.</p>
+<hr />
+<h2>Verified Field</h2>
+<p><strong>Purpose:</strong> render identity data sourced from verified systems.</p>
+<p><strong>Anatomy:</strong> read-only field styling (distinct from disabled) · value · source note ("From your Emirates ID") · verified check · change path where legitimate ("Name changed? Update your Emirates ID first, then re-verify here").</p>
+<p><strong>Rule:</strong> verified data is never silently editable — corrections route through re-verification, and the <em>why</em> is stated.</p>
+<hr />
+<h2>Verification Status</h2>
+<p><strong>Vocabulary (doc 07 §5):</strong> unverified · pending · verified (with what+when: "Identity verified · 12 Mar 2026") · failed (with reason class + retry) · expired (→ Re-verification Prompt).</p>
+<p>Rendered as Status Badge + explainer; appears on profile, payees, devices, documents.</p>
+<hr />
+<h2>Re-verification Prompt (re-KYC)</h2>
+<p><strong>Anatomy:</strong> advance notice ladder (T-30/T-14/T-3 days: banner → alert → blocking-at-deadline) · what's needed (usually renewed EID) · deadline + consequence honesty ("After 15 Sep we're required to restrict outgoing payments until you re-verify") · one-tap start (Document Capture) · post-restriction state (money visible, restricted actions labeled with the single fix).</p>
+<p><strong>Tone:</strong> procedural, not accusatory ("Your Emirates ID has expired" — a fact, not a fault).</p>
+<hr />
+<h2>Auth Prompt Set</h2>
+<p>Shared contract (doc 16 Authentication Prompt): <strong>context always shown</strong> (what is being authorized), fallback path always present, lockout never a dead end.</p>
+<ul>
+<li><strong>Biometric Prompt:</strong> platform-native face/fingerprint sheet + BES context header; fallback → device PIN → app PIN ladder.</li>
+<li><strong>Passkey Prompt:</strong> platform ceremony + "What's a passkey?" first-use explainer; cross-device QR path.</li>
+<li><strong>Push Approval:</strong> second-device approval card showing <em>the same context</em> (amount + payee + merchant) + approve/deny; deny asks "Was this you?" → secure-my-account path.</li>
+<li><strong>App PIN:</strong> PIN Entry with attempt counter + recovery (re-verify identity, not "contact branch" dead ends).</li>
+</ul>
+<p><strong>States (all):</strong> awaiting · verifying · approved · failed (attempts + alternatives) · locked (recovery path) · unavailable (biometric hardware busy/absent → next rung auto-offered).</p>
+<hr />
+<h2>Device List &amp; Device Card</h2>
+<p><strong>Anatomy (card):</strong> device name + platform icon · first-seen/last-active · location (city-level) · this-device marker · trust state · actions: rename · <strong>sign out</strong> · <strong>remove &amp; block</strong>.</p>
+<p><strong>Trust states:</strong> trusted (established device) · new (first 72h: badge + tightened limits noted) · suspicious (unusual signals: prompted review) · revoked.</p>
+<p><strong>Rules:</strong> removing a device is one tap + confirm (safety action); <em>adding</em> trust (new device becoming trusted) is time + successful-auth based, never one-tap. New-device sign-ins always generate a Security Event Notice to all other devices.</p>
+<hr />
+<h2>Session Pause Interruption (<code>z.critical</code>)</h2>
+<p><strong>Purpose:</strong> in-session threat response — active call, screen-share/remote-access detection.</p>
+<p><strong>Anatomy:</strong> full-screen takeover, <strong>no entrance animation</strong> · calm headline ("We've paused your session") · specific reason in plain language ("We detected screen sharing. Banking with your screen visible to others isn't safe.") · scam-context education line ("If someone asked you to install an app or share your screen, it may be a scam — hang up.") · actions: end-the-risk-and-resume ("I've stopped sharing — continue") · emergency path ("I think I'm being scammed" → freeze + support) · high-risk payments during active calls get the checkpoint variant: "Are you on a call with someone guiding you through this payment?" [Yes → intervention] / [No, continue].</p>
+<p><strong>Rules:</strong> cannot be dismissed by swipe/tap-outside; screen readers announce assertively; the interruption <em>never</em> blames the user.</p>
+<hr />
+<h2>Security Checkup</h2>
+<p><strong>Anatomy:</strong> scored/checklist surface: auth methods active · devices reviewed · payee list reviewed · alerts enabled · scam-awareness moment (rotating single tip, not a wall) · each item one-tap fixable.</p>
+<p><strong>Cadence:</strong> quarterly prompt (dismissible), post-incident mandatory pass.</p>
+<hr />
+<h2>Security Event Notice</h2>
+<p><strong>Purpose:</strong> the notification content pattern for security events (new device, password change, payee added/removed, limit raised, details revealed).</p>
+<p><strong>Anatomy:</strong> what happened + when + where (city) · "Was this you?" fork: yes (dismiss) / <strong>no ("Secure my account")</strong> → guided response: freeze credentials → re-auth → review recent actions → support handoff.</p>
+<p><strong>Rule:</strong> security events are never batched/digested — each is immediate and individually actionable; they use the security notification category (visually + semantically distinct from all marketing, doc 27).</p>
+<hr />
+<h2>Warning Tier Set (risk-severity rendering)</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Trigger examples</th>
+<th>Form</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td>first payment to a saved payee in months</td>
+<td>inline Alert</td>
+</tr>
+<tr>
+<td><code>caution</code></td>
+<td>new payee &lt;24h, CoP close-match</td>
+<td>pre-review interstitial card, one acknowledgment</td>
+</tr>
+<tr>
+<td><code>high</code></td>
+<td>CoP no-match proceed, unusual amount/destination pattern</td>
+<td>dedicated interstitial + re-auth + delay option ("Wait 24h — most scams pressure you to act now")</td>
+</tr>
+<tr>
+<td><code>critical</code></td>
+<td>known-mule destination, active-call + new payee + high value</td>
+<td>hard stop: payment refused, education, support; no override in-channel</td>
+</tr>
+</tbody>
+</table></div>
+<p>Copy discipline: warnings describe the <em>pattern</em> ("Scammers often…"), never accuse the recipient; the delay option is framed as strength, not obstruction.</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">National identity sign-in & verified field</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:420px">
+  <button class="bes-btn bes-btn--primary bes-btn--lg" style="background:#111;color:#fff">Continue with UAE PASS</button>
+  <div class="bes-field bes-field--verified" style="margin-bottom:0">
+    <label class="bes-label" for="ds-eid">Emirates ID number</label>
+    <input class="bes-input bes-input--ltr" id="ds-eid" value="784-1990-1234567-1" readonly>
+    <div class="bes-verified-note">✓ Verified from UAE PASS · Name changed? Update your Emirates ID first, then re-verify.</div>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--lg&quot; style=&quot;background:#111;color:#fff&quot;&gt;Continue with UAE PASS&lt;/button&gt;
+  &lt;div class=&quot;bes-field bes-field--verified&quot; style=&quot;margin-bottom:0&quot;&gt;
+    &lt;label class=&quot;bes-label&quot; for=&quot;ds-eid&quot;&gt;Emirates ID number&lt;/label&gt;
+    &lt;input class=&quot;bes-input bes-input--ltr&quot; id=&quot;ds-eid&quot; value=&quot;784-1990-1234567-1&quot; readonly&gt;
+    &lt;div class=&quot;bes-verified-note&quot;&gt;✓ Verified from UAE PASS · Name changed? Update your Emirates ID first, then re-verify.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Document capture states</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:460px">
+  <div class="bes-file"><span class="n">emirates-id-front.jpg</span><span class="meta"><span class="bes-badge bes-badge--pending">Verifying</span></span></div>
+  <div class="bes-file"><span class="n">emirates-id-back.jpg</span><span class="meta"><span class="bes-badge bes-badge--success">Verified</span></span></div>
+  <div class="bes-file"><span class="n">salary-certificate.pdf</span><span class="meta"><span class="bes-badge bes-badge--error">Glare over the ID number — try tilting away from light</span></span></div>
+  <p style="font-size:12.5px;color:var(--bes-text-secondary);margin:0">After 3 quality failures the flow changes strategy (upload from files, alternative document, human review) — never an identical-retry loop.</p>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:460px&quot;&gt;
+  &lt;div class=&quot;bes-file&quot;&gt;&lt;span class=&quot;n&quot;&gt;emirates-id-front.jpg&lt;/span&gt;&lt;span class=&quot;meta&quot;&gt;&lt;span class=&quot;bes-badge bes-badge--pending&quot;&gt;Verifying&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;bes-file&quot;&gt;&lt;span class=&quot;n&quot;&gt;emirates-id-back.jpg&lt;/span&gt;&lt;span class=&quot;meta&quot;&gt;&lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Verified&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;bes-file&quot;&gt;&lt;span class=&quot;n&quot;&gt;salary-certificate.pdf&lt;/span&gt;&lt;span class=&quot;meta&quot;&gt;&lt;span class=&quot;bes-badge bes-badge--error&quot;&gt;Glare over the ID number — try tilting away from light&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;p style=&quot;font-size:12.5px;color:var(--bes-text-secondary);margin:0&quot;&gt;After 3 quality failures the flow changes strategy (upload from files, alternative document, human review) — never an identical-retry loop.&lt;/p&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Push approval — same context on the second device</h2><div class="demo bes">
+<div class="bes-card" style="max-width:380px">
+  <div style="font-size:13px;color:var(--bes-text-secondary);margin-bottom:6px">Approval request · iPhone 15 Pro</div>
+  <b>Confirm transfer of <bdi class="bes-amount">AED 10,036.75</bdi> to Priya Kumar?</b>
+  <div class="demo-row" style="margin-top:12px">
+    <button class="bes-btn bes-btn--primary bes-btn--sm" style="flex:1">Approve</button>
+    <button class="bes-btn bes-btn--secondary bes-btn--sm" style="flex:1">Deny</button>
+  </div>
+  <p style="font-size:12.5px;color:var(--bes-text-secondary);margin:10px 0 0">The amount + payee shown here is the anti-tamper anchor. Deny asks "Was this you?" → secure-account path.</p>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:380px&quot;&gt;
+  &lt;div style=&quot;font-size:13px;color:var(--bes-text-secondary);margin-bottom:6px&quot;&gt;Approval request · iPhone 15 Pro&lt;/div&gt;
+  &lt;b&gt;Confirm transfer of &lt;bdi class=&quot;bes-amount&quot;&gt;AED 10,036.75&lt;/bdi&gt; to Priya Kumar?&lt;/b&gt;
+  &lt;div class=&quot;demo-row&quot; style=&quot;margin-top:12px&quot;&gt;
+    &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--sm&quot; style=&quot;flex:1&quot;&gt;Approve&lt;/button&gt;
+    &lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot; style=&quot;flex:1&quot;&gt;Deny&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:12.5px;color:var(--bes-text-secondary);margin:10px 0 0&quot;&gt;The amount + payee shown here is the anti-tamper anchor. Deny asks &quot;Was this you?&quot; → secure-account path.&lt;/p&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Security checkup</h2><div class="demo bes">
+<div class="bes-card" style="max-width:420px">
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">✓ Passkey active</span><span class="v" style="color:var(--bes-status-success)">Done</span></div>
+    <div class="bes-row"><span class="k">✓ Devices reviewed</span><span class="v" style="color:var(--bes-status-success)">2 trusted</span></div>
+    <div class="bes-row"><span class="k">○ Payee list review</span><span class="v"><a href="#">Review 12 payees</a></span></div>
+    <div class="bes-row"><span class="k">○ Alerts</span><span class="v"><a href="#">Turn on sign-in alerts</a></span></div>
+  </div>
+  <div class="bes-alert bes-alert--info" style="margin-top:10px"><div><b>This month's tip:</b> banks never ask you to move money to a "safe account". Anyone who does is a scammer.</div></div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;✓ Passkey active&lt;/span&gt;&lt;span class=&quot;v&quot; style=&quot;color:var(--bes-status-success)&quot;&gt;Done&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;✓ Devices reviewed&lt;/span&gt;&lt;span class=&quot;v&quot; style=&quot;color:var(--bes-status-success)&quot;&gt;2 trusted&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;○ Payee list review&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;a href=&quot;#&quot;&gt;Review 12 payees&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;○ Alerts&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;a href=&quot;#&quot;&gt;Turn on sign-in alerts&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-alert bes-alert--info&quot; style=&quot;margin-top:10px&quot;&gt;&lt;div&gt;&lt;b&gt;This month&#x27;s tip:&lt;/b&gt; banks never ask you to move money to a &quot;safe account&quot;. Anyone who does is a scammer.&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="investments.html"><span class="lbl">Previous</span>Investments</a><a class="next" href="consent-privacy.html"><span class="lbl">Next</span>Consent &amp; privacy</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

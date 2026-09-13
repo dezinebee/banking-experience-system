@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>16 — Financial Components: Payments &amp; Transfers Family · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html" class="on">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Financial components</div>
+<h1>16 — Financial Components: Payments &amp; Transfers Family</h1>
+<p><strong>Banking Experience System (BES)</strong> · Financial Components · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:480px">
+  <div class="bes-card">
+    <div class="bes-cop bes-cop--close">
+      <span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L15 14H1L8 1.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 6v3.2M8 11.4v.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <div><b>Did you mean "Priya Kumar Nair"?</b><p>The name you entered is close, but not exact. Check with the recipient before sending.</p>
+      <div class="demo-row" style="margin-top:12px"><button class="bes-btn bes-btn--primary bes-btn--sm">Use this name</button><button class="bes-btn bes-btn--secondary bes-btn--sm">Check with recipient</button></div></div>
+    </div>
+  </div>
+  <div class="bes-card">
+    <ul class="bes-timeline">
+      <li class="done"><span class="dot">✓</span><span><span class="t">Sent from your account</span><br><span class="s">Today 14:32</span></span></li>
+      <li class="current"><span class="dot">●</span><span><span class="t">With recipient bank</span><br><span class="s">Usually within 1 hour · expected by 15:30</span></span></li>
+      <li><span class="dot">○</span><span><span class="t">Delivered to Priya Kumar</span><br><span class="s">We'll notify you</span></span></li>
+    </ul>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:480px&quot;&gt;
+  &lt;div class=&quot;bes-card&quot;&gt;
+    &lt;div class=&quot;bes-cop bes-cop--close&quot;&gt;
+      &lt;span class=&quot;ic&quot;&gt;&lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M8 1.5L15 14H1L8 1.5z&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;path d=&quot;M8 6v3.2M8 11.4v.4&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.6&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;div&gt;&lt;b&gt;Did you mean &quot;Priya Kumar Nair&quot;?&lt;/b&gt;&lt;p&gt;The name you entered is close, but not exact. Check with the recipient before sending.&lt;/p&gt;
+      &lt;div class=&quot;demo-row&quot; style=&quot;margin-top:12px&quot;&gt;&lt;button class=&quot;bes-btn bes-btn--primary bes-btn--sm&quot;&gt;Use this name&lt;/button&gt;&lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot;&gt;Check with recipient&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-card&quot;&gt;
+    &lt;ul class=&quot;bes-timeline&quot;&gt;
+      &lt;li class=&quot;done&quot;&gt;&lt;span class=&quot;dot&quot;&gt;✓&lt;/span&gt;&lt;span&gt;&lt;span class=&quot;t&quot;&gt;Sent from your account&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Today 14:32&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+      &lt;li class=&quot;current&quot;&gt;&lt;span class=&quot;dot&quot;&gt;●&lt;/span&gt;&lt;span&gt;&lt;span class=&quot;t&quot;&gt;With recipient bank&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;Usually within 1 hour · expected by 15:30&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span class=&quot;dot&quot;&gt;○&lt;/span&gt;&lt;span&gt;&lt;span class=&quot;t&quot;&gt;Delivered to Priya Kumar&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;s&quot;&gt;We&#x27;ll notify you&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>The components that implement the money-movement framework (INTENT → SOURCE → DESTINATION → AMOUNT → FEES → FX → REVIEW → AUTHENTICATION → PROCESSING → RESULT → RECEIPT). Stages are slots: simple domestic flows collapse stages; first-time international flows expand them.</p>
+<p>Components: Payee Card · Beneficiary Manager · New Beneficiary Form · Payee Verification (name check) · Source Selector · Payment Summary · Payment Method Selector · Transfer Review · Authentication Prompt · Processing Screen · Result Screen · Scheduled/Recurring Setup · Request-to-Pay Card · QR Pay · Bill Split · Bill Payment Tile.</p>
+<hr />
+<h2>Payee Card</h2>
+<p><strong>Purpose:</strong> a person/business the user pays.</p>
+<p><strong>Anatomy:</strong> avatar/initials · display name (user's nickname) + registered name when different · identifier summary (bank + ••IBAN-last-4, or mobile proxy for instant rails) · trust metadata: verified badge (name-check passed) · "Added [date]" — <strong>recency is risk signal</strong>: payees added &lt; 24h carry a "New" marker into every flow that uses them · last-paid summary ("Last sent AED 2,000.00 · 12 Aug").</p>
+<p><strong>Variants:</strong> personal · business · international (corridor flag + currency) · own-account (visually distinct — moving between own accounts skips warning tiers) · proxy-based (mobile/email for instant rails).</p>
+<p><strong>States:</strong> active · new (&lt;24h) · unverified · verification-failed · dormant (&gt;12 months: "You haven't paid this person in over a year") · blocked.</p>
+<p><strong>A11y:</strong> one summary name; trust metadata included ("Rajesh Kumar, Emirates NBD account ending 4102, verified, added 14 March 2025").</p>
+<p><strong>RTL:</strong> identifiers LTR runs; bilingual names displayed per registered script with the other available on detail.</p>
+<hr />
+<h2>Beneficiary Manager</h2>
+<p><strong>Purpose:</strong> list + lifecycle of payees.</p>
+<p><strong>Anatomy:</strong> search · grouped list (Recent / All, A–Z) · add action · item → detail (full identifiers masked-middle, payment history, edit nickname, delete).</p>
+<p><strong>States:</strong> list states + delete confirmation (names consequence: "You'll need to add them again — and new payees may have a holding period before large transfers").</p>
+<p><strong>Security:</strong> adding/editing beneficiaries is a step-up-auth event; deletions are notification events ("Beneficiary removed" push/email — account-takeover tripwire).</p>
+<hr />
+<h2>New Beneficiary Form</h2>
+<p><strong>Anatomy:</strong> country/corridor first (drives the rest of the form — only country-relevant fields render) · identifier entry: UAE IBAN input / mobile proxy / international (IBAN or account + SWIFT) · registered-name field · nickname (optional) · currency (corridor-driven).</p>
+<p><strong>Behavior:</strong> IBAN checksum on blur with specific errors; bank auto-derived from IBAN and shown for confirmation ("This IBAN belongs to Emirates NBD — correct?"); duplicate detection ("You already have this account saved as 'Priya ICICI'").</p>
+<p><strong>States:</strong> entering · validating · <strong>name-check result</strong> (see Payee Verification) · saved (with cooling-period notice where policy applies: "For your security, transfers to new payees are limited to AED 5,000 for 24 hours").</p>
+<hr />
+<h2>Payee Verification (Confirmation of Payee)</h2>
+<p><strong>Purpose:</strong> name-match check before money moves — mandatory on instant rails.</p>
+<p><strong>Anatomy:</strong> entered name vs registered name comparison · result state · action row.</p>
+<p><strong>Result states:</strong>
+- <strong>Match</strong> — green check: "Name matches the account." → proceed enabled.
+- <strong>Close match</strong> — amber: shows the registered name ("Did you mean <strong>Rajesh Kumar Nair</strong>?") → [Use this name] / [Check with the recipient].
+- <strong>No match</strong> — red: "The name doesn't match this account. Sending money to the wrong account can be hard to recover." → proceed requires explicit friction: [I understand the risk — continue] (secondary style, never primary) / [Go back and check] (primary).
+- <strong>Unavailable</strong> — neutral: "We couldn't check the name (recipient bank doesn't support it). Make sure the details are right." → proceed with caution tier.</p>
+<p><strong>A11y:</strong> result announced assertively; the risk copy is part of the continue button's described context.</p>
+<p><strong>Rule:</strong> no-match proceed events feed the risk tier of the subsequent review (escalated warning).</p>
+<hr />
+<h2>Source Selector</h2>
+<p>Account Selector specialization (doc 14) scoped to eligible sources for the payment type, with live sufficiency validation and remainder preview.</p>
+<hr />
+<h2>Payment Summary</h2>
+<p><strong>Purpose:</strong> the compact who/what/how-much block reused across review, detail, approvals and receipts.</p>
+<p><strong>Anatomy:</strong> payee (name + identifier) · amount (full precision) · from-account · fees reference (link into Fee Breakdown) · date/schedule · reference/purpose.</p>
+<p><strong>Rule:</strong> the summary is <em>one component</em> everywhere — review, approval queues and receipts render the same structure so users learn one shape for "a payment".</p>
+<hr />
+<h2>Payment Method Selector</h2>
+<p><strong>Purpose:</strong> choose the rail/method where alternatives exist (instant vs standard; bank vs wallet vs cash-pickup payout; card vs account funding).</p>
+<p><strong>Anatomy:</strong> Radio option cards with per-method metadata: fee · speed ("Instant" only for genuinely instant rails; otherwise honest ranges) · limits ("Up to AED 50,000") · availability (cut-off times: "Before 22:00 for same-day").</p>
+<p><strong>States:</strong> available · selected · unavailable-now (with reason + next window) · corridor-unsupported.</p>
+<p><strong>Rule:</strong> switching method re-renders fees/FX with change highlight; the default preselects the <em>cheapest adequate</em> option, not the most profitable.</p>
+<hr />
+<h2>Transfer Review</h2>
+<p><strong>Purpose:</strong> the check-answers moment — the system's most important screen.</p>
+<p><strong>Anatomy (ordered):</strong>
+1. Title: "Check and confirm"
+2. Payment Summary with per-row Change links (each returns to its step, preserving state)
+3. Fee Breakdown (expanded on first view) + Total Row
+4. FX block with rate status (locked/estimated + timer) where applicable
+5. Warning slot (risk-tiered: new payee, CoP mismatch escalation, high value, first international)
+6. Consequence statement: "We'll send AED 10,036.75 from your Current account ••4521 now. Instant transfers can't be cancelled once sent."
+7. Primary action naming the act: <strong>"Send AED 10,036.75"</strong> · secondary "Back"</p>
+<p><strong>States:</strong> ready · re-validating (upstream change) · rate-expired (re-quote inline) · blocked (limit/compliance with explanation).</p>
+<p><strong>A11y:</strong> summary as definition list; change links carry hidden context ("Change amount"); consequence statement programmatically associated with the confirm button.</p>
+<p><strong>RTL:</strong> rows mirror; amounts LTR; the confirm button's amount is an isolated run.</p>
+<hr />
+<h2>Authentication Prompt (step-up)</h2>
+<p><strong>Purpose:</strong> confirm identity proportionate to risk.</p>
+<p><strong>Anatomy:</strong> context line (<strong>always</strong> shows what is being authorized: "Confirm transfer of AED 10,036.75 to Priya Kumar") · method surface (biometric prompt / passkey / in-app push approval / national-identity app handoff) · fallback path (accessible, never SMS) · cancel.</p>
+<p><strong>States:</strong> awaiting · verifying · approved (auto-advance) · failed (attempts remaining, alternative method) · locked (support path — never a dead end) · timeout (safe return to review, nothing sent).</p>
+<p><strong>Security:</strong> the amount+payee in the prompt is the anti-tamper anchor — users are trained to read it; push-approval screens on a second device show the same context. Session-pause interruptions (active screen-share/call detection) override this surface at <code>z.critical</code>.</p>
+<hr />
+<h2>Processing Screen</h2>
+<p><strong>Anatomy:</strong> calm progress (determinate only if real) · "Sending your transfer" · safe-to-leave note ("You can close this — we'll notify you") · <strong>no cancel</strong> (post-authorization ambiguity is worse than waiting).</p>
+<p><strong>States:</strong> brief (&lt;3s: minimal) · extended (&gt;10s: expectation copy) · handoff-to-unknown (→ UNKNOWN state copy, doc 07 §4 — never a spinner that outlives trust).</p>
+<hr />
+<h2>Result Screen</h2>
+<p><strong>Variants per terminal state:</strong>
+- <strong>Success:</strong> check-draw beat · "Transfer sent" · amount + payee + when it lands · actions: Download receipt · Share · Send again · Done.
+- <strong>Pending:</strong> clock · "Your transfer is pending" + reason class + ETA + tracking (Timeline) · money statement ("The money has left your account").
+- <strong>Failed:</strong> what + why-class + <strong>money statement</strong> ("No money was deducted") · Retry (idempotent-safe) · support.
+- <strong>Unknown:</strong> "We're checking your transfer status" + money-safety line + notify-me commitment ("We'll tell you within 30 minutes") — <em>no retry button</em> (double-send risk); support path present.</p>
+<p><strong>Rule:</strong> result screens are screens — never toasts, never modals.</p>
+<hr />
+<h2>Scheduled / Recurring Setup</h2>
+<p><strong>Anatomy:</strong> frequency (once/weekly/monthly/payday-linked) · start date (Date Picker with processing-day awareness) · end condition (until date / N payments / until cancelled) · per-run summary ("AED 2,000.00 on the 25th of every month — next: 25 Sep") · skip/pause/edit affordances on the created object.</p>
+<p><strong>States:</strong> active · paused · insufficient-funds-retry policy stated ("If funds are short we'll retry once the next day and notify you") · ending-soon · completed.</p>
+<hr />
+<h2>Request-to-Pay Card</h2>
+<p><strong>Purpose:</strong> incoming/outgoing payment requests on instant rails.</p>
+<p><strong>Anatomy:</strong> requester identity (verified badge + registered name — impersonation-sensitive) · amount · note · expiry · actions: Pay (→ full review flow, never one-tap from the notification) · Decline · Report.</p>
+<p><strong>States:</strong> received · viewed · paid · declined · expired · reported.</p>
+<p><strong>Security:</strong> requester name always the registered name (nicknames can't mask identity); unusual-requester warnings tier in.</p>
+<hr />
+<h2>QR Pay</h2>
+<p><strong>Anatomy:</strong> scan surface (camera + gallery import) · parsed result → Payment Summary preview before any confirmation · own-QR generator (amount-embedded optional, share/save).</p>
+<p><strong>States:</strong> scanning · parsed (preview) · invalid/expired code · mismatched-scheme.</p>
+<p><strong>Rule:</strong> a scanned QR never leads directly to authentication — always through the review contract.</p>
+<hr />
+<h2>Bill Split</h2>
+<p><strong>Anatomy:</strong> total · participants (contacts/payees) · split method (equal/custom/percentage) · per-person share preview (rounding remainder assigned visibly: "You cover the extra AED 0.02") · request-all action → individual Request-to-Pay objects with per-person status tracking (paid/pending/declined).</p>
+<hr />
+<h2>Bill Payment Tile</h2>
+<p><strong>Purpose:</strong> utility/telecom/government billers.</p>
+<p><strong>Anatomy:</strong> biller logo + name · linked account/consumer number (nicknamed: "DEWA — Marina flat") · amount due + due date · autopay state ("Autopay on — pays in full on due date, cap AED 1,500.00") · pay action → standard flow.</p>
+<p><strong>States:</strong> due (amber ≤3 days) · overdue (red + late-consequence note where known) · paid · autopay-scheduled · fetch-failed (manual amount entry fallback) · biller-unavailable.</p>
+<p><strong>Rule:</strong> autopay always has a user-set cap and pre-debit notification ("We'll pay DEWA AED 843.50 tomorrow").</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Payment method selector</h2><div class="demo bes">
+<div class="demo-stack" style="max-width:440px" role="radiogroup" aria-label="Delivery method">
+  <label class="bes-check" style="border:1px solid var(--bes-action-primary);outline:1.5px solid var(--bes-action-primary);border-radius:12px;padding:13px 14px">
+    <input type="radio" name="dp-method" checked>
+    <span><b>Bank account</b><span class="desc">Fee AED 15.00 · within 1 hour · IBAN required</span></span>
+  </label>
+  <label class="bes-check" style="border:1px solid var(--bes-border-input);border-radius:12px;padding:13px 14px">
+    <input type="radio" name="dp-method">
+    <span><b>Wallet (GCash)</b><span class="desc">Fee AED 12.00 · minutes · mobile number required</span></span>
+  </label>
+  <label class="bes-check" style="border:1px solid var(--bes-border-input);border-radius:12px;padding:13px 14px">
+    <input type="radio" name="dp-method">
+    <span><b>Cash pickup</b><span class="desc">Fee AED 20.00 · minutes · 2,400 locations</span></span>
+  </label>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-stack&quot; style=&quot;max-width:440px&quot; role=&quot;radiogroup&quot; aria-label=&quot;Delivery method&quot;&gt;
+  &lt;label class=&quot;bes-check&quot; style=&quot;border:1px solid var(--bes-action-primary);outline:1.5px solid var(--bes-action-primary);border-radius:12px;padding:13px 14px&quot;&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;dp-method&quot; checked&gt;
+    &lt;span&gt;&lt;b&gt;Bank account&lt;/b&gt;&lt;span class=&quot;desc&quot;&gt;Fee AED 15.00 · within 1 hour · IBAN required&lt;/span&gt;&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;label class=&quot;bes-check&quot; style=&quot;border:1px solid var(--bes-border-input);border-radius:12px;padding:13px 14px&quot;&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;dp-method&quot;&gt;
+    &lt;span&gt;&lt;b&gt;Wallet (GCash)&lt;/b&gt;&lt;span class=&quot;desc&quot;&gt;Fee AED 12.00 · minutes · mobile number required&lt;/span&gt;&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;label class=&quot;bes-check&quot; style=&quot;border:1px solid var(--bes-border-input);border-radius:12px;padding:13px 14px&quot;&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;dp-method&quot;&gt;
+    &lt;span&gt;&lt;b&gt;Cash pickup&lt;/b&gt;&lt;span class=&quot;desc&quot;&gt;Fee AED 20.00 · minutes · 2,400 locations&lt;/span&gt;&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Result screens — success and the honest UNKNOWN</h2><div class="demo bes">
+<div class="demo-row" style="align-items:stretch">
+  <div class="bes-card bes-result bes-result--completed" style="inline-size:260px;padding-block:20px">
+    <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h2 style="font-size:18px">Transfer sent</h2>
+    <p class="money-state"><bdi class="bes-amount">AED 10,036.75</bdi> on its way · within 1 hour</p>
+  </div>
+  <div class="bes-card bes-result bes-result--unknown" style="inline-size:260px;padding-block:20px">
+    <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 10.5v5M12 7v.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <h2 style="font-size:18px">We're checking your transfer status</h2>
+    <p class="money-state"><b>Your money is safe</b> — we'll confirm within 30 minutes. Never shown as "failed".</p>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot; style=&quot;align-items:stretch&quot;&gt;
+  &lt;div class=&quot;bes-card bes-result bes-result--completed&quot; style=&quot;inline-size:260px;padding-block:20px&quot;&gt;
+    &lt;div class=&quot;ic&quot;&gt;&lt;svg width=&quot;26&quot; height=&quot;26&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M5 13l4.5 4.5L19 7&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.4&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;h2 style=&quot;font-size:18px&quot;&gt;Transfer sent&lt;/h2&gt;
+    &lt;p class=&quot;money-state&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 10,036.75&lt;/bdi&gt; on its way · within 1 hour&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-card bes-result bes-result--unknown&quot; style=&quot;inline-size:260px;padding-block:20px&quot;&gt;
+    &lt;div class=&quot;ic&quot;&gt;&lt;svg width=&quot;26&quot; height=&quot;26&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;9&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/&gt;&lt;path d=&quot;M12 10.5v5M12 7v.4&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;h2 style=&quot;font-size:18px&quot;&gt;We&#x27;re checking your transfer status&lt;/h2&gt;
+    &lt;p class=&quot;money-state&quot;&gt;&lt;b&gt;Your money is safe&lt;/b&gt; — we&#x27;ll confirm within 30 minutes. Never shown as &quot;failed&quot;.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Request-to-pay</h2><div class="demo bes">
+<div class="bes-card" style="max-width:400px">
+  <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+    <span style="inline-size:38px;block-size:38px;border-radius:50%;background:var(--bes-surface-tertiary);display:grid;place-items:center;font-weight:600;color:var(--bes-text-secondary)">AS</span>
+    <div><b>Anil Sharma</b> <span style="font-size:12px;color:var(--bes-status-success);font-weight:600">✓ registered name</span><br>
+    <span style="font-size:13px;color:var(--bes-text-secondary)">requests <bdi class="bes-amount" style="font-weight:600">AED 425.00</bdi> · "Dinner split"</span></div>
+  </div>
+  <div class="demo-row">
+    <button class="bes-btn bes-btn--primary bes-btn--sm">Review &amp; pay</button>
+    <button class="bes-btn bes-btn--secondary bes-btn--sm">Decline</button>
+    <button class="bes-btn bes-btn--ghost bes-btn--sm">Report</button>
+  </div>
+  <p style="font-size:12.5px;color:var(--bes-text-secondary);margin:10px 0 0">Never one-tap pay from a notification — always through the review contract. Expires 2 Sep.</p>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:400px&quot;&gt;
+  &lt;div style=&quot;display:flex;gap:12px;align-items:center;margin-bottom:10px&quot;&gt;
+    &lt;span style=&quot;inline-size:38px;block-size:38px;border-radius:50%;background:var(--bes-surface-tertiary);display:grid;place-items:center;font-weight:600;color:var(--bes-text-secondary)&quot;&gt;AS&lt;/span&gt;
+    &lt;div&gt;&lt;b&gt;Anil Sharma&lt;/b&gt; &lt;span style=&quot;font-size:12px;color:var(--bes-status-success);font-weight:600&quot;&gt;✓ registered name&lt;/span&gt;&lt;br&gt;
+    &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;requests &lt;bdi class=&quot;bes-amount&quot; style=&quot;font-weight:600&quot;&gt;AED 425.00&lt;/bdi&gt; · &quot;Dinner split&quot;&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;demo-row&quot;&gt;
+    &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--sm&quot;&gt;Review &amp;amp; pay&lt;/button&gt;
+    &lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot;&gt;Decline&lt;/button&gt;
+    &lt;button class=&quot;bes-btn bes-btn--ghost bes-btn--sm&quot;&gt;Report&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:12.5px;color:var(--bes-text-secondary);margin:10px 0 0&quot;&gt;Never one-tap pay from a notification — always through the review contract. Expires 2 Sep.&lt;/p&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Bill payment tile</h2><div class="demo bes">
+<div class="bes-card" style="max-width:400px;display:flex;justify-content:space-between;gap:12px;align-items:center">
+  <div>
+    <b>DEWA — Marina flat</b><br>
+    <span style="font-size:13px;color:var(--bes-text-secondary)">Due 3 Sep · autopay on, cap <bdi class="bes-amount">AED 1,500.00</bdi></span>
+  </div>
+  <div style="text-align:end">
+    <bdi class="bes-amount bes-amount--md">AED 843.50</bdi><br>
+    <span class="bes-badge bes-badge--warning">Due in 3 days</span>
+  </div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:400px;display:flex;justify-content:space-between;gap:12px;align-items:center&quot;&gt;
+  &lt;div&gt;
+    &lt;b&gt;DEWA — Marina flat&lt;/b&gt;&lt;br&gt;
+    &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;Due 3 Sep · autopay on, cap &lt;bdi class=&quot;bes-amount&quot;&gt;AED 1,500.00&lt;/bdi&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;text-align:end&quot;&gt;
+    &lt;bdi class=&quot;bes-amount bes-amount--md&quot;&gt;AED 843.50&lt;/bdi&gt;&lt;br&gt;
+    &lt;span class=&quot;bes-badge bes-badge--warning&quot;&gt;Due in 3 days&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Scheduled / recurring summary</h2><div class="demo bes">
+<div class="bes-card" style="max-width:420px;display:flex;justify-content:space-between;gap:12px;align-items:center">
+  <div>
+    <b>↻ <bdi class="bes-amount">AED 2,000.00</bdi> to Priya Kumar</b><br>
+    <span style="font-size:13px;color:var(--bes-text-secondary)">25th of every month · next: 25 Sep · if funds are short we retry next day and notify you</span>
+  </div>
+  <div class="demo-row"><button class="bes-btn bes-btn--secondary bes-btn--sm">Pause</button><button class="bes-btn bes-btn--ghost bes-btn--sm">Edit</button></div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:420px;display:flex;justify-content:space-between;gap:12px;align-items:center&quot;&gt;
+  &lt;div&gt;
+    &lt;b&gt;↻ &lt;bdi class=&quot;bes-amount&quot;&gt;AED 2,000.00&lt;/bdi&gt; to Priya Kumar&lt;/b&gt;&lt;br&gt;
+    &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;25th of every month · next: 25 Sep · if funds are short we retry next day and notify you&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;demo-row&quot;&gt;&lt;button class=&quot;bes-btn bes-btn--secondary bes-btn--sm&quot;&gt;Pause&lt;/button&gt;&lt;button class=&quot;bes-btn bes-btn--ghost bes-btn--sm&quot;&gt;Edit&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="transactions.html"><span class="lbl">Previous</span>Transactions</a><a class="next" href="cards.html"><span class="lbl">Next</span>Cards</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

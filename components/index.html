@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill" href="../pages/overview.html">Docs</a>
+  <a class="pill on" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Site">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html" class="on">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="g-wrap">
+  <div class="g-head">
+    <h1>Component library</h1>
+    <p>Live, coded BES components — dependency-free HTML/CSS/JS consuming the token package. Every demo renders in light/dark, three densities, and mirrors to RTL. Expand "Code" under any demo to copy the markup.</p>
+  </div>
+  <nav class="g-subnav" aria-label="Component sections">
+    <a class="on" href="index.html">Overview</a>
+    <a href="actions.html">Actions &amp; feedback</a>
+    <a href="forms.html">Forms &amp; inputs</a>
+    <a href="money.html">Money &amp; accounts</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="patterns.html">Composed patterns</a><a href="advanced.html">Advanced &amp; charts</a>
+  </nav>
+
+  <div class="ex">
+    <h2>Install</h2>
+    <p class="note">Three files, no build step, no dependencies. Tokens are the contract — components consume only <code>--bes-*</code> custom properties, so theming means swapping token values.</p>
+    <div class="demo" style="background:var(--code-bg)"><pre style="margin:0;font-size:13px;line-height:1.6"><code>&lt;link rel="stylesheet" href="assets/tokens.css?v=2.0.0-draft"&gt;  &lt;!-- generated from tokens/tokens.json --&gt;
+&lt;link rel="stylesheet" href="assets/bes.css?v=2.0.0-draft"&gt;     &lt;!-- components --&gt;
+&lt;script src="assets/bes.js?v=2.0.0-draft"&gt;&lt;/script&gt;             &lt;!-- behaviors (progressive enhancement) --&gt;
+
+&lt;!-- wrap your UI --&gt;
+&lt;div class="bes"&gt; … &lt;/div&gt;
+
+&lt;!-- dimensions --&gt;
+&lt;html data-theme="dark"&gt;          &lt;!-- omit = follow OS --&gt;
+&lt;html data-density="compact"&gt;     &lt;!-- comfortable | (default) | compact --&gt;
+&lt;html dir="rtl" lang="ar"&gt;        &lt;!-- full mirror + Arabic type metrics --&gt;</code></pre></div>
+    <details><summary>JS API</summary><pre><code>BES.setTheme('dark'|'light'|'system')
+BES.setDensity('comfortable'|'standard'|'compact')
+BES.setDirection('rtl','ar')
+BES.formatAmount(-1250.5, {currency:'AED'})   // "−AED 1,250.50"
+BES.parseAmount('AED 1,250.50')               // 1250.5 (Arabic digits accepted)
+BES.toast('IBAN copied')
+BES.openModal(id) / BES.closeModal(id)</code></pre></details>
+  </div>
+
+  <div class="land-grp">
+    <h2>Sections</h2>
+    <div class="cards">
+      <a class="cardl" href="actions.html"><b>Actions &amp; feedback</b><span>Buttons, icon buttons, status badges, alerts, banners, toasts, modal.</span></a>
+      <a class="cardl" href="forms.html"><b>Forms &amp; inputs</b><span>Fields, IBAN input, currency input with live validation, selection controls, tabs, stepper.</span></a>
+      <a class="cardl" href="money.html"><b>Money &amp; accounts</b><span>Amount styles, fee breakdown, rate lock, limit indicator, account card with masking.</span></a>
+      <a class="cardl" href="transactions.html"><b>Transactions</b><span>Transaction items in every state, timeline, data table, skeleton, empty state.</span></a>
+      <a class="cardl" href="patterns.html"><b>Composed patterns</b><span>Transfer review, payee verification states, consent request — assembled from the parts.</span></a>
+      <a class="cardl" href="advanced.html"><b>Advanced &amp; charts</b><span>Combobox, date picker, sortable table, drawer, PIN entry, rate-lock countdown, card art, accessible SVG charts, session-pause interruption.</span></a>
+      <a class="cardl" href="../journey-remittance.html"><b>Remittance journey →</b><span>Everything working together: the complete AED→INR flow, English and Arabic.</span></a>
+    </div>
+  </div>
+
+  <footer class="site"><span>BES v2.0.0 · fictional data only</span><span><a href="../pages/overview.html">Documentation</a></span></footer>
+</div>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

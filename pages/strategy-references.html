@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 — Reference &amp; Competitive Analysis · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html" class="on">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Strategy</div>
+<h1>06 — Reference &amp; Competitive Analysis</h1>
+<p><strong>Banking Experience System</strong> · Phase 01 · v2.0.0-draft · August 2026</p>
+<p>Two audits: (A) design systems studied for principles, (B) UAE banking experiences benchmarked. Per the brief: extract principles, never copy styling. Research: live, August 2026.</p>
+<hr />
+<h2>Part A — Reference design systems</h2>
+<h3>A1. Visa Product Design System (design.visa.com) — <em>the payments-native reference</em></h3>
+<ul>
+<li><strong>Architecture:</strong> Base elements → Design tokens (designer Figma variables + developer CSS variables/Flutter) → ~40 components → 13 patterns → content guidelines → chart components. Multi-framework (React, Angular, Flutter, plain CSS) plus "Abstracts" (behavioral primitives).</li>
+<li><strong>Financial domain lives in patterns + utilities:</strong> Card input (IIN/BIN network detection, masking rules, format forgiveness), OTP, Wizard, Feedback &amp; status, plus a <code>useCardNumberValidation</code> hook — financial logic as a system primitive.</li>
+<li><strong>Theming = guard-railed presets:</strong> 10 pretested light/dark color themes (explicitly for white-labeling), shape/density/type modes, meta-tokens <code>--theme-scale-factor</code> and <code>--theme-responsive-factor</code>.</li>
+<li><strong>Accessibility:</strong> VGAR — WCAG 2.2 AA distilled into per-platform checklists (<strong>Web, Mobile, PDF</strong>); components shipped accessibility-tested; focus-trap/ID utilities.</li>
+<li><strong>Forms:</strong> validate onBlur; server-error scenario library including the security case where the failing field cannot be identified; don't disable submit; "Required" spelled out over asterisks.</li>
+<li><strong>Status:</strong> component choice by placement × persistence × disruption; 4-tier attention scale; never stack alerts.</li>
+<li><strong>Gap:</strong> no RTL guidance at all.</li>
+<li><strong>Take:</strong> pattern template, financial primitives, guard-railed theming, VGAR model, status framework.</li>
+</ul>
+<h3>A2. GOV.UK Design System — <em>the error-prevention and content-design reference</em></h3>
+<ul>
+<li><strong>Task-based pattern taxonomy:</strong> "Ask users for…" (bank details, payment card details, addresses, dates…) and "Help users to…" (check answers, recover from errors, task lists, confirmations) — maps almost 1:1 to banking journeys.</li>
+<li><strong>Validation doctrine:</strong> prevent first (accept all formats, ignore stray characters); on error re-show with input preserved, <code>Error:</code> in title, error summary with focus moved to it; <strong>validate on submit</strong> (explicitly opposite Visa — BES will resolve per-context, see below); always server-side; <code>novalidate</code>; never use validation for eligibility.</li>
+<li><strong>Bank details pattern:</strong> per-state specified error copy; international variant = IBAN + BIC showing only country-relevant fields (UAE is an IBAN market — direct analogue).</li>
+<li><strong>Check answers → consequence statement → verb-labeled submit → confirmation page:</strong> the canonical irreversible-transaction spine; documented rationale (raises confidence, cuts errors).</li>
+<li><strong>Docs:</strong> live example → code tabs → when (not) to use → how it works → specified error messages → <strong>"Research on this pattern"</strong> (unique transparency) → backlog link. Component lifecycle statuses (Trial → Stable).</li>
+<li><strong>Gaps:</strong> no tokens, no theming, no RTL — single-brand by design.</li>
+<li><strong>Take:</strong> taxonomy, validation doctrine, check-answers spine, research transparency, lifecycle statuses.</li>
+</ul>
+<h3>A3. Salesforce Lightning (SLDS 2) — <em>the runtime theming mechanism</em></h3>
+<ul>
+<li>Structure separated from theme; Sass tokens replaced by <strong>CSS custom-property "styling hooks"</strong> (pierce Shadow DOM): global <code>--slds-g-*</code> vs component <code>--slds-c-*</code>, with cross-version compatibility enabling incremental migration.</li>
+<li><strong>Take:</strong> CSS custom properties as the multi-tenant theming contract; explicit global-vs-component hook taxonomy; the agentic-UI positioning as an early AI-surface signal.</li>
+</ul>
+<h3>A4. Adobe Spectrum / Spectrum 2 — <em>the internationalization and token-dimension reference</em></h3>
+<ul>
+<li>Tokens as design data (public repo); global → system → component tiers; Spectrum 2's cascade-token format treats tokens as a queryable decision database; platform scale, density, contrast and color theme are <strong>token dimensions, not variants</strong> — including user personalization.</li>
+<li><strong>Best-in-class RTL:</strong> dedicated bi-directionality foundation <em>plus per-component RTL sections</em> (Table: column order + alignment inversion; Meter: fill direction).</li>
+<li><strong>Take:</strong> i18n documented per component; adaptive dimensions in tokens; component doc template (anatomy → options → behaviors → usage → content standards → i18n → keyboard).</li>
+</ul>
+<h3>A5. IBM Carbon — <em>the token-rigor and ecosystem reference</em></h3>
+<ul>
+<li>Ecosystem layering: IBM Design Language → Carbon core → domain layers (Carbon for Products/Cloud/IBM.com), patterns harvested from products; honest tiered framework support.</li>
+<li><strong>Role-based tokens with contrast in the contract:</strong> <code>$layer-01/02/03</code>, <code>$text-primary/secondary/helper/error</code>, <code>$support-error/success/warning/info</code> <strong>plus graduated <code>$support-caution-minor/major/undefined</code></strong> (useful seed for risk severity); component tokens never reused outside their component; a dedicated <strong>AI token suite</strong>.</li>
+<li>Docs: Overview / Usage / Style / Code / Accessibility tabs.</li>
+<li><strong>Take:</strong> token vocabulary (theme/token/role/value), layer model, caution gradation, core-vs-domain ecosystem, AI namespace reservation.</li>
+</ul>
+<h3>A6. Briefly</h3>
+<ul>
+<li><strong>Atlassian:</strong> cleanest semantic naming grammar (<code>color.text</code>, <code>color.background.default</code>, chart token family); high-contrast + non-color themes (density, reduced motion) from one token layer.</li>
+<li><strong>USWDS:</strong> constrained-token philosophy (tokens as limited "keys" consumed via functions, never raw values); banking-adjacent components (input mask, prefix/suffix, memorable date, step indicator, character count, language selector).</li>
+<li><strong>Finastra (design.fusionfabric.cloud):</strong> the only fintech system with concrete Arabic/RTL rules — mirror layout but keep embedded LTR strings LTR; back button points right; don't mirror clocks/media; numbers read LTR, right-aligned; never mix numeral systems; no letter-spacing (cursive); +1–2px size, taller line-height; Arabic comma; weekday abbreviations fail.</li>
+<li><strong>Mastercard:</strong> no public product system. <strong>Capital One:</strong> organizational lesson — parallel top-down (global library) + bottom-up (team consistency) rollout from written principles.</li>
+</ul>
+<h3>A7. Synthesis — the buildable core</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Standard</th>
+<th>Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tokens</td>
+<td>3 tiers (primitive → semantic role → component) as CSS custom properties; contrast in token contract; direction/density/scale as token dimensions</td>
+<td>Carbon + Atlassian naming, SLDS 2 mechanism, Spectrum dimensions</td>
+</tr>
+<tr>
+<td>Theming</td>
+<td>Pretested brand presets; light/dark via attribute + <code>prefers-color-scheme</code>; RTL as first-class mode with Arabic type metrics</td>
+<td>Visa + Finastra</td>
+</tr>
+<tr>
+<td>Components</td>
+<td>Generic set with per-platform a11y checklists (Web/Mobile/PDF)</td>
+<td>Visa VGAR + Carbon doc tabs</td>
+</tr>
+<tr>
+<td>Financial patterns</td>
+<td>Card input, IBAN entry (UAE 23-char), auth (post-OTP), amount entry, payee mgmt, check-answers→confirm→receipt, transaction status, consent</td>
+<td>Visa + GOV.UK</td>
+</tr>
+<tr>
+<td>Errors</td>
+<td>Prevention rules, submit-time summary + inline, focus mgmt, error-copy dictionary, server-error scenarios</td>
+<td>GOV.UK + Visa</td>
+</tr>
+<tr>
+<td>Docs</td>
+<td>Example → anatomy → when(-not) → behaviors → content → <strong>RTL section</strong> → a11y → research/lifecycle</td>
+<td>GOV.UK + Spectrum + Visa hybrid</td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>Trial/Stable lifecycle, contribution criteria, research loop, core + domain layers</td>
+<td>GOV.UK + Carbon</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Open decision carried to Phase 02:</strong> validation timing. GOV.UK says on-submit; Visa says onBlur. BES direction: on-submit as default (inclusion-safe), onBlur permitted for high-confidence format fields (IBAN, card number, EID) where research shows net benefit — decided per pattern, documented per component.</p>
+<hr />
+<h2>Part B — UAE banking landscape audit</h2>
+<h3>B1. Score summary (digital experience reputation, Aug 2026)</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Standout</th>
+<th>Weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ENBD X</td>
+<td>~4.7★; 150+ instant services; DirectRemit 60s; in-app investing</td>
+<td>2023 redesign buried features initially</td>
+</tr>
+<tr>
+<td>ADCB Hayyak</td>
+<td>Onboarding machine — 58% of new acquisition, NPS 60</td>
+<td>Onboarding-app split from main app</td>
+</tr>
+<tr>
+<td>Mashreq / Neo</td>
+<td>&gt;50% fully-digital customers; corporate persona dashboards</td>
+<td>Usability edge cases, support</td>
+</tr>
+<tr>
+<td>FAB</td>
+<td>Scale; Payit innovation (SNPL remittance)</td>
+<td>Worst support reputation of tier-1; account closure dead-ends</td>
+</tr>
+<tr>
+<td>DIB</td>
+<td>"Banking in Minutes" UAE PASS onboarding</td>
+<td>Trustpilot 1.6; maintenance windows; digital lag</td>
+</tr>
+<tr>
+<td>Emirates Islamic</td>
+<td>World's best Islamic digital bank 2025; in-app gold</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Wio</td>
+<td>Profitable; Spaces; multi-currency; 6% salary savings; clean app</td>
+<td>Thin human support</td>
+</tr>
+<tr>
+<td>Liv / Liv X</td>
+<td>Lifestyle acquisition engine; 2025 relaunch</td>
+<td>Depth plateau vs Wio</td>
+</tr>
+<tr>
+<td>Mbank</td>
+<td>Inclusion positioning (no minimums, 5-min open)</td>
+<td>eKYC loops, crashes — reliability failure at the inclusion end</td>
+</tr>
+<tr>
+<td>ruya</td>
+<td>Modern Islamic UX; values-led voice; Sharia-compliant BTC</td>
+<td>Young, thin product set</td>
+</tr>
+<tr>
+<td>Zand</td>
+<td>Corporate/digital-asset frontier (AED stablecoin)</td>
+<td>Not a consumer UX reference</td>
+</tr>
+<tr>
+<td>Careem Pay / Botim / e&amp; money</td>
+<td>Embedded remittance where users already live</td>
+<td>Not full banking</td>
+</tr>
+<tr>
+<td>LuLu / Al Ansari</td>
+<td>Blue-collar trust, hybrid digital+branch, corridor breadth</td>
+<td>FX-spread opacity behind "zero fee"</td>
+</tr>
+</tbody>
+</table></div>
+<h3>B2. What works (adopt as system patterns)</h3>
+<p>UAE PASS 5-minute onboarding · instant virtual cards · remittance as first-class flow (corridor payouts, rate alerts, SNPL) · salary-anchored switching · Spaces/goal sub-accounts · multi-currency accounts · Aani P2P (phone-number addressing, QR, request/split) · modern Islamic UX (ruya/EI).</p>
+<h3>B3. What doesn't (design against)</h3>
+<p>Support cliff after onboarding · account-closure dead-ends · redesigns without wayfinding · reliability failures for inclusion segments · fee/FX-spread opacity · translated-not-designed Arabic · legacy Islamic digital lag.</p>
+<h3>B4. What's missing (whitespace BES occupies)</h3>
+<p>Published design-system-level RTL/bilingual standards · blue-collar-grade UX (low literacy, vernacular, voice) · cross-bank financial-health layer (Open Finance-ready) · transparent total-cost remittance (mid-market-rate disclosure) · unified conventional/Islamic presentation patterns · WCAG maturity · SME depth beyond Wio.</p>
+<h3>B5. What is UAE-specific (the system's reason to exist locally)</h3>
+<p>Identity rails making instant KYC real · remittance as a core banking job · 88% expat transience (open-fast, multi-currency, close-cleanly) · bilingual RTL parity as launch requirement · Islamic banking as mainstream with dual taxonomy · salary/WPS anchoring · fast-standardizing state rails (Aani/Jaywan/Al Tareq) · super-app gravity (banking as a feature inside Botim/Careem).</p>
+<hr />
+<h3>Key sources</h3>
+<p>design.visa.com (patterns: card-input, forms, feedback-and-status; tokens) · design-system.service.gov.uk (validation, bank-details, check-answers) · carbondesignsystem.com (themes, color tokens) · salesforce.com/blog/what-is-slds-2 + developer.salesforce.com LWC styling hooks · spectrum.adobe.com/page/bi-directionality + adobe/spectrum-design-data · designsystem.digital.gov · atlassian.design/foundations/tokens · design.fusionfabric.cloud/foundations/rtl · UXDA ENBD case study · theasianbanker.com (Hayyak) · Trustpilot/ComplaintsBoard/masarif.ae corpora · fintechnews.ae · Mambu (Wio) · ruyabank.ae.</p>
+<div class="pgnav"><a href="strategy-regulatory.html"><span class="lbl">Previous</span>Regulatory considerations</a><a class="next" href="strategy-architecture.html"><span class="lbl">Next</span>Experience architecture</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

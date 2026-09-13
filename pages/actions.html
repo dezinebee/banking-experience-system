@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08 — Core Components: Actions · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html" class="on">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Core components</div>
+<h1>08 — Core Components: Actions</h1>
+<p><strong>Banking Experience System (BES)</strong> · Core Components · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="demo-row">
+  <button class="bes-btn bes-btn--primary">Send <bdi class="bes-amount">AED 5,000.00</bdi></button>
+  <button class="bes-btn bes-btn--secondary">Back</button>
+  <button class="bes-btn bes-btn--ghost">View Key Facts (PDF)</button>
+  <button class="bes-btn bes-btn--destructive">Cancel transfer</button>
+  <button class="bes-btn bes-btn--primary bes-btn--loading">Sending…</button>
+  <button class="bes-btn bes-btn--primary" disabled>Continue</button>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot;&gt;
+  &lt;button class=&quot;bes-btn bes-btn--primary&quot;&gt;Send &lt;bdi class=&quot;bes-amount&quot;&gt;AED 5,000.00&lt;/bdi&gt;&lt;/button&gt;
+  &lt;button class=&quot;bes-btn bes-btn--secondary&quot;&gt;Back&lt;/button&gt;
+  &lt;button class=&quot;bes-btn bes-btn--ghost&quot;&gt;View Key Facts (PDF)&lt;/button&gt;
+  &lt;button class=&quot;bes-btn bes-btn--destructive&quot;&gt;Cancel transfer&lt;/button&gt;
+  &lt;button class=&quot;bes-btn bes-btn--primary bes-btn--loading&quot;&gt;Sending…&lt;/button&gt;
+  &lt;button class=&quot;bes-btn bes-btn--primary&quot; disabled&gt;Continue&lt;/button&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>Components: Button · Icon Button · Link · Menu (Action Menu / Overflow) · Button Group.</p>
+<p>Shared documentation contract (applies to every component in docs 08–21): anatomy, variants, states, usage, financial considerations, accessibility, Arabic/RTL, responsive, content — with realistic AED examples. States marked ✦ are financial-specific extensions.</p>
+<hr />
+<h2>Button</h2>
+<p><strong>Purpose:</strong> trigger an action. In banking, the primary button often moves money — it carries more responsibility than a generic CTA.</p>
+<p><strong>Anatomy:</strong> container · label (required) · leading/trailing icon (optional) · loading spinner slot · badge slot (rare, e.g. approvals count).</p>
+<p><strong>Variants:</strong>
+- <code>primary</code> — one per screen region; the main action ("Send AED 5,000.00")
+- <code>secondary</code> — bordered, neutral
+- <code>tertiary/ghost</code> — low-emphasis, text-only with padding
+- <code>destructive</code> — <code>action.destructive</code>; irreversible or negative actions ("Cancel transfer", "Remove beneficiary")
+- Sizes: <code>lg</code> (56px — money-moving CTAs, mobile bottom-anchored) · <code>md</code> (48px default) · <code>sm</code> (36px — dense/inline; desktop tables)</p>
+<p><strong>States:</strong> default · hover · focus (2px ring, 2px offset) · pressed · disabled · loading (spinner replaces label? <strong>No</strong> — spinner + label persists: "Sending…" so context survives) · success beat (transient check for in-place completions) ✦ requires-authentication (lock glyph — pressing routes to step-up).</p>
+<p><strong>Usage:</strong> one primary per region; the primary label names the consequence, not the mechanism — "Send AED 5,000.00", "Confirm payment of AED 10,035.00", never bare "Submit"/"OK"/"Confirm" on money-moving steps. Don't disable the primary to signal invalid forms (blocks discovery of <em>why</em>); validate on activation and surface the error summary instead. Exception: structurally impossible actions (no account selected) may disable with adjacent explanation.</p>
+<p><strong>Financial:</strong> amount-bearing labels re-render live if the amount changes upstream; destructive + primary never stacked adjacent without <code>space.16</code>; double-tap protection (idempotency debounce) is built into loading state — a second tap while loading is a no-op.</p>
+<p><strong>Accessibility:</strong> target ≥ 44×44; label read as accessible name (icon-only forbidden for Button — that's Icon Button); loading announces politely ("Sending your transfer"); disabled buttons remain focusable with description of why (aria-disabled pattern) in forms context.</p>
+<p><strong>RTL:</strong> leading icon flips to inline-start; chevrons mirror; amount inside the label stays an LTR isolated run: زر: "إرسال AED 5,000.00".</p>
+<p><strong>Responsive:</strong> mobile money-flows use a bottom-anchored full-width <code>lg</code> primary above the home indicator, always visible (not below the fold of a scrolling form).</p>
+<p><strong>Content:</strong> verb-first, sentence case (Latin), no exclamation marks. AR labels verb-first equivalently. Pair Yes/No decisions as explicit outcomes: "Yes, it was me" / "No, secure my account".</p>
+<hr />
+<h2>Icon Button</h2>
+<p><strong>Purpose:</strong> compact action where the glyph is universally learned (close, search, more, copy, eye/mask-toggle).</p>
+<p><strong>Anatomy:</strong> container (transparent/subtle/bordered) · icon · required accessible name · optional tooltip (desktop).</p>
+<p><strong>States:</strong> default · hover · focus · pressed · disabled · <strong>toggled</strong> (filled icon variant, e.g. balance-mask eye) · loading.</p>
+<p><strong>Usage:</strong> only for learned glyphs; anything ambiguous gets a labeled Button. The copy-IBAN icon button announces "Copy IBAN" and confirms with toast "IBAN copied".</p>
+<p><strong>Financial:</strong> the <strong>mask/reveal balance</strong> icon button is a standard instance: toggling announces state to screen readers ("Balance hidden" / "Balance shown"), persists per user preference.</p>
+<p><strong>A11y/RTL:</strong> ≥44×44 target; mirrored per icon policy (doc 04 §3); tooltip appears on focus, not only hover.</p>
+<hr />
+<h2>Link</h2>
+<p><strong>Purpose:</strong> navigation or reference — never a money-moving action. "View Key Facts Statement", "Why am I being charged?", "Terms and conditions".</p>
+<p><strong>Anatomy:</strong> text · optional external-icon (opens outside app — mandatory marker) · optional download icon (PDF).</p>
+<p><strong>Variants:</strong> inline (underlined, <code>text.link</code>) · standalone (with chevron) · subtle (footers).</p>
+<p><strong>States:</strong> default · hover · focus · visited (content sites only; app suppresses) · disabled (avoid — hide instead).</p>
+<p><strong>Usage:</strong> links navigate; buttons act. A "link-styled" trigger that mutates state is banned — this distinction matters under screen readers, where role announces expectation.</p>
+<p><strong>Financial:</strong> disclosure links (KFS, terms, fee schedules) always state format and destination: "Key Facts Statement (PDF)". Legal links never open irreversibly modal-blocking flows.</p>
+<p><strong>RTL:</strong> chevrons mirror; external-link glyph does not; underline offset per Arabic metric (doc 02 §2).</p>
+<hr />
+<h2>Menu (Action Menu / Overflow)</h2>
+<p><strong>Purpose:</strong> secondary actions on an object (transaction row → "Download receipt / Report a problem / Repeat transfer").</p>
+<p><strong>Anatomy:</strong> trigger (icon button "⋯" or labeled) · surface (<code>elevation.2</code>) · items (icon + label) · optional destructive group separated at the end · optional section headers.</p>
+<p><strong>States:</strong> closed · open · item hover/focus/pressed · item disabled (with reason on focus).</p>
+<p><strong>Usage:</strong> max ~7 items; destructive items last, separated; never hide the <em>only</em> path to a critical action in an overflow (receipts, disputes must also exist on the detail screen).</p>
+<p><strong>A11y:</strong> full keyboard support (arrows, Home/End, Esc, typeahead); focus returns to trigger on close; items are real buttons/links with roles.</p>
+<p><strong>RTL:</strong> aligns to the trigger's inline-end; opens toward available space; item icons at inline-start.</p>
+<hr />
+<h2>Button Group / Split Actions</h2>
+<p><strong>Purpose:</strong> tightly related alternatives ("Approve" + "Reject" in approval rows; "Pay full amount" ▾ split with "Pay minimum").</p>
+<p><strong>States:</strong> as Button per segment; group manages single-primary rule.</p>
+<p><strong>Financial:</strong> approve/reject pairs use fixed order — affirmative at inline-start in both directions (order follows reading direction, so it mirrors); colors: approve = primary, reject = secondary-destructive (bordered red, filled red reserved for confirm step). Split buttons on payment amounts always show the <em>selected</em> amount on the main segment.</p>
+<p><strong>A11y:</strong> group labeled ("Approval actions for payment AED 250,000.00 to Gulf Star Trading"); each segment individually focusable.</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Icon buttons</h2><div class="demo bes">
+<div class="demo-row">
+  <button class="bes-iconbtn" aria-label="Copy IBAN" data-bes-copy="AE070331234567890123456" data-bes-copied="IBAN copied">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="6" y="6" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 6V4.5A1.5 1.5 0 0 0 10.5 3H4.5A1.5 1.5 0 0 0 3 4.5v6A1.5 1.5 0 0 0 4.5 12H6" stroke="currentColor" stroke-width="1.5"/></svg>
+  </button>
+  <button class="bes-iconbtn bes-iconbtn--bordered" aria-label="Search">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M12 12l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+  <button class="bes-iconbtn" aria-label="Hide balance" aria-pressed="true">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10s3-5.5 8-5.5S18 10 18 10s-3 5.5-8 5.5S2 10 2 10z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
+  </button>
+  <span style="font-size:13px;color:var(--bes-text-secondary)">Tap the copy icon — it toasts. Learned glyphs only; 44×44 targets.</span>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot;&gt;
+  &lt;button class=&quot;bes-iconbtn&quot; aria-label=&quot;Copy IBAN&quot; data-bes-copy=&quot;AE070331234567890123456&quot; data-bes-copied=&quot;IBAN copied&quot;&gt;
+    &lt;svg width=&quot;18&quot; height=&quot;18&quot; viewBox=&quot;0 0 18 18&quot; fill=&quot;none&quot;&gt;&lt;rect x=&quot;6&quot; y=&quot;6&quot; width=&quot;9&quot; height=&quot;9&quot; rx=&quot;1.5&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M12 6V4.5A1.5 1.5 0 0 0 10.5 3H4.5A1.5 1.5 0 0 0 3 4.5v6A1.5 1.5 0 0 0 4.5 12H6&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class=&quot;bes-iconbtn bes-iconbtn--bordered&quot; aria-label=&quot;Search&quot;&gt;
+    &lt;svg width=&quot;18&quot; height=&quot;18&quot; viewBox=&quot;0 0 18 18&quot; fill=&quot;none&quot;&gt;&lt;circle cx=&quot;8&quot; cy=&quot;8&quot; r=&quot;5&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M12 12l3.5 3.5&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot; stroke-linecap=&quot;round&quot;/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;button class=&quot;bes-iconbtn&quot; aria-label=&quot;Hide balance&quot; aria-pressed=&quot;true&quot;&gt;
+    &lt;svg width=&quot;20&quot; height=&quot;20&quot; viewBox=&quot;0 0 20 20&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M2 10s3-5.5 8-5.5S18 10 18 10s-3 5.5-8 5.5S2 10 2 10z&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;2.4&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;Tap the copy icon — it toasts. Learned glyphs only; 44×44 targets.&lt;/span&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Action menu</h2><div class="demo bes">
+<div class="demo-row" style="align-items:flex-start">
+  <ul class="bes-menu" style="list-style:none">
+    <li><button type="button">Download receipt</button></li>
+    <li><button type="button">Repeat transfer</button></li>
+    <li><button type="button">Add note</button></li>
+    <li class="sep" role="separator"></li>
+    <li class="destructive"><button type="button">Report a problem</button></li>
+  </ul>
+  <span style="font-size:13px;color:var(--bes-text-secondary);max-width:280px">Destructive items last and separated. Critical actions never live only in an overflow.</span>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot; style=&quot;align-items:flex-start&quot;&gt;
+  &lt;ul class=&quot;bes-menu&quot; style=&quot;list-style:none&quot;&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;Download receipt&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;Repeat transfer&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;Add note&lt;/button&gt;&lt;/li&gt;
+    &lt;li class=&quot;sep&quot; role=&quot;separator&quot;&gt;&lt;/li&gt;
+    &lt;li class=&quot;destructive&quot;&gt;&lt;button type=&quot;button&quot;&gt;Report a problem&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary);max-width:280px&quot;&gt;Destructive items last and separated. Critical actions never live only in an overflow.&lt;/span&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Button group — approval pair</h2><div class="demo bes">
+<div class="demo-row">
+  <button class="bes-btn bes-btn--primary">Approve</button>
+  <button class="bes-btn bes-btn--destructive">Reject</button>
+  <span style="font-size:13px;color:var(--bes-text-secondary)">Affirmative at inline-start (mirrors in RTL); solid red reserved for the confirm step.</span>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;demo-row&quot;&gt;
+  &lt;button class=&quot;bes-btn bes-btn--primary&quot;&gt;Approve&lt;/button&gt;
+  &lt;button class=&quot;bes-btn bes-btn--destructive&quot;&gt;Reject&lt;/button&gt;
+  &lt;span style=&quot;font-size:13px;color:var(--bes-text-secondary)&quot;&gt;Affirmative at inline-start (mirrors in RTL); solid red reserved for the confirm step.&lt;/span&gt;
+&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="financial-semantics.html"><span class="lbl">Previous</span>Financial semantics</a><a class="next" href="inputs.html"><span class="lbl">Next</span>Inputs &amp; forms</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

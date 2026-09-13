@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Status &amp; verification · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html" class="on">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Verification</div>
+<h1>Component &amp; Pattern Status Registry</h1>
+<p>The single source of truth for what is actually ready. Statuses per GOVERNANCE.md:
+<strong>Specified</strong> (docs only) → <strong>Coded</strong> (in bes.css/js, audits pass) → <strong>Trial</strong> (one human-protocol pass) → <strong>Stable</strong> (screen-reader + Arabic passes; usability evidence for money-moving patterns).</p>
+<p><em>Last updated: 2026-08-31 (post-1.0.1 independent review). Nothing is Trial/Stable yet — human
+protocols are written and awaiting testers (docs/testing/). Five defects that all three automated
+gates passed through are fixed in <code>[Unreleased]</code>, and the gates themselves now derive from the
+artefacts rather than from hand-written lists (see CHANGELOG). <strong>"Coded" still means the component
+exists, the gates pass and its behaviour is exercised in jsdom — not that a human has used it.</strong>
+Trial and Stable remain gated on the human protocols in docs/testing/.</em></p>
+<h2>Foundations</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Foundation</th>
+<th>Spec</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color · Typography · Spacing &amp; layout · Motion</td>
+<td>01–03, 05</td>
+<td><strong>Coded</strong></td>
+<td>Emitted as tokens; contrast gated per brand</td>
+</tr>
+<tr>
+<td><strong>Icon set</strong></td>
+<td>04</td>
+<td><strong>Specified</strong></td>
+<td><strong>No icon assets ship.</strong> Doc 04 defines the 24px construction grid, ~20 required financial glyphs (transfer, remittance, FX, fee, hold, refund, reversal, split bill, request money, QR pay, instant…), the RTL mirroring policy and the accessible-name rules — but the repository contains <strong>zero SVG assets</strong>. Components inline the few glyphs they need or expect the consumer to supply them. Drawing the set is outstanding design work, not a build step.</td>
+</tr>
+<tr>
+<td>Design-tool library (Figma)</td>
+<td>—</td>
+<td><strong>Specified</strong></td>
+<td>Blueprint written (<code>docs/figma-build-spec.md</code>) — variables, styles, component pages. No library file has been built, so BES is currently adoptable by engineers but not by designers working in Figma.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Core components</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Spec</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Button (all variants)</td>
+<td>08</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Icon Button</td>
+<td>08</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Link / Menu / Button Group</td>
+<td>08</td>
+<td>Specified</td>
+<td>Menu styles coded; behavior partial</td>
+</tr>
+<tr>
+<td>Text Input + form primitives</td>
+<td>09</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Currency Input</td>
+<td>09</td>
+<td><strong>Coded</strong></td>
+<td>Live validation, Arabic-digit parsing</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>09</td>
+<td>Specified</td>
+<td>Compose from Text Input</td>
+</tr>
+<tr>
+<td>Select</td>
+<td>09</td>
+<td><strong>Coded</strong></td>
+<td>Styled native</td>
+</tr>
+<tr>
+<td>Combobox</td>
+<td>09</td>
+<td><strong>Coded</strong></td>
+<td>Filter + keyboard</td>
+</tr>
+<tr>
+<td>Date Picker</td>
+<td>09</td>
+<td><strong>Coded</strong></td>
+<td>Processing-day blocking; range variant Specified</td>
+</tr>
+<tr>
+<td>Checkbox / Radio / Switch</td>
+<td>09</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>PIN Entry / Code Entry</td>
+<td>09</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Character Count</td>
+<td>09</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>File Upload</td>
+<td>09</td>
+<td><strong>Coded</strong></td>
+<td>UI states; transport is host-app concern</td>
+</tr>
+<tr>
+<td>App Bar / Bottom Nav / Side Nav</td>
+<td>10</td>
+<td>Specified</td>
+<td>Journey bar coded as instance</td>
+</tr>
+<tr>
+<td>Tabs</td>
+<td>10</td>
+<td><strong>Coded</strong></td>
+<td>RTL-aware keyboard</td>
+</tr>
+<tr>
+<td>Segmented Control</td>
+<td>10</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Breadcrumb / Pagination</td>
+<td>10</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Stepper</td>
+<td>10</td>
+<td><strong>Coded</strong></td>
+<td>Display + journey logic</td>
+</tr>
+<tr>
+<td>Language Switcher / Session Bar</td>
+<td>10</td>
+<td>Specified</td>
+<td>Language switch proven in showcase/journey</td>
+</tr>
+<tr>
+<td>Card / List / List Item</td>
+<td>11</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Table (+ sorting)</td>
+<td>11</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Accordion</td>
+<td>11</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Modal / Bottom Sheet</td>
+<td>11</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Drawer</td>
+<td>11</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Popover / Tooltip</td>
+<td>11</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Alert / Banner / Toast</td>
+<td>12</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Status Badge</td>
+<td>12</td>
+<td><strong>Coded</strong></td>
+<td>13 transaction states + generic UI status, glyph-paired</td>
+</tr>
+<tr>
+<td>Progress / Skeleton / Spinner</td>
+<td>12</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Empty / Loading / Error states</td>
+<td>12</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>Financial components</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Spec</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Money value type</strong></td>
+<td>13</td>
+<td><strong>Coded</strong></td>
+<td>Exact minor units · 7 rounding modes · <code>allocate</code> · Intl rendering · Eastern numerals</td>
+</tr>
+<tr>
+<td><strong>Component token tier</strong></td>
+<td>06/30</td>
+<td><strong>Coded</strong></td>
+<td>30 tokens · zero literals in bes.css · proven by the Sadu brand (<code>brand-proof.html</code>)</td>
+</tr>
+<tr>
+<td>Amount (all variants)</td>
+<td>13</td>
+<td><strong>Coded</strong></td>
+<td>Renders a Money; no component holds a float</td>
+</tr>
+<tr>
+<td>Amount Pair (FX) / FX Rate</td>
+<td>13</td>
+<td><strong>Coded</strong></td>
+<td>In journey + gallery</td>
+</tr>
+<tr>
+<td>Rate Lock Timer</td>
+<td>13</td>
+<td><strong>Coded</strong></td>
+<td>Expiry → re-quote proven in journey</td>
+</tr>
+<tr>
+<td>Masked Balance</td>
+<td>13</td>
+<td><strong>Coded</strong></td>
+<td>Class-based, 30s auto re-mask; cross-surface sync is host-app wiring</td>
+</tr>
+<tr>
+<td>Fee Line / Breakdown / Total Row</td>
+<td>13</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Amount Delta / Limit Indicator</td>
+<td>13</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Account Card / Balance Set / Selector</td>
+<td>14</td>
+<td><strong>Coded</strong></td>
+<td>Selector = Select instance</td>
+</tr>
+<tr>
+<td>IBAN Display / Product Header / Spaces</td>
+<td>14</td>
+<td>Specified</td>
+<td>IBAN input coded; display partial</td>
+</tr>
+<tr>
+<td><strong>Transaction state (all 13, incl. UNKNOWN / blocked / refunded)</strong></td>
+<td>07/15</td>
+<td><strong>Coded</strong></td>
+<td><code>data-bes-state</code> reads one registry: colour, glyph, EN+AR label. UNKNOWN cannot render a retry control</td>
+</tr>
+<tr>
+<td>Transaction Item / List / Table / Detail</td>
+<td>15</td>
+<td><strong>Coded</strong></td>
+<td>Detail composed in journey/receipt</td>
+</tr>
+<tr>
+<td>Transaction Timeline / Receipt</td>
+<td>15</td>
+<td><strong>Coded</strong></td>
+<td>Receipt printable</td>
+</tr>
+<tr>
+<td>Statement Row / Search &amp; Filters</td>
+<td>15</td>
+<td>Specified</td>
+<td></td>
+</tr>
+<tr>
+<td>Payee Card / Beneficiary Manager</td>
+<td>16</td>
+<td><strong>Coded</strong> (journey)</td>
+<td>Manager list = journey payee list</td>
+</tr>
+<tr>
+<td><strong>Payee Verification (name check)</strong></td>
+<td>16</td>
+<td><strong>Coded</strong></td>
+<td>All four states (match / close / no-match / unavailable)</td>
+</tr>
+<tr>
+<td>Transfer Review / Auth Prompt / Results</td>
+<td>16</td>
+<td><strong>Coded</strong></td>
+<td>Full contract in journey</td>
+</tr>
+<tr>
+<td>Scheduled Setup / Request-to-Pay / QR / Split / Bills</td>
+<td>16</td>
+<td>Specified</td>
+<td></td>
+</tr>
+<tr>
+<td>Card Art / Controls / Freeze / Limits</td>
+<td>17</td>
+<td><strong>Coded</strong></td>
+<td>PIN mgmt / replacement / dispute Specified</td>
+</tr>
+<tr>
+<td>KFS Product Summary</td>
+<td>18</td>
+<td><strong>Coded</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Rate &amp; Profit Rate Displays / Calculator / Schedule</td>
+<td>18</td>
+<td>Specified</td>
+<td>Schedule table styles coded</td>
+</tr>
+<tr>
+<td>Investments family</td>
+<td>19</td>
+<td>Specified</td>
+<td>Charts coded (bar/line/donut)</td>
+</tr>
+<tr>
+<td>Identity &amp; Security family</td>
+<td>20</td>
+<td>Partial</td>
+<td>Session-pause, device cards, warning tiers coded; document capture / liveness UI Specified</td>
+</tr>
+<tr>
+<td>Consent &amp; Privacy family</td>
+<td>21</td>
+<td><strong>Coded</strong> (request card)</td>
+<td>Dashboard/revocation Specified</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Patterns (highlights)</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Status</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P-01 Ask for an amount</td>
+<td><strong>Coded</strong></td>
+<td>Journey step 1</td>
+</tr>
+<tr>
+<td>P-02/03 Ask for a payee</td>
+<td><strong>Coded</strong></td>
+<td>Journey step 2</td>
+</tr>
+<tr>
+<td>P-21 Confirm a payment</td>
+<td><strong>Coded</strong></td>
+<td>Journey review</td>
+</tr>
+<tr>
+<td>P-22 Verify a payee</td>
+<td><strong>Coded</strong></td>
+<td>Journey CoP</td>
+</tr>
+<tr>
+<td>P-23 Step-up auth</td>
+<td><strong>Coded</strong></td>
+<td>Journey PIN (biometric/passkey host-app)</td>
+</tr>
+<tr>
+<td>P-31 Receipt &amp; proof</td>
+<td><strong>Coded</strong></td>
+<td>Journey receipt</td>
+</tr>
+<tr>
+<td>P-40 Transaction status</td>
+<td><strong>Coded</strong></td>
+<td>All 13 states as components; UNKNOWN/blocked/refunded result screens in the gallery</td>
+</tr>
+<tr>
+<td>P-60 Suspicious transaction challenge</td>
+<td><strong>Coded</strong></td>
+<td>Gallery patterns page</td>
+</tr>
+<tr>
+<td>Remaining patterns (P-04…P-75)</td>
+<td>Specified</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>Verification ledger</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contrast audit — 78 declared pairings (incl. all 13 state-on-tint) <strong>+ 1,582 derived per brand</strong> (core + Sadu = 3,164)</td>
+<td>✅ Passing (docs/audits/contrast-report.md)</td>
+</tr>
+<tr>
+<td><strong>Brand theme contract (doc 30, T1–T6)</strong> — one worked brand, token values only</td>
+<td>✅ Passing (docs/audits/theme-report.md)</td>
+</tr>
+<tr>
+<td><strong>Transaction state contract (doc 06 §6, S1–S7)</strong> — 13 states agree across spec, tokens, CSS and JS</td>
+<td>✅ Passing (docs/audits/state-report.md)</td>
+</tr>
+<tr>
+<td>Consistency audit (drift · C7 theme-guard · C8 font-size/radius at zero, spacing ratcheted)</td>
+<td>✅ Passing (docs/audits/consistency-report.md)</td>
+</tr>
+<tr>
+<td>Money/text unit tests (147 assertions, incl. the Money value type)</td>
+<td>✅ Passing (<code>node tools/test-js.mjs</code>)</td>
+</tr>
+<tr>
+<td>Component DOM tests in jsdom (83 assertions)</td>
+<td>✅ Passing (<code>node tools/test-dom.mjs</code>) — also generates the runtime snapshots the contrast audit scores</td>
+</tr>
+<tr>
+<td>Whole suite re-run in a UTC+ timezone</td>
+<td>✅ Passing (<code>TZ=Asia/Dubai</code>)</td>
+</tr>
+<tr>
+<td>CI gates (all of the above on every PR)</td>
+<td>✅ <code>.github/workflows/ci.yml</code></td>
+</tr>
+<tr>
+<td>Adversarial scrutiny (3 independent reviews, 88 findings triaged)</td>
+<td>✅ docs/audits/scrutiny-report.md</td>
+</tr>
+<tr>
+<td>Static a11y audit (51 files)</td>
+<td>✅ Passing (docs/audits/a11y-report.md)</td>
+</tr>
+<tr>
+<td>Screen-reader protocol</td>
+<td>⏳ Written, awaiting tester</td>
+</tr>
+<tr>
+<td>Arabic/RTL native review</td>
+<td>⏳ Written, awaiting reviewer — <strong>all Arabic UI copy (showcase, journey, glossary) is machine-drafted and flagged as unreviewed in-product until this passes</strong></td>
+</tr>
+<tr>
+<td>Remittance usability test (5 sessions)</td>
+<td>⏳ Written, awaiting participants</td>
+</tr>
+<tr>
+<td>Compliance counsel review</td>
+<td>⏳ Matrix ready (docs/compliance/)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="pgnav"></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>

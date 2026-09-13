@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>18 — Financial Components: Lending &amp; Financing Family · Banking Experience System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/bes.css?v=2.0.0-draft">
+<link rel="stylesheet" href="../assets/gallery.css?v=2.0.0-draft">
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="../index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill on" href="../pages/overview.html">Docs</a>
+  <a class="pill" href="../components/index.html">Components</a>
+  <a class="pill" href="../journey-remittance.html">Journey</a>
+  <a class="pill" href="../showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="../pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Documentation">
+<div class="grp">Start</div>
+<a href="../index.html">Home</a>
+<a href="../showcase.html">Live showcase</a>
+<a href="../journey-remittance.html">Remittance journey</a>
+<a href="../brand-proof.html">Brand proof</a>
+<a href="../pages/status.html">Status &amp; verification</a>
+<a href="../pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="../components/index.html">Install &amp; overview</a>
+<a href="../components/actions.html">Actions &amp; feedback</a>
+<a href="../components/forms.html">Forms &amp; inputs</a>
+<a href="../components/money.html">Money &amp; accounts</a>
+<a href="../components/transactions.html">Transactions</a>
+<a href="../components/patterns.html">Composed patterns</a>
+<a href="../components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="../pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="../pages/color.html">Color</a>
+<a href="../pages/typography.html">Typography</a>
+<a href="../pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="../pages/iconography.html">Iconography</a>
+<a href="../pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="../pages/tokens.html">Token architecture</a>
+<a href="../pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="../pages/actions.html">Actions</a>
+<a href="../pages/inputs.html">Inputs &amp; forms</a>
+<a href="../pages/navigation.html">Navigation</a>
+<a href="../pages/containers.html">Containers</a>
+<a href="../pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="../pages/money.html">Money</a>
+<a href="../pages/accounts.html">Accounts</a>
+<a href="../pages/transactions.html">Transactions</a>
+<a href="../pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="../pages/cards.html">Cards</a>
+<a href="../pages/lending.html" class="on">Lending &amp; financing</a>
+<a href="../pages/investments.html">Investments</a>
+<a href="../pages/identity-security.html">Identity &amp; security</a>
+<a href="../pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="../pages/patterns-input.html">Asking users for…</a>
+<a href="../pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="../pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="../pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="../pages/data-viz.html">Data visualization</a>
+<a href="../pages/content-errors.html">Content &amp; errors</a>
+<a href="../pages/accessibility.html">Accessibility</a>
+<a href="../pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="../pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="../pages/strategy-overview.html">Phase 01 overview</a>
+<a href="../pages/strategy-vision.html">Vision</a>
+<a href="../pages/strategy-principles.html">Design principles</a>
+<a href="../pages/strategy-users.html">Target users</a>
+<a href="../pages/strategy-uae.html">UAE context</a>
+<a href="../pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="../pages/strategy-references.html">Reference analysis</a>
+<a href="../pages/strategy-architecture.html">Experience architecture</a>
+<a href="../pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<div class="content">
+<div class="crumb">Financial components</div>
+<h1>18 — Financial Components: Lending &amp; Financing Family</h1>
+<p><strong>Banking Experience System (BES)</strong> · Financial Components · v2.0.0-draft</p>
+<section class="ex ex--doc"><h2 style="border:none;padding-top:0">Live example</h2><div class="demo bes">
+<div class="bes-card" style="max-width:440px;border-radius:8px">
+  <span style="display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bes-text-secondary);border:1px solid var(--bes-border-strong);border-radius:4px;padding:3px 8px;margin-bottom:12px">Personal financing · Fixed rate</span>
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">Amount</span><span class="v"><bdi class="bes-amount">AED 100,000.00</bdi></span></div>
+    <div class="bes-row"><span class="k">Term</span><span class="v">48 months</span></div>
+    <div class="bes-row"><span class="k">Rate (reducing)</span><span class="v"><bdi class="bes-amount">5.99%</bdi></span></div>
+    <div class="bes-row"><span class="k">Monthly payment</span><span class="v"><bdi class="bes-amount">AED 2,348.00</bdi></span></div>
+    <div class="bes-row"><span class="k">Total repayment</span><span class="v"><bdi class="bes-amount">AED 112,704.00</bdi></span></div>
+    <div class="bes-row"><span class="k">Processing fee</span><span class="v"><bdi class="bes-amount">AED 1,050.00</bdi></span></div>
+  </div>
+  <div class="bes-alert bes-alert--warning" style="margin-block-start:12px">
+    <div>Missing payments can affect your credit record and future borrowing.</div>
+  </div>
+  <p style="font-size:13px;color:var(--bes-text-secondary);margin:10px 0 6px">You can cancel within 5 business days of signing.</p>
+  <a href="#" style="font-size:14px;font-weight:500">Key Facts Statement (PDF)</a>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:440px;border-radius:8px&quot;&gt;
+  &lt;span style=&quot;display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bes-text-secondary);border:1px solid var(--bes-border-strong);border-radius:4px;padding:3px 8px;margin-bottom:12px&quot;&gt;Personal financing · Fixed rate&lt;/span&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Amount&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 100,000.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Term&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;48 months&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Rate (reducing)&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;5.99%&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Monthly payment&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 2,348.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Total repayment&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 112,704.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Processing fee&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 1,050.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-alert bes-alert--warning&quot; style=&quot;margin-block-start:12px&quot;&gt;
+    &lt;div&gt;Missing payments can affect your credit record and future borrowing.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:13px;color:var(--bes-text-secondary);margin:10px 0 6px&quot;&gt;You can cancel within 5 business days of signing.&lt;/p&gt;
+  &lt;a href=&quot;#&quot; style=&quot;font-size:14px;font-weight:500&quot;&gt;Key Facts Statement (PDF)&lt;/a&gt;
+&lt;/div&gt;</code></pre></details></section>
+<p>One component set serves conventional credit and Islamic financing; the <strong>terminology dimension</strong> (doc 06 §3) resolves vocabulary and the rate components swap per product structure. Underlying behavior is shared — a repayment schedule is a repayment schedule.</p>
+<p>Components: Product Summary (Key Facts) · Rate Display (APR) · Profit Rate Display (Islamic) · Shari'ah Structure Explainer · Payment Calculator · Eligibility Check · Application Progress · Offer Presentation · Approval / Rejection · Repayment Schedule · Outstanding Summary · Early Settlement · Payment Holiday · Overdue State.</p>
+<hr />
+<h2>Product Summary (Key Facts)</h2>
+<p><strong>Purpose:</strong> the standardized pre-contract summary — the single most regulated component in the system. Rendered identically in Arabic and English; printable/downloadable as an accessible PDF.</p>
+<p><strong>Anatomy (fixed order):</strong>
+1. Product name + type badge (<strong>Fixed / Variable / Hybrid</strong> rate-type is prominent, first-glance)
+2. Headline figures: amount · term · rate (Rate Display or Profit Rate Display per structure) · periodic payment · <strong>total you will repay</strong>
+3. Fees table (processing, late payment, early settlement — every fee, no "other fees may apply" without enumeration link)
+4. Warnings block (non-dismissible): consequences of missed payments, variable-rate risk where applicable
+5. Cooling-off notice (the 5-business-day right, plainly stated)
+6. Key Facts document link ("Key Facts Statement (PDF)")</p>
+<p><strong>Example:</strong></p>
+<pre><code>PERSONAL FINANCING · Fixed rate
+Amount                AED 100,000.00
+Term                  48 months
+Rate                  5.99% per year (reducing)
+Monthly payment       AED 2,348.00
+Total repayment       AED 112,704.00
+Processing fee        AED 1,050.00 (incl. VAT)
+Early settlement      1% of remaining balance, max AED 10,000
+⚠ Missing payments can affect your credit record and future borrowing.
+You can cancel within 5 business days of signing.
+[Key Facts Statement (PDF)]
+</code></pre>
+<p><strong>States:</strong> draft-quote (≈, inputs editable) · firm-offer (locked figures + validity: "This offer is valid until 6 Sep 2026") · contracted (immutable record).</p>
+<p><strong>A11y:</strong> definition-list semantics; the warnings block is a landmark; PDF tagged.</p>
+<p><strong>RTL:</strong> full mirror; figures LTR runs; the document renders bilingually per institution configuration.</p>
+<hr />
+<h2>Rate Display (conventional)</h2>
+<p><strong>Anatomy:</strong> headline rate + basis ("5.99% per year, reducing balance") · <strong>APR line always present and labeled</strong> ("Annual Percentage Rate: 6.54% — includes fees") · flat-vs-reducing clarifier where flat rates are quoted (with the reducing equivalent shown — quoting flat without equivalence is banned in-system) · variable-rate basis where applicable ("EIBOR 3M + 3.2%, revised quarterly" + rate-history link).</p>
+<h2>Profit Rate Display (Islamic)</h2>
+<p><strong>Anatomy:</strong> structure-appropriate presentation: financing (e.g. Murabaha) shows <strong>profit rate + total profit amount in AED</strong> ("Profit rate 5.99% — total profit AED 12,704.00 over 48 months"); deposits (e.g. Mudarabah) show <strong>profit-sharing ratio + weightages + distribution frequency</strong> ("You receive 70% of pool profit · distributed monthly · rates are indicative, not guaranteed" + historic distribution table) · expected vs guaranteed clearly separated — indicative profit is never typeset as a promise.</p>
+<h2>Shari'ah Structure Explainer</h2>
+<p><strong>Anatomy:</strong> compact expandable card naming the structure ("This is Murabaha financing") · plain-language explanation (2–3 sentences: "The bank buys the item and sells it to you at a disclosed markup. You pay in fixed installments. The price never changes after signing.") · certification mark (internal Shari'ah committee approval) · link to the full structure document.</p>
+<p><strong>Rule:</strong> present on every Islamic product surface — it is disclosure, not education garnish.</p>
+<hr />
+<h2>Payment Calculator</h2>
+<p><strong>Purpose:</strong> explore amount/term/payment before applying.</p>
+<p><strong>Anatomy:</strong> amount (Currency Input + slider hybrid) · term (stepper/slider, months) · live outputs: periodic payment (<code>amount.lg</code>) · total repayment · total cost of credit (the honest number: "You pay AED 12,704.00 for this financing") · rate assumption line (≈, "your personal rate may differ — check eligibility") · apply CTA.</p>
+<p><strong>States:</strong> interactive · out-of-bounds (policy limits shown inline) · rate-personalized (post-eligibility: ≈ removed).</p>
+<p><strong>Rules:</strong> total cost is never hidden behind a tap; sliders always pair with typed inputs (a11y + precision); calculator outputs are estimated-labeled until a firm offer exists.</p>
+<hr />
+<h2>Eligibility Check</h2>
+<p><strong>Purpose:</strong> soft-check before full application.</p>
+<p><strong>Anatomy:</strong> minimal inputs (salary, obligations — prefilled where consented via open-data) · consent line for the check (bureau-impact honesty: "This soft check doesn't affect your credit record") · outcome: likely-eligible (range, not promise) / needs-full-application / not-eligible-now.</p>
+<p><strong>Rule (routing, not rejection-by-validation):</strong> not-eligible outcomes explain the <em>category</em> of reason where permitted (income threshold, existing obligations, tenure) and route constructively ("You may be eligible for AED 50,000 instead" / "Try again after 3 months of salary transfers") — never a bare dead end.</p>
+<hr />
+<h2>Application Progress</h2>
+<p>Stepper + save-and-resume: stages (Details → Documents → Review → Decision) · per-stage document requirements upfront (checklist: EID, salary certificate, 3-month statement) · resume from any device · abandoned-application recovery notification.</p>
+<p><strong>States:</strong> in-progress · awaiting-documents (which, why, formats) · under-review (honest SLA: "Usually within 2 working days") · decision-ready.</p>
+<hr />
+<h2>Offer Presentation</h2>
+<p><strong>Anatomy:</strong> firm Product Summary (locked figures) · changes-from-request highlighted ("You asked for AED 100,000 — we can offer AED 80,000" with the difference explained) · validity countdown · accept path → contract review → <strong>signing ceremony</strong> (digital-identity signature handoff) · decline path (one tap, no retention traps).</p>
+<p><strong>Rule:</strong> accepting is a step-up event; the cooling-off notice renders again <em>after</em> signing with the cancellation entry point live for 5 business days.</p>
+<hr />
+<h2>Approval / Rejection</h2>
+<ul>
+<li><strong>Approved:</strong> congratulation beat (restrained) · what happens next (disbursement timing, first payment date: "AED 100,000.00 arrives today. First payment AED 2,348.00 on 1 Oct.") · schedule preview.</li>
+<li><strong>Rejected:</strong> respectful, plain ("We can't offer this financing right now") · reason category where permitted · what can change the outcome · alternatives · <strong>no dark-pattern re-marketing on the rejection screen</strong>.</li>
+</ul>
+<hr />
+<h2>Repayment Schedule</h2>
+<p><strong>Anatomy:</strong> table/list per installment: date · amount · principal/profit split (columns named per terminology dimension) · remaining balance · status per row (paid ✓ / upcoming / due / overdue / holiday) · progress header ("14 of 48 payments made · AED 79,832.00 remaining").</p>
+<p><strong>States:</strong> on-track · payment-due (≤5 days: prominence + pay-now) · overdue (see Overdue State) · restructured (old vs new schedule accessible).</p>
+<p><strong>RTL:</strong> table mirrors; numerics end-aligned LTR.</p>
+<hr />
+<h2>Outstanding Summary</h2>
+<p>Product Header specialization: outstanding balance (<code>amount.lg</code>) · next payment (amount + date + auto-debit source: "Auto-pays from ••4521 on the 1st") · paid-so-far progress bar · quick actions (pay early, statement, settle).</p>
+<hr />
+<h2>Early Settlement</h2>
+<p><strong>Anatomy:</strong> settlement quote: remaining principal · settlement fee (per contract, with the fee-basis explained) · <strong>total to settle today</strong> · savings framing honesty ("Settling today costs AED 81,032.00. Continuing costs AED 84,528.00 over 34 months.") · quote validity · proceed → review contract.</p>
+<p><strong>Rule:</strong> both numbers (settle now vs continue) always shown — the component doesn't sell either path.</p>
+<hr />
+<h2>Payment Holiday / Deferral</h2>
+<p><strong>Anatomy:</strong> eligibility + terms ("Defer 1 payment · profit continues to accrue · term extends by 1 month") · <strong>cost of deferral stated in AED</strong> before confirmation · Ramadan/seasonal deferral programs as institution-configurable presets.</p>
+<hr />
+<h2>Overdue State</h2>
+<p><strong>Anatomy:</strong> amount overdue + days · consequence ladder stated factually (late fee applied → credit-record impact → escalation) · pay-now path (partial payment accepted where policy allows, stated) · <strong>hardship path is always present</strong> ("Struggling to pay? See your options" → restructure/contact) — collections pressure patterns (countdown timers, red full-screens) are banned.</p>
+<p><strong>Tone:</strong> factual, non-shaming; Arabic register matches (formal, respectful).</p><hr/><h2>All components in this family — live</h2><p>Every component from this specification, rendered by the coded library. Expand "Code" to copy the markup.</p><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Payment calculator</h2><div class="demo bes">
+<div class="bes-card" style="max-width:420px">
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">Amount</span><span class="v"><bdi class="bes-amount">AED 100,000.00</bdi></span></div>
+    <div class="bes-row"><span class="k">Term</span><span class="v">48 months</span></div>
+  </div>
+  <div class="bes-total"><span class="k">Monthly payment</span><span class="v"><bdi class="bes-amount">≈ AED 2,348.00</bdi></span></div>
+  <div class="bes-rows" style="margin-top:6px">
+    <div class="bes-row"><span class="k">Total you pay for this financing</span><span class="v"><bdi class="bes-amount">AED 12,704.00</bdi></span></div>
+  </div>
+  <p style="font-size:12.5px;color:var(--bes-text-secondary);margin:8px 0 0">Estimated — your personal rate may differ. Total cost never hides behind a tap.</p>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Amount&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 100,000.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Term&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;48 months&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-total&quot;&gt;&lt;span class=&quot;k&quot;&gt;Monthly payment&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;≈ AED 2,348.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;bes-rows&quot; style=&quot;margin-top:6px&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Total you pay for this financing&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 12,704.00&lt;/bdi&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:12.5px;color:var(--bes-text-secondary);margin:8px 0 0&quot;&gt;Estimated — your personal rate may differ. Total cost never hides behind a tap.&lt;/p&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Profit rate display (Islamic dimension)</h2><div class="demo bes">
+<div class="bes-card" style="max-width:440px">
+  <span style="display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bes-text-secondary);border:1px solid var(--bes-border-strong);border-radius:4px;padding:3px 8px;margin-bottom:10px">Mudarabah savings</span>
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">Profit-sharing ratio</span><span class="v">You receive 70% of pool profit</span></div>
+    <div class="bes-row"><span class="k">Distribution</span><span class="v">Monthly</span></div>
+    <div class="bes-row"><span class="k">Last distribution (indicative)</span><span class="v"><bdi class="bes-amount">3.85%</bdi> p.a. equivalent</span></div>
+  </div>
+  <div class="bes-alert bes-alert--info" style="margin-top:10px"><div>This is Mudarabah: the bank invests your deposit per Shari'ah and shares the profit. Rates are indicative, not guaranteed. <a href="#">Structure certificate</a></div></div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:440px&quot;&gt;
+  &lt;span style=&quot;display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bes-text-secondary);border:1px solid var(--bes-border-strong);border-radius:4px;padding:3px 8px;margin-bottom:10px&quot;&gt;Mudarabah savings&lt;/span&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Profit-sharing ratio&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;You receive 70% of pool profit&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Distribution&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;Monthly&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Last distribution (indicative)&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;3.85%&lt;/bdi&gt; p.a. equivalent&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bes-alert bes-alert--info&quot; style=&quot;margin-top:10px&quot;&gt;&lt;div&gt;This is Mudarabah: the bank invests your deposit per Shari&#x27;ah and shares the profit. Rates are indicative, not guaranteed. &lt;a href=&quot;#&quot;&gt;Structure certificate&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Repayment schedule</h2><div class="demo bes">
+<div class="bes-table-wrap" style="max-width:520px">
+  <table class="bes-table bes-schedule">
+    <thead><tr><th>#</th><th>Date</th><th class="num">Payment</th><th class="num">Principal</th><th class="num">Profit</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr class="paid"><td>13</td><td>1 Aug</td><td class="num">2,348.00</td><td class="num">1,905.20</td><td class="num">442.80</td><td><span class="bes-badge bes-badge--success">Paid</span></td></tr>
+      <tr class="due"><td>14</td><td>1 Sep</td><td class="num">2,348.00</td><td class="num">1,914.70</td><td class="num">433.30</td><td><span class="bes-badge bes-badge--warning">Due in 1 day</span></td></tr>
+      <tr><td>15</td><td>1 Oct</td><td class="num">2,348.00</td><td class="num">1,924.30</td><td class="num">423.70</td><td><span class="bes-badge bes-badge--neutral">Upcoming</span></td></tr>
+    </tbody>
+  </table>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-table-wrap&quot; style=&quot;max-width:520px&quot;&gt;
+  &lt;table class=&quot;bes-table bes-schedule&quot;&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;#&lt;/th&gt;&lt;th&gt;Date&lt;/th&gt;&lt;th class=&quot;num&quot;&gt;Payment&lt;/th&gt;&lt;th class=&quot;num&quot;&gt;Principal&lt;/th&gt;&lt;th class=&quot;num&quot;&gt;Profit&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr class=&quot;paid&quot;&gt;&lt;td&gt;13&lt;/td&gt;&lt;td&gt;1 Aug&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;2,348.00&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;1,905.20&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;442.80&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;bes-badge bes-badge--success&quot;&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;due&quot;&gt;&lt;td&gt;14&lt;/td&gt;&lt;td&gt;1 Sep&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;2,348.00&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;1,914.70&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;433.30&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;bes-badge bes-badge--warning&quot;&gt;Due in 1 day&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;15&lt;/td&gt;&lt;td&gt;1 Oct&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;2,348.00&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;1,924.30&lt;/td&gt;&lt;td class=&quot;num&quot;&gt;423.70&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;bes-badge bes-badge--neutral&quot;&gt;Upcoming&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Early settlement — both numbers, no selling</h2><div class="demo bes">
+<div class="bes-card" style="max-width:420px">
+  <div class="bes-rows">
+    <div class="bes-row"><span class="k">Settle today</span><span class="v"><bdi class="bes-amount">AED 81,032.00</bdi> <span style="color:var(--bes-text-secondary);font-weight:400">(incl. 1% fee)</span></span></div>
+    <div class="bes-row"><span class="k">Continue 34 months</span><span class="v"><bdi class="bes-amount">AED 84,528.00</bdi> total</span></div>
+  </div>
+  <p style="font-size:12.5px;color:var(--bes-text-secondary);margin:8px 0 0">Quote valid until 6 Sep. The component shows both paths — it doesn't sell either.</p>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-card&quot; style=&quot;max-width:420px&quot;&gt;
+  &lt;div class=&quot;bes-rows&quot;&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Settle today&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 81,032.00&lt;/bdi&gt; &lt;span style=&quot;color:var(--bes-text-secondary);font-weight:400&quot;&gt;(incl. 1% fee)&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bes-row&quot;&gt;&lt;span class=&quot;k&quot;&gt;Continue 34 months&lt;/span&gt;&lt;span class=&quot;v&quot;&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 84,528.00&lt;/bdi&gt; total&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p style=&quot;font-size:12.5px;color:var(--bes-text-secondary);margin:8px 0 0&quot;&gt;Quote valid until 6 Sep. The component shows both paths — it doesn&#x27;t sell either.&lt;/p&gt;
+&lt;/div&gt;</code></pre></details></section><section class="ex ex--doc"><h2 style="border:none;padding-top:0">Overdue state — factual, hardship path always present</h2><div class="demo bes">
+<div class="bes-alert bes-alert--error" style="max-width:460px">
+  <div><b><bdi class="bes-amount">AED 2,348.00</bdi> overdue by 6 days.</b>
+  A late fee of AED 105 was applied. Continued non-payment can affect your credit record.
+  <div class="actions"><a href="#">Pay now</a><a href="#">Struggling to pay? See your options</a></div></div>
+</div>
+</div><details><summary>Code</summary><pre><code>&lt;div class=&quot;bes-alert bes-alert--error&quot; style=&quot;max-width:460px&quot;&gt;
+  &lt;div&gt;&lt;b&gt;&lt;bdi class=&quot;bes-amount&quot;&gt;AED 2,348.00&lt;/bdi&gt; overdue by 6 days.&lt;/b&gt;
+  A late fee of AED 105 was applied. Continued non-payment can affect your credit record.
+  &lt;div class=&quot;actions&quot;&gt;&lt;a href=&quot;#&quot;&gt;Pay now&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Struggling to pay? See your options&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></section>
+<div class="pgnav"><a href="cards.html"><span class="lbl">Previous</span>Cards</a><a class="next" href="investments.html"><span class="lbl">Next</span>Investments</a></div>
+</div>
+<footer class="site"><span>Banking Experience System · v2.0.0-draft</span><span>Examples use fictional data</span></footer>
+</main>
+</div>
+<script src="../assets/bes.js?v=2.0.0-draft"></script>
+<script src="../assets/gallery.js?v=2.0.0-draft"></script>
+</body>
+</html>
