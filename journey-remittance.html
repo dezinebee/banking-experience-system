@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Send money to India · BES journey</title>
+<meta name="description" content="Proof-by-product: the complete AED→INR remittance journey built entirely from BES components — amount, recipient verification, review with rate lock, authentication, and every result state.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="assets/bes.css?v=2.0.0-draft">
+<style>
+  /* No body override: site.css already supplies the canvas, the type stack and
+     the margin reset. The page canvas matches every other page. */
+  .phone{max-width:520px;margin:24px auto 64px;background:var(--bes-surface-primary);border:1px solid var(--bes-border-default);border-radius:18px;min-height:640px;padding:20px 22px 28px;box-shadow:var(--bes-elevation-e2)}
+  .demo-note{max-width:520px;margin:16px auto 0;font-size:12.5px;color:var(--bes-text-disabled);text-align:center;padding:0 16px}
+  .backbtn{background:none;border:none;cursor:pointer;color:var(--bes-text-secondary);padding:8px;border-radius:8px;font-size:20px;line-height:1}
+  .backbtn:hover{background:var(--bes-surface-tertiary)}
+  [dir="rtl"] .backbtn svg{transform:scaleX(-1)}
+  .payee-opt{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--bes-border-strong);border-radius:12px;cursor:pointer;margin-block-end:10px;background:var(--bes-surface-primary)}
+  .payee-opt:hover{background:var(--bes-surface-secondary)}
+  .payee-opt[aria-pressed="true"]{border-color:var(--bes-action-primary);outline:1.5px solid var(--bes-action-primary)}
+  .payee-opt .av{width:38px;height:38px;border-radius:50%;background:var(--bes-surface-tertiary);display:grid;place-items:center;font-weight:600;color:var(--bes-text-secondary);flex:none}
+  .payee-opt .nm{font-weight:600;font-size:15px}
+  .payee-opt .dt{font-size:12.5px;color:var(--bes-text-secondary)}
+  .fx-pair{display:flex;flex-direction:column;gap:10px}
+  /* Page-level controls live in the page, not in the shared topbar — the topbar
+     is the same four pills on every page. Mirrors the toggle in showcase.html. */
+  .page-controls{max-width:520px;margin:20px auto -8px;display:flex;justify-content:flex-end}
+  .page-controls .tgl{border:1px solid var(--bes-border-strong);background:var(--bes-surface-primary);color:var(--bes-text-primary);border-radius:8px;padding:8px 14px;font:inherit;font-size:14px;font-weight:500;cursor:pointer}
+  .page-controls .tgl:hover{background:var(--bes-surface-tertiary)}
+  .demo-controls{max-width:520px;margin:10px auto 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .demo-controls button{font:inherit;font-size:12px;border:1px dashed var(--bes-border-strong);background:none;color:var(--bes-text-secondary);border-radius:999px;padding:4px 10px;cursor:pointer}
+  .demo-controls button[aria-pressed="true"]{color:var(--bes-text-primary);border-style:solid;font-weight:600}
+  .j-spin{display:inline-block;inline-size:28px;block-size:28px;border:3px solid currentColor;border-block-start-color:transparent;border-radius:50%;animation:bes-spin .9s linear infinite}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill" href="pages/overview.html">Docs</a>
+  <a class="pill" href="components/index.html">Components</a>
+  <a class="pill on" href="journey-remittance.html">Journey</a>
+  <a class="pill" href="showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Site">
+<div class="grp">Start</div>
+<a href="index.html">Home</a>
+<a href="showcase.html">Live showcase</a>
+<a href="journey-remittance.html" class="on">Remittance journey</a>
+<a href="brand-proof.html">Brand proof</a>
+<a href="pages/status.html">Status &amp; verification</a>
+<a href="pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="components/index.html">Install &amp; overview</a>
+<a href="components/actions.html">Actions &amp; feedback</a>
+<a href="components/forms.html">Forms &amp; inputs</a>
+<a href="components/money.html">Money &amp; accounts</a>
+<a href="components/transactions.html">Transactions</a>
+<a href="components/patterns.html">Composed patterns</a>
+<a href="components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="pages/color.html">Color</a>
+<a href="pages/typography.html">Typography</a>
+<a href="pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="pages/iconography.html">Iconography</a>
+<a href="pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="pages/tokens.html">Token architecture</a>
+<a href="pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="pages/actions.html">Actions</a>
+<a href="pages/inputs.html">Inputs &amp; forms</a>
+<a href="pages/navigation.html">Navigation</a>
+<a href="pages/containers.html">Containers</a>
+<a href="pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="pages/money.html">Money</a>
+<a href="pages/accounts.html">Accounts</a>
+<a href="pages/transactions.html">Transactions</a>
+<a href="pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="pages/cards.html">Cards</a>
+<a href="pages/lending.html">Lending &amp; financing</a>
+<a href="pages/investments.html">Investments</a>
+<a href="pages/identity-security.html">Identity &amp; security</a>
+<a href="pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="pages/patterns-input.html">Asking users for…</a>
+<a href="pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="pages/data-viz.html">Data visualization</a>
+<a href="pages/content-errors.html">Content &amp; errors</a>
+<a href="pages/accessibility.html">Accessibility</a>
+<a href="pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="pages/strategy-overview.html">Phase 01 overview</a>
+<a href="pages/strategy-vision.html">Vision</a>
+<a href="pages/strategy-principles.html">Design principles</a>
+<a href="pages/strategy-users.html">Target users</a>
+<a href="pages/strategy-uae.html">UAE context</a>
+<a href="pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="pages/strategy-references.html">Reference analysis</a>
+<a href="pages/strategy-architecture.html">Experience architecture</a>
+<a href="pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+<!-- .bes scopes the component layer to the demo only. It must not wrap the
+     topbar or sidebar: :lang(ar) bumps --bes-type-body-size to 17px, and that
+     bump belongs to the demo, not to the site chrome. -->
+<div class="bes">
+
+<h1 class="bes-vh">Send money to India — BES remittance journey demo</h1>
+
+<div class="page-controls">
+  <button id="langBtn" class="tgl" lang="ar">العربية</button>
+</div>
+
+<div class="phone" id="app"></div>
+
+<div class="demo-controls" role="group" aria-label="Demo: choose the outcome to preview">
+  <span style="font-size:12px;color:var(--bes-text-disabled);align-self:center" data-k="dc0">Demo outcome:</span>
+  <button data-outcome="success" aria-pressed="true" data-k="dc1">Success</button>
+  <button data-outcome="pending" aria-pressed="false" data-k="dc2">Pending</button>
+  <button data-outcome="unknown" aria-pressed="false" data-k="dc3">Unknown</button>
+  <button data-outcome="failed" aria-pressed="false" data-k="dc4">Failed</button>
+</div>
+<p class="demo-note" data-k="note">Demonstration build on fictional data — no real money, customers or rates. PIN for the demo: any 4 digits (use 0000 to see the failure state).</p>
+</div>
+
+</main>
+</div>
+<script src="assets/bes.js?v=2.0.0-draft"></script>
+<script>
+(function(){
+"use strict";
+
+/* ======================= i18n ======================= */
+var L = {
+  en: {
+    dc0:"Demo outcome:", dc1:"Success", dc2:"Pending", dc3:"Unknown", dc4:"Failed",
+    note:"Demonstration build on fictional data — no real money, customers or rates. PIN for the demo: any 4 digits (use 0000 to see the failure state). Arabic copy is pending native-speaker review (see docs/testing/).",
+    step:"Step {a} of {b}", amountInvalid:"Enter an amount between AED 1 and your available balance before continuing.",
+    t_amount:"Send money to India", t_recipient:"Who are you sending to?", t_review:"Check and confirm",
+    t_auth:"Confirm it's you", t_processing:"Sending your transfer", t_receipt:"Receipt",
+    youSend:"You send", theyGet:"Priya receives", estGet:"Recipient gets (updates live)",
+    rate:"Exchange rate", rateLive:"indicative — locked at review", available:"Available: AED 25,000.00 · Daily limit AED 50,000.00",
+    fee:"Transfer fee", margin:"FX margin", vat:"VAT on fees (5%)", total:"Total you pay", exact:"exact",
+    cont:"Continue", back:"Back",
+    savedPayees:"Saved payees", addNew:"+ Send to someone new",
+    newName:"Recipient's full name", newNameHelp:"Exactly as on their bank account — banks may reject mismatches.",
+    newAcct:"Account number", newIfsc:"IFSC code", newIfscHelp:"11 characters, e.g. ICIC0001234",
+    verifying:"Checking the name with the recipient's bank…",
+    copMatch:"Name matches the account", copMatchP:"“{n}” matches the name registered to this account.",
+    copClose:"Did you mean “{n}”?", copCloseP:"The name you entered is close, but not exact. Check with the recipient before sending.",
+    copNo:"The name doesn't match this account", copNoP:"Money sent to the wrong account can be hard to recover. Go back and check with the recipient.",
+    useThis:"Use this name", goBack:"Go back and check", riskCont:"I understand the risk — continue", checkRec:"Check with recipient",
+    newBadge:"New", added:"Added {d}", lastSent:"Last sent {a} · {d}",
+    to:"To", from:"From", fromAcct:"Current account ••4521", change:"Change",
+    lockLabel:"locked ", lockExpired:"rate expired", relock:"Get a new rate",
+    rateExpiredMsg:"The locked rate expired. Rates move — we've quoted a fresh one:", oldNew:"₹25.0800 → ₹25.0300",
+    warnNew:"New payee — verified a moment ago. Take a second look at the details.",
+    consequence:"We'll send {t} from your current account now. International transfers can't be cancelled once sent.",
+    sendBtn:"Send {t}",
+    authContext:"You're authorizing: {t} to {n}", enterPin:"Enter your 4-digit app PIN", wrongPin:"Incorrect PIN. 2 attempts remaining.",
+    procNote:"You can close this — we'll notify you at every step.",
+    r_successT:"Transfer sent", r_successM:"{t} is on its way to {n}. Expected delivery within 1 hour.",
+    r_pendingT:"Your transfer is pending", r_pendingM:"Extra processing is needed on the partner side. Expected today.", r_pendingMoney:"The money has left your account. We'll notify you when it's delivered.",
+    r_unknownT:"We're checking your transfer status", r_unknownM:"We haven't received confirmation yet. Your money is safe — no amount will be taken twice.", r_unknownMoney:"We'll confirm within 30 minutes and notify you. You don't need to do anything.",
+    r_failedT:"We couldn't complete this transfer", r_failedM:"The recipient's bank declined the payment.", r_failedMoney:"No money was deducted from your account.",
+    tl1:"Sent from your account", tl2:"Converted AED → INR", tl3:"With recipient bank", tl3s:"Usually within 1 hour", tl4:"Delivered to {n}",
+    dlReceipt:"View receipt", sendAgain:"Send again", done:"Done", retry:"Try again", support:"Contact support", notifyMe:"Notify me",
+    rc_title:"Payment receipt", rc_status:"Completed", rc_date:"Date", rc_ref:"Reference", rc_sender:"Sender", rc_senderV:"Your name · Current account ••4521",
+    rc_recipient:"Recipient", rc_amount:"Amount sent", rc_rate:"Exchange rate", rc_fees:"Fees + VAT", rc_total:"Total paid", rc_gets:"Recipient receives",
+    rc_print:"Print / Save PDF", rc_note:"Verify this receipt with the reference number via our app or support line.",
+    startOver:"Start a new transfer"
+  },
+  ar: {
+    dc0:"نتيجة العرض:", dc1:"نجاح", dc2:"قيد المعالجة", dc3:"غير مؤكد", dc4:"فشل",
+    note:"نموذج تجريبي ببيانات وهمية — لا أموال ولا عملاء ولا أسعار حقيقية. الرقم السري للتجربة: أي 4 أرقام (استخدم 0000 لرؤية حالة الفشل). النسخة العربية بانتظار مراجعة متحدث أصلي.",
+    step:"الخطوة {a} من {b}", amountInvalid:"أدخل مبلغًا بين AED 1 ورصيدك المتاح قبل المتابعة.",
+    t_amount:"أرسل الأموال إلى الهند", t_recipient:"إلى من ترسل؟", t_review:"راجع وأكّد",
+    t_auth:"تأكيد هويتك", t_processing:"جارٍ إرسال حوالتك", t_receipt:"الإيصال",
+    youSend:"ترسل", theyGet:"تستلم بريا", estGet:"يستلم المستفيد (يتحدث مباشرة)",
+    rate:"سعر الصرف", rateLive:"استرشادي — يُثبت عند المراجعة", available:"المتاح: AED 25,000.00 · الحد اليومي AED 50,000.00",
+    fee:"رسوم التحويل", margin:"هامش الصرف", vat:"ضريبة القيمة المضافة (5%)", total:"الإجمالي الذي تدفعه", exact:"بالضبط",
+    cont:"متابعة", back:"رجوع",
+    savedPayees:"المستفيدون المحفوظون", addNew:"+ إرسال إلى شخص جديد",
+    newName:"الاسم الكامل للمستلم", newNameHelp:"تمامًا كما هو في حسابه البنكي — قد ترفض البنوك الأسماء غير المطابقة.",
+    newAcct:"رقم الحساب", newIfsc:"رمز IFSC", newIfscHelp:"11 خانة، مثل ICIC0001234",
+    verifying:"نتحقق من الاسم لدى بنك المستلم…",
+    copMatch:"الاسم يطابق الحساب", copMatchP:"«{n}» يطابق الاسم المسجّل لهذا الحساب.",
+    copClose:"هل تقصد «{n}»؟", copCloseP:"الاسم الذي أدخلته قريب لكنه غير مطابق تمامًا. تحقق من المستلم قبل الإرسال.",
+    copNo:"الاسم لا يطابق هذا الحساب", copNoP:"قد يصعب استرداد الأموال المرسلة إلى حساب خاطئ. ارجع وتحقق مع المستلم.",
+    useThis:"استخدام هذا الاسم", goBack:"الرجوع والتحقق", riskCont:"أفهم المخاطرة — متابعة", checkRec:"سأتحقق من المستلم",
+    newBadge:"جديد", added:"أُضيف {d}", lastSent:"آخر إرسال {a} · {d}",
+    to:"إلى", from:"من", fromAcct:"حساب جاري ••4521", change:"تغيير",
+    lockLabel:"مثبّت ", lockExpired:"انتهى السعر", relock:"احصل على سعر جديد",
+    rateExpiredMsg:"انتهت صلاحية السعر المثبّت. الأسعار تتحرك — إليك سعرًا جديدًا:", oldNew:"₹25.0800 ← ₹25.0300",
+    warnNew:"مستفيد جديد — تم التحقق قبل لحظات. راجع التفاصيل مرة أخرى.",
+    consequence:"سنرسل {t} من حسابك الجاري الآن. لا يمكن إلغاء الحوالات الدولية بعد إرسالها.",
+    sendBtn:"إرسال {t}",
+    authContext:"أنت تفوّض: {t} إلى {n}", enterPin:"أدخل الرقم السري للتطبيق (4 أرقام)", wrongPin:"رقم سري غير صحيح. تبقّت محاولتان.",
+    procNote:"يمكنك إغلاق هذه الشاشة — سنُعلمك في كل خطوة.",
+    r_successT:"تم إرسال الحوالة", r_successM:"{t} في طريقها إلى {n}. التسليم المتوقع خلال ساعة.",
+    r_pendingT:"حوالتك قيد المعالجة", r_pendingM:"مطلوب معالجة إضافية لدى الطرف الشريك. متوقع اليوم.", r_pendingMoney:"غادر المبلغ حسابك. سنُعلمك عند التسليم.",
+    r_unknownT:"نتحقق من حالة حوالتك", r_unknownM:"لم نستلم التأكيد بعد. أموالك آمنة — لن يُخصم أي مبلغ مرتين.", r_unknownMoney:"سنؤكد خلال 30 دقيقة ونُعلمك. لا يلزمك فعل أي شيء.",
+    r_failedT:"تعذّر إتمام هذه الحوالة", r_failedM:"رفض بنك المستلم العملية.", r_failedMoney:"لم يُخصم أي مبلغ من حسابك.",
+    tl1:"أُرسلت من حسابك", tl2:"تم التحويل AED ← INR", tl3:"لدى بنك المستلم", tl3s:"عادة خلال ساعة", tl4:"التسليم إلى {n}",
+    dlReceipt:"عرض الإيصال", sendAgain:"إرسال مرة أخرى", done:"تم", retry:"حاول مرة أخرى", support:"تواصل مع الدعم", notifyMe:"أعلمني",
+    rc_title:"إيصال دفع", rc_status:"مكتملة", rc_date:"التاريخ", rc_ref:"المرجع", rc_sender:"المرسل", rc_senderV:"اسمك · حساب جاري ••4521",
+    rc_recipient:"المستلم", rc_amount:"المبلغ المرسل", rc_rate:"سعر الصرف", rc_fees:"الرسوم + الضريبة", rc_total:"الإجمالي المدفوع", rc_gets:"يستلم المستفيد",
+    rc_print:"طباعة / حفظ PDF", rc_note:"تحقق من هذا الإيصال برقم المرجع عبر التطبيق أو خط الدعم.",
+    startOver:"بدء حوالة جديدة"
+  }
+};
+var lang = "en";
+function t(k){ var s = L[lang][k]; return s == null ? k : s; }
+function fmtA(v){ return BES.formatAmount(v, {currency:"AED"}); }
+function fmtI(v){ return "₹" + v.toLocaleString("en-IN", {minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+/* ======================= state ======================= */
+var RATE = 25.08, FEE = 15, MARGIN = 20, REQUOTE_RATE = 25.03;
+var S = {
+  step: 0, amount: 10000,
+  payee: null,            // {name, bank, acct, isNew, copState}
+  outcome: "success",
+  authAttempts: 0,
+  lockUntil: 0,           // rate-lock expiry timestamp — enforced, not just displayed
+  ref: "BES-" + Math.random().toString(36).slice(2, 8).toUpperCase()
+};
+var esc = BES.esc;
+function lockRemaining(){ return Math.max(0, Math.ceil((S.lockUntil - Date.now()) / 1000)); }
+function lockExpired(){ return S.lockUntil > 0 && lockRemaining() === 0; }
+var PAYEES = [
+  { name:"Priya Kumar", registered:"Priya Kumar", bank:"ICICI Bank", acct:"••4102", isNew:false, last:"12 Aug", lastAmt:2000 },
+  { name:"Anil Sharma", registered:"Anil Sharma", bank:"HDFC Bank", acct:"••7739", isNew:false, last:"25 Jul", lastAmt:5000 }
+];
+function totals(){
+  var vat = (FEE + MARGIN) * 0.05;
+  return { fees: FEE + MARGIN + vat, vat: vat, total: S.amount + FEE + MARGIN + vat, gets: S.amount * RATE };
+}
+
+/* ======================= render ======================= */
+var app = document.getElementById("app");
+var STEPS = ["amount","recipient","review","auth","processing","result","receipt"];
+
+function bar(title, stepNo, canBack){
+  return '<div class="bes-journey-bar">' +
+    (canBack ? '<button class="backbtn" data-act="back" aria-label="' + t("back") + '"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 4L6.5 10l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' : "") +
+    "<h2>" + title + "</h2>" +
+    (stepNo ? '<span class="step-label">' + t("step").replace("{a}", stepNo).replace("{b}", "4") + "</span>" : "") +
+    "</div>";
+}
+
+function vAmount(){
+  var g = totals();
+  return bar(t("t_amount"), 1, false) +
+    '<div class="bes-field"><label class="bes-label" for="j-amt">' + t("youSend") + '</label>' +
+    '<div class="bes-currency"><span class="code" aria-hidden="true">AED</span>' +
+    '<input class="bes-input" id="j-amt" inputmode="decimal" value="' + S.amount.toLocaleString("en-US") + '" data-bes-currency data-max="25000" data-currency="AED"></div>' +
+    '<div class="bes-context-line">' + t("available") + "</div></div>" +
+    '<div class="bes-rows">' +
+    '<div class="bes-row bes-row--rate"><span>' + t("rate") + '</span><span><bdi class="bes-amount">1 AED = ₹' + RATE.toFixed(4) + "</bdi> · " + t("rateLive") + "</span></div>" +
+    '<div class="bes-row"><span class="k">' + t("fee") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(FEE) + "</bdi></span></div>" +
+    '<div class="bes-row"><span class="k">' + t("margin") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(MARGIN) + "</bdi></span></div>" +
+    '<div class="bes-row"><span class="k">' + t("vat") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(g.vat) + "</bdi></span></div></div>" +
+    '<div class="bes-total"><span class="k">' + t("total") + '</span><span class="v"><bdi class="bes-amount" id="j-total">' + fmtA(g.total) + "</bdi></span></div>" +
+    '<div class="bes-row" style="padding-top:10px"><span class="k">' + t("estGet") + '</span><span class="v" style="color:var(--bes-financial-income)"><bdi class="bes-amount" id="j-gets">' + fmtI(g.gets) + "</bdi></span></div>" +
+    '<button class="bes-btn bes-btn--primary bes-btn--lg" data-act="toRecipient" style="margin-top:18px">' + t("cont") + "</button>";
+}
+
+function vRecipient(){
+  var saved = PAYEES.map(function(p, i){
+    return '<button class="payee-opt" type="button" data-payee="' + i + '">' +
+      '<span class="av">' + p.name.split(" ").map(function(w){return w[0];}).join("") + "</span>" +
+      '<span style="flex:1;text-align:start"><span class="nm">' + esc(p.name) + '</span><br><span class="dt">' + p.bank + " " + p.acct + " · " + t("lastSent").replace("{a}", fmtA(p.lastAmt)).replace("{d}", p.last) + "</span></span></button>";
+  }).join("");
+  return bar(t("t_recipient"), 2, true) +
+    '<div class="bes-list-head" style="padding-inline:0">' + t("savedPayees") + "</div>" + saved +
+    '<button class="bes-btn bes-btn--ghost" data-act="addNew" style="width:100%;margin-top:4px">' + t("addNew") + "</button>" +
+    '<div id="j-newform" hidden style="margin-top:14px">' +
+    '<div class="bes-field"><label class="bes-label" for="j-nm">' + t("newName") + '</label>' +
+    '<input class="bes-input" id="j-nm" autocomplete="off"><div class="bes-help">' + t("newNameHelp") + "</div></div>" +
+    '<div class="bes-field"><label class="bes-label" for="j-ac">' + t("newAcct") + '</label>' +
+    '<input class="bes-input bes-input--ltr" id="j-ac" inputmode="numeric" spellcheck="false"></div>' +
+    '<div class="bes-field"><label class="bes-label" for="j-if">' + t("newIfsc") + '</label>' +
+    '<input class="bes-input bes-input--ltr" id="j-if" spellcheck="false" style="text-transform:uppercase"><div class="bes-help">' + t("newIfscHelp") + "</div></div>" +
+    '<button class="bes-btn bes-btn--primary bes-btn--lg" data-act="verifyPayee">' + t("cont") + "</button></div>" +
+    '<div id="j-cop" aria-live="polite" style="margin-top:14px"></div>';
+}
+
+function copBlock(state, entered, registered){
+  var map = {
+    match: { cls:"bes-cop--match", ic:'<path d="M3 8.5L6.5 12 13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+      b:t("copMatch"), p:BES.tpl(t("copMatchP"), {n: entered}),
+      act:'<button class="bes-btn bes-btn--primary bes-btn--sm" data-act="copAccept">' + t("cont") + "</button>" },
+    close: { cls:"bes-cop--close", ic:'<path d="M8 1.5L15 14H1L8 1.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 6v3.2M8 11.4v.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+      b:BES.tpl(t("copClose"), {n: registered}), p:t("copCloseP"),
+      act:'<button class="bes-btn bes-btn--primary bes-btn--sm" data-act="copUseRegistered">' + t("useThis") + '</button><button class="bes-btn bes-btn--secondary bes-btn--sm" data-act="copBack">' + t("checkRec") + "</button>" },
+    nomatch: { cls:"bes-cop--nomatch", ic:'<path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+      b:t("copNo"), p:t("copNoP"),
+      act:'<button class="bes-btn bes-btn--primary bes-btn--sm" data-act="copBack">' + t("goBack") + '</button><button class="bes-btn bes-btn--destructive bes-btn--sm" data-act="copAccept">' + t("riskCont") + "</button>" }
+  };
+  var m = map[state];
+  return '<div class="bes-card"><div class="bes-cop ' + m.cls + '">' +
+    '<span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none">' + m.ic + "</svg></span>" +
+    "<div><b>" + m.b + "</b><p>" + m.p + '</p><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">' + m.act + "</div></div></div></div>";
+}
+
+function vReview(){
+  var g = totals();
+  var newWarn = S.payee.isNew ?
+    '<div class="bes-alert bes-alert--warning" style="margin-top:14px"><div>' + t("warnNew") + "</div></div>" : "";
+  return bar(t("t_review"), 3, true) +
+    '<div class="bes-rows">' +
+    '<div class="bes-row"><span class="k">' + t("to") + '</span><span class="v">' + esc(S.payee.name) + " · " + esc(S.payee.bank) + " " + esc(S.payee.acct) + ' <a href="#" data-act="back2" style="font-size:13px">' + t("change") + "</a></span></div>" +
+    '<div class="bes-row"><span class="k">' + t("from") + '</span><span class="v">' + t("fromAcct") + "</span></div>" +
+    '<div class="bes-row"><span class="k">' + t("youSend") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(S.amount) + "</bdi></span></div>" +
+    '<div class="bes-row bes-row--rate"><span>' + t("rate") + '</span><span><bdi class="bes-amount">1 AED = ₹' + RATE.toFixed(4) + '</bdi> · <span class="bes-ratelock" data-bes-countdown="' + lockRemaining() + '" data-prefix="' + t("lockLabel") + '" data-expired-text="' + t("lockExpired") + '"><span class="t"></span></span></span></div>' +
+    '<div class="sep"></div>' +
+    '<div class="bes-row"><span class="k">' + t("fee") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(FEE) + "</bdi></span></div>" +
+    '<div class="bes-row"><span class="k">' + t("margin") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(MARGIN) + "</bdi></span></div>" +
+    '<div class="bes-row"><span class="k">' + t("vat") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(g.vat) + "</bdi></span></div></div>" +
+    '<div class="bes-total"><span class="k">' + t("total") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(g.total) + "</bdi></span></div>" +
+    '<div class="bes-row" style="padding-top:10px"><span class="k">' + t("theyGet") + '</span><span class="v" style="color:var(--bes-financial-income)"><bdi class="bes-amount">' + fmtI(g.gets) + "</bdi> · " + t("exact") + "</span></div>" +
+    '<div id="j-requote" hidden role="alert"><div class="bes-alert bes-alert--warning" style="margin-top:14px"><div><b>' + t("rateExpiredMsg") + '</b><bdi class="bes-amount">' + t("oldNew") + '</bdi><div class="actions"><a href="#" data-act="relock">' + t("relock") + "</a></div></div></div></div>" +
+    newWarn +
+    '<p class="bes-consequence">' + t("consequence").replace("{t}", fmtA(g.total)) + "</p>" +
+    '<button class="bes-btn bes-btn--primary bes-btn--lg" data-act="toAuth" id="j-sendbtn">' + t("sendBtn").replace("{t}", fmtA(g.total)) + "</button>";
+}
+
+function vAuth(){
+  var g = totals();
+  return bar(t("t_auth"), 4, true) +
+    '<div class="bes-alert bes-alert--info" style="margin-bottom:20px"><div>' +
+    BES.tpl(t("authContext"), {t: '<bdi class="bes-amount">' + fmtA(g.total) + "</bdi>", n: esc(S.payee.name)}) + "</div></div>" +
+    '<p class="bes-label" style="margin-bottom:10px">' + t("enterPin") + "</p>" +
+    '<div class="bes-pin" id="j-pin">' +
+    '<input aria-label="PIN digit 1" type="password" aria-describedby="j-pinerr"><input aria-label="PIN digit 2" type="password" aria-describedby="j-pinerr">' +
+    '<input aria-label="PIN digit 3" type="password" aria-describedby="j-pinerr"><input aria-label="PIN digit 4" type="password" aria-describedby="j-pinerr"></div>' +
+    '<div class="bes-attempts" id="j-pinerr" hidden>' + t("wrongPin") + "</div>";
+}
+
+function vProcessing(){
+  return '<div class="bes-result" style="padding-top:80px">' +
+    '<div class="ic" style="background:var(--bes-status-infoTint);color:var(--bes-status-info)">' +
+    '<span class="j-spin" aria-hidden="true"></span></div>' +
+    "<h2>" + t("t_processing") + "</h2>" +
+    '<p class="money-state">' + t("procNote") + "</p></div>";
+}
+
+function vResult(){
+  var g = totals();
+  var o = S.outcome;
+  var conf = {
+    success: { cls:"bes-result--completed", ic:'<path d="M5 13l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>',
+      h:t("r_successT"), m:t("r_successM").replace("{t}", fmtA(g.total)).replace("{n}", esc(S.payee.name)), money:"",
+      act:'<button class="bes-btn bes-btn--primary bes-btn--lg" data-act="toReceipt">' + t("dlReceipt") + '</button><button class="bes-btn bes-btn--ghost bes-btn--lg" data-act="restart">' + t("sendAgain") + "</button>" },
+    pending: { cls:"bes-result--pending", ic:'<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+      h:t("r_pendingT"), m:t("r_pendingM"), money:t("r_pendingMoney"),
+      act:'<button class="bes-btn bes-btn--secondary bes-btn--lg" data-act="restart">' + t("notifyMe") + "</button>" },
+    unknown: { cls:"bes-result--unknown", ic:'<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 10.5v5M12 7v.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+      h:t("r_unknownT"), m:t("r_unknownM"), money:t("r_unknownMoney"),
+      act:'<button class="bes-btn bes-btn--secondary bes-btn--lg" data-act="restart">' + t("notifyMe") + '</button><button class="bes-btn bes-btn--ghost bes-btn--lg" data-act="restart">' + t("support") + "</button>" },
+    failed: { cls:"bes-result--failed", ic:'<path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
+      h:t("r_failedT"), m:t("r_failedM"), money:t("r_failedMoney"),
+      act:'<button class="bes-btn bes-btn--primary bes-btn--lg" data-act="restart">' + t("retry") + '</button><button class="bes-btn bes-btn--ghost bes-btn--lg" data-act="restart">' + t("support") + "</button>" }
+  }[o];
+  var timeline = o === "success" || o === "pending" ?
+    '<ul class="bes-timeline" style="margin-top:24px;text-align:start">' +
+    '<li class="done"><span class="dot">✓</span><span><span class="t">' + t("tl1") + '</span><br><span class="s">14:32</span></span></li>' +
+    '<li class="done"><span class="dot">✓</span><span><span class="t">' + t("tl2") + '</span><br><span class="s">₹' + RATE.toFixed(4) + "</span></span></li>" +
+    '<li class="current"><span class="dot">●</span><span><span class="t">' + t("tl3") + '</span><br><span class="s">' + t("tl3s") + "</span></span></li>" +
+    '<li><span class="dot">○</span><span><span class="t">' + t("tl4").replace("{n}", esc(S.payee.name)) + "</span></span></li></ul>" : "";
+  return '<div class="bes-result ' + conf.cls + '">' +
+    '<div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none">' + conf.ic + "</svg></div>" +
+    "<h2>" + conf.h + "</h2><p class='money-state'>" + conf.m + "</p>" +
+    (conf.money ? '<p class="money-state"><b>' + conf.money + "</b></p>" : "") +
+    timeline +
+    '<div style="display:flex;flex-direction:column;gap:8px;margin-top:24px">' + conf.act + "</div></div>";
+}
+
+function vReceipt(){
+  var g = totals();
+  var today = new Date().toLocaleDateString(lang === "ar" ? "ar-AE" : "en-GB", {day:"numeric", month:"long", year:"numeric"});
+  return bar(t("t_receipt"), 0, true) +
+    '<div class="bes-receipt">' +
+    '<div class="head"><span class="title">' + t("rc_title") + '</span><span class="bes-badge bes-badge--success">' + t("rc_status") + "</span></div>" +
+    '<div class="bes-rows">' +
+    '<div class="bes-row"><span class="k">' + t("rc_date") + '</span><span class="v">' + today + "</span></div>" +
+    '<div class="bes-row"><span class="k">' + t("rc_ref") + '</span><span class="v"><bdi class="bes-amount">' + S.ref + "</bdi></span></div>" +
+    '<div class="bes-row"><span class="k">' + t("rc_sender") + '</span><span class="v">' + t("rc_senderV") + "</span></div>" +
+    '<div class="bes-row"><span class="k">' + t("rc_recipient") + '</span><span class="v">' + esc(S.payee.name) + " · " + esc(S.payee.bank) + " " + esc(S.payee.acct) + "</span></div>" +
+    '<div class="sep"></div>' +
+    '<div class="bes-row"><span class="k">' + t("rc_amount") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(S.amount) + "</bdi></span></div>" +
+    '<div class="bes-row"><span class="k">' + t("rc_rate") + '</span><span class="v"><bdi class="bes-amount">1 AED = ₹' + RATE.toFixed(4) + "</bdi></span></div>" +
+    '<div class="bes-row"><span class="k">' + t("rc_fees") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(g.fees) + "</bdi></span></div></div>" +
+    '<div class="bes-total"><span class="k">' + t("rc_total") + '</span><span class="v"><bdi class="bes-amount">' + fmtA(g.total) + "</bdi></span></div>" +
+    '<div class="bes-row" style="padding-top:8px"><span class="k">' + t("rc_gets") + '</span><span class="v"><bdi class="bes-amount">' + fmtI(g.gets) + "</bdi></span></div>" +
+    '<p style="font-size:12px;color:var(--bes-text-secondary);margin-top:14px">' + t("rc_note") + "</p></div>" +
+    '<div style="display:flex;flex-direction:column;gap:8px;margin-top:16px">' +
+    '<button class="bes-btn bes-btn--secondary bes-btn--lg" data-act="print">' + t("rc_print") + "</button>" +
+    '<button class="bes-btn bes-btn--ghost bes-btn--lg" data-act="restart">' + t("startOver") + "</button></div>";
+}
+
+/* ======================= controller ======================= */
+var firstRender = true;
+function render(){
+  BES.stopCountdowns(app); // no orphaned intervals across re-renders
+  var views = [vAmount, vRecipient, vReview, vAuth, vProcessing, vResult, vReceipt];
+  app.innerHTML = views[S.step]();
+  BES.init(app);
+  var head = app.querySelector("h2");
+  if (head && !firstRender) {
+    head.setAttribute("tabindex", "-1");
+    if (S.step !== 3) head.focus();
+    BES.announce(head.textContent, S.step === 5);
+  }
+  firstRender = false;
+  if (S.step === 2 && lockExpired()) {
+    var rq = document.getElementById("j-requote"); if (rq) rq.hidden = false;
+    var sb = document.getElementById("j-sendbtn"); if (sb) sb.disabled = true;
+  }
+  // step-specific wiring
+  if (S.step === 0) {
+    var amt = document.getElementById("j-amt");
+    amt.addEventListener("input", function(){
+      var v = BES.parseAmount(amt.value);
+      if (!isNaN(v) && v > 0) {
+        S.amount = v;
+        var g = totals();
+        document.getElementById("j-total").textContent = fmtA(g.total);
+        document.getElementById("j-gets").textContent = fmtI(g.gets);
+      }
+    });
+  }
+  if (S.step === 2) {
+    app.addEventListener("bes:rate-expired", function onExp(){
+      var rq = document.getElementById("j-requote");
+      var sb = document.getElementById("j-sendbtn");
+      if (rq) rq.hidden = false;
+      if (sb) sb.disabled = true;
+      app.removeEventListener("bes:rate-expired", onExp);
+    });
+  }
+  if (S.step === 3) {
+    var pin = document.getElementById("j-pin");
+    pin.addEventListener("bes:pin", function(e){
+      if (lockExpired()) { S.step = 2; render(); return; }
+      if (e.detail === "0000" && S.authAttempts === 0) {
+        S.authAttempts++;
+        document.getElementById("j-pinerr").hidden = false;
+        pin.setError(t("wrongPin"));
+      } else {
+        pin.clearError();
+        S.step = 4; render();
+        setTimeout(function(){ S.step = 5; render(); }, 2400);
+      }
+    });
+    pin.querySelector("input").focus();
+  }
+}
+
+app.addEventListener("click", function(e){
+  var el = e.target.closest("[data-act],[data-payee]");
+  if (!el) return;
+  if (el.dataset.payee != null) {
+    e.preventDefault();
+    var p = PAYEES[+el.dataset.payee];
+    S.payee = { name:p.name, registered:p.registered, bank:p.bank, acct:p.acct, isNew:false };
+    S.lockUntil = Date.now() + 90000; S.step = 2; render(); return;
+  }
+  var act = el.dataset.act;
+  if (act === "back")   { e.preventDefault(); S.step = Math.max(0, S.step - 1); if (S.step === 4) S.step = 2; render(); }
+  if (act === "back2")  { e.preventDefault(); S.step = 1; render(); }
+  if (act === "toRecipient") {
+    var ai = document.getElementById("j-amt");
+    var av = ai ? BES.parseAmount(ai.value) : S.amount;
+    if (isNaN(av) || av <= 0 || av > 25000) {
+      if (ai) { ai.setAttribute("aria-invalid", "true"); ai.focus(); }
+      BES.announce(t("amountInvalid"), true);
+      return;
+    }
+    S.amount = av; S.step = 1; render();
+  }
+  if (act === "addNew") { document.getElementById("j-newform").hidden = false; el.hidden = true; document.getElementById("j-nm").focus(); }
+  if (act === "verifyPayee") {
+    var nm = document.getElementById("j-nm").value.trim() || "Priya Kumar";
+    var cop = document.getElementById("j-cop");
+    cop.innerHTML = '<div class="bes-alert bes-alert--info"><div>' + t("verifying") + "</div></div>";
+    setTimeout(function(){
+      var registered = "Priya Kumar Nair";
+      var state = nm.toLowerCase() === registered.toLowerCase() ? "match"
+                : registered.toLowerCase().indexOf(nm.toLowerCase().split(" ")[0]) === 0 ? "close" : "nomatch";
+      S._candidate = { entered:nm, registered:registered, state:state };
+      cop.innerHTML = copBlock(state, esc(nm), esc(registered));
+      cop.querySelector(".bes-card").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"nearest"});
+    }, 900);
+  }
+  if (act === "copAccept" || act === "copUseRegistered") {
+    e.preventDefault();
+    var c = S._candidate;
+    var rawAcct = document.getElementById("j-ac") ? document.getElementById("j-ac").value.replace(/[^0-9]/g, "") : "";
+    S.payee = { name: act === "copUseRegistered" ? c.registered : c.entered, registered:c.registered,
+                bank:"ICICI Bank", acct:"••" + (rawAcct.slice(-4) || "9911"), isNew:true };
+    S.lockUntil = Date.now() + 90000; S.step = 2; render();
+  }
+  if (act === "copBack") { e.preventDefault(); render(); }
+  if (act === "relock") { e.preventDefault(); RATE = REQUOTE_RATE; S.lockUntil = Date.now() + 90000; S.step = 2; render(); }
+  if (act === "toAuth") { if (lockExpired()) { render(); return; } S.step = 3; render(); }
+  if (act === "toReceipt") { S.step = 6; render(); }
+  if (act === "print") { document.body.classList.add("bes-print-receipt"); window.print(); document.body.classList.remove("bes-print-receipt"); }
+  if (act === "restart") { S = { step:0, amount:10000, payee:null, outcome:S.outcome, authAttempts:0, ref:"BES-" + Math.random().toString(36).slice(2,8).toUpperCase() }; render(); }
+});
+
+/* demo outcome selector */
+document.querySelectorAll("[data-outcome]").forEach(function(b){
+  b.addEventListener("click", function(){
+    document.querySelectorAll("[data-outcome]").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+    b.setAttribute("aria-pressed","true");
+    S.outcome = b.dataset.outcome;
+  });
+});
+
+/* language toggle */
+document.getElementById("langBtn").addEventListener("click", function(){
+  lang = lang === "en" ? "ar" : "en";
+  document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+  document.documentElement.setAttribute("lang", lang);
+  this.textContent = lang === "ar" ? "English" : "العربية";
+  this.setAttribute("lang", lang === "ar" ? "en" : "ar");
+  document.querySelectorAll("[data-k]").forEach(function(el){
+    var v = L[lang][el.dataset.k];
+    if (v != null) el.textContent = v;
+  });
+  render();
+});
+
+render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "name": "banking-experience-system",
+  "version": "2.0.0-draft",
+  "description": "A domain-specific design system for banking and fintech in the UAE — bilingual Arabic/English (RTL/LTR), regulatory-aware, accessibility-first.",
+  "license": "MIT",
+  "author": "Saravanakumar (https://github.com/dezinebee)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dezinebee/banking-experience-system.git"
+  },
+  "homepage": "https://dezinebee.github.io/banking-experience-system/",
+  "bugs": {
+    "url": "https://github.com/dezinebee/banking-experience-system/issues"
+  },
+  "private": true,
+  "type": "module",
+  "style": "assets/bes.css",
+  "files": [
+    "assets/tokens.css",
+    "assets/bes.css",
+    "assets/bes.js"
+  ],
+  "keywords": [
+    "design-system", "banking", "fintech", "uae", "rtl", "arabic",
+    "accessibility", "wcag", "design-tokens", "css"
+  ],
+  "scripts": {
+    "test": "node tools/test-js.mjs && node tools/test-dom.mjs",
+    "test:tz": "TZ=Asia/Dubai node tools/test-js.mjs && TZ=Asia/Dubai node tools/test-dom.mjs",
+    "audit": "python3 tools/audit-a11y.py && python3 tools/audit-consistency.py && python3 tools/audit-theme.py && python3 tools/audit-states.py && python3 tools/audit-contrast.py",
+    "build": "python3 tokens/build-tokens.py && python3 tokens/build-theme.py && python3 tools/build-docs.py",
+    "gates": "npm run build && npm test && npm run test:tz && npm run audit",
+    "pack:release": "python3 tools/pack-release.py"
+  },
+  "devDependencies": {
+    "jsdom": "^24.0.0"
+  },
+  "comment_entrypoints": "No `main`/`exports`: bes.js is a classic browser script that assigns window.BES, not an ES module — advertising a module entry point would promise an interface it does not have. `style` is declared because it is true. `private: true` is deliberate: distribution is the GitHub Release zip built by `npm run pack:release`, not npm.",
+  "comment": "The shipped library (assets/) is dependency-free by design. jsdom is a test-time dependency only — it exists so component behaviour is exercised in a real DOM rather than asserted about pure functions. The order in `gates` matters: the DOM pass writes docs/audits/dom-snapshots/, which the contrast audit then walks alongside the static pages."
+}

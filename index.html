@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banking Experience System</title>
+<meta name="description" content="A domain-specific design system for banking and fintech in the UAE — bilingual Arabic/English, regulatory-aware, accessibility-first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css?v=2.0.0-draft">
+<style>
+  .land-wrap{max-width:1060px; margin:0 auto; padding:0 24px}
+  .topbar a.pill.pri{background:var(--act); color:var(--on-act); border-color:var(--act)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill" href="pages/overview.html">Docs</a>
+  <a class="pill" href="components/index.html">Components</a>
+  <a class="pill" href="journey-remittance.html">Journey</a>
+  <a class="pill pri" href="showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="pages/status.html">What has and hasn't been verified</a></div>
+
+<div class="land-wrap">
+<div class="hero-land">
+  <h1>Financial experiences, engineered as a system</h1>
+  <p class="lede">A domain-specific design system for banking and fintech in the UAE. <strong>Trust by design, clarity by default</strong> — money display, transaction states, fee disclosure, consent, fraud response and bilingual Arabic/English RTL design, specified as reusable foundations, components and patterns.</p>
+  <div class="hero-cta">
+    <a class="pri" href="pages/overview.html">Read the documentation</a>
+    <a class="sec" href="components/index.html">Use the components</a>
+    <a class="sec" href="showcase.html">See it rendered</a>
+  </div>
+  <div class="stats">
+    <span><b>110+</b>components</span>
+    <span><b>55</b>patterns</span>
+    <span><b>2</b>languages · RTL + LTR</span>
+    <span><b>AA</b>WCAG 2.2 target</span>
+    <span><b>40</b>specifications</span>
+    <span><b>5</b>automated audits passing</span>
+    <span><b>0</b>human test protocols run</span>
+  </div>
+</div>
+
+<div class="land-grp">
+  <h2>Build with it</h2>
+  <div class="cards">
+    <a class="cardl" href="journey-remittance.html"><b>Remittance journey — live proof</b><span>The complete AED→INR flow working end-to-end: amount, payee verification, rate lock, authentication, every result state, receipt. English and Arabic.</span></a>
+    <a class="cardl" href="components/index.html"><b>Component library (HTML/CSS/JS)</b><span>Live, dependency-free coded components with copy-paste markup, light/dark, RTL and density controls.</span></a>
+    <a class="cardl" href="components/money.html"><b>Money &amp; accounts, coded</b><span>Amount styles, fee breakdowns, limit indicators, account cards with masking.</span></a>
+    <a class="cardl" href="components/patterns.html"><b>Composed patterns, coded</b><span>Transfer review, payee verification and consent — assembled and interactive.</span></a>
+    <a class="cardl" href="tokens/tokens.json"><b>Token package</b><span>tokens.json source of truth → generated CSS custom properties (tokens.css).</span></a>
+  </div>
+</div>
+
+<div class="land-grp">
+  <h2>Foundations</h2>
+  <div class="cards">
+    <a class="cardl" href="pages/color.html"><b>Color</b><span>Functional palette, semantic tokens, fixed financial colors, dark scheme, contrast contract.</span></a>
+    <a class="cardl" href="pages/typography.html"><b>Typography</b><span>Certified Latin + Arabic pair, Arabic metrics, money type styles, bidirectional text.</span></a>
+    <a class="cardl" href="pages/spacing-layout.html"><b>Spacing & layout</b><span>4px scale, density modes, grids, breakpoints, elevation and shape.</span></a>
+    <a class="cardl" href="pages/iconography.html"><b>Iconography</b><span>Construction grid, financial glyph vocabulary, RTL mirroring policy.</span></a>
+    <a class="cardl" href="pages/motion.html"><b>Motion</b><span>Durations, easings, semantic patterns, reduced-motion alternatives.</span></a>
+  </div>
+</div>
+
+<div class="land-grp">
+  <h2>Architecture</h2>
+  <div class="cards">
+    <a class="cardl" href="pages/tokens.html"><b>Token architecture</b><span>Five tiers, naming grammar, six dimensions, the theming contract.</span></a>
+    <a class="cardl" href="pages/financial-semantics.html"><b>Financial semantics</b><span>Money display rules, FX honesty, balance model, the transaction state machine.</span></a>
+    <a class="cardl" href="pages/theming.html"><b>Multi-brand & theming</b><span>One behavioral core, many brand expressions — with guard rails.</span></a>
+    <a class="cardl" href="pages/accessibility.html"><b>Accessibility</b><span>WCAG 2.2 AA as the design target: tokens, checklists, testing matrix. Contrast and structure are gated automatically; the screen-reader protocol is written but not yet run.</span></a>
+    <a class="cardl" href="pages/localization-rtl.html"><b>Localization & RTL</b><span>Arabic as architecture: direction, numerals, calendars, bidi rules.</span></a>
+  </div>
+</div>
+
+<div class="land-grp">
+  <h2>Components</h2>
+  <div class="cards">
+    <a class="cardl" href="pages/actions.html"><b>Actions</b><span>Buttons that name their consequence, icon buttons, links, menus.</span></a>
+    <a class="cardl" href="pages/inputs.html"><b>Inputs & forms</b><span>The form doctrine, currency input, IBAN entry, PIN, uploads.</span></a>
+    <a class="cardl" href="pages/navigation.html"><b>Navigation</b><span>App bars, bottom nav, tabs, steppers, language switcher, session bar.</span></a>
+    <a class="cardl" href="pages/containers.html"><b>Containers</b><span>Cards, lists, tables, modals, drawers, sheets — and when not to use them.</span></a>
+    <a class="cardl" href="pages/feedback.html"><b>Feedback & status</b><span>The disruption model: alerts, banners, toasts, badges, empty states.</span></a>
+    <a class="cardl" href="pages/money.html"><b>Money</b><span>Amount, FX rate, fee breakdown, rate lock, limits — the core primitives.</span></a>
+    <a class="cardl" href="pages/accounts.html"><b>Accounts</b><span>Account cards, balance sets, IBAN display, spaces and goals.</span></a>
+    <a class="cardl" href="pages/transactions.html"><b>Transactions</b><span>Items, detail, timeline, receipts — every state designed, including unknown.</span></a>
+    <a class="cardl" href="pages/payments-transfers.html"><b>Payments & transfers</b><span>Payee verification, transfer review, results, requests, QR, bills.</span></a>
+    <a class="cardl" href="pages/cards.html"><b>Cards</b><span>Card art, controls, freeze, limits, PIN, disputes, replacement.</span></a>
+    <a class="cardl" href="pages/lending.html"><b>Lending & financing</b><span>Key facts, APR and profit-rate displays, schedules, overdue handling.</span></a>
+    <a class="cardl" href="pages/investments.html"><b>Investments</b><span>Portfolios, holdings, risk indicators, order tickets, disclosures.</span></a>
+    <a class="cardl" href="pages/identity-security.html"><b>Identity & security</b><span>National identity sign-in, document capture, auth prompts, fraud tiers.</span></a>
+    <a class="cardl" href="pages/consent-privacy.html"><b>Consent & privacy</b><span>Consent requests and dashboards, revocation, privacy center.</span></a>
+  </div>
+</div>
+
+<div class="land-grp">
+  <h2>Patterns & systems</h2>
+  <div class="cards">
+    <a class="cardl" href="pages/patterns-input.html"><b>Asking users for…</b><span>Amounts, payees, documents, addresses, consent — collection done right.</span></a>
+    <a class="cardl" href="pages/patterns-confirmation.html"><b>Review & confirmation</b><span>Check answers, payment review, signing, approvals, cooling-off.</span></a>
+    <a class="cardl" href="pages/patterns-status.html"><b>Status & disclosure</b><span>Truthful balances, rates, tracking, holds, insights and budgets.</span></a>
+    <a class="cardl" href="pages/patterns-safety.html"><b>Fraud, errors & recovery</b><span>Suspicious activity, scam intervention, takeover response, closure.</span></a>
+    <a class="cardl" href="pages/data-viz.html"><b>Data visualization</b><span>Fifteen chart components with honesty and accessibility rules.</span></a>
+    <a class="cardl" href="pages/content-errors.html"><b>Content & errors</b><span>Voice, bilingual glossary, error taxonomy, notification categories.</span></a>
+  </div>
+</div>
+
+<div class="land-grp">
+  <h2>Strategy (Phase 01)</h2>
+  <div class="cards">
+    <a class="cardl" href="pages/strategy-overview.html"><b>Phase 01 overview</b><span>How the system strategy was researched and structured.</span></a>
+    <a class="cardl" href="pages/strategy-principles.html"><b>Design principles</b><span>Ten principles, each with a decision test and an enforcement mechanism.</span></a>
+    <a class="cardl" href="pages/strategy-uae.html"><b>UAE context</b><span>Rails, remittance, language, Islamic finance — what makes this market specific.</span></a>
+    <a class="cardl" href="pages/strategy-regulatory.html"><b>Regulatory considerations</b><span>Regulation translated into UX mandates — not legal advice.</span></a>
+  </div>
+</div>
+
+<footer class="site">
+  <span>Banking Experience System · v2.0.0 · All examples use fictional data</span>
+  <span><a href="pages/overview.html">Documentation</a> · <a href="showcase.html">Showcase</a></span>
+</footer>
+</div>
+</body>
+</html>

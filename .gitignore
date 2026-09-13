@@ -1,0 +1,32 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Dependencies — jsdom is test-time only; the shipped library has none
+node_modules/
+
+# Editors
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Scratch files. Note: git has no trailing inline comments — a `#` only starts
+# a comment at the start of a line, so keep annotations above the pattern.
+tools/_*.js
+tools/_*.py
+*.tmp
+*.bak
+*.orig
+
+# Release artefacts (built by tools/pack-release.py, attached to GitHub Releases)
+dist/
+
+# npm pack output
+*.tgz

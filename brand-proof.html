@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand proof · BES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css?v=2.0.0-draft">
+<link rel="stylesheet" href="assets/tokens.css?v=2.0.0-draft">
+<link rel="stylesheet" href="assets/themes/sadu.css?v=2.0.0-draft">
+<link rel="stylesheet" href="assets/bes.css?v=2.0.0-draft">
+<style>
+  /* page furniture only — nothing here styles a BES component */
+  .proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; margin: 24px 0 40px; }
+  .lane { border: 1px solid var(--bes-border-default); border-radius: 4px; overflow: hidden; }
+  .lane > h2 { margin: 0; padding: 12px 18px; font: 600 13px/1.4 Inter, sans-serif; letter-spacing: .08em;
+               text-transform: uppercase; background: #EEF0F4; color: #3D4763; border-bottom: 1px solid #DDE1E8; }
+  .lane .inner { padding: 22px 18px; background: #fff; }
+  .lane--sadu .inner { background: #F8F7F4; }
+  .stack { display: flex; flex-direction: column; gap: 16px; }
+  .stack .r { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .facts td { padding: 5px 12px 5px 0; vertical-align: top; font: 400 13px/1.5 Inter, sans-serif; }
+  .facts td:first-child { color: #6B7382; white-space: nowrap; }
+  .facts code { font: 500 12px ui-monospace, monospace; background: #EEF0F4; padding: 1px 5px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="document.querySelector('nav.side').classList.toggle('open')">Menu</button>
+  <a href="index.html" style="display:flex;align-items:center;gap:10px"><span class="sq">BES</span><span class="name">Banking Experience System</span></a>
+  <div class="spacer"></div>
+  <a class="pill" href="pages/overview.html">Docs</a>
+  <a class="pill" href="components/index.html">Components</a>
+  <a class="pill" href="journey-remittance.html">Journey</a>
+  <a class="pill" href="showcase.html">Showcase</a>
+</div>
+<div class="statusbar" role="note"><strong>Draft — not yet human-verified.</strong> Every gate passing here is automated. No screen-reader, Arabic native-speaker or usability testing has been carried out yet, and all Arabic UI copy is machine-drafted. <a href="pages/status.html">What has and hasn't been verified</a></div>
+<div class="shell">
+<nav class="side" aria-label="Site">
+<div class="grp">Start</div>
+<a href="index.html">Home</a>
+<a href="showcase.html">Live showcase</a>
+<a href="journey-remittance.html">Remittance journey</a>
+<a href="brand-proof.html" class="on">Brand proof</a>
+<a href="pages/status.html">Status &amp; verification</a>
+<a href="pages/figma-build-spec.html">Figma library spec</a>
+<div class="grp">Live components</div>
+<a href="components/index.html">Install &amp; overview</a>
+<a href="components/actions.html">Actions &amp; feedback</a>
+<a href="components/forms.html">Forms &amp; inputs</a>
+<a href="components/money.html">Money &amp; accounts</a>
+<a href="components/transactions.html">Transactions</a>
+<a href="components/patterns.html">Composed patterns</a>
+<a href="components/advanced.html">Advanced &amp; charts</a>
+<div class="grp">Getting started</div>
+<a href="pages/overview.html">System overview</a>
+<div class="grp">Foundations</div>
+<a href="pages/color.html">Color</a>
+<a href="pages/typography.html">Typography</a>
+<a href="pages/spacing-layout.html">Spacing &amp; layout</a>
+<a href="pages/iconography.html">Iconography</a>
+<a href="pages/motion.html">Motion</a>
+<div class="grp">Architecture</div>
+<a href="pages/tokens.html">Token architecture</a>
+<a href="pages/financial-semantics.html">Financial semantics</a>
+<div class="grp">Core components</div>
+<a href="pages/actions.html">Actions</a>
+<a href="pages/inputs.html">Inputs &amp; forms</a>
+<a href="pages/navigation.html">Navigation</a>
+<a href="pages/containers.html">Containers</a>
+<a href="pages/feedback.html">Feedback &amp; status</a>
+<div class="grp">Financial components</div>
+<a href="pages/money.html">Money</a>
+<a href="pages/accounts.html">Accounts</a>
+<a href="pages/transactions.html">Transactions</a>
+<a href="pages/payments-transfers.html">Payments &amp; transfers</a>
+<a href="pages/cards.html">Cards</a>
+<a href="pages/lending.html">Lending &amp; financing</a>
+<a href="pages/investments.html">Investments</a>
+<a href="pages/identity-security.html">Identity &amp; security</a>
+<a href="pages/consent-privacy.html">Consent &amp; privacy</a>
+<div class="grp">Patterns</div>
+<a href="pages/patterns-input.html">Asking users for…</a>
+<a href="pages/patterns-confirmation.html">Review &amp; confirmation</a>
+<a href="pages/patterns-status.html">Status &amp; disclosure</a>
+<a href="pages/patterns-safety.html">Fraud, errors &amp; recovery</a>
+<div class="grp">Cross-cutting systems</div>
+<a href="pages/data-viz.html">Data visualization</a>
+<a href="pages/content-errors.html">Content &amp; errors</a>
+<a href="pages/accessibility.html">Accessibility</a>
+<a href="pages/localization-rtl.html">Localization &amp; RTL</a>
+<a href="pages/theming.html">Multi-brand &amp; theming</a>
+<div class="grp">Strategy</div>
+<a href="pages/strategy-overview.html">Phase 01 overview</a>
+<a href="pages/strategy-vision.html">Vision</a>
+<a href="pages/strategy-principles.html">Design principles</a>
+<a href="pages/strategy-users.html">Target users</a>
+<a href="pages/strategy-uae.html">UAE context</a>
+<a href="pages/strategy-regulatory.html">Regulatory considerations</a>
+<a href="pages/strategy-references.html">Reference analysis</a>
+<a href="pages/strategy-architecture.html">Experience architecture</a>
+<a href="pages/strategy-taxonomy.html">System taxonomy</a>
+</nav>
+<main>
+
+<h1>Brand proof</h1>
+<p class="lede">Doc 30 says a brand change must be <em>describable entirely as token values</em> — “if it requires
+touching component internals, it's rejected.” Until a second brand existed, that was an untested claim. This page is
+the test: the same markup, the same <code>bes.css</code>, rendered twice. The only difference between the two columns
+is <code>data-brand="sadu"</code> and a stylesheet of <strong>111 token values with no rules in it</strong>.</p>
+
+<p><strong>Sadu is a fictional brand</strong> invented for this repository — an Islamic-finance neobank, named after
+the Emirati weaving tradition. It is not a real institution. It was designed to sit as far from BES core as the
+contract allows: deep green rather than blue, squared rather than rounded, a serif type stack rather than a grotesque,
+comfortable density rather than standard, and a gold-on-green card face.</p>
+
+<div class="proof">
+
+  <section class="lane">
+    <h2>BES core</h2>
+    <div class="inner bes">
+      <div class="stack">
+        <div class="r">
+          <button class="bes-btn bes-btn--primary">Send AED 5,000.00</button>
+          <button class="bes-btn bes-btn--secondary">Cancel</button>
+        </div>
+        <div class="r">
+          <span class="bes-badge" data-bes-state="completed"></span>
+          <span class="bes-badge" data-bes-state="pending"></span>
+          <span class="bes-badge" data-bes-state="unknown"></span>
+        </div>
+        <div class="bes-field">
+          <label class="bes-label" for="c-amt">You send</label>
+          <input class="bes-input" id="c-amt" value="10,000.00" data-bes-currency data-max="25000" data-currency="AED">
+          <div class="bes-context-line">Available AED 25,000.00</div>
+        </div>
+        <div class="bes-card">
+          <div class="bes-amount bes-amount--lg"><span class="cur">AED</span> 25,000.00</div>
+          <div class="bes-amount--meta">Current account ••4521</div>
+        </div>
+        <div class="bes-alert bes-alert--warning">
+          <b>Rate expires in 60 seconds</b>
+          You'll see the new rate before anything is sent.
+        </div>
+        <div class="bes-cardart">
+          <div class="bank">BES BANK</div>
+          <div class="pan">•••• •••• •••• 4102</div>
+          <div class="row"><span class="holder">A. Al Mansoori</span><span class="schemes">JAYWAN · VISA</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lane lane--sadu" data-brand="sadu">
+    <h2>Sadu — same markup, same CSS</h2>
+    <div class="inner bes">
+      <div class="stack">
+        <div class="r">
+          <button class="bes-btn bes-btn--primary">Send AED 5,000.00</button>
+          <button class="bes-btn bes-btn--secondary">Cancel</button>
+        </div>
+        <div class="r">
+          <span class="bes-badge" data-bes-state="completed"></span>
+          <span class="bes-badge" data-bes-state="pending"></span>
+          <span class="bes-badge" data-bes-state="unknown"></span>
+        </div>
+        <div class="bes-field">
+          <label class="bes-label" for="s-amt">You send</label>
+          <input class="bes-input" id="s-amt" value="10,000.00" data-bes-currency data-max="25000" data-currency="AED">
+          <div class="bes-context-line">Available AED 25,000.00</div>
+        </div>
+        <div class="bes-card">
+          <div class="bes-amount bes-amount--lg"><span class="cur">AED</span> 25,000.00</div>
+          <div class="bes-amount--meta">Current account ••4521</div>
+        </div>
+        <div class="bes-alert bes-alert--warning">
+          <b>Profit rate expires in 60 seconds</b>
+          You'll see the new rate before anything is sent.
+        </div>
+        <div class="bes-cardart">
+          <div class="bank">SADU</div>
+          <div class="pan">•••• •••• •••• 4102</div>
+          <div class="row"><span class="holder">A. Al Mansoori</span><span class="schemes">JAYWAN</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<h2>What moved, and what it cost</h2>
+<table class="facts">
+  <tr><td>Palette</td><td>Deep green replaces blue; the neutral ramp shifts warm. Core's <code>blue.*</code> and <code>gray.*</code> keys are retuned — the ramp's shape is unchanged, so every semantic token that references it follows.</td></tr>
+  <tr><td>Silhouette</td><td><code>radius.sm/md/lg</code> drop to 2/3/4px, and the component tier squares the button, controls, card, modal, badge, chip, segmented control and status dots.</td></tr>
+  <tr><td>Type</td><td>A serif Latin stack and a Naskh Arabic stack, one step larger and looser throughout. The Arabic optical metrics are re-derived for the brand's own scale, not inherited from core's.</td></tr>
+  <tr><td>Density</td><td>Sadu ships comfortable values as its <em>standard</em> mode. The comfortable and compact modes still exist and still switch.</td></tr>
+  <tr><td>Motion</td><td>Slower: 180/280ms, with a 900ms spinner.</td></tr>
+  <tr><td>Card face</td><td>Gold ink on a green gradient with tighter tracking — <code>cardArt.from/to/ink/badgeBg/track</code>. This was the last place in <code>bes.css</code> that carried a raw hex.</td></tr>
+  <tr><td>Cost in component CSS</td><td><strong>Zero lines.</strong> <code>bes.css</code> is byte-identical between the two columns.</td></tr>
+</table>
+
+<h2>How this is kept honest</h2>
+<p>Three gates run on every change, and each was verified by reintroducing the failure it exists to catch:</p>
+<ul>
+  <li><code>tools/audit-theme.py</code> — a theme file must be token values only. A real CSS property, a selector reaching
+  outside the brand scope, an <code>@font-face</code>, or a token core does not define all fail the build. So does a
+  generated theme that no longer matches its JSON source.</li>
+  <li><code>tools/audit-contrast.py</code> — the full derived audit runs <strong>once per brand</strong>, 1,502 element
+  colourings each. A brand that breaks AA fails the build. Sadu was caught doing exactly that during development: a
+  lighter, friendlier green for the primary action dropped the pressed icon button to 2.11:1.</li>
+  <li><code>tools/audit-consistency.py</code> C8 — <code>font-size</code> and <code>border-radius</code> literals in
+  <code>bes.css</code> are held at zero. A brand can only retune what the components read as tokens, so a literal is a
+  hole in the contract, not a style choice.</li>
+</ul>
+
+<p class="lede">The honest limit: spacing is <em>not</em> fully tokenised. 135 padding, margin and gap literals remain,
+because the space scale is a 4px grid while the CSS uses 6/10/14/18px throughout — closing that is a design decision
+about the grid, not a mechanical substitution. Sadu can change type, colour, shape, density and motion; it cannot yet
+change rhythm. The consistency audit holds that number visible and only lets it fall.</p>
+
+</main>
+</div>
+<script src="assets/bes.js?v=2.0.0-draft"></script>
+</body>
+</html>
